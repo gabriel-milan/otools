@@ -1,0 +1,8 @@
+*.json
+*.out
+*.pyc
+__pycache__
+.vscode/
+build/
+dist/
+otools.egg*
