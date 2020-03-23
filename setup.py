@@ -40,12 +40,12 @@ extensions = [
 
 setup(
   name = 'otools',
-  version = '0.0.1',
+  version = '0.0.3',
   license='GPL-3.0',
   description = 'OTools stands for Online Tools, which is a Python/Cython framework for developing multithread online systems in a simple way.',
   long_description = long_description,
   long_description_content_type="text/markdown",
-  packages=['otools'],
+  packages=find_packages(),
   author = 'Gabriel Gazola Milan',
   author_email = 'gabriel.gazola@poli.ufrj.br',
   url = 'https://github.com/gabriel-milan/otools',
