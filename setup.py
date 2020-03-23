@@ -1,6 +1,16 @@
 from setuptools import setup, find_packages
 from setuptools.extension import Extension
-from Cython.Build import cythonize
+import subprocess
+import sys
+
+def install(package):
+  subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+try:
+  from Cython.Build import cythonize
+except:
+  install('cython')
+  from Cython.Build import cythonize
 
 with open("README.md", "r") as fh:
   long_description = fh.read()
@@ -8,13 +18,29 @@ with open("README.md", "r") as fh:
 extensions = [
   Extension(
     "otools.*",
-    ["otools/*.pyx"],
-  )
+    ["otools/*.py"],
+  ),
+  Extension(
+    "otools.core.*",
+    ["otools/core/*.py"],
+  ),
+  Extension(
+    "otools.exceptions.*",
+    ["otools/exceptions/*.py"],
+  ),
+  Extension(
+    "otools.logging.*",
+    ["otools/logging/*.py"],
+  ),
+  Extension(
+    "otools.status.*",
+    ["otools/status/*.py"],
+  ),
 ]
 
 setup(
   name = 'otools',
-  version = '0.1.0',
+  version = '0.0.1',
   license='GPL-3.0',
   description = 'OTools stands for Online Tools, which is a Python/Cython framework for developing multithread online systems in a simple way.',
   long_description = long_description,
