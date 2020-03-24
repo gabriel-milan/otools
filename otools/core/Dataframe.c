@@ -3,12 +3,12 @@
 /* BEGIN: Cython Metadata
 {
     "distutils": {
-        "name": "otools.core.Tool",
+        "name": "otools.core.Dataframe",
         "sources": [
-            "otools/core/Tool.py"
+            "otools/core/Dataframe.py"
         ]
     },
-    "module_name": "otools.core.Tool"
+    "module_name": "otools.core.Dataframe"
 }
 END: Cython Metadata */
 
@@ -602,8 +602,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__otools__core__Tool
-#define __PYX_HAVE_API__otools__core__Tool
+#define __PYX_HAVE__otools__core__Dataframe
+#define __PYX_HAVE_API__otools__core__Dataframe
 /* Early includes */
 #ifdef _OPENMP
 #include <omp.h>
@@ -813,7 +813,7 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "otools/core/Tool.py",
+  "otools/core/Dataframe.py",
 };
 
 /*--- Type declarations ---*/
@@ -892,10 +892,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStr(PyObject* obj, PyObject
 /* GetBuiltinName.proto */
 static PyObject *__Pyx_GetBuiltinName(PyObject *name);
 
-/* RaiseArgTupleInvalid.proto */
-static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
-    Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
-
 /* RaiseDoubleKeywords.proto */
 static void __Pyx_RaiseDoubleKeywordsError(const char* func_name, PyObject* kw_name);
 
@@ -903,6 +899,66 @@ static void __Pyx_RaiseDoubleKeywordsError(const char* func_name, PyObject* kw_n
 static int __Pyx_ParseOptionalKeywords(PyObject *kwds, PyObject **argnames[],\
     PyObject *kwds2, PyObject *values[], Py_ssize_t num_pos_args,\
     const char* function_name);
+
+/* RaiseArgTupleInvalid.proto */
+static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
+    Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
+
+/* PyObjectSetAttrStr.proto */
+#if CYTHON_USE_TYPE_SLOTS
+#define __Pyx_PyObject_DelAttrStr(o,n) __Pyx_PyObject_SetAttrStr(o, n, NULL)
+static CYTHON_INLINE int __Pyx_PyObject_SetAttrStr(PyObject* obj, PyObject* attr_name, PyObject* value);
+#else
+#define __Pyx_PyObject_DelAttrStr(o,n)   PyObject_DelAttr(o,n)
+#define __Pyx_PyObject_SetAttrStr(o,n,v) PyObject_SetAttr(o,n,v)
+#endif
+
+/* PyDictVersioning.proto */
+#if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
+#define __PYX_DICT_VERSION_INIT  ((PY_UINT64_T) -1)
+#define __PYX_GET_DICT_VERSION(dict)  (((PyDictObject*)(dict))->ma_version_tag)
+#define __PYX_UPDATE_DICT_CACHE(dict, value, cache_var, version_var)\
+    (version_var) = __PYX_GET_DICT_VERSION(dict);\
+    (cache_var) = (value);
+#define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP) {\
+    static PY_UINT64_T __pyx_dict_version = 0;\
+    static PyObject *__pyx_dict_cached_value = NULL;\
+    if (likely(__PYX_GET_DICT_VERSION(DICT) == __pyx_dict_version)) {\
+        (VAR) = __pyx_dict_cached_value;\
+    } else {\
+        (VAR) = __pyx_dict_cached_value = (LOOKUP);\
+        __pyx_dict_version = __PYX_GET_DICT_VERSION(DICT);\
+    }\
+}
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj);
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj);
+static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version);
+#else
+#define __PYX_GET_DICT_VERSION(dict)  (0)
+#define __PYX_UPDATE_DICT_CACHE(dict, value, cache_var, version_var)
+#define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP)  (VAR) = (LOOKUP);
+#endif
+
+/* GetModuleGlobalName.proto */
+#if CYTHON_USE_DICT_VERSIONS
+#define __Pyx_GetModuleGlobalName(var, name)  {\
+    static PY_UINT64_T __pyx_dict_version = 0;\
+    static PyObject *__pyx_dict_cached_value = NULL;\
+    (var) = (likely(__pyx_dict_version == __PYX_GET_DICT_VERSION(__pyx_d))) ?\
+        (likely(__pyx_dict_cached_value) ? __Pyx_NewRef(__pyx_dict_cached_value) : __Pyx_GetBuiltinName(name)) :\
+        __Pyx__GetModuleGlobalName(name, &__pyx_dict_version, &__pyx_dict_cached_value);\
+}
+#define __Pyx_GetModuleGlobalNameUncached(var, name)  {\
+    PY_UINT64_T __pyx_dict_version;\
+    PyObject *__pyx_dict_cached_value;\
+    (var) = __Pyx__GetModuleGlobalName(name, &__pyx_dict_version, &__pyx_dict_cached_value);\
+}
+static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_version, PyObject **dict_cached_value);
+#else
+#define __Pyx_GetModuleGlobalName(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
+#define __Pyx_GetModuleGlobalNameUncached(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
+static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name);
+#endif
 
 /* PyFunctionFastCall.proto */
 #if CYTHON_FAST_PYCALL
@@ -956,98 +1012,42 @@ static CYTHON_INLINE PyObject *__Pyx_PyCFunction_FastCall(PyObject *func, PyObje
 /* PyObjectCallOneArg.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg);
 
-/* PyObjectSetAttrStr.proto */
-#if CYTHON_USE_TYPE_SLOTS
-#define __Pyx_PyObject_DelAttrStr(o,n) __Pyx_PyObject_SetAttrStr(o, n, NULL)
-static CYTHON_INLINE int __Pyx_PyObject_SetAttrStr(PyObject* obj, PyObject* attr_name, PyObject* value);
-#else
-#define __Pyx_PyObject_DelAttrStr(o,n)   PyObject_DelAttr(o,n)
-#define __Pyx_PyObject_SetAttrStr(o,n,v) PyObject_SetAttr(o,n,v)
-#endif
-
-/* GetTopmostException.proto */
-#if CYTHON_USE_EXC_INFO_STACK
-static _PyErr_StackItem * __Pyx_PyErr_GetTopmostException(PyThreadState *tstate);
-#endif
-
-/* PyThreadStateGet.proto */
-#if CYTHON_FAST_THREAD_STATE
-#define __Pyx_PyThreadState_declare  PyThreadState *__pyx_tstate;
-#define __Pyx_PyThreadState_assign  __pyx_tstate = __Pyx_PyThreadState_Current;
-#define __Pyx_PyErr_Occurred()  __pyx_tstate->curexc_type
-#else
-#define __Pyx_PyThreadState_declare
-#define __Pyx_PyThreadState_assign
-#define __Pyx_PyErr_Occurred()  PyErr_Occurred()
-#endif
-
-/* SaveResetException.proto */
-#if CYTHON_FAST_THREAD_STATE
-#define __Pyx_ExceptionSave(type, value, tb)  __Pyx__ExceptionSave(__pyx_tstate, type, value, tb)
-static CYTHON_INLINE void __Pyx__ExceptionSave(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb);
-#define __Pyx_ExceptionReset(type, value, tb)  __Pyx__ExceptionReset(__pyx_tstate, type, value, tb)
-static CYTHON_INLINE void __Pyx__ExceptionReset(PyThreadState *tstate, PyObject *type, PyObject *value, PyObject *tb);
-#else
-#define __Pyx_ExceptionSave(type, value, tb)   PyErr_GetExcInfo(type, value, tb)
-#define __Pyx_ExceptionReset(type, value, tb)  PyErr_SetExcInfo(type, value, tb)
-#endif
-
-/* GetException.proto */
-#if CYTHON_FAST_THREAD_STATE
-#define __Pyx_GetException(type, value, tb)  __Pyx__GetException(__pyx_tstate, type, value, tb)
-static int __Pyx__GetException(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb);
-#else
-static int __Pyx_GetException(PyObject **type, PyObject **value, PyObject **tb);
-#endif
-
 /* PyObjectCall2Args.proto */
 static CYTHON_UNUSED PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2);
 
-/* PyDictVersioning.proto */
-#if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
-#define __PYX_DICT_VERSION_INIT  ((PY_UINT64_T) -1)
-#define __PYX_GET_DICT_VERSION(dict)  (((PyDictObject*)(dict))->ma_version_tag)
-#define __PYX_UPDATE_DICT_CACHE(dict, value, cache_var, version_var)\
-    (version_var) = __PYX_GET_DICT_VERSION(dict);\
-    (cache_var) = (value);
-#define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP) {\
-    static PY_UINT64_T __pyx_dict_version = 0;\
-    static PyObject *__pyx_dict_cached_value = NULL;\
-    if (likely(__PYX_GET_DICT_VERSION(DICT) == __pyx_dict_version)) {\
-        (VAR) = __pyx_dict_cached_value;\
-    } else {\
-        (VAR) = __pyx_dict_cached_value = (LOOKUP);\
-        __pyx_dict_version = __PYX_GET_DICT_VERSION(DICT);\
-    }\
+/* PySequenceContains.proto */
+static CYTHON_INLINE int __Pyx_PySequence_ContainsTF(PyObject* item, PyObject* seq, int eq) {
+    int result = PySequence_Contains(seq, item);
+    return unlikely(result < 0) ? result : (result == (eq == Py_EQ));
 }
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj);
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj);
-static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version);
-#else
-#define __PYX_GET_DICT_VERSION(dict)  (0)
-#define __PYX_UPDATE_DICT_CACHE(dict, value, cache_var, version_var)
-#define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP)  (VAR) = (LOOKUP);
-#endif
 
-/* GetModuleGlobalName.proto */
-#if CYTHON_USE_DICT_VERSIONS
-#define __Pyx_GetModuleGlobalName(var, name)  {\
-    static PY_UINT64_T __pyx_dict_version = 0;\
-    static PyObject *__pyx_dict_cached_value = NULL;\
-    (var) = (likely(__pyx_dict_version == __PYX_GET_DICT_VERSION(__pyx_d))) ?\
-        (likely(__pyx_dict_cached_value) ? __Pyx_NewRef(__pyx_dict_cached_value) : __Pyx_GetBuiltinName(name)) :\
-        __Pyx__GetModuleGlobalName(name, &__pyx_dict_version, &__pyx_dict_cached_value);\
-}
-#define __Pyx_GetModuleGlobalNameUncached(var, name)  {\
-    PY_UINT64_T __pyx_dict_version;\
-    PyObject *__pyx_dict_cached_value;\
-    (var) = __Pyx__GetModuleGlobalName(name, &__pyx_dict_version, &__pyx_dict_cached_value);\
-}
-static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_version, PyObject **dict_cached_value);
+/* GetItemInt.proto */
+#define __Pyx_GetItemInt(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
+    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
+    __Pyx_GetItemInt_Fast(o, (Py_ssize_t)i, is_list, wraparound, boundscheck) :\
+    (is_list ? (PyErr_SetString(PyExc_IndexError, "list index out of range"), (PyObject*)NULL) :\
+               __Pyx_GetItemInt_Generic(o, to_py_func(i))))
+#define __Pyx_GetItemInt_List(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
+    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
+    __Pyx_GetItemInt_List_Fast(o, (Py_ssize_t)i, wraparound, boundscheck) :\
+    (PyErr_SetString(PyExc_IndexError, "list index out of range"), (PyObject*)NULL))
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_List_Fast(PyObject *o, Py_ssize_t i,
+                                                              int wraparound, int boundscheck);
+#define __Pyx_GetItemInt_Tuple(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
+    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
+    __Pyx_GetItemInt_Tuple_Fast(o, (Py_ssize_t)i, wraparound, boundscheck) :\
+    (PyErr_SetString(PyExc_IndexError, "tuple index out of range"), (PyObject*)NULL))
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Tuple_Fast(PyObject *o, Py_ssize_t i,
+                                                              int wraparound, int boundscheck);
+static PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j);
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i,
+                                                     int is_list, int wraparound, int boundscheck);
+
+/* ObjectGetItem.proto */
+#if CYTHON_USE_TYPE_SLOTS
+static CYTHON_INLINE PyObject *__Pyx_PyObject_GetItem(PyObject *obj, PyObject* key);
 #else
-#define __Pyx_GetModuleGlobalName(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
-#define __Pyx_GetModuleGlobalNameUncached(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
-static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name);
+#define __Pyx_PyObject_GetItem(obj, key)  PyObject_GetItem(obj, key)
 #endif
 
 /* Import.proto */
@@ -1133,6 +1133,17 @@ static PyObject *__Pyx_Py3MetaclassPrepare(PyObject *metaclass, PyObject *bases,
 static PyObject *__Pyx_Py3ClassCreate(PyObject *metaclass, PyObject *name, PyObject *bases, PyObject *dict,
                                       PyObject *mkw, int calculate_metaclass, int allow_py2_metaclass);
 
+/* PyThreadStateGet.proto */
+#if CYTHON_FAST_THREAD_STATE
+#define __Pyx_PyThreadState_declare  PyThreadState *__pyx_tstate;
+#define __Pyx_PyThreadState_assign  __pyx_tstate = __Pyx_PyThreadState_Current;
+#define __Pyx_PyErr_Occurred()  __pyx_tstate->curexc_type
+#else
+#define __Pyx_PyThreadState_declare
+#define __Pyx_PyThreadState_assign
+#define __Pyx_PyErr_Occurred()  PyErr_Occurred()
+#endif
+
 /* PyErrFetchRestore.proto */
 #if CYTHON_FAST_THREAD_STATE
 #define __Pyx_PyErr_Clear() __Pyx_ErrRestore(NULL, NULL, NULL)
@@ -1213,123 +1224,141 @@ static int __Pyx_check_binary_version(void);
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 
-/* Module declarations from 'otools.core.Tool' */
-#define __Pyx_MODULE_NAME "otools.core.Tool"
-extern int __pyx_module_is_main_otools__core__Tool;
-int __pyx_module_is_main_otools__core__Tool = 0;
+/* Module declarations from 'otools.core.Dataframe' */
+#define __Pyx_MODULE_NAME "otools.core.Dataframe"
+extern int __pyx_module_is_main_otools__core__Dataframe;
+int __pyx_module_is_main_otools__core__Dataframe = 0;
 
-/* Implementation of 'otools.core.Tool' */
+/* Implementation of 'otools.core.Dataframe' */
 static PyObject *__pyx_builtin_property;
 static const char __pyx_k_all[] = "__all__";
 static const char __pyx_k_ctx[] = "ctx";
 static const char __pyx_k_doc[] = "__doc__";
+static const char __pyx_k_get[] = "get";
+static const char __pyx_k_key[] = "key";
 static const char __pyx_k_kws[] = "kws";
-static const char __pyx_k_obj[] = "obj";
+static const char __pyx_k_set[] = "set";
 static const char __pyx_k_str[] = "__str__";
-static const char __pyx_k_Tool[] = "Tool";
+static const char __pyx_k_Lock[] = "Lock";
 static const char __pyx_k_args[] = "args";
 static const char __pyx_k_info[] = "info";
 static const char __pyx_k_init[] = "__init__";
 static const char __pyx_k_main[] = "__main__";
-static const char __pyx_k_name[] = "__name__";
+static const char __pyx_k_name[] = "name";
 static const char __pyx_k_repr[] = "__repr__";
 static const char __pyx_k_self[] = "self";
 static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_debug[] = "debug";
 static const char __pyx_k_error[] = "error";
 static const char __pyx_k_fatal[] = "fatal";
-static const char __pyx_k_active[] = "_active";
+static const char __pyx_k_value[] = "value";
 static const char __pyx_k_format[] = "format";
 static const char __pyx_k_import[] = "__import__";
 static const char __pyx_k_module[] = "__module__";
-static const char __pyx_k_name_2[] = "name";
-static const char __pyx_k_FAILURE[] = "FAILURE";
+static const char __pyx_k_name_2[] = "__name__";
 static const char __pyx_k_SUCCESS[] = "SUCCESS";
 static const char __pyx_k_Unknown[] = "Unknown";
+static const char __pyx_k_acquire[] = "acquire";
 static const char __pyx_k_execute[] = "execute";
-static const char __pyx_k_getName[] = "getName";
-static const char __pyx_k_getTool[] = "getTool";
 static const char __pyx_k_message[] = "message";
 static const char __pyx_k_prepare[] = "__prepare__";
+static const char __pyx_k_release[] = "release";
+static const char __pyx_k_timeout[] = "timeout";
 static const char __pyx_k_verbose[] = "verbose";
 static const char __pyx_k_warning[] = "warning";
 static const char __pyx_k_MSG_INFO[] = "MSG_INFO";
 static const char __pyx_k_finalize[] = "finalize";
 static const char __pyx_k_property[] = "property";
 static const char __pyx_k_qualname[] = "__qualname__";
+static const char __pyx_k_Dataframe[] = "Dataframe";
 static const char __pyx_k_MSG_DEBUG[] = "MSG_DEBUG";
 static const char __pyx_k_MSG_ERROR[] = "MSG_ERROR";
 static const char __pyx_k_MSG_FATAL[] = "MSG_FATAL";
-static const char __pyx_k_Tool__obj[] = "_Tool__obj";
-static const char __pyx_k_Tool_name[] = "Tool.name";
 static const char __pyx_k_metaclass[] = "__metaclass__";
+static const char __pyx_k_threading[] = "threading";
 static const char __pyx_k_StatusCode[] = "StatusCode";
-static const char __pyx_k_Tool___str[] = "Tool.__str__";
-static const char __pyx_k_Tool__name[] = "_Tool__name";
 static const char __pyx_k_getContext[] = "getContext";
 static const char __pyx_k_initialize[] = "initialize";
 static const char __pyx_k_moduleName[] = "moduleName";
 static const char __pyx_k_setContext[] = "setContext";
 static const char __pyx_k_MSG_VERBOSE[] = "MSG_VERBOSE";
 static const char __pyx_k_MSG_WARNING[] = "MSG_WARNING";
-static const char __pyx_k_Tool___init[] = "Tool.__init__";
-static const char __pyx_k_Tool___repr[] = "Tool.__repr__";
+static const char __pyx_k_OrderedDict[] = "OrderedDict";
+static const char __pyx_k_collections[] = "collections";
 static const char __pyx_k_contextName[] = "contextName";
-static const char __pyx_k_Tool_execute[] = "Tool.execute";
-static const char __pyx_k_getDataframe[] = "getDataframe";
-static const char __pyx_k_Tool_MSG_INFO[] = "Tool.MSG_INFO";
-static const char __pyx_k_Tool__context[] = "_Tool__context";
-static const char __pyx_k_Tool_finalize[] = "Tool.finalize";
-static const char __pyx_k_Tool_MSG_DEBUG[] = "Tool.MSG_DEBUG";
-static const char __pyx_k_Tool_MSG_ERROR[] = "Tool.MSG_ERROR";
-static const char __pyx_k_Tool_MSG_FATAL[] = "Tool.MSG_FATAL";
-static const char __pyx_k_Tool_getContext[] = "Tool.getContext";
-static const char __pyx_k_Tool_initialize[] = "Tool.initialize";
-static const char __pyx_k_Tool_setContext[] = "Tool.setContext";
-static const char __pyx_k_OTools_Tool_name[] = "<OTools Tool (name={})>";
-static const char __pyx_k_Tool_MSG_VERBOSE[] = "Tool.MSG_VERBOSE";
-static const char __pyx_k_Tool_MSG_WARNING[] = "Tool.MSG_WARNING";
-static const char __pyx_k_otools_core_Tool[] = "otools.core.Tool";
-static const char __pyx_k_terminateContext[] = "terminateContext";
+static const char __pyx_k_blockReading[] = "blockReading";
+static const char __pyx_k_blockWriting[] = "blockWriting";
+static const char __pyx_k_Dataframe_get[] = "Dataframe.get";
+static const char __pyx_k_Dataframe_set[] = "Dataframe.set";
+static const char __pyx_k_Dataframe_name[] = "Dataframe.name";
+static const char __pyx_k_Dataframe___str[] = "Dataframe.__str__";
+static const char __pyx_k_Dataframe__dict[] = "_Dataframe__dict";
+static const char __pyx_k_Dataframe__name[] = "_Dataframe__name";
+static const char __pyx_k_Dataframe___init[] = "Dataframe.__init__";
+static const char __pyx_k_Dataframe___repr[] = "Dataframe.__repr__";
+static const char __pyx_k_Dataframe__rlock[] = "_Dataframe__rlock";
+static const char __pyx_k_Dataframe__wlock[] = "_Dataframe__wlock";
+static const char __pyx_k_Dataframe_execute[] = "Dataframe.execute";
+static const char __pyx_k_Dataframe_MSG_INFO[] = "Dataframe.MSG_INFO";
+static const char __pyx_k_Dataframe__context[] = "_Dataframe__context";
+static const char __pyx_k_Dataframe_finalize[] = "Dataframe.finalize";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
-static const char __pyx_k_otools_core_Tool_py[] = "otools/core/Tool.py";
+static const char __pyx_k_Dataframe_MSG_DEBUG[] = "Dataframe.MSG_DEBUG";
+static const char __pyx_k_Dataframe_MSG_ERROR[] = "Dataframe.MSG_ERROR";
+static const char __pyx_k_Dataframe_MSG_FATAL[] = "Dataframe.MSG_FATAL";
+static const char __pyx_k_Dataframe_getContext[] = "Dataframe.getContext";
+static const char __pyx_k_Dataframe_initialize[] = "Dataframe.initialize";
+static const char __pyx_k_Dataframe_setContext[] = "Dataframe.setContext";
+static const char __pyx_k_Dataframe_MSG_VERBOSE[] = "Dataframe.MSG_VERBOSE";
+static const char __pyx_k_Dataframe_MSG_WARNING[] = "Dataframe.MSG_WARNING";
+static const char __pyx_k_OTools_Dataframe_name[] = "<OTools Dataframe (name={})>";
+static const char __pyx_k_otools_core_Dataframe[] = "otools.core.Dataframe";
+static const char __pyx_k_otools_core_Dataframe_py[] = "otools/core/Dataframe.py";
 static const char __pyx_k_otools_status_StatusCode[] = "otools.status.StatusCode";
-static const char __pyx_k_A_Tool_is_a_class_that_shall_en[] = "\n  A Tool is a class that shall encapsulate your own class in order to \n  attach it into a context. It has three core methods: \"initialize\", \n  \"execute\" and \"finalize\". The \"initialize\" method will run once.\n  The \"execute\" method will run once every execution loop on the main\n  thread. The \"finalize\" method will run when the program shuts down.\n  ";
-static PyObject *__pyx_kp_s_A_Tool_is_a_class_that_shall_en;
-static PyObject *__pyx_n_s_FAILURE;
+static const char __pyx_k_Key_not_found_on_Dataframe[] = "Key {} not found on Dataframe {}.";
+static PyObject *__pyx_n_s_Dataframe;
+static PyObject *__pyx_n_s_Dataframe_MSG_DEBUG;
+static PyObject *__pyx_n_s_Dataframe_MSG_ERROR;
+static PyObject *__pyx_n_s_Dataframe_MSG_FATAL;
+static PyObject *__pyx_n_s_Dataframe_MSG_INFO;
+static PyObject *__pyx_n_s_Dataframe_MSG_VERBOSE;
+static PyObject *__pyx_n_s_Dataframe_MSG_WARNING;
+static PyObject *__pyx_n_s_Dataframe___init;
+static PyObject *__pyx_n_s_Dataframe___repr;
+static PyObject *__pyx_n_s_Dataframe___str;
+static PyObject *__pyx_n_s_Dataframe__context;
+static PyObject *__pyx_n_s_Dataframe__dict;
+static PyObject *__pyx_n_s_Dataframe__name;
+static PyObject *__pyx_n_s_Dataframe__rlock;
+static PyObject *__pyx_n_s_Dataframe__wlock;
+static PyObject *__pyx_n_s_Dataframe_execute;
+static PyObject *__pyx_n_s_Dataframe_finalize;
+static PyObject *__pyx_n_s_Dataframe_get;
+static PyObject *__pyx_n_s_Dataframe_getContext;
+static PyObject *__pyx_n_s_Dataframe_initialize;
+static PyObject *__pyx_n_s_Dataframe_name;
+static PyObject *__pyx_n_s_Dataframe_set;
+static PyObject *__pyx_n_s_Dataframe_setContext;
+static PyObject *__pyx_kp_s_Key_not_found_on_Dataframe;
+static PyObject *__pyx_n_s_Lock;
 static PyObject *__pyx_n_s_MSG_DEBUG;
 static PyObject *__pyx_n_s_MSG_ERROR;
 static PyObject *__pyx_n_s_MSG_FATAL;
 static PyObject *__pyx_n_s_MSG_INFO;
 static PyObject *__pyx_n_s_MSG_VERBOSE;
 static PyObject *__pyx_n_s_MSG_WARNING;
-static PyObject *__pyx_kp_s_OTools_Tool_name;
+static PyObject *__pyx_kp_s_OTools_Dataframe_name;
+static PyObject *__pyx_n_s_OrderedDict;
 static PyObject *__pyx_n_s_SUCCESS;
 static PyObject *__pyx_n_s_StatusCode;
-static PyObject *__pyx_n_s_Tool;
-static PyObject *__pyx_n_s_Tool_MSG_DEBUG;
-static PyObject *__pyx_n_s_Tool_MSG_ERROR;
-static PyObject *__pyx_n_s_Tool_MSG_FATAL;
-static PyObject *__pyx_n_s_Tool_MSG_INFO;
-static PyObject *__pyx_n_s_Tool_MSG_VERBOSE;
-static PyObject *__pyx_n_s_Tool_MSG_WARNING;
-static PyObject *__pyx_n_s_Tool___init;
-static PyObject *__pyx_n_s_Tool___repr;
-static PyObject *__pyx_n_s_Tool___str;
-static PyObject *__pyx_n_s_Tool__context;
-static PyObject *__pyx_n_s_Tool__name;
-static PyObject *__pyx_n_s_Tool__obj;
-static PyObject *__pyx_n_s_Tool_execute;
-static PyObject *__pyx_n_s_Tool_finalize;
-static PyObject *__pyx_n_s_Tool_getContext;
-static PyObject *__pyx_n_s_Tool_initialize;
-static PyObject *__pyx_n_s_Tool_name;
-static PyObject *__pyx_n_s_Tool_setContext;
 static PyObject *__pyx_n_s_Unknown;
-static PyObject *__pyx_n_s_active;
+static PyObject *__pyx_n_s_acquire;
 static PyObject *__pyx_n_s_all;
 static PyObject *__pyx_n_s_args;
+static PyObject *__pyx_n_s_blockReading;
+static PyObject *__pyx_n_s_blockWriting;
 static PyObject *__pyx_n_s_cline_in_traceback;
+static PyObject *__pyx_n_s_collections;
 static PyObject *__pyx_n_s_contextName;
 static PyObject *__pyx_n_s_ctx;
 static PyObject *__pyx_n_s_debug;
@@ -1339,14 +1368,13 @@ static PyObject *__pyx_n_s_execute;
 static PyObject *__pyx_n_s_fatal;
 static PyObject *__pyx_n_s_finalize;
 static PyObject *__pyx_n_s_format;
+static PyObject *__pyx_n_s_get;
 static PyObject *__pyx_n_s_getContext;
-static PyObject *__pyx_n_s_getDataframe;
-static PyObject *__pyx_n_s_getName;
-static PyObject *__pyx_n_s_getTool;
 static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_info;
 static PyObject *__pyx_n_s_init;
 static PyObject *__pyx_n_s_initialize;
+static PyObject *__pyx_n_s_key;
 static PyObject *__pyx_n_s_kws;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_message;
@@ -1355,94 +1383,108 @@ static PyObject *__pyx_n_s_module;
 static PyObject *__pyx_n_s_moduleName;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_n_s_name_2;
-static PyObject *__pyx_n_s_obj;
-static PyObject *__pyx_n_s_otools_core_Tool;
-static PyObject *__pyx_kp_s_otools_core_Tool_py;
+static PyObject *__pyx_n_s_otools_core_Dataframe;
+static PyObject *__pyx_kp_s_otools_core_Dataframe_py;
 static PyObject *__pyx_n_s_otools_status_StatusCode;
 static PyObject *__pyx_n_s_prepare;
 static PyObject *__pyx_n_s_property;
 static PyObject *__pyx_n_s_qualname;
+static PyObject *__pyx_n_s_release;
 static PyObject *__pyx_n_s_repr;
 static PyObject *__pyx_n_s_self;
+static PyObject *__pyx_n_s_set;
 static PyObject *__pyx_n_s_setContext;
 static PyObject *__pyx_n_s_str;
-static PyObject *__pyx_n_s_terminateContext;
 static PyObject *__pyx_n_s_test;
+static PyObject *__pyx_n_s_threading;
+static PyObject *__pyx_n_s_timeout;
+static PyObject *__pyx_n_s_value;
 static PyObject *__pyx_n_s_verbose;
 static PyObject *__pyx_n_s_warning;
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_obj); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_2MSG_VERBOSE(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_4MSG_DEBUG(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_6MSG_INFO(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_8MSG_WARNING(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_10MSG_ERROR(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_12MSG_FATAL(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_14__str__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_16__repr__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_18initialize(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_20execute(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_22finalize(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_24setContext(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_ctx); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_26getContext(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_28name(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_name); /* proto */
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_2MSG_VERBOSE(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws); /* proto */
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_4MSG_DEBUG(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws); /* proto */
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_6MSG_INFO(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws); /* proto */
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_8MSG_WARNING(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws); /* proto */
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_10MSG_ERROR(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws); /* proto */
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_12MSG_FATAL(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws); /* proto */
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_14__str__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_16__repr__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_18name(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_20initialize(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_22execute(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_24finalize(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_26setContext(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_ctx); /* proto */
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_28getContext(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_30get(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_key, PyObject *__pyx_v_blockReading, PyObject *__pyx_v_blockWriting, PyObject *__pyx_v_timeout); /* proto */
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_32set(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_key, PyObject *__pyx_v_value, PyObject *__pyx_v_blockReading, PyObject *__pyx_v_blockWriting, PyObject *__pyx_v_timeout); /* proto */
+static PyObject *__pyx_int_neg_1;
 static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__3;
-static PyObject *__pyx_tuple__5;
+static PyObject *__pyx_tuple__4;
 static PyObject *__pyx_tuple__6;
-static PyObject *__pyx_tuple__8;
+static PyObject *__pyx_tuple__7;
 static PyObject *__pyx_tuple__9;
-static PyObject *__pyx_tuple__11;
+static PyObject *__pyx_tuple__10;
 static PyObject *__pyx_tuple__12;
-static PyObject *__pyx_tuple__14;
+static PyObject *__pyx_tuple__13;
 static PyObject *__pyx_tuple__15;
-static PyObject *__pyx_tuple__17;
+static PyObject *__pyx_tuple__16;
 static PyObject *__pyx_tuple__18;
-static PyObject *__pyx_tuple__20;
+static PyObject *__pyx_tuple__19;
 static PyObject *__pyx_tuple__21;
-static PyObject *__pyx_tuple__23;
-static PyObject *__pyx_tuple__25;
-static PyObject *__pyx_tuple__27;
-static PyObject *__pyx_tuple__29;
-static PyObject *__pyx_tuple__31;
-static PyObject *__pyx_tuple__33;
-static PyObject *__pyx_tuple__35;
+static PyObject *__pyx_tuple__22;
+static PyObject *__pyx_tuple__24;
+static PyObject *__pyx_tuple__26;
+static PyObject *__pyx_tuple__28;
+static PyObject *__pyx_tuple__30;
+static PyObject *__pyx_tuple__32;
+static PyObject *__pyx_tuple__34;
+static PyObject *__pyx_tuple__36;
+static PyObject *__pyx_tuple__38;
+static PyObject *__pyx_tuple__40;
+static PyObject *__pyx_tuple__41;
+static PyObject *__pyx_tuple__43;
 static PyObject *__pyx_codeobj__2;
-static PyObject *__pyx_codeobj__4;
-static PyObject *__pyx_codeobj__7;
-static PyObject *__pyx_codeobj__10;
-static PyObject *__pyx_codeobj__13;
-static PyObject *__pyx_codeobj__16;
-static PyObject *__pyx_codeobj__19;
-static PyObject *__pyx_codeobj__22;
-static PyObject *__pyx_codeobj__24;
-static PyObject *__pyx_codeobj__26;
-static PyObject *__pyx_codeobj__28;
-static PyObject *__pyx_codeobj__30;
-static PyObject *__pyx_codeobj__32;
-static PyObject *__pyx_codeobj__34;
-static PyObject *__pyx_codeobj__36;
+static PyObject *__pyx_codeobj__5;
+static PyObject *__pyx_codeobj__8;
+static PyObject *__pyx_codeobj__11;
+static PyObject *__pyx_codeobj__14;
+static PyObject *__pyx_codeobj__17;
+static PyObject *__pyx_codeobj__20;
+static PyObject *__pyx_codeobj__23;
+static PyObject *__pyx_codeobj__25;
+static PyObject *__pyx_codeobj__27;
+static PyObject *__pyx_codeobj__29;
+static PyObject *__pyx_codeobj__31;
+static PyObject *__pyx_codeobj__33;
+static PyObject *__pyx_codeobj__35;
+static PyObject *__pyx_codeobj__37;
+static PyObject *__pyx_codeobj__39;
+static PyObject *__pyx_codeobj__42;
 /* Late includes */
 
-/* "otools/core/Tool.py":14
- *   """
+/* "otools/core/Dataframe.py":9
+ * class Dataframe ():
  * 
- *   def __init__ (self, obj):             # <<<<<<<<<<<<<<
- *     try:
- *       self.__name = obj.getName()
+ *   def __init__ (self, name = "Dataframe"):             # <<<<<<<<<<<<<<
+ *     self.__name = name
+ *     self.__context = None
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_1__init__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_1__init__ = {"__init__", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_4Tool_4Tool_1__init__, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_1__init__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_1__init__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_9Dataframe_9Dataframe_1__init__ = {"__init__", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_9Dataframe_9Dataframe_1__init__, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_1__init__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
-  PyObject *__pyx_v_obj = 0;
+  PyObject *__pyx_v_name = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__init__ (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_obj,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_name,0};
     PyObject* values[2] = {0,0};
+    values[1] = ((PyObject *)((PyObject*)__pyx_n_s_Dataframe));
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
@@ -1461,328 +1503,164 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_1__init__(PyObject *__pyx_se
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
-        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_obj)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, 1); __PYX_ERR(0, 14, __pyx_L3_error)
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_name);
+          if (value) { values[1] = value; kw_args--; }
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 14, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 9, __pyx_L3_error)
       }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
-      goto __pyx_L5_argtuple_error;
     } else {
-      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
     }
     __pyx_v_self = values[0];
-    __pyx_v_obj = values[1];
+    __pyx_v_name = values[1];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 14, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 9, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("otools.core.Tool.Tool.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool___init__(__pyx_self, __pyx_v_self, __pyx_v_obj);
+  __pyx_r = __pyx_pf_6otools_4core_9Dataframe_9Dataframe___init__(__pyx_self, __pyx_v_self, __pyx_v_name);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_obj) {
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_name) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  PyObject *__pyx_t_6 = NULL;
-  PyObject *__pyx_t_7 = NULL;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "otools/core/Tool.py":15
+  /* "otools/core/Dataframe.py":10
  * 
- *   def __init__ (self, obj):
- *     try:             # <<<<<<<<<<<<<<
- *       self.__name = obj.getName()
- *     except:
- */
-  {
-    __Pyx_PyThreadState_declare
-    __Pyx_PyThreadState_assign
-    __Pyx_ExceptionSave(&__pyx_t_1, &__pyx_t_2, &__pyx_t_3);
-    __Pyx_XGOTREF(__pyx_t_1);
-    __Pyx_XGOTREF(__pyx_t_2);
-    __Pyx_XGOTREF(__pyx_t_3);
-    /*try:*/ {
-
-      /* "otools/core/Tool.py":16
- *   def __init__ (self, obj):
- *     try:
- *       self.__name = obj.getName()             # <<<<<<<<<<<<<<
- *     except:
- *       self.__name = obj.__name__
- */
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_obj, __pyx_n_s_getName); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 16, __pyx_L3_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = NULL;
-      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
-        __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_5);
-        if (likely(__pyx_t_6)) {
-          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
-          __Pyx_INCREF(__pyx_t_6);
-          __Pyx_INCREF(function);
-          __Pyx_DECREF_SET(__pyx_t_5, function);
-        }
-      }
-      __pyx_t_4 = (__pyx_t_6) ? __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6) : __Pyx_PyObject_CallNoArg(__pyx_t_5);
-      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 16, __pyx_L3_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Tool__name, __pyx_t_4) < 0) __PYX_ERR(0, 16, __pyx_L3_error)
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-      /* "otools/core/Tool.py":15
- * 
- *   def __init__ (self, obj):
- *     try:             # <<<<<<<<<<<<<<
- *       self.__name = obj.getName()
- *     except:
- */
-    }
-    __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    goto __pyx_L8_try_end;
-    __pyx_L3_error:;
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-
-    /* "otools/core/Tool.py":17
- *     try:
- *       self.__name = obj.getName()
- *     except:             # <<<<<<<<<<<<<<
- *       self.__name = obj.__name__
+ *   def __init__ (self, name = "Dataframe"):
+ *     self.__name = name             # <<<<<<<<<<<<<<
  *     self.__context = None
+ *     self.__dict = OrderedDict()
  */
-    /*except:*/ {
-      __Pyx_AddTraceback("otools.core.Tool.Tool.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_5, &__pyx_t_6) < 0) __PYX_ERR(0, 17, __pyx_L5_except_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __Pyx_GOTREF(__pyx_t_5);
-      __Pyx_GOTREF(__pyx_t_6);
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__name, __pyx_v_name) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
 
-      /* "otools/core/Tool.py":18
- *       self.__name = obj.getName()
- *     except:
- *       self.__name = obj.__name__             # <<<<<<<<<<<<<<
- *     self.__context = None
- *     self.__obj = obj
- */
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_obj, __pyx_n_s_name); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 18, __pyx_L5_except_error)
-      __Pyx_GOTREF(__pyx_t_7);
-      if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Tool__name, __pyx_t_7) < 0) __PYX_ERR(0, 18, __pyx_L5_except_error)
-      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      goto __pyx_L4_exception_handled;
-    }
-    __pyx_L5_except_error:;
-
-    /* "otools/core/Tool.py":15
- * 
- *   def __init__ (self, obj):
- *     try:             # <<<<<<<<<<<<<<
- *       self.__name = obj.getName()
- *     except:
- */
-    __Pyx_XGIVEREF(__pyx_t_1);
-    __Pyx_XGIVEREF(__pyx_t_2);
-    __Pyx_XGIVEREF(__pyx_t_3);
-    __Pyx_ExceptionReset(__pyx_t_1, __pyx_t_2, __pyx_t_3);
-    goto __pyx_L1_error;
-    __pyx_L4_exception_handled:;
-    __Pyx_XGIVEREF(__pyx_t_1);
-    __Pyx_XGIVEREF(__pyx_t_2);
-    __Pyx_XGIVEREF(__pyx_t_3);
-    __Pyx_ExceptionReset(__pyx_t_1, __pyx_t_2, __pyx_t_3);
-    __pyx_L8_try_end:;
-  }
-
-  /* "otools/core/Tool.py":19
- *     except:
- *       self.__name = obj.__name__
+  /* "otools/core/Dataframe.py":11
+ *   def __init__ (self, name = "Dataframe"):
+ *     self.__name = name
  *     self.__context = None             # <<<<<<<<<<<<<<
- *     self.__obj = obj
- *     self.__obj.__init__(self.__obj)
+ *     self.__dict = OrderedDict()
+ *     self.__rlock = Lock()
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Tool__context, Py_None) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__context, Py_None) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
 
-  /* "otools/core/Tool.py":20
- *       self.__name = obj.__name__
+  /* "otools/core/Dataframe.py":12
+ *     self.__name = name
  *     self.__context = None
- *     self.__obj = obj             # <<<<<<<<<<<<<<
- *     self.__obj.__init__(self.__obj)
- *     self.__obj.MSG_VERBOSE  = self.MSG_VERBOSE
+ *     self.__dict = OrderedDict()             # <<<<<<<<<<<<<<
+ *     self.__rlock = Lock()
+ *     self.__wlock = Lock()
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj, __pyx_v_obj) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
-
-  /* "otools/core/Tool.py":21
- *     self.__context = None
- *     self.__obj = obj
- *     self.__obj.__init__(self.__obj)             # <<<<<<<<<<<<<<
- *     self.__obj.MSG_VERBOSE  = self.MSG_VERBOSE
- *     self.__obj.MSG_DEBUG    = self.MSG_DEBUG
- */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 21, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_init); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 21, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 21, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_7 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
-    __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_4);
-    if (likely(__pyx_t_7)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-      __Pyx_INCREF(__pyx_t_7);
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_OrderedDict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_4, function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
     }
   }
-  __pyx_t_6 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_7, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 21, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__dict, __pyx_t_1) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":22
- *     self.__obj = obj
- *     self.__obj.__init__(self.__obj)
- *     self.__obj.MSG_VERBOSE  = self.MSG_VERBOSE             # <<<<<<<<<<<<<<
- *     self.__obj.MSG_DEBUG    = self.MSG_DEBUG
- *     self.__obj.MSG_INFO     = self.MSG_INFO
- */
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_MSG_VERBOSE); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 22, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 22, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_t_4, __pyx_n_s_MSG_VERBOSE, __pyx_t_6) < 0) __PYX_ERR(0, 22, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-  /* "otools/core/Tool.py":23
- *     self.__obj.__init__(self.__obj)
- *     self.__obj.MSG_VERBOSE  = self.MSG_VERBOSE
- *     self.__obj.MSG_DEBUG    = self.MSG_DEBUG             # <<<<<<<<<<<<<<
- *     self.__obj.MSG_INFO     = self.MSG_INFO
- *     self.__obj.MSG_WARNING  = self.MSG_WARNING
- */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_MSG_DEBUG); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 23, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 23, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_t_6, __pyx_n_s_MSG_DEBUG, __pyx_t_4) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-
-  /* "otools/core/Tool.py":24
- *     self.__obj.MSG_VERBOSE  = self.MSG_VERBOSE
- *     self.__obj.MSG_DEBUG    = self.MSG_DEBUG
- *     self.__obj.MSG_INFO     = self.MSG_INFO             # <<<<<<<<<<<<<<
- *     self.__obj.MSG_WARNING  = self.MSG_WARNING
- *     self.__obj.MSG_ERROR    = self.MSG_ERROR
- */
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_MSG_INFO); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 24, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 24, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_t_4, __pyx_n_s_MSG_INFO, __pyx_t_6) < 0) __PYX_ERR(0, 24, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-  /* "otools/core/Tool.py":25
- *     self.__obj.MSG_DEBUG    = self.MSG_DEBUG
- *     self.__obj.MSG_INFO     = self.MSG_INFO
- *     self.__obj.MSG_WARNING  = self.MSG_WARNING             # <<<<<<<<<<<<<<
- *     self.__obj.MSG_ERROR    = self.MSG_ERROR
- *     self.__obj.MSG_FATAL    = self.MSG_FATAL
- */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_MSG_WARNING); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 25, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 25, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_t_6, __pyx_n_s_MSG_WARNING, __pyx_t_4) < 0) __PYX_ERR(0, 25, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-
-  /* "otools/core/Tool.py":26
- *     self.__obj.MSG_INFO     = self.MSG_INFO
- *     self.__obj.MSG_WARNING  = self.MSG_WARNING
- *     self.__obj.MSG_ERROR    = self.MSG_ERROR             # <<<<<<<<<<<<<<
- *     self.__obj.MSG_FATAL    = self.MSG_FATAL
- *     self._active = True
- */
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_MSG_ERROR); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 26, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 26, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_t_4, __pyx_n_s_MSG_ERROR, __pyx_t_6) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-  /* "otools/core/Tool.py":27
- *     self.__obj.MSG_WARNING  = self.MSG_WARNING
- *     self.__obj.MSG_ERROR    = self.MSG_ERROR
- *     self.__obj.MSG_FATAL    = self.MSG_FATAL             # <<<<<<<<<<<<<<
- *     self._active = True
+  /* "otools/core/Dataframe.py":13
+ *     self.__context = None
+ *     self.__dict = OrderedDict()
+ *     self.__rlock = Lock()             # <<<<<<<<<<<<<<
+ *     self.__wlock = Lock()
  * 
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_MSG_FATAL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 27, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 27, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_t_6, __pyx_n_s_MSG_FATAL, __pyx_t_4) < 0) __PYX_ERR(0, 27, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Lock); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__rlock, __pyx_t_1) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":28
- *     self.__obj.MSG_ERROR    = self.MSG_ERROR
- *     self.__obj.MSG_FATAL    = self.MSG_FATAL
- *     self._active = True             # <<<<<<<<<<<<<<
+  /* "otools/core/Dataframe.py":14
+ *     self.__dict = OrderedDict()
+ *     self.__rlock = Lock()
+ *     self.__wlock = Lock()             # <<<<<<<<<<<<<<
  * 
  *   def MSG_VERBOSE (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_active, Py_True) < 0) __PYX_ERR(0, 28, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Lock); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__wlock, __pyx_t_1) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":14
- *   """
+  /* "otools/core/Dataframe.py":9
+ * class Dataframe ():
  * 
- *   def __init__ (self, obj):             # <<<<<<<<<<<<<<
- *     try:
- *       self.__name = obj.getName()
+ *   def __init__ (self, name = "Dataframe"):             # <<<<<<<<<<<<<<
+ *     self.__name = name
+ *     self.__context = None
  */
 
   /* function exit code */
   __pyx_r = Py_None; __Pyx_INCREF(Py_None);
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -1790,8 +1668,8 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool___init__(CYTHON_UNUSED PyObj
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":30
- *     self._active = True
+/* "otools/core/Dataframe.py":16
+ *     self.__wlock = Lock()
  * 
  *   def MSG_VERBOSE (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
  *     self.__context.verbose(message, self.__name, contextName, *args, **kws)
@@ -1799,9 +1677,9 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool___init__(CYTHON_UNUSED PyObj
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_3MSG_VERBOSE(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_3MSG_VERBOSE = {"MSG_VERBOSE", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_4Tool_4Tool_3MSG_VERBOSE, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_3MSG_VERBOSE(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_3MSG_VERBOSE(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_9Dataframe_9Dataframe_3MSG_VERBOSE = {"MSG_VERBOSE", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_9Dataframe_9Dataframe_3MSG_VERBOSE, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_3MSG_VERBOSE(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_message = 0;
   CYTHON_UNUSED PyObject *__pyx_v_moduleName = 0;
@@ -1853,7 +1731,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_3MSG_VERBOSE(PyObject *__pyx
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_message)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("MSG_VERBOSE", 0, 2, 4, 1); __PYX_ERR(0, 30, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("MSG_VERBOSE", 0, 2, 4, 1); __PYX_ERR(0, 16, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -1870,7 +1748,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_3MSG_VERBOSE(PyObject *__pyx
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t used_pos_args = (pos_args < 4) ? pos_args : 4;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kws, values, used_pos_args, "MSG_VERBOSE") < 0)) __PYX_ERR(0, 30, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kws, values, used_pos_args, "MSG_VERBOSE") < 0)) __PYX_ERR(0, 16, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -1894,15 +1772,15 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_3MSG_VERBOSE(PyObject *__pyx
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("MSG_VERBOSE", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 30, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("MSG_VERBOSE", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 16, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_DECREF(__pyx_v_args); __pyx_v_args = 0;
   __Pyx_DECREF(__pyx_v_kws); __pyx_v_kws = 0;
-  __Pyx_AddTraceback("otools.core.Tool.Tool.MSG_VERBOSE", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.MSG_VERBOSE", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_2MSG_VERBOSE(__pyx_self, __pyx_v_self, __pyx_v_message, __pyx_v_moduleName, __pyx_v_contextName, __pyx_v_args, __pyx_v_kws);
+  __pyx_r = __pyx_pf_6otools_4core_9Dataframe_9Dataframe_2MSG_VERBOSE(__pyx_self, __pyx_v_self, __pyx_v_message, __pyx_v_moduleName, __pyx_v_contextName, __pyx_v_args, __pyx_v_kws);
 
   /* function exit code */
   __Pyx_XDECREF(__pyx_v_args);
@@ -1911,7 +1789,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_3MSG_VERBOSE(PyObject *__pyx
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_2MSG_VERBOSE(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws) {
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_2MSG_VERBOSE(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1919,21 +1797,21 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_2MSG_VERBOSE(CYTHON_UNUSED P
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("MSG_VERBOSE", 0);
 
-  /* "otools/core/Tool.py":31
+  /* "otools/core/Dataframe.py":17
  * 
  *   def MSG_VERBOSE (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):
  *     self.__context.verbose(message, self.__name, contextName, *args, **kws)             # <<<<<<<<<<<<<<
  * 
  *   def MSG_DEBUG (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_verbose); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_verbose); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_message);
   __Pyx_GIVEREF(__pyx_v_message);
@@ -1944,17 +1822,17 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_2MSG_VERBOSE(CYTHON_UNUSED P
   __Pyx_GIVEREF(__pyx_v_contextName);
   PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_contextName);
   __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_v_kws); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_v_kws); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "otools/core/Tool.py":30
- *     self._active = True
+  /* "otools/core/Dataframe.py":16
+ *     self.__wlock = Lock()
  * 
  *   def MSG_VERBOSE (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
  *     self.__context.verbose(message, self.__name, contextName, *args, **kws)
@@ -1968,7 +1846,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_2MSG_VERBOSE(CYTHON_UNUSED P
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.MSG_VERBOSE", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.MSG_VERBOSE", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -1976,7 +1854,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_2MSG_VERBOSE(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":33
+/* "otools/core/Dataframe.py":19
  *     self.__context.verbose(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_DEBUG (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
@@ -1985,9 +1863,9 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_2MSG_VERBOSE(CYTHON_UNUSED P
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_5MSG_DEBUG(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_5MSG_DEBUG = {"MSG_DEBUG", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_4Tool_4Tool_5MSG_DEBUG, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_5MSG_DEBUG(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_5MSG_DEBUG(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_9Dataframe_9Dataframe_5MSG_DEBUG = {"MSG_DEBUG", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_9Dataframe_9Dataframe_5MSG_DEBUG, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_5MSG_DEBUG(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_message = 0;
   CYTHON_UNUSED PyObject *__pyx_v_moduleName = 0;
@@ -2039,7 +1917,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_5MSG_DEBUG(PyObject *__pyx_s
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_message)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("MSG_DEBUG", 0, 2, 4, 1); __PYX_ERR(0, 33, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("MSG_DEBUG", 0, 2, 4, 1); __PYX_ERR(0, 19, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -2056,7 +1934,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_5MSG_DEBUG(PyObject *__pyx_s
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t used_pos_args = (pos_args < 4) ? pos_args : 4;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kws, values, used_pos_args, "MSG_DEBUG") < 0)) __PYX_ERR(0, 33, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kws, values, used_pos_args, "MSG_DEBUG") < 0)) __PYX_ERR(0, 19, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2080,15 +1958,15 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_5MSG_DEBUG(PyObject *__pyx_s
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("MSG_DEBUG", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 33, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("MSG_DEBUG", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 19, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_DECREF(__pyx_v_args); __pyx_v_args = 0;
   __Pyx_DECREF(__pyx_v_kws); __pyx_v_kws = 0;
-  __Pyx_AddTraceback("otools.core.Tool.Tool.MSG_DEBUG", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.MSG_DEBUG", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_4MSG_DEBUG(__pyx_self, __pyx_v_self, __pyx_v_message, __pyx_v_moduleName, __pyx_v_contextName, __pyx_v_args, __pyx_v_kws);
+  __pyx_r = __pyx_pf_6otools_4core_9Dataframe_9Dataframe_4MSG_DEBUG(__pyx_self, __pyx_v_self, __pyx_v_message, __pyx_v_moduleName, __pyx_v_contextName, __pyx_v_args, __pyx_v_kws);
 
   /* function exit code */
   __Pyx_XDECREF(__pyx_v_args);
@@ -2097,7 +1975,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_5MSG_DEBUG(PyObject *__pyx_s
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_4MSG_DEBUG(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws) {
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_4MSG_DEBUG(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2105,21 +1983,21 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_4MSG_DEBUG(CYTHON_UNUSED PyO
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("MSG_DEBUG", 0);
 
-  /* "otools/core/Tool.py":34
+  /* "otools/core/Dataframe.py":20
  * 
  *   def MSG_DEBUG (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):
  *     self.__context.debug(message, self.__name, contextName, *args, **kws)             # <<<<<<<<<<<<<<
  * 
  *   def MSG_INFO (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_debug); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_debug); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_message);
   __Pyx_GIVEREF(__pyx_v_message);
@@ -2130,16 +2008,16 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_4MSG_DEBUG(CYTHON_UNUSED PyO
   __Pyx_GIVEREF(__pyx_v_contextName);
   PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_contextName);
   __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_v_kws); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_v_kws); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "otools/core/Tool.py":33
+  /* "otools/core/Dataframe.py":19
  *     self.__context.verbose(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_DEBUG (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
@@ -2154,7 +2032,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_4MSG_DEBUG(CYTHON_UNUSED PyO
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.MSG_DEBUG", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.MSG_DEBUG", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2162,7 +2040,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_4MSG_DEBUG(CYTHON_UNUSED PyO
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":36
+/* "otools/core/Dataframe.py":22
  *     self.__context.debug(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_INFO (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
@@ -2171,9 +2049,9 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_4MSG_DEBUG(CYTHON_UNUSED PyO
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_7MSG_INFO(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_7MSG_INFO = {"MSG_INFO", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_4Tool_4Tool_7MSG_INFO, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_7MSG_INFO(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_7MSG_INFO(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_9Dataframe_9Dataframe_7MSG_INFO = {"MSG_INFO", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_9Dataframe_9Dataframe_7MSG_INFO, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_7MSG_INFO(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_message = 0;
   CYTHON_UNUSED PyObject *__pyx_v_moduleName = 0;
@@ -2225,7 +2103,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_7MSG_INFO(PyObject *__pyx_se
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_message)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("MSG_INFO", 0, 2, 4, 1); __PYX_ERR(0, 36, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("MSG_INFO", 0, 2, 4, 1); __PYX_ERR(0, 22, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -2242,7 +2120,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_7MSG_INFO(PyObject *__pyx_se
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t used_pos_args = (pos_args < 4) ? pos_args : 4;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kws, values, used_pos_args, "MSG_INFO") < 0)) __PYX_ERR(0, 36, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kws, values, used_pos_args, "MSG_INFO") < 0)) __PYX_ERR(0, 22, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2266,15 +2144,15 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_7MSG_INFO(PyObject *__pyx_se
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("MSG_INFO", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 36, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("MSG_INFO", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 22, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_DECREF(__pyx_v_args); __pyx_v_args = 0;
   __Pyx_DECREF(__pyx_v_kws); __pyx_v_kws = 0;
-  __Pyx_AddTraceback("otools.core.Tool.Tool.MSG_INFO", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.MSG_INFO", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_6MSG_INFO(__pyx_self, __pyx_v_self, __pyx_v_message, __pyx_v_moduleName, __pyx_v_contextName, __pyx_v_args, __pyx_v_kws);
+  __pyx_r = __pyx_pf_6otools_4core_9Dataframe_9Dataframe_6MSG_INFO(__pyx_self, __pyx_v_self, __pyx_v_message, __pyx_v_moduleName, __pyx_v_contextName, __pyx_v_args, __pyx_v_kws);
 
   /* function exit code */
   __Pyx_XDECREF(__pyx_v_args);
@@ -2283,7 +2161,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_7MSG_INFO(PyObject *__pyx_se
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_6MSG_INFO(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws) {
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_6MSG_INFO(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2291,21 +2169,21 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_6MSG_INFO(CYTHON_UNUSED PyOb
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("MSG_INFO", 0);
 
-  /* "otools/core/Tool.py":37
+  /* "otools/core/Dataframe.py":23
  * 
  *   def MSG_INFO (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):
  *     self.__context.info(message, self.__name, contextName, *args, **kws)             # <<<<<<<<<<<<<<
  * 
  *   def MSG_WARNING (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_info); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_info); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_message);
   __Pyx_GIVEREF(__pyx_v_message);
@@ -2316,16 +2194,16 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_6MSG_INFO(CYTHON_UNUSED PyOb
   __Pyx_GIVEREF(__pyx_v_contextName);
   PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_contextName);
   __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_v_kws); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_v_kws); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "otools/core/Tool.py":36
+  /* "otools/core/Dataframe.py":22
  *     self.__context.debug(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_INFO (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
@@ -2340,7 +2218,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_6MSG_INFO(CYTHON_UNUSED PyOb
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.MSG_INFO", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.MSG_INFO", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2348,7 +2226,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_6MSG_INFO(CYTHON_UNUSED PyOb
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":39
+/* "otools/core/Dataframe.py":25
  *     self.__context.info(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_WARNING (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
@@ -2357,9 +2235,9 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_6MSG_INFO(CYTHON_UNUSED PyOb
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_9MSG_WARNING(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_9MSG_WARNING = {"MSG_WARNING", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_4Tool_4Tool_9MSG_WARNING, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_9MSG_WARNING(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_9MSG_WARNING(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_9Dataframe_9Dataframe_9MSG_WARNING = {"MSG_WARNING", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_9Dataframe_9Dataframe_9MSG_WARNING, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_9MSG_WARNING(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_message = 0;
   CYTHON_UNUSED PyObject *__pyx_v_moduleName = 0;
@@ -2411,7 +2289,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_9MSG_WARNING(PyObject *__pyx
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_message)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("MSG_WARNING", 0, 2, 4, 1); __PYX_ERR(0, 39, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("MSG_WARNING", 0, 2, 4, 1); __PYX_ERR(0, 25, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -2428,7 +2306,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_9MSG_WARNING(PyObject *__pyx
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t used_pos_args = (pos_args < 4) ? pos_args : 4;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kws, values, used_pos_args, "MSG_WARNING") < 0)) __PYX_ERR(0, 39, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kws, values, used_pos_args, "MSG_WARNING") < 0)) __PYX_ERR(0, 25, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2452,15 +2330,15 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_9MSG_WARNING(PyObject *__pyx
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("MSG_WARNING", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 39, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("MSG_WARNING", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 25, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_DECREF(__pyx_v_args); __pyx_v_args = 0;
   __Pyx_DECREF(__pyx_v_kws); __pyx_v_kws = 0;
-  __Pyx_AddTraceback("otools.core.Tool.Tool.MSG_WARNING", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.MSG_WARNING", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_8MSG_WARNING(__pyx_self, __pyx_v_self, __pyx_v_message, __pyx_v_moduleName, __pyx_v_contextName, __pyx_v_args, __pyx_v_kws);
+  __pyx_r = __pyx_pf_6otools_4core_9Dataframe_9Dataframe_8MSG_WARNING(__pyx_self, __pyx_v_self, __pyx_v_message, __pyx_v_moduleName, __pyx_v_contextName, __pyx_v_args, __pyx_v_kws);
 
   /* function exit code */
   __Pyx_XDECREF(__pyx_v_args);
@@ -2469,7 +2347,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_9MSG_WARNING(PyObject *__pyx
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_8MSG_WARNING(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws) {
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_8MSG_WARNING(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2477,21 +2355,21 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_8MSG_WARNING(CYTHON_UNUSED P
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("MSG_WARNING", 0);
 
-  /* "otools/core/Tool.py":40
+  /* "otools/core/Dataframe.py":26
  * 
  *   def MSG_WARNING (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):
  *     self.__context.warning(message, self.__name, contextName, *args, **kws)             # <<<<<<<<<<<<<<
  * 
  *   def MSG_ERROR (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_warning); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_warning); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_message);
   __Pyx_GIVEREF(__pyx_v_message);
@@ -2502,16 +2380,16 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_8MSG_WARNING(CYTHON_UNUSED P
   __Pyx_GIVEREF(__pyx_v_contextName);
   PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_contextName);
   __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_v_kws); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_v_kws); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "otools/core/Tool.py":39
+  /* "otools/core/Dataframe.py":25
  *     self.__context.info(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_WARNING (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
@@ -2526,7 +2404,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_8MSG_WARNING(CYTHON_UNUSED P
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.MSG_WARNING", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.MSG_WARNING", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2534,7 +2412,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_8MSG_WARNING(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":42
+/* "otools/core/Dataframe.py":28
  *     self.__context.warning(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_ERROR (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
@@ -2543,9 +2421,9 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_8MSG_WARNING(CYTHON_UNUSED P
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_11MSG_ERROR(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_11MSG_ERROR = {"MSG_ERROR", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_4Tool_4Tool_11MSG_ERROR, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_11MSG_ERROR(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_11MSG_ERROR(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_9Dataframe_9Dataframe_11MSG_ERROR = {"MSG_ERROR", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_9Dataframe_9Dataframe_11MSG_ERROR, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_11MSG_ERROR(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_message = 0;
   CYTHON_UNUSED PyObject *__pyx_v_moduleName = 0;
@@ -2597,7 +2475,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_11MSG_ERROR(PyObject *__pyx_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_message)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("MSG_ERROR", 0, 2, 4, 1); __PYX_ERR(0, 42, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("MSG_ERROR", 0, 2, 4, 1); __PYX_ERR(0, 28, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -2614,7 +2492,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_11MSG_ERROR(PyObject *__pyx_
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t used_pos_args = (pos_args < 4) ? pos_args : 4;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kws, values, used_pos_args, "MSG_ERROR") < 0)) __PYX_ERR(0, 42, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kws, values, used_pos_args, "MSG_ERROR") < 0)) __PYX_ERR(0, 28, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2638,15 +2516,15 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_11MSG_ERROR(PyObject *__pyx_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("MSG_ERROR", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 42, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("MSG_ERROR", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 28, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_DECREF(__pyx_v_args); __pyx_v_args = 0;
   __Pyx_DECREF(__pyx_v_kws); __pyx_v_kws = 0;
-  __Pyx_AddTraceback("otools.core.Tool.Tool.MSG_ERROR", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.MSG_ERROR", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_10MSG_ERROR(__pyx_self, __pyx_v_self, __pyx_v_message, __pyx_v_moduleName, __pyx_v_contextName, __pyx_v_args, __pyx_v_kws);
+  __pyx_r = __pyx_pf_6otools_4core_9Dataframe_9Dataframe_10MSG_ERROR(__pyx_self, __pyx_v_self, __pyx_v_message, __pyx_v_moduleName, __pyx_v_contextName, __pyx_v_args, __pyx_v_kws);
 
   /* function exit code */
   __Pyx_XDECREF(__pyx_v_args);
@@ -2655,7 +2533,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_11MSG_ERROR(PyObject *__pyx_
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_10MSG_ERROR(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws) {
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_10MSG_ERROR(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2663,21 +2541,21 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_10MSG_ERROR(CYTHON_UNUSED Py
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("MSG_ERROR", 0);
 
-  /* "otools/core/Tool.py":43
+  /* "otools/core/Dataframe.py":29
  * 
  *   def MSG_ERROR (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):
  *     self.__context.error(message, self.__name, contextName, *args, **kws)             # <<<<<<<<<<<<<<
  * 
  *   def MSG_FATAL (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_error); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_error); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_message);
   __Pyx_GIVEREF(__pyx_v_message);
@@ -2688,16 +2566,16 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_10MSG_ERROR(CYTHON_UNUSED Py
   __Pyx_GIVEREF(__pyx_v_contextName);
   PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_contextName);
   __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_v_kws); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_v_kws); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "otools/core/Tool.py":42
+  /* "otools/core/Dataframe.py":28
  *     self.__context.warning(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_ERROR (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
@@ -2712,7 +2590,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_10MSG_ERROR(CYTHON_UNUSED Py
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.MSG_ERROR", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.MSG_ERROR", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2720,7 +2598,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_10MSG_ERROR(CYTHON_UNUSED Py
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":45
+/* "otools/core/Dataframe.py":31
  *     self.__context.error(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_FATAL (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
@@ -2729,9 +2607,9 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_10MSG_ERROR(CYTHON_UNUSED Py
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_13MSG_FATAL(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_13MSG_FATAL = {"MSG_FATAL", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_4Tool_4Tool_13MSG_FATAL, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_13MSG_FATAL(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_13MSG_FATAL(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_9Dataframe_9Dataframe_13MSG_FATAL = {"MSG_FATAL", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_9Dataframe_9Dataframe_13MSG_FATAL, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_13MSG_FATAL(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_message = 0;
   CYTHON_UNUSED PyObject *__pyx_v_moduleName = 0;
@@ -2783,7 +2661,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_13MSG_FATAL(PyObject *__pyx_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_message)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("MSG_FATAL", 0, 2, 4, 1); __PYX_ERR(0, 45, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("MSG_FATAL", 0, 2, 4, 1); __PYX_ERR(0, 31, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -2800,7 +2678,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_13MSG_FATAL(PyObject *__pyx_
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t used_pos_args = (pos_args < 4) ? pos_args : 4;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kws, values, used_pos_args, "MSG_FATAL") < 0)) __PYX_ERR(0, 45, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kws, values, used_pos_args, "MSG_FATAL") < 0)) __PYX_ERR(0, 31, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2824,15 +2702,15 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_13MSG_FATAL(PyObject *__pyx_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("MSG_FATAL", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 45, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("MSG_FATAL", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 31, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_DECREF(__pyx_v_args); __pyx_v_args = 0;
   __Pyx_DECREF(__pyx_v_kws); __pyx_v_kws = 0;
-  __Pyx_AddTraceback("otools.core.Tool.Tool.MSG_FATAL", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.MSG_FATAL", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_12MSG_FATAL(__pyx_self, __pyx_v_self, __pyx_v_message, __pyx_v_moduleName, __pyx_v_contextName, __pyx_v_args, __pyx_v_kws);
+  __pyx_r = __pyx_pf_6otools_4core_9Dataframe_9Dataframe_12MSG_FATAL(__pyx_self, __pyx_v_self, __pyx_v_message, __pyx_v_moduleName, __pyx_v_contextName, __pyx_v_args, __pyx_v_kws);
 
   /* function exit code */
   __Pyx_XDECREF(__pyx_v_args);
@@ -2841,7 +2719,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_13MSG_FATAL(PyObject *__pyx_
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_12MSG_FATAL(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws) {
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_12MSG_FATAL(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2849,21 +2727,21 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_12MSG_FATAL(CYTHON_UNUSED Py
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("MSG_FATAL", 0);
 
-  /* "otools/core/Tool.py":46
+  /* "otools/core/Dataframe.py":32
  * 
  *   def MSG_FATAL (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):
  *     self.__context.fatal(message, self.__name, contextName, *args, **kws)             # <<<<<<<<<<<<<<
  * 
  *   def __str__ (self):
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fatal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fatal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_message);
   __Pyx_GIVEREF(__pyx_v_message);
@@ -2874,16 +2752,16 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_12MSG_FATAL(CYTHON_UNUSED Py
   __Pyx_GIVEREF(__pyx_v_contextName);
   PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_contextName);
   __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_v_kws); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_v_kws); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "otools/core/Tool.py":45
+  /* "otools/core/Dataframe.py":31
  *     self.__context.error(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_FATAL (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
@@ -2898,7 +2776,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_12MSG_FATAL(CYTHON_UNUSED Py
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.MSG_FATAL", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.MSG_FATAL", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2906,29 +2784,29 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_12MSG_FATAL(CYTHON_UNUSED Py
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":48
+/* "otools/core/Dataframe.py":34
  *     self.__context.fatal(message, self.__name, contextName, *args, **kws)
  * 
  *   def __str__ (self):             # <<<<<<<<<<<<<<
- *     return "<OTools Tool (name={})>".format(self.name)
+ *     return "<OTools Dataframe (name={})>".format(self.name)
  * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_15__str__(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_15__str__ = {"__str__", (PyCFunction)__pyx_pw_6otools_4core_4Tool_4Tool_15__str__, METH_O, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_15__str__(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_15__str__(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_9Dataframe_9Dataframe_15__str__ = {"__str__", (PyCFunction)__pyx_pw_6otools_4core_9Dataframe_9Dataframe_15__str__, METH_O, 0};
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_15__str__(PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__str__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_14__str__(__pyx_self, ((PyObject *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6otools_4core_9Dataframe_9Dataframe_14__str__(__pyx_self, ((PyObject *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_14__str__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_14__str__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2937,17 +2815,17 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_14__str__(CYTHON_UNUSED PyOb
   PyObject *__pyx_t_4 = NULL;
   __Pyx_RefNannySetupContext("__str__", 0);
 
-  /* "otools/core/Tool.py":49
+  /* "otools/core/Dataframe.py":35
  * 
  *   def __str__ (self):
- *     return "<OTools Tool (name={})>".format(self.name)             # <<<<<<<<<<<<<<
+ *     return "<OTools Dataframe (name={})>".format(self.name)             # <<<<<<<<<<<<<<
  * 
  *   def __repr__ (self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_OTools_Tool_name, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_OTools_Dataframe_name, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_name_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_name); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -2962,18 +2840,18 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_14__str__(CYTHON_UNUSED PyOb
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_4, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "otools/core/Tool.py":48
+  /* "otools/core/Dataframe.py":34
  *     self.__context.fatal(message, self.__name, contextName, *args, **kws)
  * 
  *   def __str__ (self):             # <<<<<<<<<<<<<<
- *     return "<OTools Tool (name={})>".format(self.name)
+ *     return "<OTools Dataframe (name={})>".format(self.name)
  * 
  */
 
@@ -2983,7 +2861,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_14__str__(CYTHON_UNUSED PyOb
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.__str__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.__str__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2991,8 +2869,8 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_14__str__(CYTHON_UNUSED PyOb
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":51
- *     return "<OTools Tool (name={})>".format(self.name)
+/* "otools/core/Dataframe.py":37
+ *     return "<OTools Dataframe (name={})>".format(self.name)
  * 
  *   def __repr__ (self):             # <<<<<<<<<<<<<<
  *     return self.__str__()
@@ -3000,20 +2878,20 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_14__str__(CYTHON_UNUSED PyOb
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_17__repr__(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_17__repr__ = {"__repr__", (PyCFunction)__pyx_pw_6otools_4core_4Tool_4Tool_17__repr__, METH_O, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_17__repr__(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_17__repr__(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_9Dataframe_9Dataframe_17__repr__ = {"__repr__", (PyCFunction)__pyx_pw_6otools_4core_9Dataframe_9Dataframe_17__repr__, METH_O, 0};
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_17__repr__(PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__repr__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_16__repr__(__pyx_self, ((PyObject *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6otools_4core_9Dataframe_9Dataframe_16__repr__(__pyx_self, ((PyObject *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_16__repr__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_16__repr__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3021,15 +2899,15 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_16__repr__(CYTHON_UNUSED PyO
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("__repr__", 0);
 
-  /* "otools/core/Tool.py":52
+  /* "otools/core/Dataframe.py":38
  * 
  *   def __repr__ (self):
  *     return self.__str__()             # <<<<<<<<<<<<<<
  * 
- *   def initialize (self):
+ *   @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_str); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_str); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -3043,15 +2921,15 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_16__repr__(CYTHON_UNUSED PyO
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "otools/core/Tool.py":51
- *     return "<OTools Tool (name={})>".format(self.name)
+  /* "otools/core/Dataframe.py":37
+ *     return "<OTools Dataframe (name={})>".format(self.name)
  * 
  *   def __repr__ (self):             # <<<<<<<<<<<<<<
  *     return self.__str__()
@@ -3063,7 +2941,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_16__repr__(CYTHON_UNUSED PyO
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.__repr__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.__repr__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3071,198 +2949,126 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_16__repr__(CYTHON_UNUSED PyO
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":54
- *     return self.__str__()
+/* "otools/core/Dataframe.py":41
  * 
- *   def initialize (self):             # <<<<<<<<<<<<<<
- *     try:
- *       self.__obj.initialize(self.__obj)
+ *   @property
+ *   def name (self):             # <<<<<<<<<<<<<<
+ *     return self.__name
+ * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_19initialize(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_19initialize = {"initialize", (PyCFunction)__pyx_pw_6otools_4core_4Tool_4Tool_19initialize, METH_O, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_19initialize(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_19name(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_9Dataframe_9Dataframe_19name = {"name", (PyCFunction)__pyx_pw_6otools_4core_9Dataframe_9Dataframe_19name, METH_O, 0};
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_19name(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("name (wrapper)", 0);
+  __pyx_r = __pyx_pf_6otools_4core_9Dataframe_9Dataframe_18name(__pyx_self, ((PyObject *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_18name(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  __Pyx_RefNannySetupContext("name", 0);
+
+  /* "otools/core/Dataframe.py":42
+ *   @property
+ *   def name (self):
+ *     return self.__name             # <<<<<<<<<<<<<<
+ * 
+ *   def initialize (self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "otools/core/Dataframe.py":41
+ * 
+ *   @property
+ *   def name (self):             # <<<<<<<<<<<<<<
+ *     return self.__name
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.name", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "otools/core/Dataframe.py":44
+ *     return self.__name
+ * 
+ *   def initialize (self):             # <<<<<<<<<<<<<<
+ *     return StatusCode.SUCCESS
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_21initialize(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_9Dataframe_9Dataframe_21initialize = {"initialize", (PyCFunction)__pyx_pw_6otools_4core_9Dataframe_9Dataframe_21initialize, METH_O, 0};
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_21initialize(PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("initialize (wrapper)", 0);
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_18initialize(__pyx_self, ((PyObject *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6otools_4core_9Dataframe_9Dataframe_20initialize(__pyx_self, ((PyObject *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_18initialize(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_20initialize(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  PyObject *__pyx_t_6 = NULL;
-  PyObject *__pyx_t_7 = NULL;
-  PyObject *__pyx_t_8 = NULL;
   __Pyx_RefNannySetupContext("initialize", 0);
 
-  /* "otools/core/Tool.py":55
+  /* "otools/core/Dataframe.py":45
  * 
  *   def initialize (self):
- *     try:             # <<<<<<<<<<<<<<
- *       self.__obj.initialize(self.__obj)
- *       return StatusCode.SUCCESS
- */
-  {
-    __Pyx_PyThreadState_declare
-    __Pyx_PyThreadState_assign
-    __Pyx_ExceptionSave(&__pyx_t_1, &__pyx_t_2, &__pyx_t_3);
-    __Pyx_XGOTREF(__pyx_t_1);
-    __Pyx_XGOTREF(__pyx_t_2);
-    __Pyx_XGOTREF(__pyx_t_3);
-    /*try:*/ {
-
-      /* "otools/core/Tool.py":56
- *   def initialize (self):
- *     try:
- *       self.__obj.initialize(self.__obj)             # <<<<<<<<<<<<<<
- *       return StatusCode.SUCCESS
- *     except:
- */
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 56, __pyx_L3_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_initialize); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 56, __pyx_L3_error)
-      __Pyx_GOTREF(__pyx_t_6);
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 56, __pyx_L3_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_7 = NULL;
-      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
-        __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_6);
-        if (likely(__pyx_t_7)) {
-          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_6);
-          __Pyx_INCREF(__pyx_t_7);
-          __Pyx_INCREF(function);
-          __Pyx_DECREF_SET(__pyx_t_6, function);
-        }
-      }
-      __pyx_t_4 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_7, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5);
-      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 56, __pyx_L3_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-      /* "otools/core/Tool.py":57
- *     try:
- *       self.__obj.initialize(self.__obj)
- *       return StatusCode.SUCCESS             # <<<<<<<<<<<<<<
- *     except:
- *       return StatusCode.FAILURE
- */
-      __Pyx_XDECREF(__pyx_r);
-      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_StatusCode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 57, __pyx_L3_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_SUCCESS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 57, __pyx_L3_error)
-      __Pyx_GOTREF(__pyx_t_6);
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_r = __pyx_t_6;
-      __pyx_t_6 = 0;
-      goto __pyx_L7_try_return;
-
-      /* "otools/core/Tool.py":55
- * 
- *   def initialize (self):
- *     try:             # <<<<<<<<<<<<<<
- *       self.__obj.initialize(self.__obj)
- *       return StatusCode.SUCCESS
- */
-    }
-    __pyx_L3_error:;
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-
-    /* "otools/core/Tool.py":58
- *       self.__obj.initialize(self.__obj)
- *       return StatusCode.SUCCESS
- *     except:             # <<<<<<<<<<<<<<
- *       return StatusCode.FAILURE
- * 
- */
-    /*except:*/ {
-      __Pyx_AddTraceback("otools.core.Tool.Tool.initialize", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_4, &__pyx_t_5) < 0) __PYX_ERR(0, 58, __pyx_L5_except_error)
-      __Pyx_GOTREF(__pyx_t_6);
-      __Pyx_GOTREF(__pyx_t_4);
-      __Pyx_GOTREF(__pyx_t_5);
-
-      /* "otools/core/Tool.py":59
- *       return StatusCode.SUCCESS
- *     except:
- *       return StatusCode.FAILURE             # <<<<<<<<<<<<<<
+ *     return StatusCode.SUCCESS             # <<<<<<<<<<<<<<
  * 
  *   def execute (self):
  */
-      __Pyx_XDECREF(__pyx_r);
-      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_StatusCode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 59, __pyx_L5_except_error)
-      __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_FAILURE); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 59, __pyx_L5_except_error)
-      __Pyx_GOTREF(__pyx_t_8);
-      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_r = __pyx_t_8;
-      __pyx_t_8 = 0;
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      goto __pyx_L6_except_return;
-    }
-    __pyx_L5_except_error:;
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_StatusCode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_SUCCESS); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
 
-    /* "otools/core/Tool.py":55
- * 
- *   def initialize (self):
- *     try:             # <<<<<<<<<<<<<<
- *       self.__obj.initialize(self.__obj)
- *       return StatusCode.SUCCESS
- */
-    __Pyx_XGIVEREF(__pyx_t_1);
-    __Pyx_XGIVEREF(__pyx_t_2);
-    __Pyx_XGIVEREF(__pyx_t_3);
-    __Pyx_ExceptionReset(__pyx_t_1, __pyx_t_2, __pyx_t_3);
-    goto __pyx_L1_error;
-    __pyx_L7_try_return:;
-    __Pyx_XGIVEREF(__pyx_t_1);
-    __Pyx_XGIVEREF(__pyx_t_2);
-    __Pyx_XGIVEREF(__pyx_t_3);
-    __Pyx_ExceptionReset(__pyx_t_1, __pyx_t_2, __pyx_t_3);
-    goto __pyx_L0;
-    __pyx_L6_except_return:;
-    __Pyx_XGIVEREF(__pyx_t_1);
-    __Pyx_XGIVEREF(__pyx_t_2);
-    __Pyx_XGIVEREF(__pyx_t_3);
-    __Pyx_ExceptionReset(__pyx_t_1, __pyx_t_2, __pyx_t_3);
-    goto __pyx_L0;
-  }
-
-  /* "otools/core/Tool.py":54
- *     return self.__str__()
+  /* "otools/core/Dataframe.py":44
+ *     return self.__name
  * 
  *   def initialize (self):             # <<<<<<<<<<<<<<
- *     try:
- *       self.__obj.initialize(self.__obj)
+ *     return StatusCode.SUCCESS
+ * 
  */
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.initialize", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.initialize", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3270,431 +3076,65 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_18initialize(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":61
- *       return StatusCode.FAILURE
+/* "otools/core/Dataframe.py":47
+ *     return StatusCode.SUCCESS
  * 
  *   def execute (self):             # <<<<<<<<<<<<<<
- *     if self._active:
- *       try:
+ *     return StatusCode.SUCCESS
+ * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_21execute(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_21execute = {"execute", (PyCFunction)__pyx_pw_6otools_4core_4Tool_4Tool_21execute, METH_O, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_21execute(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_23execute(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_9Dataframe_9Dataframe_23execute = {"execute", (PyCFunction)__pyx_pw_6otools_4core_9Dataframe_9Dataframe_23execute, METH_O, 0};
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_23execute(PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("execute (wrapper)", 0);
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_20execute(__pyx_self, ((PyObject *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6otools_4core_9Dataframe_9Dataframe_22execute(__pyx_self, ((PyObject *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_20execute(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  int __pyx_t_2;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  PyObject *__pyx_t_6 = NULL;
-  PyObject *__pyx_t_7 = NULL;
-  PyObject *__pyx_t_8 = NULL;
-  PyObject *__pyx_t_9 = NULL;
-  __Pyx_RefNannySetupContext("execute", 0);
-
-  /* "otools/core/Tool.py":62
- * 
- *   def execute (self):
- *     if self._active:             # <<<<<<<<<<<<<<
- *       try:
- *         self.__obj.execute(self.__obj)
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_active); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 62, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__pyx_t_2) {
-
-    /* "otools/core/Tool.py":63
- *   def execute (self):
- *     if self._active:
- *       try:             # <<<<<<<<<<<<<<
- *         self.__obj.execute(self.__obj)
- *         return StatusCode.SUCCESS
- */
-    {
-      __Pyx_PyThreadState_declare
-      __Pyx_PyThreadState_assign
-      __Pyx_ExceptionSave(&__pyx_t_3, &__pyx_t_4, &__pyx_t_5);
-      __Pyx_XGOTREF(__pyx_t_3);
-      __Pyx_XGOTREF(__pyx_t_4);
-      __Pyx_XGOTREF(__pyx_t_5);
-      /*try:*/ {
-
-        /* "otools/core/Tool.py":64
- *     if self._active:
- *       try:
- *         self.__obj.execute(self.__obj)             # <<<<<<<<<<<<<<
- *         return StatusCode.SUCCESS
- *       except:
- */
-        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 64, __pyx_L4_error)
-        __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_execute); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 64, __pyx_L4_error)
-        __Pyx_GOTREF(__pyx_t_7);
-        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 64, __pyx_L4_error)
-        __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_8 = NULL;
-        if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
-          __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_7);
-          if (likely(__pyx_t_8)) {
-            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
-            __Pyx_INCREF(__pyx_t_8);
-            __Pyx_INCREF(function);
-            __Pyx_DECREF_SET(__pyx_t_7, function);
-          }
-        }
-        __pyx_t_1 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_8, __pyx_t_6) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_6);
-        __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L4_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-        /* "otools/core/Tool.py":65
- *       try:
- *         self.__obj.execute(self.__obj)
- *         return StatusCode.SUCCESS             # <<<<<<<<<<<<<<
- *       except:
- *         return StatusCode.FAILURE
- */
-        __Pyx_XDECREF(__pyx_r);
-        __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_StatusCode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L4_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_SUCCESS); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 65, __pyx_L4_error)
-        __Pyx_GOTREF(__pyx_t_7);
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_r = __pyx_t_7;
-        __pyx_t_7 = 0;
-        goto __pyx_L8_try_return;
-
-        /* "otools/core/Tool.py":63
- *   def execute (self):
- *     if self._active:
- *       try:             # <<<<<<<<<<<<<<
- *         self.__obj.execute(self.__obj)
- *         return StatusCode.SUCCESS
- */
-      }
-      __pyx_L4_error:;
-      __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-
-      /* "otools/core/Tool.py":66
- *         self.__obj.execute(self.__obj)
- *         return StatusCode.SUCCESS
- *       except:             # <<<<<<<<<<<<<<
- *         return StatusCode.FAILURE
- * 
- */
-      /*except:*/ {
-        __Pyx_AddTraceback("otools.core.Tool.Tool.execute", __pyx_clineno, __pyx_lineno, __pyx_filename);
-        if (__Pyx_GetException(&__pyx_t_7, &__pyx_t_1, &__pyx_t_6) < 0) __PYX_ERR(0, 66, __pyx_L6_except_error)
-        __Pyx_GOTREF(__pyx_t_7);
-        __Pyx_GOTREF(__pyx_t_1);
-        __Pyx_GOTREF(__pyx_t_6);
-
-        /* "otools/core/Tool.py":67
- *         return StatusCode.SUCCESS
- *       except:
- *         return StatusCode.FAILURE             # <<<<<<<<<<<<<<
- * 
- *   def finalize (self):
- */
-        __Pyx_XDECREF(__pyx_r);
-        __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_StatusCode); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 67, __pyx_L6_except_error)
-        __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_FAILURE); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 67, __pyx_L6_except_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-        __pyx_r = __pyx_t_9;
-        __pyx_t_9 = 0;
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        goto __pyx_L7_except_return;
-      }
-      __pyx_L6_except_error:;
-
-      /* "otools/core/Tool.py":63
- *   def execute (self):
- *     if self._active:
- *       try:             # <<<<<<<<<<<<<<
- *         self.__obj.execute(self.__obj)
- *         return StatusCode.SUCCESS
- */
-      __Pyx_XGIVEREF(__pyx_t_3);
-      __Pyx_XGIVEREF(__pyx_t_4);
-      __Pyx_XGIVEREF(__pyx_t_5);
-      __Pyx_ExceptionReset(__pyx_t_3, __pyx_t_4, __pyx_t_5);
-      goto __pyx_L1_error;
-      __pyx_L8_try_return:;
-      __Pyx_XGIVEREF(__pyx_t_3);
-      __Pyx_XGIVEREF(__pyx_t_4);
-      __Pyx_XGIVEREF(__pyx_t_5);
-      __Pyx_ExceptionReset(__pyx_t_3, __pyx_t_4, __pyx_t_5);
-      goto __pyx_L0;
-      __pyx_L7_except_return:;
-      __Pyx_XGIVEREF(__pyx_t_3);
-      __Pyx_XGIVEREF(__pyx_t_4);
-      __Pyx_XGIVEREF(__pyx_t_5);
-      __Pyx_ExceptionReset(__pyx_t_3, __pyx_t_4, __pyx_t_5);
-      goto __pyx_L0;
-    }
-
-    /* "otools/core/Tool.py":62
- * 
- *   def execute (self):
- *     if self._active:             # <<<<<<<<<<<<<<
- *       try:
- *         self.__obj.execute(self.__obj)
- */
-  }
-
-  /* "otools/core/Tool.py":61
- *       return StatusCode.FAILURE
- * 
- *   def execute (self):             # <<<<<<<<<<<<<<
- *     if self._active:
- *       try:
- */
-
-  /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.execute", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "otools/core/Tool.py":69
- *         return StatusCode.FAILURE
- * 
- *   def finalize (self):             # <<<<<<<<<<<<<<
- *     try:
- *       self.__obj.finalize(self.__obj)
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_23finalize(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_23finalize = {"finalize", (PyCFunction)__pyx_pw_6otools_4core_4Tool_4Tool_23finalize, METH_O, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_23finalize(PyObject *__pyx_self, PyObject *__pyx_v_self) {
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("finalize (wrapper)", 0);
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_22finalize(__pyx_self, ((PyObject *)__pyx_v_self));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_22finalize(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_22execute(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  PyObject *__pyx_t_6 = NULL;
-  PyObject *__pyx_t_7 = NULL;
-  PyObject *__pyx_t_8 = NULL;
-  __Pyx_RefNannySetupContext("finalize", 0);
+  __Pyx_RefNannySetupContext("execute", 0);
 
-  /* "otools/core/Tool.py":70
+  /* "otools/core/Dataframe.py":48
+ * 
+ *   def execute (self):
+ *     return StatusCode.SUCCESS             # <<<<<<<<<<<<<<
  * 
  *   def finalize (self):
- *     try:             # <<<<<<<<<<<<<<
- *       self.__obj.finalize(self.__obj)
- *       self._active = False
  */
-  {
-    __Pyx_PyThreadState_declare
-    __Pyx_PyThreadState_assign
-    __Pyx_ExceptionSave(&__pyx_t_1, &__pyx_t_2, &__pyx_t_3);
-    __Pyx_XGOTREF(__pyx_t_1);
-    __Pyx_XGOTREF(__pyx_t_2);
-    __Pyx_XGOTREF(__pyx_t_3);
-    /*try:*/ {
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_StatusCode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 48, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_SUCCESS); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 48, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
 
-      /* "otools/core/Tool.py":71
- *   def finalize (self):
- *     try:
- *       self.__obj.finalize(self.__obj)             # <<<<<<<<<<<<<<
- *       self._active = False
- *       return StatusCode.SUCCESS
- */
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 71, __pyx_L3_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_finalize); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 71, __pyx_L3_error)
-      __Pyx_GOTREF(__pyx_t_6);
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 71, __pyx_L3_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_7 = NULL;
-      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
-        __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_6);
-        if (likely(__pyx_t_7)) {
-          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_6);
-          __Pyx_INCREF(__pyx_t_7);
-          __Pyx_INCREF(function);
-          __Pyx_DECREF_SET(__pyx_t_6, function);
-        }
-      }
-      __pyx_t_4 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_7, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5);
-      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 71, __pyx_L3_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-      /* "otools/core/Tool.py":72
- *     try:
- *       self.__obj.finalize(self.__obj)
- *       self._active = False             # <<<<<<<<<<<<<<
- *       return StatusCode.SUCCESS
- *     except:
- */
-      if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_active, Py_False) < 0) __PYX_ERR(0, 72, __pyx_L3_error)
-
-      /* "otools/core/Tool.py":73
- *       self.__obj.finalize(self.__obj)
- *       self._active = False
- *       return StatusCode.SUCCESS             # <<<<<<<<<<<<<<
- *     except:
- *       return StatusCode.FAILURE
- */
-      __Pyx_XDECREF(__pyx_r);
-      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_StatusCode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 73, __pyx_L3_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_SUCCESS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 73, __pyx_L3_error)
-      __Pyx_GOTREF(__pyx_t_6);
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_r = __pyx_t_6;
-      __pyx_t_6 = 0;
-      goto __pyx_L7_try_return;
-
-      /* "otools/core/Tool.py":70
+  /* "otools/core/Dataframe.py":47
+ *     return StatusCode.SUCCESS
  * 
- *   def finalize (self):
- *     try:             # <<<<<<<<<<<<<<
- *       self.__obj.finalize(self.__obj)
- *       self._active = False
- */
-    }
-    __pyx_L3_error:;
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-
-    /* "otools/core/Tool.py":74
- *       self._active = False
- *       return StatusCode.SUCCESS
- *     except:             # <<<<<<<<<<<<<<
- *       return StatusCode.FAILURE
+ *   def execute (self):             # <<<<<<<<<<<<<<
+ *     return StatusCode.SUCCESS
  * 
- */
-    /*except:*/ {
-      __Pyx_AddTraceback("otools.core.Tool.Tool.finalize", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_4, &__pyx_t_5) < 0) __PYX_ERR(0, 74, __pyx_L5_except_error)
-      __Pyx_GOTREF(__pyx_t_6);
-      __Pyx_GOTREF(__pyx_t_4);
-      __Pyx_GOTREF(__pyx_t_5);
-
-      /* "otools/core/Tool.py":75
- *       return StatusCode.SUCCESS
- *     except:
- *       return StatusCode.FAILURE             # <<<<<<<<<<<<<<
- * 
- *   def setContext (self, ctx):
- */
-      __Pyx_XDECREF(__pyx_r);
-      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_StatusCode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 75, __pyx_L5_except_error)
-      __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_FAILURE); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 75, __pyx_L5_except_error)
-      __Pyx_GOTREF(__pyx_t_8);
-      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_r = __pyx_t_8;
-      __pyx_t_8 = 0;
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      goto __pyx_L6_except_return;
-    }
-    __pyx_L5_except_error:;
-
-    /* "otools/core/Tool.py":70
- * 
- *   def finalize (self):
- *     try:             # <<<<<<<<<<<<<<
- *       self.__obj.finalize(self.__obj)
- *       self._active = False
- */
-    __Pyx_XGIVEREF(__pyx_t_1);
-    __Pyx_XGIVEREF(__pyx_t_2);
-    __Pyx_XGIVEREF(__pyx_t_3);
-    __Pyx_ExceptionReset(__pyx_t_1, __pyx_t_2, __pyx_t_3);
-    goto __pyx_L1_error;
-    __pyx_L7_try_return:;
-    __Pyx_XGIVEREF(__pyx_t_1);
-    __Pyx_XGIVEREF(__pyx_t_2);
-    __Pyx_XGIVEREF(__pyx_t_3);
-    __Pyx_ExceptionReset(__pyx_t_1, __pyx_t_2, __pyx_t_3);
-    goto __pyx_L0;
-    __pyx_L6_except_return:;
-    __Pyx_XGIVEREF(__pyx_t_1);
-    __Pyx_XGIVEREF(__pyx_t_2);
-    __Pyx_XGIVEREF(__pyx_t_3);
-    __Pyx_ExceptionReset(__pyx_t_1, __pyx_t_2, __pyx_t_3);
-    goto __pyx_L0;
-  }
-
-  /* "otools/core/Tool.py":69
- *         return StatusCode.FAILURE
- * 
- *   def finalize (self):             # <<<<<<<<<<<<<<
- *     try:
- *       self.__obj.finalize(self.__obj)
  */
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.finalize", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.execute", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3702,18 +3142,93 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_22finalize(CYTHON_UNUSED PyO
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":77
- *       return StatusCode.FAILURE
+/* "otools/core/Dataframe.py":50
+ *     return StatusCode.SUCCESS
  * 
- *   def setContext (self, ctx):             # <<<<<<<<<<<<<<
- *     self.__context = ctx
- *     self.__obj.terminateContext   = self.__context.finalize
+ *   def finalize (self):             # <<<<<<<<<<<<<<
+ *     del self.__dict
+ *     return StatusCode.SUCCESS
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_25setContext(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_25setContext = {"setContext", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_4Tool_4Tool_25setContext, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_25setContext(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_25finalize(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_9Dataframe_9Dataframe_25finalize = {"finalize", (PyCFunction)__pyx_pw_6otools_4core_9Dataframe_9Dataframe_25finalize, METH_O, 0};
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_25finalize(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("finalize (wrapper)", 0);
+  __pyx_r = __pyx_pf_6otools_4core_9Dataframe_9Dataframe_24finalize(__pyx_self, ((PyObject *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_24finalize(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  __Pyx_RefNannySetupContext("finalize", 0);
+
+  /* "otools/core/Dataframe.py":51
+ * 
+ *   def finalize (self):
+ *     del self.__dict             # <<<<<<<<<<<<<<
+ *     return StatusCode.SUCCESS
+ * 
+ */
+  if (__Pyx_PyObject_DelAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__dict) < 0) __PYX_ERR(0, 51, __pyx_L1_error)
+
+  /* "otools/core/Dataframe.py":52
+ *   def finalize (self):
+ *     del self.__dict
+ *     return StatusCode.SUCCESS             # <<<<<<<<<<<<<<
+ * 
+ *   def setContext (self, ctx):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_StatusCode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_SUCCESS); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
+
+  /* "otools/core/Dataframe.py":50
+ *     return StatusCode.SUCCESS
+ * 
+ *   def finalize (self):             # <<<<<<<<<<<<<<
+ *     del self.__dict
+ *     return StatusCode.SUCCESS
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.finalize", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "otools/core/Dataframe.py":54
+ *     return StatusCode.SUCCESS
+ * 
+ *   def setContext (self, ctx):             # <<<<<<<<<<<<<<
+ *     self.__context = ctx
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_27setContext(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_9Dataframe_9Dataframe_27setContext = {"setContext", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_9Dataframe_9Dataframe_27setContext, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_27setContext(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_ctx = 0;
   PyObject *__pyx_r = 0;
@@ -3742,11 +3257,11 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_25setContext(PyObject *__pyx
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_ctx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("setContext", 1, 2, 2, 1); __PYX_ERR(0, 77, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("setContext", 1, 2, 2, 1); __PYX_ERR(0, 54, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "setContext") < 0)) __PYX_ERR(0, 77, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "setContext") < 0)) __PYX_ERR(0, 54, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -3759,104 +3274,46 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_25setContext(PyObject *__pyx
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("setContext", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 77, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("setContext", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 54, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("otools.core.Tool.Tool.setContext", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.setContext", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_24setContext(__pyx_self, __pyx_v_self, __pyx_v_ctx);
+  __pyx_r = __pyx_pf_6otools_4core_9Dataframe_9Dataframe_26setContext(__pyx_self, __pyx_v_self, __pyx_v_ctx);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_24setContext(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_ctx) {
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_26setContext(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_ctx) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
   __Pyx_RefNannySetupContext("setContext", 0);
 
-  /* "otools/core/Tool.py":78
+  /* "otools/core/Dataframe.py":55
  * 
  *   def setContext (self, ctx):
  *     self.__context = ctx             # <<<<<<<<<<<<<<
- *     self.__obj.terminateContext   = self.__context.finalize
- *     self.__obj.getTool            = self.__context.getTool
- */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Tool__context, __pyx_v_ctx) < 0) __PYX_ERR(0, 78, __pyx_L1_error)
-
-  /* "otools/core/Tool.py":79
- *   def setContext (self, ctx):
- *     self.__context = ctx
- *     self.__obj.terminateContext   = self.__context.finalize             # <<<<<<<<<<<<<<
- *     self.__obj.getTool            = self.__context.getTool
- *     self.__obj.getDataframe       = self.__context.getDataframe
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_finalize); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_t_1, __pyx_n_s_terminateContext, __pyx_t_2) < 0) __PYX_ERR(0, 79, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "otools/core/Tool.py":80
- *     self.__context = ctx
- *     self.__obj.terminateContext   = self.__context.finalize
- *     self.__obj.getTool            = self.__context.getTool             # <<<<<<<<<<<<<<
- *     self.__obj.getDataframe       = self.__context.getDataframe
- * 
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_getTool); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_t_1, __pyx_n_s_getTool, __pyx_t_2) < 0) __PYX_ERR(0, 80, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "otools/core/Tool.py":81
- *     self.__obj.terminateContext   = self.__context.finalize
- *     self.__obj.getTool            = self.__context.getTool
- *     self.__obj.getDataframe       = self.__context.getDataframe             # <<<<<<<<<<<<<<
  * 
  *   def getContext (self):
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_getDataframe); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 81, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_t_1, __pyx_n_s_getDataframe, __pyx_t_2) < 0) __PYX_ERR(0, 81, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__context, __pyx_v_ctx) < 0) __PYX_ERR(0, 55, __pyx_L1_error)
 
-  /* "otools/core/Tool.py":77
- *       return StatusCode.FAILURE
+  /* "otools/core/Dataframe.py":54
+ *     return StatusCode.SUCCESS
  * 
  *   def setContext (self, ctx):             # <<<<<<<<<<<<<<
  *     self.__context = ctx
- *     self.__obj.terminateContext   = self.__context.finalize
+ * 
  */
 
   /* function exit code */
   __pyx_r = Py_None; __Pyx_INCREF(Py_None);
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.setContext", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.setContext", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3864,8 +3321,8 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_24setContext(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":83
- *     self.__obj.getDataframe       = self.__context.getDataframe
+/* "otools/core/Dataframe.py":57
+ *     self.__context = ctx
  * 
  *   def getContext (self):             # <<<<<<<<<<<<<<
  *     return self.__context
@@ -3873,41 +3330,41 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_24setContext(CYTHON_UNUSED P
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_27getContext(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_27getContext = {"getContext", (PyCFunction)__pyx_pw_6otools_4core_4Tool_4Tool_27getContext, METH_O, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_27getContext(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_29getContext(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_9Dataframe_9Dataframe_29getContext = {"getContext", (PyCFunction)__pyx_pw_6otools_4core_9Dataframe_9Dataframe_29getContext, METH_O, 0};
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_29getContext(PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("getContext (wrapper)", 0);
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_26getContext(__pyx_self, ((PyObject *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6otools_4core_9Dataframe_9Dataframe_28getContext(__pyx_self, ((PyObject *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_26getContext(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_28getContext(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("getContext", 0);
 
-  /* "otools/core/Tool.py":84
+  /* "otools/core/Dataframe.py":58
  * 
  *   def getContext (self):
  *     return self.__context             # <<<<<<<<<<<<<<
  * 
- *   @property
+ *   def get (self, key, blockReading=False, blockWriting=True, timeout=-1):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "otools/core/Tool.py":83
- *     self.__obj.getDataframe       = self.__context.getDataframe
+  /* "otools/core/Dataframe.py":57
+ *     self.__context = ctx
  * 
  *   def getContext (self):             # <<<<<<<<<<<<<<
  *     return self.__context
@@ -3917,7 +3374,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_26getContext(CYTHON_UNUSED P
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.getContext", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.getContext", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3925,56 +3382,815 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_26getContext(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":87
+/* "otools/core/Dataframe.py":60
+ *     return self.__context
  * 
- *   @property
- *   def name(self):             # <<<<<<<<<<<<<<
- *     return self.__name
+ *   def get (self, key, blockReading=False, blockWriting=True, timeout=-1):             # <<<<<<<<<<<<<<
+ *     if blockReading:
+ *       self.__rlock.acquire(timeout = timeout)
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_29name(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_29name = {"name", (PyCFunction)__pyx_pw_6otools_4core_4Tool_4Tool_29name, METH_O, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_29name(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_31get(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_9Dataframe_9Dataframe_31get = {"get", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_9Dataframe_9Dataframe_31get, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_31get(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_self = 0;
+  PyObject *__pyx_v_key = 0;
+  PyObject *__pyx_v_blockReading = 0;
+  PyObject *__pyx_v_blockWriting = 0;
+  PyObject *__pyx_v_timeout = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("name (wrapper)", 0);
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_28name(__pyx_self, ((PyObject *)__pyx_v_self));
+  __Pyx_RefNannySetupContext("get (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_key,&__pyx_n_s_blockReading,&__pyx_n_s_blockWriting,&__pyx_n_s_timeout,0};
+    PyObject* values[5] = {0,0,0,0,0};
+    values[2] = ((PyObject *)((PyObject *)Py_False));
+    values[3] = ((PyObject *)((PyObject *)Py_True));
+    values[4] = ((PyObject *)((PyObject *)__pyx_int_neg_1));
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_self)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_key)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("get", 0, 2, 5, 1); __PYX_ERR(0, 60, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_blockReading);
+          if (value) { values[2] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  3:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_blockWriting);
+          if (value) { values[3] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  4:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_timeout);
+          if (value) { values[4] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get") < 0)) __PYX_ERR(0, 60, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_self = values[0];
+    __pyx_v_key = values[1];
+    __pyx_v_blockReading = values[2];
+    __pyx_v_blockWriting = values[3];
+    __pyx_v_timeout = values[4];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("get", 0, 2, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 60, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.get", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_6otools_4core_9Dataframe_9Dataframe_30get(__pyx_self, __pyx_v_self, __pyx_v_key, __pyx_v_blockReading, __pyx_v_blockWriting, __pyx_v_timeout);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_28name(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_30get(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_key, PyObject *__pyx_v_blockReading, PyObject *__pyx_v_blockWriting, PyObject *__pyx_v_timeout) {
+  PyObject *__pyx_v_value = NULL;
+  PyObject *__pyx_v_message = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  __Pyx_RefNannySetupContext("name", 0);
+  int __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  int __pyx_t_5;
+  PyObject *__pyx_t_6 = NULL;
+  int __pyx_t_7;
+  PyObject *__pyx_t_8 = NULL;
+  __Pyx_RefNannySetupContext("get", 0);
 
-  /* "otools/core/Tool.py":88
- *   @property
- *   def name(self):
- *     return self.__name             # <<<<<<<<<<<<<<
+  /* "otools/core/Dataframe.py":61
+ * 
+ *   def get (self, key, blockReading=False, blockWriting=True, timeout=-1):
+ *     if blockReading:             # <<<<<<<<<<<<<<
+ *       self.__rlock.acquire(timeout = timeout)
+ *     if blockWriting:
+ */
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_blockReading); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 61, __pyx_L1_error)
+  if (__pyx_t_1) {
+
+    /* "otools/core/Dataframe.py":62
+ *   def get (self, key, blockReading=False, blockWriting=True, timeout=-1):
+ *     if blockReading:
+ *       self.__rlock.acquire(timeout = timeout)             # <<<<<<<<<<<<<<
+ *     if blockWriting:
+ *       self.__wlock.acquire(timeout = timeout)
+ */
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__rlock); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_acquire); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 62, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_timeout, __pyx_v_timeout) < 0) __PYX_ERR(0, 62, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 62, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+    /* "otools/core/Dataframe.py":61
+ * 
+ *   def get (self, key, blockReading=False, blockWriting=True, timeout=-1):
+ *     if blockReading:             # <<<<<<<<<<<<<<
+ *       self.__rlock.acquire(timeout = timeout)
+ *     if blockWriting:
+ */
+  }
+
+  /* "otools/core/Dataframe.py":63
+ *     if blockReading:
+ *       self.__rlock.acquire(timeout = timeout)
+ *     if blockWriting:             # <<<<<<<<<<<<<<
+ *       self.__wlock.acquire(timeout = timeout)
+ *     if key in self.__dict:
+ */
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_blockWriting); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 63, __pyx_L1_error)
+  if (__pyx_t_1) {
+
+    /* "otools/core/Dataframe.py":64
+ *       self.__rlock.acquire(timeout = timeout)
+ *     if blockWriting:
+ *       self.__wlock.acquire(timeout = timeout)             # <<<<<<<<<<<<<<
+ *     if key in self.__dict:
+ *       value = self.__dict[key]
+ */
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__wlock); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 64, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_acquire); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 64, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 64, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_timeout, __pyx_v_timeout) < 0) __PYX_ERR(0, 64, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 64, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+    /* "otools/core/Dataframe.py":63
+ *     if blockReading:
+ *       self.__rlock.acquire(timeout = timeout)
+ *     if blockWriting:             # <<<<<<<<<<<<<<
+ *       self.__wlock.acquire(timeout = timeout)
+ *     if key in self.__dict:
+ */
+  }
+
+  /* "otools/core/Dataframe.py":65
+ *     if blockWriting:
+ *       self.__wlock.acquire(timeout = timeout)
+ *     if key in self.__dict:             # <<<<<<<<<<<<<<
+ *       value = self.__dict[key]
+ *     else:
+ */
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__dict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_v_key, __pyx_t_3, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_5 = (__pyx_t_1 != 0);
+  if (__pyx_t_5) {
+
+    /* "otools/core/Dataframe.py":66
+ *       self.__wlock.acquire(timeout = timeout)
+ *     if key in self.__dict:
+ *       value = self.__dict[key]             # <<<<<<<<<<<<<<
+ *     else:
+ *       value = None
+ */
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__dict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 66, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_t_3, __pyx_v_key); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 66, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_v_value = __pyx_t_4;
+    __pyx_t_4 = 0;
+
+    /* "otools/core/Dataframe.py":65
+ *     if blockWriting:
+ *       self.__wlock.acquire(timeout = timeout)
+ *     if key in self.__dict:             # <<<<<<<<<<<<<<
+ *       value = self.__dict[key]
+ *     else:
+ */
+    goto __pyx_L5;
+  }
+
+  /* "otools/core/Dataframe.py":68
+ *       value = self.__dict[key]
+ *     else:
+ *       value = None             # <<<<<<<<<<<<<<
+ *       message = "Key {} not found on Dataframe {}.".format(key, self.name)
+ *       self.MSG_ERROR(message)
+ */
+  /*else*/ {
+    __Pyx_INCREF(Py_None);
+    __pyx_v_value = Py_None;
+
+    /* "otools/core/Dataframe.py":69
+ *     else:
+ *       value = None
+ *       message = "Key {} not found on Dataframe {}.".format(key, self.name)             # <<<<<<<<<<<<<<
+ *       self.MSG_ERROR(message)
+ *     if blockReading:
+ */
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Key_not_found_on_Dataframe, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 69, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_name); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_6 = NULL;
+    __pyx_t_7 = 0;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+      __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_3);
+      if (likely(__pyx_t_6)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+        __Pyx_INCREF(__pyx_t_6);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_3, function);
+        __pyx_t_7 = 1;
+      }
+    }
+    #if CYTHON_FAST_PYCALL
+    if (PyFunction_Check(__pyx_t_3)) {
+      PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_v_key, __pyx_t_2};
+      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 69, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    } else
+    #endif
+    #if CYTHON_FAST_PYCCALL
+    if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
+      PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_v_key, __pyx_t_2};
+      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 69, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    } else
+    #endif
+    {
+      __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 69, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      if (__pyx_t_6) {
+        __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6); __pyx_t_6 = NULL;
+      }
+      __Pyx_INCREF(__pyx_v_key);
+      __Pyx_GIVEREF(__pyx_v_key);
+      PyTuple_SET_ITEM(__pyx_t_8, 0+__pyx_t_7, __pyx_v_key);
+      __Pyx_GIVEREF(__pyx_t_2);
+      PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_7, __pyx_t_2);
+      __pyx_t_2 = 0;
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 69, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    }
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_v_message = __pyx_t_4;
+    __pyx_t_4 = 0;
+
+    /* "otools/core/Dataframe.py":70
+ *       value = None
+ *       message = "Key {} not found on Dataframe {}.".format(key, self.name)
+ *       self.MSG_ERROR(message)             # <<<<<<<<<<<<<<
+ *     if blockReading:
+ *       self.__rlock.release()
+ */
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_MSG_ERROR); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 70, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_8 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+      __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_3);
+      if (likely(__pyx_t_8)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+        __Pyx_INCREF(__pyx_t_8);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_3, function);
+      }
+    }
+    __pyx_t_4 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_8, __pyx_v_message) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_message);
+    __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 70, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  }
+  __pyx_L5:;
+
+  /* "otools/core/Dataframe.py":71
+ *       message = "Key {} not found on Dataframe {}.".format(key, self.name)
+ *       self.MSG_ERROR(message)
+ *     if blockReading:             # <<<<<<<<<<<<<<
+ *       self.__rlock.release()
+ *     if blockWriting:
+ */
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_blockReading); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 71, __pyx_L1_error)
+  if (__pyx_t_5) {
+
+    /* "otools/core/Dataframe.py":72
+ *       self.MSG_ERROR(message)
+ *     if blockReading:
+ *       self.__rlock.release()             # <<<<<<<<<<<<<<
+ *     if blockWriting:
+ *       self.__wlock.release()
+ */
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__rlock); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 72, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_release); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 72, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
+      __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_8);
+      if (likely(__pyx_t_3)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
+        __Pyx_INCREF(__pyx_t_3);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_8, function);
+      }
+    }
+    __pyx_t_4 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_8);
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 72, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+    /* "otools/core/Dataframe.py":71
+ *       message = "Key {} not found on Dataframe {}.".format(key, self.name)
+ *       self.MSG_ERROR(message)
+ *     if blockReading:             # <<<<<<<<<<<<<<
+ *       self.__rlock.release()
+ *     if blockWriting:
+ */
+  }
+
+  /* "otools/core/Dataframe.py":73
+ *     if blockReading:
+ *       self.__rlock.release()
+ *     if blockWriting:             # <<<<<<<<<<<<<<
+ *       self.__wlock.release()
+ *     return value
+ */
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_blockWriting); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 73, __pyx_L1_error)
+  if (__pyx_t_5) {
+
+    /* "otools/core/Dataframe.py":74
+ *       self.__rlock.release()
+ *     if blockWriting:
+ *       self.__wlock.release()             # <<<<<<<<<<<<<<
+ *     return value
+ * 
+ */
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__wlock); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 74, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_release); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 74, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __pyx_t_8 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+      __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_3);
+      if (likely(__pyx_t_8)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+        __Pyx_INCREF(__pyx_t_8);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_3, function);
+      }
+    }
+    __pyx_t_4 = (__pyx_t_8) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_8) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
+    __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 74, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+    /* "otools/core/Dataframe.py":73
+ *     if blockReading:
+ *       self.__rlock.release()
+ *     if blockWriting:             # <<<<<<<<<<<<<<
+ *       self.__wlock.release()
+ *     return value
+ */
+  }
+
+  /* "otools/core/Dataframe.py":75
+ *     if blockWriting:
+ *       self.__wlock.release()
+ *     return value             # <<<<<<<<<<<<<<
+ * 
+ *   def set (self, key, value, blockReading=True, blockWriting=True, timeout=-1):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 88, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
+  __Pyx_INCREF(__pyx_v_value);
+  __pyx_r = __pyx_v_value;
   goto __pyx_L0;
 
-  /* "otools/core/Tool.py":87
+  /* "otools/core/Dataframe.py":60
+ *     return self.__context
  * 
- *   @property
- *   def name(self):             # <<<<<<<<<<<<<<
- *     return self.__name
+ *   def get (self, key, blockReading=False, blockWriting=True, timeout=-1):             # <<<<<<<<<<<<<<
+ *     if blockReading:
+ *       self.__rlock.acquire(timeout = timeout)
  */
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.name", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.get", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_value);
+  __Pyx_XDECREF(__pyx_v_message);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "otools/core/Dataframe.py":77
+ *     return value
+ * 
+ *   def set (self, key, value, blockReading=True, blockWriting=True, timeout=-1):             # <<<<<<<<<<<<<<
+ *     if blockReading:
+ *       self.__rlock.acquire(timeout = timeout)
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_33set(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_9Dataframe_9Dataframe_33set = {"set", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_9Dataframe_9Dataframe_33set, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6otools_4core_9Dataframe_9Dataframe_33set(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_self = 0;
+  PyObject *__pyx_v_key = 0;
+  PyObject *__pyx_v_value = 0;
+  PyObject *__pyx_v_blockReading = 0;
+  PyObject *__pyx_v_blockWriting = 0;
+  PyObject *__pyx_v_timeout = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("set (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_key,&__pyx_n_s_value,&__pyx_n_s_blockReading,&__pyx_n_s_blockWriting,&__pyx_n_s_timeout,0};
+    PyObject* values[6] = {0,0,0,0,0,0};
+    values[3] = ((PyObject *)((PyObject *)Py_True));
+    values[4] = ((PyObject *)((PyObject *)Py_True));
+    values[5] = ((PyObject *)((PyObject *)__pyx_int_neg_1));
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
+        CYTHON_FALLTHROUGH;
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_self)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_key)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("set", 0, 3, 6, 1); __PYX_ERR(0, 77, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_value)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("set", 0, 3, 6, 2); __PYX_ERR(0, 77, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  3:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_blockReading);
+          if (value) { values[3] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  4:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_blockWriting);
+          if (value) { values[4] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  5:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_timeout);
+          if (value) { values[5] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "set") < 0)) __PYX_ERR(0, 77, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
+        CYTHON_FALLTHROUGH;
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_self = values[0];
+    __pyx_v_key = values[1];
+    __pyx_v_value = values[2];
+    __pyx_v_blockReading = values[3];
+    __pyx_v_blockWriting = values[4];
+    __pyx_v_timeout = values[5];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("set", 0, 3, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 77, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.set", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_6otools_4core_9Dataframe_9Dataframe_32set(__pyx_self, __pyx_v_self, __pyx_v_key, __pyx_v_value, __pyx_v_blockReading, __pyx_v_blockWriting, __pyx_v_timeout);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6otools_4core_9Dataframe_9Dataframe_32set(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_key, PyObject *__pyx_v_value, PyObject *__pyx_v_blockReading, PyObject *__pyx_v_blockWriting, PyObject *__pyx_v_timeout) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  __Pyx_RefNannySetupContext("set", 0);
+
+  /* "otools/core/Dataframe.py":78
+ * 
+ *   def set (self, key, value, blockReading=True, blockWriting=True, timeout=-1):
+ *     if blockReading:             # <<<<<<<<<<<<<<
+ *       self.__rlock.acquire(timeout = timeout)
+ *     if blockWriting:
+ */
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_blockReading); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 78, __pyx_L1_error)
+  if (__pyx_t_1) {
+
+    /* "otools/core/Dataframe.py":79
+ *   def set (self, key, value, blockReading=True, blockWriting=True, timeout=-1):
+ *     if blockReading:
+ *       self.__rlock.acquire(timeout = timeout)             # <<<<<<<<<<<<<<
+ *     if blockWriting:
+ *       self.__wlock.acquire(timeout = timeout)
+ */
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__rlock); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_acquire); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 79, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_timeout, __pyx_v_timeout) < 0) __PYX_ERR(0, 79, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 79, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+    /* "otools/core/Dataframe.py":78
+ * 
+ *   def set (self, key, value, blockReading=True, blockWriting=True, timeout=-1):
+ *     if blockReading:             # <<<<<<<<<<<<<<
+ *       self.__rlock.acquire(timeout = timeout)
+ *     if blockWriting:
+ */
+  }
+
+  /* "otools/core/Dataframe.py":80
+ *     if blockReading:
+ *       self.__rlock.acquire(timeout = timeout)
+ *     if blockWriting:             # <<<<<<<<<<<<<<
+ *       self.__wlock.acquire(timeout = timeout)
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_blockWriting); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 80, __pyx_L1_error)
+  if (__pyx_t_1) {
+
+    /* "otools/core/Dataframe.py":81
+ *       self.__rlock.acquire(timeout = timeout)
+ *     if blockWriting:
+ *       self.__wlock.acquire(timeout = timeout)             # <<<<<<<<<<<<<<
+ * 
+ *     self.__dict[key] = value
+ */
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__wlock); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 81, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_acquire); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 81, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 81, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_timeout, __pyx_v_timeout) < 0) __PYX_ERR(0, 81, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 81, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+    /* "otools/core/Dataframe.py":80
+ *     if blockReading:
+ *       self.__rlock.acquire(timeout = timeout)
+ *     if blockWriting:             # <<<<<<<<<<<<<<
+ *       self.__wlock.acquire(timeout = timeout)
+ * 
+ */
+  }
+
+  /* "otools/core/Dataframe.py":83
+ *       self.__wlock.acquire(timeout = timeout)
+ * 
+ *     self.__dict[key] = value             # <<<<<<<<<<<<<<
+ * 
+ *     if blockReading:
+ */
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__dict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  if (unlikely(PyObject_SetItem(__pyx_t_3, __pyx_v_key, __pyx_v_value) < 0)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "otools/core/Dataframe.py":85
+ *     self.__dict[key] = value
+ * 
+ *     if blockReading:             # <<<<<<<<<<<<<<
+ *       self.__rlock.release()
+ *     if blockWriting:
+ */
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_blockReading); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 85, __pyx_L1_error)
+  if (__pyx_t_1) {
+
+    /* "otools/core/Dataframe.py":86
+ * 
+ *     if blockReading:
+ *       self.__rlock.release()             # <<<<<<<<<<<<<<
+ *     if blockWriting:
+ *       self.__wlock.release()
+ */
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__rlock); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 86, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_release); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 86, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_2);
+      if (likely(__pyx_t_4)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+        __Pyx_INCREF(__pyx_t_4);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_2, function);
+      }
+    }
+    __pyx_t_3 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
+    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 86, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+    /* "otools/core/Dataframe.py":85
+ *     self.__dict[key] = value
+ * 
+ *     if blockReading:             # <<<<<<<<<<<<<<
+ *       self.__rlock.release()
+ *     if blockWriting:
+ */
+  }
+
+  /* "otools/core/Dataframe.py":87
+ *     if blockReading:
+ *       self.__rlock.release()
+ *     if blockWriting:             # <<<<<<<<<<<<<<
+ *       self.__wlock.release()
+ */
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_blockWriting); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 87, __pyx_L1_error)
+  if (__pyx_t_1) {
+
+    /* "otools/core/Dataframe.py":88
+ *       self.__rlock.release()
+ *     if blockWriting:
+ *       self.__wlock.release()             # <<<<<<<<<<<<<<
+ */
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Dataframe__wlock); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 88, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_release); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 88, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+      __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_2)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_2);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_4, function);
+      }
+    }
+    __pyx_t_3 = (__pyx_t_2) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 88, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+    /* "otools/core/Dataframe.py":87
+ *     if blockReading:
+ *       self.__rlock.release()
+ *     if blockWriting:             # <<<<<<<<<<<<<<
+ *       self.__wlock.release()
+ */
+  }
+
+  /* "otools/core/Dataframe.py":77
+ *     return value
+ * 
+ *   def set (self, key, value, blockReading=True, blockWriting=True, timeout=-1):             # <<<<<<<<<<<<<<
+ *     if blockReading:
+ *       self.__rlock.acquire(timeout = timeout)
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_AddTraceback("otools.core.Dataframe.Dataframe.set", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3989,17 +4205,17 @@ static PyMethodDef __pyx_methods[] = {
 #if PY_MAJOR_VERSION >= 3
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_Tool(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_Dataframe(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_Tool},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_Dataframe},
   {0, NULL}
 };
 #endif
 
 static struct PyModuleDef __pyx_moduledef = {
     PyModuleDef_HEAD_INIT,
-    "Tool",
+    "Dataframe",
     0, /* m_doc */
   #if CYTHON_PEP489_MULTI_PHASE_INIT
     0, /* m_size */
@@ -4028,41 +4244,49 @@ static struct PyModuleDef __pyx_moduledef = {
 #endif
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
-  {&__pyx_kp_s_A_Tool_is_a_class_that_shall_en, __pyx_k_A_Tool_is_a_class_that_shall_en, sizeof(__pyx_k_A_Tool_is_a_class_that_shall_en), 0, 0, 1, 0},
-  {&__pyx_n_s_FAILURE, __pyx_k_FAILURE, sizeof(__pyx_k_FAILURE), 0, 0, 1, 1},
+  {&__pyx_n_s_Dataframe, __pyx_k_Dataframe, sizeof(__pyx_k_Dataframe), 0, 0, 1, 1},
+  {&__pyx_n_s_Dataframe_MSG_DEBUG, __pyx_k_Dataframe_MSG_DEBUG, sizeof(__pyx_k_Dataframe_MSG_DEBUG), 0, 0, 1, 1},
+  {&__pyx_n_s_Dataframe_MSG_ERROR, __pyx_k_Dataframe_MSG_ERROR, sizeof(__pyx_k_Dataframe_MSG_ERROR), 0, 0, 1, 1},
+  {&__pyx_n_s_Dataframe_MSG_FATAL, __pyx_k_Dataframe_MSG_FATAL, sizeof(__pyx_k_Dataframe_MSG_FATAL), 0, 0, 1, 1},
+  {&__pyx_n_s_Dataframe_MSG_INFO, __pyx_k_Dataframe_MSG_INFO, sizeof(__pyx_k_Dataframe_MSG_INFO), 0, 0, 1, 1},
+  {&__pyx_n_s_Dataframe_MSG_VERBOSE, __pyx_k_Dataframe_MSG_VERBOSE, sizeof(__pyx_k_Dataframe_MSG_VERBOSE), 0, 0, 1, 1},
+  {&__pyx_n_s_Dataframe_MSG_WARNING, __pyx_k_Dataframe_MSG_WARNING, sizeof(__pyx_k_Dataframe_MSG_WARNING), 0, 0, 1, 1},
+  {&__pyx_n_s_Dataframe___init, __pyx_k_Dataframe___init, sizeof(__pyx_k_Dataframe___init), 0, 0, 1, 1},
+  {&__pyx_n_s_Dataframe___repr, __pyx_k_Dataframe___repr, sizeof(__pyx_k_Dataframe___repr), 0, 0, 1, 1},
+  {&__pyx_n_s_Dataframe___str, __pyx_k_Dataframe___str, sizeof(__pyx_k_Dataframe___str), 0, 0, 1, 1},
+  {&__pyx_n_s_Dataframe__context, __pyx_k_Dataframe__context, sizeof(__pyx_k_Dataframe__context), 0, 0, 1, 1},
+  {&__pyx_n_s_Dataframe__dict, __pyx_k_Dataframe__dict, sizeof(__pyx_k_Dataframe__dict), 0, 0, 1, 1},
+  {&__pyx_n_s_Dataframe__name, __pyx_k_Dataframe__name, sizeof(__pyx_k_Dataframe__name), 0, 0, 1, 1},
+  {&__pyx_n_s_Dataframe__rlock, __pyx_k_Dataframe__rlock, sizeof(__pyx_k_Dataframe__rlock), 0, 0, 1, 1},
+  {&__pyx_n_s_Dataframe__wlock, __pyx_k_Dataframe__wlock, sizeof(__pyx_k_Dataframe__wlock), 0, 0, 1, 1},
+  {&__pyx_n_s_Dataframe_execute, __pyx_k_Dataframe_execute, sizeof(__pyx_k_Dataframe_execute), 0, 0, 1, 1},
+  {&__pyx_n_s_Dataframe_finalize, __pyx_k_Dataframe_finalize, sizeof(__pyx_k_Dataframe_finalize), 0, 0, 1, 1},
+  {&__pyx_n_s_Dataframe_get, __pyx_k_Dataframe_get, sizeof(__pyx_k_Dataframe_get), 0, 0, 1, 1},
+  {&__pyx_n_s_Dataframe_getContext, __pyx_k_Dataframe_getContext, sizeof(__pyx_k_Dataframe_getContext), 0, 0, 1, 1},
+  {&__pyx_n_s_Dataframe_initialize, __pyx_k_Dataframe_initialize, sizeof(__pyx_k_Dataframe_initialize), 0, 0, 1, 1},
+  {&__pyx_n_s_Dataframe_name, __pyx_k_Dataframe_name, sizeof(__pyx_k_Dataframe_name), 0, 0, 1, 1},
+  {&__pyx_n_s_Dataframe_set, __pyx_k_Dataframe_set, sizeof(__pyx_k_Dataframe_set), 0, 0, 1, 1},
+  {&__pyx_n_s_Dataframe_setContext, __pyx_k_Dataframe_setContext, sizeof(__pyx_k_Dataframe_setContext), 0, 0, 1, 1},
+  {&__pyx_kp_s_Key_not_found_on_Dataframe, __pyx_k_Key_not_found_on_Dataframe, sizeof(__pyx_k_Key_not_found_on_Dataframe), 0, 0, 1, 0},
+  {&__pyx_n_s_Lock, __pyx_k_Lock, sizeof(__pyx_k_Lock), 0, 0, 1, 1},
   {&__pyx_n_s_MSG_DEBUG, __pyx_k_MSG_DEBUG, sizeof(__pyx_k_MSG_DEBUG), 0, 0, 1, 1},
   {&__pyx_n_s_MSG_ERROR, __pyx_k_MSG_ERROR, sizeof(__pyx_k_MSG_ERROR), 0, 0, 1, 1},
   {&__pyx_n_s_MSG_FATAL, __pyx_k_MSG_FATAL, sizeof(__pyx_k_MSG_FATAL), 0, 0, 1, 1},
   {&__pyx_n_s_MSG_INFO, __pyx_k_MSG_INFO, sizeof(__pyx_k_MSG_INFO), 0, 0, 1, 1},
   {&__pyx_n_s_MSG_VERBOSE, __pyx_k_MSG_VERBOSE, sizeof(__pyx_k_MSG_VERBOSE), 0, 0, 1, 1},
   {&__pyx_n_s_MSG_WARNING, __pyx_k_MSG_WARNING, sizeof(__pyx_k_MSG_WARNING), 0, 0, 1, 1},
-  {&__pyx_kp_s_OTools_Tool_name, __pyx_k_OTools_Tool_name, sizeof(__pyx_k_OTools_Tool_name), 0, 0, 1, 0},
+  {&__pyx_kp_s_OTools_Dataframe_name, __pyx_k_OTools_Dataframe_name, sizeof(__pyx_k_OTools_Dataframe_name), 0, 0, 1, 0},
+  {&__pyx_n_s_OrderedDict, __pyx_k_OrderedDict, sizeof(__pyx_k_OrderedDict), 0, 0, 1, 1},
   {&__pyx_n_s_SUCCESS, __pyx_k_SUCCESS, sizeof(__pyx_k_SUCCESS), 0, 0, 1, 1},
   {&__pyx_n_s_StatusCode, __pyx_k_StatusCode, sizeof(__pyx_k_StatusCode), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool, __pyx_k_Tool, sizeof(__pyx_k_Tool), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool_MSG_DEBUG, __pyx_k_Tool_MSG_DEBUG, sizeof(__pyx_k_Tool_MSG_DEBUG), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool_MSG_ERROR, __pyx_k_Tool_MSG_ERROR, sizeof(__pyx_k_Tool_MSG_ERROR), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool_MSG_FATAL, __pyx_k_Tool_MSG_FATAL, sizeof(__pyx_k_Tool_MSG_FATAL), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool_MSG_INFO, __pyx_k_Tool_MSG_INFO, sizeof(__pyx_k_Tool_MSG_INFO), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool_MSG_VERBOSE, __pyx_k_Tool_MSG_VERBOSE, sizeof(__pyx_k_Tool_MSG_VERBOSE), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool_MSG_WARNING, __pyx_k_Tool_MSG_WARNING, sizeof(__pyx_k_Tool_MSG_WARNING), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool___init, __pyx_k_Tool___init, sizeof(__pyx_k_Tool___init), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool___repr, __pyx_k_Tool___repr, sizeof(__pyx_k_Tool___repr), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool___str, __pyx_k_Tool___str, sizeof(__pyx_k_Tool___str), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool__context, __pyx_k_Tool__context, sizeof(__pyx_k_Tool__context), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool__name, __pyx_k_Tool__name, sizeof(__pyx_k_Tool__name), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool__obj, __pyx_k_Tool__obj, sizeof(__pyx_k_Tool__obj), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool_execute, __pyx_k_Tool_execute, sizeof(__pyx_k_Tool_execute), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool_finalize, __pyx_k_Tool_finalize, sizeof(__pyx_k_Tool_finalize), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool_getContext, __pyx_k_Tool_getContext, sizeof(__pyx_k_Tool_getContext), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool_initialize, __pyx_k_Tool_initialize, sizeof(__pyx_k_Tool_initialize), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool_name, __pyx_k_Tool_name, sizeof(__pyx_k_Tool_name), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool_setContext, __pyx_k_Tool_setContext, sizeof(__pyx_k_Tool_setContext), 0, 0, 1, 1},
   {&__pyx_n_s_Unknown, __pyx_k_Unknown, sizeof(__pyx_k_Unknown), 0, 0, 1, 1},
-  {&__pyx_n_s_active, __pyx_k_active, sizeof(__pyx_k_active), 0, 0, 1, 1},
+  {&__pyx_n_s_acquire, __pyx_k_acquire, sizeof(__pyx_k_acquire), 0, 0, 1, 1},
   {&__pyx_n_s_all, __pyx_k_all, sizeof(__pyx_k_all), 0, 0, 1, 1},
   {&__pyx_n_s_args, __pyx_k_args, sizeof(__pyx_k_args), 0, 0, 1, 1},
+  {&__pyx_n_s_blockReading, __pyx_k_blockReading, sizeof(__pyx_k_blockReading), 0, 0, 1, 1},
+  {&__pyx_n_s_blockWriting, __pyx_k_blockWriting, sizeof(__pyx_k_blockWriting), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
+  {&__pyx_n_s_collections, __pyx_k_collections, sizeof(__pyx_k_collections), 0, 0, 1, 1},
   {&__pyx_n_s_contextName, __pyx_k_contextName, sizeof(__pyx_k_contextName), 0, 0, 1, 1},
   {&__pyx_n_s_ctx, __pyx_k_ctx, sizeof(__pyx_k_ctx), 0, 0, 1, 1},
   {&__pyx_n_s_debug, __pyx_k_debug, sizeof(__pyx_k_debug), 0, 0, 1, 1},
@@ -4072,14 +4296,13 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_fatal, __pyx_k_fatal, sizeof(__pyx_k_fatal), 0, 0, 1, 1},
   {&__pyx_n_s_finalize, __pyx_k_finalize, sizeof(__pyx_k_finalize), 0, 0, 1, 1},
   {&__pyx_n_s_format, __pyx_k_format, sizeof(__pyx_k_format), 0, 0, 1, 1},
+  {&__pyx_n_s_get, __pyx_k_get, sizeof(__pyx_k_get), 0, 0, 1, 1},
   {&__pyx_n_s_getContext, __pyx_k_getContext, sizeof(__pyx_k_getContext), 0, 0, 1, 1},
-  {&__pyx_n_s_getDataframe, __pyx_k_getDataframe, sizeof(__pyx_k_getDataframe), 0, 0, 1, 1},
-  {&__pyx_n_s_getName, __pyx_k_getName, sizeof(__pyx_k_getName), 0, 0, 1, 1},
-  {&__pyx_n_s_getTool, __pyx_k_getTool, sizeof(__pyx_k_getTool), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_info, __pyx_k_info, sizeof(__pyx_k_info), 0, 0, 1, 1},
   {&__pyx_n_s_init, __pyx_k_init, sizeof(__pyx_k_init), 0, 0, 1, 1},
   {&__pyx_n_s_initialize, __pyx_k_initialize, sizeof(__pyx_k_initialize), 0, 0, 1, 1},
+  {&__pyx_n_s_key, __pyx_k_key, sizeof(__pyx_k_key), 0, 0, 1, 1},
   {&__pyx_n_s_kws, __pyx_k_kws, sizeof(__pyx_k_kws), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_message, __pyx_k_message, sizeof(__pyx_k_message), 0, 0, 1, 1},
@@ -4088,25 +4311,28 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_moduleName, __pyx_k_moduleName, sizeof(__pyx_k_moduleName), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_n_s_name_2, __pyx_k_name_2, sizeof(__pyx_k_name_2), 0, 0, 1, 1},
-  {&__pyx_n_s_obj, __pyx_k_obj, sizeof(__pyx_k_obj), 0, 0, 1, 1},
-  {&__pyx_n_s_otools_core_Tool, __pyx_k_otools_core_Tool, sizeof(__pyx_k_otools_core_Tool), 0, 0, 1, 1},
-  {&__pyx_kp_s_otools_core_Tool_py, __pyx_k_otools_core_Tool_py, sizeof(__pyx_k_otools_core_Tool_py), 0, 0, 1, 0},
+  {&__pyx_n_s_otools_core_Dataframe, __pyx_k_otools_core_Dataframe, sizeof(__pyx_k_otools_core_Dataframe), 0, 0, 1, 1},
+  {&__pyx_kp_s_otools_core_Dataframe_py, __pyx_k_otools_core_Dataframe_py, sizeof(__pyx_k_otools_core_Dataframe_py), 0, 0, 1, 0},
   {&__pyx_n_s_otools_status_StatusCode, __pyx_k_otools_status_StatusCode, sizeof(__pyx_k_otools_status_StatusCode), 0, 0, 1, 1},
   {&__pyx_n_s_prepare, __pyx_k_prepare, sizeof(__pyx_k_prepare), 0, 0, 1, 1},
   {&__pyx_n_s_property, __pyx_k_property, sizeof(__pyx_k_property), 0, 0, 1, 1},
   {&__pyx_n_s_qualname, __pyx_k_qualname, sizeof(__pyx_k_qualname), 0, 0, 1, 1},
+  {&__pyx_n_s_release, __pyx_k_release, sizeof(__pyx_k_release), 0, 0, 1, 1},
   {&__pyx_n_s_repr, __pyx_k_repr, sizeof(__pyx_k_repr), 0, 0, 1, 1},
   {&__pyx_n_s_self, __pyx_k_self, sizeof(__pyx_k_self), 0, 0, 1, 1},
+  {&__pyx_n_s_set, __pyx_k_set, sizeof(__pyx_k_set), 0, 0, 1, 1},
   {&__pyx_n_s_setContext, __pyx_k_setContext, sizeof(__pyx_k_setContext), 0, 0, 1, 1},
   {&__pyx_n_s_str, __pyx_k_str, sizeof(__pyx_k_str), 0, 0, 1, 1},
-  {&__pyx_n_s_terminateContext, __pyx_k_terminateContext, sizeof(__pyx_k_terminateContext), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
+  {&__pyx_n_s_threading, __pyx_k_threading, sizeof(__pyx_k_threading), 0, 0, 1, 1},
+  {&__pyx_n_s_timeout, __pyx_k_timeout, sizeof(__pyx_k_timeout), 0, 0, 1, 1},
+  {&__pyx_n_s_value, __pyx_k_value, sizeof(__pyx_k_value), 0, 0, 1, 1},
   {&__pyx_n_s_verbose, __pyx_k_verbose, sizeof(__pyx_k_verbose), 0, 0, 1, 1},
   {&__pyx_n_s_warning, __pyx_k_warning, sizeof(__pyx_k_warning), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_property = __Pyx_GetBuiltinName(__pyx_n_s_property); if (!__pyx_builtin_property) __PYX_ERR(0, 86, __pyx_L1_error)
+  __pyx_builtin_property = __Pyx_GetBuiltinName(__pyx_n_s_property); if (!__pyx_builtin_property) __PYX_ERR(0, 40, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -4116,202 +4342,236 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "otools/core/Tool.py":14
- *   """
+  /* "otools/core/Dataframe.py":9
+ * class Dataframe ():
  * 
- *   def __init__ (self, obj):             # <<<<<<<<<<<<<<
- *     try:
- *       self.__name = obj.getName()
+ *   def __init__ (self, name = "Dataframe"):             # <<<<<<<<<<<<<<
+ *     self.__name = name
+ *     self.__context = None
  */
-  __pyx_tuple_ = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_obj); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_name); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
-  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_init, 14, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Dataframe_py, __pyx_n_s_init, 9, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(1, ((PyObject*)__pyx_n_s_Dataframe)); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__3);
+  __Pyx_GIVEREF(__pyx_tuple__3);
 
-  /* "otools/core/Tool.py":30
- *     self._active = True
+  /* "otools/core/Dataframe.py":16
+ *     self.__wlock = Lock()
  * 
  *   def MSG_VERBOSE (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
  *     self.__context.verbose(message, self.__name, contextName, *args, **kws)
  * 
  */
-  __pyx_tuple__3 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_message, __pyx_n_s_moduleName, __pyx_n_s_contextName, __pyx_n_s_args, __pyx_n_s_kws); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 30, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__3);
-  __Pyx_GIVEREF(__pyx_tuple__3);
-  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_MSG_VERBOSE, 30, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 30, __pyx_L1_error)
-  __pyx_tuple__5 = PyTuple_Pack(2, ((PyObject*)__pyx_n_s_Unknown), ((PyObject*)__pyx_n_s_Unknown)); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 30, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__5);
-  __Pyx_GIVEREF(__pyx_tuple__5);
+  __pyx_tuple__4 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_message, __pyx_n_s_moduleName, __pyx_n_s_contextName, __pyx_n_s_args, __pyx_n_s_kws); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__4);
+  __Pyx_GIVEREF(__pyx_tuple__4);
+  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__4, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Dataframe_py, __pyx_n_s_MSG_VERBOSE, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_tuple__6 = PyTuple_Pack(2, ((PyObject*)__pyx_n_s_Unknown), ((PyObject*)__pyx_n_s_Unknown)); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__6);
+  __Pyx_GIVEREF(__pyx_tuple__6);
 
-  /* "otools/core/Tool.py":33
+  /* "otools/core/Dataframe.py":19
  *     self.__context.verbose(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_DEBUG (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
  *     self.__context.debug(message, self.__name, contextName, *args, **kws)
  * 
  */
-  __pyx_tuple__6 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_message, __pyx_n_s_moduleName, __pyx_n_s_contextName, __pyx_n_s_args, __pyx_n_s_kws); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 33, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__6);
-  __Pyx_GIVEREF(__pyx_tuple__6);
-  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_MSG_DEBUG, 33, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(0, 33, __pyx_L1_error)
-  __pyx_tuple__8 = PyTuple_Pack(2, ((PyObject*)__pyx_n_s_Unknown), ((PyObject*)__pyx_n_s_Unknown)); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 33, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__8);
-  __Pyx_GIVEREF(__pyx_tuple__8);
+  __pyx_tuple__7 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_message, __pyx_n_s_moduleName, __pyx_n_s_contextName, __pyx_n_s_args, __pyx_n_s_kws); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__7);
+  __Pyx_GIVEREF(__pyx_tuple__7);
+  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__7, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Dataframe_py, __pyx_n_s_MSG_DEBUG, 19, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_tuple__9 = PyTuple_Pack(2, ((PyObject*)__pyx_n_s_Unknown), ((PyObject*)__pyx_n_s_Unknown)); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__9);
+  __Pyx_GIVEREF(__pyx_tuple__9);
 
-  /* "otools/core/Tool.py":36
+  /* "otools/core/Dataframe.py":22
  *     self.__context.debug(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_INFO (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
  *     self.__context.info(message, self.__name, contextName, *args, **kws)
  * 
  */
-  __pyx_tuple__9 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_message, __pyx_n_s_moduleName, __pyx_n_s_contextName, __pyx_n_s_args, __pyx_n_s_kws); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 36, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__9);
-  __Pyx_GIVEREF(__pyx_tuple__9);
-  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__9, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_MSG_INFO, 36, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(0, 36, __pyx_L1_error)
-  __pyx_tuple__11 = PyTuple_Pack(2, ((PyObject*)__pyx_n_s_Unknown), ((PyObject*)__pyx_n_s_Unknown)); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 36, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__11);
-  __Pyx_GIVEREF(__pyx_tuple__11);
+  __pyx_tuple__10 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_message, __pyx_n_s_moduleName, __pyx_n_s_contextName, __pyx_n_s_args, __pyx_n_s_kws); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__10);
+  __Pyx_GIVEREF(__pyx_tuple__10);
+  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__10, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Dataframe_py, __pyx_n_s_MSG_INFO, 22, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __pyx_tuple__12 = PyTuple_Pack(2, ((PyObject*)__pyx_n_s_Unknown), ((PyObject*)__pyx_n_s_Unknown)); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__12);
+  __Pyx_GIVEREF(__pyx_tuple__12);
 
-  /* "otools/core/Tool.py":39
+  /* "otools/core/Dataframe.py":25
  *     self.__context.info(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_WARNING (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
  *     self.__context.warning(message, self.__name, contextName, *args, **kws)
  * 
  */
-  __pyx_tuple__12 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_message, __pyx_n_s_moduleName, __pyx_n_s_contextName, __pyx_n_s_args, __pyx_n_s_kws); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 39, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__12);
-  __Pyx_GIVEREF(__pyx_tuple__12);
-  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_MSG_WARNING, 39, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 39, __pyx_L1_error)
-  __pyx_tuple__14 = PyTuple_Pack(2, ((PyObject*)__pyx_n_s_Unknown), ((PyObject*)__pyx_n_s_Unknown)); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 39, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__14);
-  __Pyx_GIVEREF(__pyx_tuple__14);
+  __pyx_tuple__13 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_message, __pyx_n_s_moduleName, __pyx_n_s_contextName, __pyx_n_s_args, __pyx_n_s_kws); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__13);
+  __Pyx_GIVEREF(__pyx_tuple__13);
+  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Dataframe_py, __pyx_n_s_MSG_WARNING, 25, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_tuple__15 = PyTuple_Pack(2, ((PyObject*)__pyx_n_s_Unknown), ((PyObject*)__pyx_n_s_Unknown)); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__15);
+  __Pyx_GIVEREF(__pyx_tuple__15);
 
-  /* "otools/core/Tool.py":42
+  /* "otools/core/Dataframe.py":28
  *     self.__context.warning(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_ERROR (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
  *     self.__context.error(message, self.__name, contextName, *args, **kws)
  * 
  */
-  __pyx_tuple__15 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_message, __pyx_n_s_moduleName, __pyx_n_s_contextName, __pyx_n_s_args, __pyx_n_s_kws); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 42, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__15);
-  __Pyx_GIVEREF(__pyx_tuple__15);
-  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__15, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_MSG_ERROR, 42, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 42, __pyx_L1_error)
-  __pyx_tuple__17 = PyTuple_Pack(2, ((PyObject*)__pyx_n_s_Unknown), ((PyObject*)__pyx_n_s_Unknown)); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 42, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__17);
-  __Pyx_GIVEREF(__pyx_tuple__17);
+  __pyx_tuple__16 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_message, __pyx_n_s_moduleName, __pyx_n_s_contextName, __pyx_n_s_args, __pyx_n_s_kws); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__16);
+  __Pyx_GIVEREF(__pyx_tuple__16);
+  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__16, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Dataframe_py, __pyx_n_s_MSG_ERROR, 28, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_tuple__18 = PyTuple_Pack(2, ((PyObject*)__pyx_n_s_Unknown), ((PyObject*)__pyx_n_s_Unknown)); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__18);
+  __Pyx_GIVEREF(__pyx_tuple__18);
 
-  /* "otools/core/Tool.py":45
+  /* "otools/core/Dataframe.py":31
  *     self.__context.error(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_FATAL (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
  *     self.__context.fatal(message, self.__name, contextName, *args, **kws)
  * 
  */
-  __pyx_tuple__18 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_message, __pyx_n_s_moduleName, __pyx_n_s_contextName, __pyx_n_s_args, __pyx_n_s_kws); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 45, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__18);
-  __Pyx_GIVEREF(__pyx_tuple__18);
-  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_MSG_FATAL, 45, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 45, __pyx_L1_error)
-  __pyx_tuple__20 = PyTuple_Pack(2, ((PyObject*)__pyx_n_s_Unknown), ((PyObject*)__pyx_n_s_Unknown)); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 45, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__20);
-  __Pyx_GIVEREF(__pyx_tuple__20);
+  __pyx_tuple__19 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_message, __pyx_n_s_moduleName, __pyx_n_s_contextName, __pyx_n_s_args, __pyx_n_s_kws); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__19);
+  __Pyx_GIVEREF(__pyx_tuple__19);
+  __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__19, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Dataframe_py, __pyx_n_s_MSG_FATAL, 31, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_tuple__21 = PyTuple_Pack(2, ((PyObject*)__pyx_n_s_Unknown), ((PyObject*)__pyx_n_s_Unknown)); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__21);
+  __Pyx_GIVEREF(__pyx_tuple__21);
 
-  /* "otools/core/Tool.py":48
+  /* "otools/core/Dataframe.py":34
  *     self.__context.fatal(message, self.__name, contextName, *args, **kws)
  * 
  *   def __str__ (self):             # <<<<<<<<<<<<<<
- *     return "<OTools Tool (name={})>".format(self.name)
+ *     return "<OTools Dataframe (name={})>".format(self.name)
  * 
  */
-  __pyx_tuple__21 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 48, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__21);
-  __Pyx_GIVEREF(__pyx_tuple__21);
-  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_str, 48, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 48, __pyx_L1_error)
+  __pyx_tuple__22 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__22);
+  __Pyx_GIVEREF(__pyx_tuple__22);
+  __pyx_codeobj__23 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Dataframe_py, __pyx_n_s_str, 34, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__23)) __PYX_ERR(0, 34, __pyx_L1_error)
 
-  /* "otools/core/Tool.py":51
- *     return "<OTools Tool (name={})>".format(self.name)
+  /* "otools/core/Dataframe.py":37
+ *     return "<OTools Dataframe (name={})>".format(self.name)
  * 
  *   def __repr__ (self):             # <<<<<<<<<<<<<<
  *     return self.__str__()
  * 
  */
-  __pyx_tuple__23 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 51, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__23);
-  __Pyx_GIVEREF(__pyx_tuple__23);
-  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_repr, 51, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_tuple__24 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__24);
+  __Pyx_GIVEREF(__pyx_tuple__24);
+  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Dataframe_py, __pyx_n_s_repr, 37, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 37, __pyx_L1_error)
 
-  /* "otools/core/Tool.py":54
- *     return self.__str__()
+  /* "otools/core/Dataframe.py":41
+ * 
+ *   @property
+ *   def name (self):             # <<<<<<<<<<<<<<
+ *     return self.__name
+ * 
+ */
+  __pyx_tuple__26 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__26);
+  __Pyx_GIVEREF(__pyx_tuple__26);
+  __pyx_codeobj__27 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Dataframe_py, __pyx_n_s_name, 41, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__27)) __PYX_ERR(0, 41, __pyx_L1_error)
+
+  /* "otools/core/Dataframe.py":44
+ *     return self.__name
  * 
  *   def initialize (self):             # <<<<<<<<<<<<<<
- *     try:
- *       self.__obj.initialize(self.__obj)
+ *     return StatusCode.SUCCESS
+ * 
  */
-  __pyx_tuple__25 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 54, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__25);
-  __Pyx_GIVEREF(__pyx_tuple__25);
-  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_initialize, 54, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_tuple__28 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__28);
+  __Pyx_GIVEREF(__pyx_tuple__28);
+  __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Dataframe_py, __pyx_n_s_initialize, 44, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 44, __pyx_L1_error)
 
-  /* "otools/core/Tool.py":61
- *       return StatusCode.FAILURE
+  /* "otools/core/Dataframe.py":47
+ *     return StatusCode.SUCCESS
  * 
  *   def execute (self):             # <<<<<<<<<<<<<<
- *     if self._active:
- *       try:
+ *     return StatusCode.SUCCESS
+ * 
  */
-  __pyx_tuple__27 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 61, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__27);
-  __Pyx_GIVEREF(__pyx_tuple__27);
-  __pyx_codeobj__28 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_execute, 61, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__28)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_tuple__30 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__30);
+  __Pyx_GIVEREF(__pyx_tuple__30);
+  __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Dataframe_py, __pyx_n_s_execute, 47, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(0, 47, __pyx_L1_error)
 
-  /* "otools/core/Tool.py":69
- *         return StatusCode.FAILURE
+  /* "otools/core/Dataframe.py":50
+ *     return StatusCode.SUCCESS
  * 
  *   def finalize (self):             # <<<<<<<<<<<<<<
- *     try:
- *       self.__obj.finalize(self.__obj)
+ *     del self.__dict
+ *     return StatusCode.SUCCESS
  */
-  __pyx_tuple__29 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 69, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__29);
-  __Pyx_GIVEREF(__pyx_tuple__29);
-  __pyx_codeobj__30 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__29, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_finalize, 69, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__30)) __PYX_ERR(0, 69, __pyx_L1_error)
+  __pyx_tuple__32 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__32);
+  __Pyx_GIVEREF(__pyx_tuple__32);
+  __pyx_codeobj__33 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Dataframe_py, __pyx_n_s_finalize, 50, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__33)) __PYX_ERR(0, 50, __pyx_L1_error)
 
-  /* "otools/core/Tool.py":77
- *       return StatusCode.FAILURE
+  /* "otools/core/Dataframe.py":54
+ *     return StatusCode.SUCCESS
  * 
  *   def setContext (self, ctx):             # <<<<<<<<<<<<<<
  *     self.__context = ctx
- *     self.__obj.terminateContext   = self.__context.finalize
+ * 
  */
-  __pyx_tuple__31 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_ctx); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 77, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__31);
-  __Pyx_GIVEREF(__pyx_tuple__31);
-  __pyx_codeobj__32 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__31, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_setContext, 77, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__32)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_tuple__34 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_ctx); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__34);
+  __Pyx_GIVEREF(__pyx_tuple__34);
+  __pyx_codeobj__35 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Dataframe_py, __pyx_n_s_setContext, 54, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__35)) __PYX_ERR(0, 54, __pyx_L1_error)
 
-  /* "otools/core/Tool.py":83
- *     self.__obj.getDataframe       = self.__context.getDataframe
+  /* "otools/core/Dataframe.py":57
+ *     self.__context = ctx
  * 
  *   def getContext (self):             # <<<<<<<<<<<<<<
  *     return self.__context
  * 
  */
-  __pyx_tuple__33 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(0, 83, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__33);
-  __Pyx_GIVEREF(__pyx_tuple__33);
-  __pyx_codeobj__34 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__33, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_getContext, 83, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__34)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __pyx_tuple__36 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__36);
+  __Pyx_GIVEREF(__pyx_tuple__36);
+  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Dataframe_py, __pyx_n_s_getContext, 57, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(0, 57, __pyx_L1_error)
 
-  /* "otools/core/Tool.py":87
+  /* "otools/core/Dataframe.py":60
+ *     return self.__context
  * 
- *   @property
- *   def name(self):             # <<<<<<<<<<<<<<
- *     return self.__name
+ *   def get (self, key, blockReading=False, blockWriting=True, timeout=-1):             # <<<<<<<<<<<<<<
+ *     if blockReading:
+ *       self.__rlock.acquire(timeout = timeout)
  */
-  __pyx_tuple__35 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(0, 87, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__35);
-  __Pyx_GIVEREF(__pyx_tuple__35);
-  __pyx_codeobj__36 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__35, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_name_2, 87, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__36)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __pyx_tuple__38 = PyTuple_Pack(7, __pyx_n_s_self, __pyx_n_s_key, __pyx_n_s_blockReading, __pyx_n_s_blockWriting, __pyx_n_s_timeout, __pyx_n_s_value, __pyx_n_s_message); if (unlikely(!__pyx_tuple__38)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__38);
+  __Pyx_GIVEREF(__pyx_tuple__38);
+  __pyx_codeobj__39 = (PyObject*)__Pyx_PyCode_New(5, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Dataframe_py, __pyx_n_s_get, 60, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__39)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_tuple__40 = PyTuple_Pack(3, ((PyObject *)Py_False), ((PyObject *)Py_True), ((PyObject *)__pyx_int_neg_1)); if (unlikely(!__pyx_tuple__40)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__40);
+  __Pyx_GIVEREF(__pyx_tuple__40);
+
+  /* "otools/core/Dataframe.py":77
+ *     return value
+ * 
+ *   def set (self, key, value, blockReading=True, blockWriting=True, timeout=-1):             # <<<<<<<<<<<<<<
+ *     if blockReading:
+ *       self.__rlock.acquire(timeout = timeout)
+ */
+  __pyx_tuple__41 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_key, __pyx_n_s_value, __pyx_n_s_blockReading, __pyx_n_s_blockWriting, __pyx_n_s_timeout); if (unlikely(!__pyx_tuple__41)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__41);
+  __Pyx_GIVEREF(__pyx_tuple__41);
+  __pyx_codeobj__42 = (PyObject*)__Pyx_PyCode_New(6, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__41, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Dataframe_py, __pyx_n_s_set, 77, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__42)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_tuple__43 = PyTuple_Pack(3, ((PyObject *)Py_True), ((PyObject *)Py_True), ((PyObject *)__pyx_int_neg_1)); if (unlikely(!__pyx_tuple__43)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__43);
+  __Pyx_GIVEREF(__pyx_tuple__43);
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -4321,6 +4581,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
 
 static CYTHON_SMALL_CODE int __Pyx_InitGlobals(void) {
   if (__Pyx_InitStrings(__pyx_string_tab) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  __pyx_int_neg_1 = PyInt_FromLong(-1); if (unlikely(!__pyx_int_neg_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -4407,11 +4668,11 @@ static int __Pyx_modinit_function_import_code(void) {
 
 
 #if PY_MAJOR_VERSION < 3
-__Pyx_PyMODINIT_FUNC initTool(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC initTool(void)
+__Pyx_PyMODINIT_FUNC initDataframe(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC initDataframe(void)
 #else
-__Pyx_PyMODINIT_FUNC PyInit_Tool(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_Tool(void)
+__Pyx_PyMODINIT_FUNC PyInit_Dataframe(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_Dataframe(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -4478,7 +4739,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_Tool(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec_Dataframe(PyObject *__pyx_pyinit_module)
 #endif
 #endif
 {
@@ -4489,7 +4750,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_Tool(PyObject *__pyx_pyinit_module
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'Tool' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module 'Dataframe' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #elif PY_MAJOR_VERSION >= 3
@@ -4504,7 +4765,7 @@ if (!__Pyx_RefNanny) {
       Py_FatalError("failed to import 'refnanny' module");
 }
 #endif
-  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_Tool(void)", 0);
+  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_Dataframe(void)", 0);
   if (__Pyx_check_binary_version() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #ifdef __Pxy_PyFrame_Initialize_Offsets
   __Pxy_PyFrame_Initialize_Offsets();
@@ -4543,7 +4804,7 @@ if (!__Pyx_RefNanny) {
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("Tool", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("Dataframe", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
@@ -4561,14 +4822,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_otools__core__Tool) {
-    if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__pyx_module_is_main_otools__core__Dataframe) {
+    if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name_2, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "otools.core.Tool")) {
-      if (unlikely(PyDict_SetItemString(modules, "otools.core.Tool", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "otools.core.Dataframe")) {
+      if (unlikely(PyDict_SetItemString(modules, "otools.core.Dataframe", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -4589,25 +4850,25 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "otools/core/Tool.py":1
- * __all__ = ['Tool']             # <<<<<<<<<<<<<<
+  /* "otools/core/Dataframe.py":1
+ * __all__ = ['Dataframe']             # <<<<<<<<<<<<<<
  * 
  * from otools.status.StatusCode import StatusCode
  */
   __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_INCREF(__pyx_n_s_Tool);
-  __Pyx_GIVEREF(__pyx_n_s_Tool);
-  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_Tool);
+  __Pyx_INCREF(__pyx_n_s_Dataframe);
+  __Pyx_GIVEREF(__pyx_n_s_Dataframe);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_Dataframe);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_all, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":3
- * __all__ = ['Tool']
+  /* "otools/core/Dataframe.py":3
+ * __all__ = ['Dataframe']
  * 
  * from otools.status.StatusCode import StatusCode             # <<<<<<<<<<<<<<
- * 
- * class Tool ():
+ * from threading import Lock
+ * from collections import OrderedDict
  */
   __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -4623,227 +4884,297 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "otools/core/Tool.py":5
+  /* "otools/core/Dataframe.py":4
+ * 
  * from otools.status.StatusCode import StatusCode
+ * from threading import Lock             # <<<<<<<<<<<<<<
+ * from collections import OrderedDict
  * 
- * class Tool ():             # <<<<<<<<<<<<<<
- *   """
- *   A Tool is a class that shall encapsulate your own class in order to
  */
-  __pyx_t_2 = __Pyx_Py3MetaclassPrepare((PyObject *) NULL, __pyx_empty_tuple, __pyx_n_s_Tool, __pyx_n_s_Tool, (PyObject *) NULL, __pyx_n_s_otools_core_Tool, __pyx_kp_s_A_Tool_is_a_class_that_shall_en); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-
-  /* "otools/core/Tool.py":14
- *   """
- * 
- *   def __init__ (self, obj):             # <<<<<<<<<<<<<<
- *     try:
- *       self.__name = obj.getName()
- */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_1__init__, 0, __pyx_n_s_Tool___init, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_INCREF(__pyx_n_s_Lock);
+  __Pyx_GIVEREF(__pyx_n_s_Lock);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_Lock);
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_threading, __pyx_t_2, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_init, __pyx_t_1) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_Lock); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Lock, __pyx_t_2) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":30
- *     self._active = True
+  /* "otools/core/Dataframe.py":5
+ * from otools.status.StatusCode import StatusCode
+ * from threading import Lock
+ * from collections import OrderedDict             # <<<<<<<<<<<<<<
+ * 
+ * class Dataframe ():
+ */
+  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(__pyx_n_s_OrderedDict);
+  __Pyx_GIVEREF(__pyx_n_s_OrderedDict);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_OrderedDict);
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_collections, __pyx_t_1, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_OrderedDict); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_OrderedDict, __pyx_t_1) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "otools/core/Dataframe.py":7
+ * from collections import OrderedDict
+ * 
+ * class Dataframe ():             # <<<<<<<<<<<<<<
+ * 
+ *   def __init__ (self, name = "Dataframe"):
+ */
+  __pyx_t_2 = __Pyx_Py3MetaclassPrepare((PyObject *) NULL, __pyx_empty_tuple, __pyx_n_s_Dataframe, __pyx_n_s_Dataframe, (PyObject *) NULL, __pyx_n_s_otools_core_Dataframe, (PyObject *) NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+
+  /* "otools/core/Dataframe.py":9
+ * class Dataframe ():
+ * 
+ *   def __init__ (self, name = "Dataframe"):             # <<<<<<<<<<<<<<
+ *     self.__name = name
+ *     self.__context = None
+ */
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_9Dataframe_9Dataframe_1__init__, 0, __pyx_n_s_Dataframe___init, NULL, __pyx_n_s_otools_core_Dataframe, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_1, __pyx_tuple__3);
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_init, __pyx_t_1) < 0) __PYX_ERR(0, 9, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "otools/core/Dataframe.py":16
+ *     self.__wlock = Lock()
  * 
  *   def MSG_VERBOSE (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
  *     self.__context.verbose(message, self.__name, contextName, *args, **kws)
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_3MSG_VERBOSE, 0, __pyx_n_s_Tool_MSG_VERBOSE, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__4)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_9Dataframe_9Dataframe_3MSG_VERBOSE, 0, __pyx_n_s_Dataframe_MSG_VERBOSE, NULL, __pyx_n_s_otools_core_Dataframe, __pyx_d, ((PyObject *)__pyx_codeobj__5)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_1, __pyx_tuple__5);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_MSG_VERBOSE, __pyx_t_1) < 0) __PYX_ERR(0, 30, __pyx_L1_error)
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_1, __pyx_tuple__6);
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_MSG_VERBOSE, __pyx_t_1) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":33
+  /* "otools/core/Dataframe.py":19
  *     self.__context.verbose(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_DEBUG (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
  *     self.__context.debug(message, self.__name, contextName, *args, **kws)
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_5MSG_DEBUG, 0, __pyx_n_s_Tool_MSG_DEBUG, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__7)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_9Dataframe_9Dataframe_5MSG_DEBUG, 0, __pyx_n_s_Dataframe_MSG_DEBUG, NULL, __pyx_n_s_otools_core_Dataframe, __pyx_d, ((PyObject *)__pyx_codeobj__8)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 19, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_1, __pyx_tuple__8);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_MSG_DEBUG, __pyx_t_1) < 0) __PYX_ERR(0, 33, __pyx_L1_error)
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_1, __pyx_tuple__9);
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_MSG_DEBUG, __pyx_t_1) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":36
+  /* "otools/core/Dataframe.py":22
  *     self.__context.debug(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_INFO (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
  *     self.__context.info(message, self.__name, contextName, *args, **kws)
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_7MSG_INFO, 0, __pyx_n_s_Tool_MSG_INFO, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__10)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_9Dataframe_9Dataframe_7MSG_INFO, 0, __pyx_n_s_Dataframe_MSG_INFO, NULL, __pyx_n_s_otools_core_Dataframe, __pyx_d, ((PyObject *)__pyx_codeobj__11)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_1, __pyx_tuple__11);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_MSG_INFO, __pyx_t_1) < 0) __PYX_ERR(0, 36, __pyx_L1_error)
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_1, __pyx_tuple__12);
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_MSG_INFO, __pyx_t_1) < 0) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":39
+  /* "otools/core/Dataframe.py":25
  *     self.__context.info(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_WARNING (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
  *     self.__context.warning(message, self.__name, contextName, *args, **kws)
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_9MSG_WARNING, 0, __pyx_n_s_Tool_MSG_WARNING, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__13)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_9Dataframe_9Dataframe_9MSG_WARNING, 0, __pyx_n_s_Dataframe_MSG_WARNING, NULL, __pyx_n_s_otools_core_Dataframe, __pyx_d, ((PyObject *)__pyx_codeobj__14)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_1, __pyx_tuple__14);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_MSG_WARNING, __pyx_t_1) < 0) __PYX_ERR(0, 39, __pyx_L1_error)
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_1, __pyx_tuple__15);
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_MSG_WARNING, __pyx_t_1) < 0) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":42
+  /* "otools/core/Dataframe.py":28
  *     self.__context.warning(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_ERROR (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
  *     self.__context.error(message, self.__name, contextName, *args, **kws)
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_11MSG_ERROR, 0, __pyx_n_s_Tool_MSG_ERROR, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__16)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_9Dataframe_9Dataframe_11MSG_ERROR, 0, __pyx_n_s_Dataframe_MSG_ERROR, NULL, __pyx_n_s_otools_core_Dataframe, __pyx_d, ((PyObject *)__pyx_codeobj__17)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_1, __pyx_tuple__17);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_MSG_ERROR, __pyx_t_1) < 0) __PYX_ERR(0, 42, __pyx_L1_error)
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_1, __pyx_tuple__18);
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_MSG_ERROR, __pyx_t_1) < 0) __PYX_ERR(0, 28, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":45
+  /* "otools/core/Dataframe.py":31
  *     self.__context.error(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_FATAL (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
  *     self.__context.fatal(message, self.__name, contextName, *args, **kws)
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_13MSG_FATAL, 0, __pyx_n_s_Tool_MSG_FATAL, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__19)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_9Dataframe_9Dataframe_13MSG_FATAL, 0, __pyx_n_s_Dataframe_MSG_FATAL, NULL, __pyx_n_s_otools_core_Dataframe, __pyx_d, ((PyObject *)__pyx_codeobj__20)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_1, __pyx_tuple__20);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_MSG_FATAL, __pyx_t_1) < 0) __PYX_ERR(0, 45, __pyx_L1_error)
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_1, __pyx_tuple__21);
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_MSG_FATAL, __pyx_t_1) < 0) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":48
+  /* "otools/core/Dataframe.py":34
  *     self.__context.fatal(message, self.__name, contextName, *args, **kws)
  * 
  *   def __str__ (self):             # <<<<<<<<<<<<<<
- *     return "<OTools Tool (name={})>".format(self.name)
+ *     return "<OTools Dataframe (name={})>".format(self.name)
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_15__str__, 0, __pyx_n_s_Tool___str, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__22)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 48, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_9Dataframe_9Dataframe_15__str__, 0, __pyx_n_s_Dataframe___str, NULL, __pyx_n_s_otools_core_Dataframe, __pyx_d, ((PyObject *)__pyx_codeobj__23)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_str, __pyx_t_1) < 0) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_str, __pyx_t_1) < 0) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":51
- *     return "<OTools Tool (name={})>".format(self.name)
+  /* "otools/core/Dataframe.py":37
+ *     return "<OTools Dataframe (name={})>".format(self.name)
  * 
  *   def __repr__ (self):             # <<<<<<<<<<<<<<
  *     return self.__str__()
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_17__repr__, 0, __pyx_n_s_Tool___repr, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__24)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_9Dataframe_9Dataframe_17__repr__, 0, __pyx_n_s_Dataframe___repr, NULL, __pyx_n_s_otools_core_Dataframe, __pyx_d, ((PyObject *)__pyx_codeobj__25)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_repr, __pyx_t_1) < 0) __PYX_ERR(0, 51, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_repr, __pyx_t_1) < 0) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":54
+  /* "otools/core/Dataframe.py":41
+ * 
+ *   @property
+ *   def name (self):             # <<<<<<<<<<<<<<
+ *     return self.__name
+ * 
+ */
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_9Dataframe_9Dataframe_19name, 0, __pyx_n_s_Dataframe_name, NULL, __pyx_n_s_otools_core_Dataframe, __pyx_d, ((PyObject *)__pyx_codeobj__27)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+
+  /* "otools/core/Dataframe.py":40
  *     return self.__str__()
  * 
- *   def initialize (self):             # <<<<<<<<<<<<<<
- *     try:
- *       self.__obj.initialize(self.__obj)
+ *   @property             # <<<<<<<<<<<<<<
+ *   def name (self):
+ *     return self.__name
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_19initialize, 0, __pyx_n_s_Tool_initialize, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_initialize, __pyx_t_1) < 0) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_name, __pyx_t_3) < 0) __PYX_ERR(0, 41, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "otools/core/Tool.py":61
- *       return StatusCode.FAILURE
+  /* "otools/core/Dataframe.py":44
+ *     return self.__name
+ * 
+ *   def initialize (self):             # <<<<<<<<<<<<<<
+ *     return StatusCode.SUCCESS
+ * 
+ */
+  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_9Dataframe_9Dataframe_21initialize, 0, __pyx_n_s_Dataframe_initialize, NULL, __pyx_n_s_otools_core_Dataframe, __pyx_d, ((PyObject *)__pyx_codeobj__29)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_initialize, __pyx_t_3) < 0) __PYX_ERR(0, 44, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "otools/core/Dataframe.py":47
+ *     return StatusCode.SUCCESS
  * 
  *   def execute (self):             # <<<<<<<<<<<<<<
- *     if self._active:
- *       try:
+ *     return StatusCode.SUCCESS
+ * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_21execute, 0, __pyx_n_s_Tool_execute, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__28)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_execute, __pyx_t_1) < 0) __PYX_ERR(0, 61, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_9Dataframe_9Dataframe_23execute, 0, __pyx_n_s_Dataframe_execute, NULL, __pyx_n_s_otools_core_Dataframe, __pyx_d, ((PyObject *)__pyx_codeobj__31)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_execute, __pyx_t_3) < 0) __PYX_ERR(0, 47, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "otools/core/Tool.py":69
- *         return StatusCode.FAILURE
+  /* "otools/core/Dataframe.py":50
+ *     return StatusCode.SUCCESS
  * 
  *   def finalize (self):             # <<<<<<<<<<<<<<
- *     try:
- *       self.__obj.finalize(self.__obj)
+ *     del self.__dict
+ *     return StatusCode.SUCCESS
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_23finalize, 0, __pyx_n_s_Tool_finalize, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__30)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_finalize, __pyx_t_1) < 0) __PYX_ERR(0, 69, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_9Dataframe_9Dataframe_25finalize, 0, __pyx_n_s_Dataframe_finalize, NULL, __pyx_n_s_otools_core_Dataframe, __pyx_d, ((PyObject *)__pyx_codeobj__33)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_finalize, __pyx_t_3) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "otools/core/Tool.py":77
- *       return StatusCode.FAILURE
+  /* "otools/core/Dataframe.py":54
+ *     return StatusCode.SUCCESS
  * 
  *   def setContext (self, ctx):             # <<<<<<<<<<<<<<
  *     self.__context = ctx
- *     self.__obj.terminateContext   = self.__context.finalize
+ * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_25setContext, 0, __pyx_n_s_Tool_setContext, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__32)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_setContext, __pyx_t_1) < 0) __PYX_ERR(0, 77, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_9Dataframe_9Dataframe_27setContext, 0, __pyx_n_s_Dataframe_setContext, NULL, __pyx_n_s_otools_core_Dataframe, __pyx_d, ((PyObject *)__pyx_codeobj__35)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_setContext, __pyx_t_3) < 0) __PYX_ERR(0, 54, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "otools/core/Tool.py":83
- *     self.__obj.getDataframe       = self.__context.getDataframe
+  /* "otools/core/Dataframe.py":57
+ *     self.__context = ctx
  * 
  *   def getContext (self):             # <<<<<<<<<<<<<<
  *     return self.__context
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_27getContext, 0, __pyx_n_s_Tool_getContext, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__34)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_getContext, __pyx_t_1) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "otools/core/Tool.py":87
- * 
- *   @property
- *   def name(self):             # <<<<<<<<<<<<<<
- *     return self.__name
- */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_29name, 0, __pyx_n_s_Tool_name, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__36)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-
-  /* "otools/core/Tool.py":86
- *     return self.__context
- * 
- *   @property             # <<<<<<<<<<<<<<
- *   def name(self):
- *     return self.__name
- */
-  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 86, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_9Dataframe_9Dataframe_29getContext, 0, __pyx_n_s_Dataframe_getContext, NULL, __pyx_n_s_otools_core_Dataframe, __pyx_d, ((PyObject *)__pyx_codeobj__37)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 57, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_name_2, __pyx_t_3) < 0) __PYX_ERR(0, 87, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_getContext, __pyx_t_3) < 0) __PYX_ERR(0, 57, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "otools/core/Tool.py":5
- * from otools.status.StatusCode import StatusCode
+  /* "otools/core/Dataframe.py":60
+ *     return self.__context
  * 
- * class Tool ():             # <<<<<<<<<<<<<<
- *   """
- *   A Tool is a class that shall encapsulate your own class in order to
+ *   def get (self, key, blockReading=False, blockWriting=True, timeout=-1):             # <<<<<<<<<<<<<<
+ *     if blockReading:
+ *       self.__rlock.acquire(timeout = timeout)
  */
-  __pyx_t_3 = __Pyx_Py3ClassCreate(((PyObject*)&__Pyx_DefaultClassType), __pyx_n_s_Tool, __pyx_empty_tuple, __pyx_t_2, NULL, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_9Dataframe_9Dataframe_31get, 0, __pyx_n_s_Dataframe_get, NULL, __pyx_n_s_otools_core_Dataframe, __pyx_d, ((PyObject *)__pyx_codeobj__39)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Tool, __pyx_t_3) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_tuple__40);
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_get, __pyx_t_3) < 0) __PYX_ERR(0, 60, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "otools/core/Dataframe.py":77
+ *     return value
+ * 
+ *   def set (self, key, value, blockReading=True, blockWriting=True, timeout=-1):             # <<<<<<<<<<<<<<
+ *     if blockReading:
+ *       self.__rlock.acquire(timeout = timeout)
+ */
+  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_9Dataframe_9Dataframe_33set, 0, __pyx_n_s_Dataframe_set, NULL, __pyx_n_s_otools_core_Dataframe, __pyx_d, ((PyObject *)__pyx_codeobj__42)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_tuple__43);
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_set, __pyx_t_3) < 0) __PYX_ERR(0, 77, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "otools/core/Dataframe.py":7
+ * from collections import OrderedDict
+ * 
+ * class Dataframe ():             # <<<<<<<<<<<<<<
+ * 
+ *   def __init__ (self, name = "Dataframe"):
+ */
+  __pyx_t_3 = __Pyx_Py3ClassCreate(((PyObject*)&__Pyx_DefaultClassType), __pyx_n_s_Dataframe, __pyx_empty_tuple, __pyx_t_2, NULL, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Dataframe, __pyx_t_3) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "otools/core/Tool.py":1
- * __all__ = ['Tool']             # <<<<<<<<<<<<<<
+  /* "otools/core/Dataframe.py":1
+ * __all__ = ['Dataframe']             # <<<<<<<<<<<<<<
  * 
  * from otools.status.StatusCode import StatusCode
  */
@@ -4861,11 +5192,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_3);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init otools.core.Tool", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init otools.core.Dataframe", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init otools.core.Tool");
+    PyErr_SetString(PyExc_ImportError, "init otools.core.Dataframe");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -4922,32 +5253,6 @@ static PyObject *__Pyx_GetBuiltinName(PyObject *name) {
 #endif
     }
     return result;
-}
-
-/* RaiseArgTupleInvalid */
-static void __Pyx_RaiseArgtupleInvalid(
-    const char* func_name,
-    int exact,
-    Py_ssize_t num_min,
-    Py_ssize_t num_max,
-    Py_ssize_t num_found)
-{
-    Py_ssize_t num_expected;
-    const char *more_or_less;
-    if (num_found < num_min) {
-        num_expected = num_min;
-        more_or_less = "at least";
-    } else {
-        num_expected = num_max;
-        more_or_less = "at most";
-    }
-    if (exact) {
-        more_or_less = "exactly";
-    }
-    PyErr_Format(PyExc_TypeError,
-                 "%.200s() takes %.8s %" CYTHON_FORMAT_SSIZE_T "d positional argument%.1s (%" CYTHON_FORMAT_SSIZE_T "d given)",
-                 func_name, more_or_less, num_expected,
-                 (num_expected == 1) ? "" : "s", num_found);
 }
 
 /* RaiseDoubleKeywords */
@@ -5064,6 +5369,107 @@ invalid_keyword:
     #endif
 bad:
     return -1;
+}
+
+/* RaiseArgTupleInvalid */
+static void __Pyx_RaiseArgtupleInvalid(
+    const char* func_name,
+    int exact,
+    Py_ssize_t num_min,
+    Py_ssize_t num_max,
+    Py_ssize_t num_found)
+{
+    Py_ssize_t num_expected;
+    const char *more_or_less;
+    if (num_found < num_min) {
+        num_expected = num_min;
+        more_or_less = "at least";
+    } else {
+        num_expected = num_max;
+        more_or_less = "at most";
+    }
+    if (exact) {
+        more_or_less = "exactly";
+    }
+    PyErr_Format(PyExc_TypeError,
+                 "%.200s() takes %.8s %" CYTHON_FORMAT_SSIZE_T "d positional argument%.1s (%" CYTHON_FORMAT_SSIZE_T "d given)",
+                 func_name, more_or_less, num_expected,
+                 (num_expected == 1) ? "" : "s", num_found);
+}
+
+/* PyObjectSetAttrStr */
+#if CYTHON_USE_TYPE_SLOTS
+static CYTHON_INLINE int __Pyx_PyObject_SetAttrStr(PyObject* obj, PyObject* attr_name, PyObject* value) {
+    PyTypeObject* tp = Py_TYPE(obj);
+    if (likely(tp->tp_setattro))
+        return tp->tp_setattro(obj, attr_name, value);
+#if PY_MAJOR_VERSION < 3
+    if (likely(tp->tp_setattr))
+        return tp->tp_setattr(obj, PyString_AS_STRING(attr_name), value);
+#endif
+    return PyObject_SetAttr(obj, attr_name, value);
+}
+#endif
+
+/* PyDictVersioning */
+#if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj) {
+    PyObject *dict = Py_TYPE(obj)->tp_dict;
+    return likely(dict) ? __PYX_GET_DICT_VERSION(dict) : 0;
+}
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj) {
+    PyObject **dictptr = NULL;
+    Py_ssize_t offset = Py_TYPE(obj)->tp_dictoffset;
+    if (offset) {
+#if CYTHON_COMPILING_IN_CPYTHON
+        dictptr = (likely(offset > 0)) ? (PyObject **) ((char *)obj + offset) : _PyObject_GetDictPtr(obj);
+#else
+        dictptr = _PyObject_GetDictPtr(obj);
+#endif
+    }
+    return (dictptr && *dictptr) ? __PYX_GET_DICT_VERSION(*dictptr) : 0;
+}
+static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version) {
+    PyObject *dict = Py_TYPE(obj)->tp_dict;
+    if (unlikely(!dict) || unlikely(tp_dict_version != __PYX_GET_DICT_VERSION(dict)))
+        return 0;
+    return obj_dict_version == __Pyx_get_object_dict_version(obj);
+}
+#endif
+
+/* GetModuleGlobalName */
+#if CYTHON_USE_DICT_VERSIONS
+static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_version, PyObject **dict_cached_value)
+#else
+static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name)
+#endif
+{
+    PyObject *result;
+#if !CYTHON_AVOID_BORROWED_REFS
+#if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030500A1
+    result = _PyDict_GetItem_KnownHash(__pyx_d, name, ((PyASCIIObject *) name)->hash);
+    __PYX_UPDATE_DICT_CACHE(__pyx_d, result, *dict_cached_value, *dict_version)
+    if (likely(result)) {
+        return __Pyx_NewRef(result);
+    } else if (unlikely(PyErr_Occurred())) {
+        return NULL;
+    }
+#else
+    result = PyDict_GetItem(__pyx_d, name);
+    __PYX_UPDATE_DICT_CACHE(__pyx_d, result, *dict_cached_value, *dict_version)
+    if (likely(result)) {
+        return __Pyx_NewRef(result);
+    }
+#endif
+#else
+    result = PyObject_GetItem(__pyx_d, name);
+    __PYX_UPDATE_DICT_CACHE(__pyx_d, result, *dict_cached_value, *dict_version)
+    if (likely(result)) {
+        return __Pyx_NewRef(result);
+    }
+    PyErr_Clear();
+#endif
+    return __Pyx_GetBuiltinName(name);
 }
 
 /* PyFunctionFastCall */
@@ -5310,150 +5716,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObjec
 }
 #endif
 
-/* PyObjectSetAttrStr */
-#if CYTHON_USE_TYPE_SLOTS
-static CYTHON_INLINE int __Pyx_PyObject_SetAttrStr(PyObject* obj, PyObject* attr_name, PyObject* value) {
-    PyTypeObject* tp = Py_TYPE(obj);
-    if (likely(tp->tp_setattro))
-        return tp->tp_setattro(obj, attr_name, value);
-#if PY_MAJOR_VERSION < 3
-    if (likely(tp->tp_setattr))
-        return tp->tp_setattr(obj, PyString_AS_STRING(attr_name), value);
-#endif
-    return PyObject_SetAttr(obj, attr_name, value);
-}
-#endif
-
-/* GetTopmostException */
-#if CYTHON_USE_EXC_INFO_STACK
-static _PyErr_StackItem *
-__Pyx_PyErr_GetTopmostException(PyThreadState *tstate)
-{
-    _PyErr_StackItem *exc_info = tstate->exc_info;
-    while ((exc_info->exc_type == NULL || exc_info->exc_type == Py_None) &&
-           exc_info->previous_item != NULL)
-    {
-        exc_info = exc_info->previous_item;
-    }
-    return exc_info;
-}
-#endif
-
-/* SaveResetException */
-#if CYTHON_FAST_THREAD_STATE
-static CYTHON_INLINE void __Pyx__ExceptionSave(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb) {
-    #if CYTHON_USE_EXC_INFO_STACK
-    _PyErr_StackItem *exc_info = __Pyx_PyErr_GetTopmostException(tstate);
-    *type = exc_info->exc_type;
-    *value = exc_info->exc_value;
-    *tb = exc_info->exc_traceback;
-    #else
-    *type = tstate->exc_type;
-    *value = tstate->exc_value;
-    *tb = tstate->exc_traceback;
-    #endif
-    Py_XINCREF(*type);
-    Py_XINCREF(*value);
-    Py_XINCREF(*tb);
-}
-static CYTHON_INLINE void __Pyx__ExceptionReset(PyThreadState *tstate, PyObject *type, PyObject *value, PyObject *tb) {
-    PyObject *tmp_type, *tmp_value, *tmp_tb;
-    #if CYTHON_USE_EXC_INFO_STACK
-    _PyErr_StackItem *exc_info = tstate->exc_info;
-    tmp_type = exc_info->exc_type;
-    tmp_value = exc_info->exc_value;
-    tmp_tb = exc_info->exc_traceback;
-    exc_info->exc_type = type;
-    exc_info->exc_value = value;
-    exc_info->exc_traceback = tb;
-    #else
-    tmp_type = tstate->exc_type;
-    tmp_value = tstate->exc_value;
-    tmp_tb = tstate->exc_traceback;
-    tstate->exc_type = type;
-    tstate->exc_value = value;
-    tstate->exc_traceback = tb;
-    #endif
-    Py_XDECREF(tmp_type);
-    Py_XDECREF(tmp_value);
-    Py_XDECREF(tmp_tb);
-}
-#endif
-
-/* GetException */
-#if CYTHON_FAST_THREAD_STATE
-static int __Pyx__GetException(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb)
-#else
-static int __Pyx_GetException(PyObject **type, PyObject **value, PyObject **tb)
-#endif
-{
-    PyObject *local_type, *local_value, *local_tb;
-#if CYTHON_FAST_THREAD_STATE
-    PyObject *tmp_type, *tmp_value, *tmp_tb;
-    local_type = tstate->curexc_type;
-    local_value = tstate->curexc_value;
-    local_tb = tstate->curexc_traceback;
-    tstate->curexc_type = 0;
-    tstate->curexc_value = 0;
-    tstate->curexc_traceback = 0;
-#else
-    PyErr_Fetch(&local_type, &local_value, &local_tb);
-#endif
-    PyErr_NormalizeException(&local_type, &local_value, &local_tb);
-#if CYTHON_FAST_THREAD_STATE
-    if (unlikely(tstate->curexc_type))
-#else
-    if (unlikely(PyErr_Occurred()))
-#endif
-        goto bad;
-    #if PY_MAJOR_VERSION >= 3
-    if (local_tb) {
-        if (unlikely(PyException_SetTraceback(local_value, local_tb) < 0))
-            goto bad;
-    }
-    #endif
-    Py_XINCREF(local_tb);
-    Py_XINCREF(local_type);
-    Py_XINCREF(local_value);
-    *type = local_type;
-    *value = local_value;
-    *tb = local_tb;
-#if CYTHON_FAST_THREAD_STATE
-    #if CYTHON_USE_EXC_INFO_STACK
-    {
-        _PyErr_StackItem *exc_info = tstate->exc_info;
-        tmp_type = exc_info->exc_type;
-        tmp_value = exc_info->exc_value;
-        tmp_tb = exc_info->exc_traceback;
-        exc_info->exc_type = local_type;
-        exc_info->exc_value = local_value;
-        exc_info->exc_traceback = local_tb;
-    }
-    #else
-    tmp_type = tstate->exc_type;
-    tmp_value = tstate->exc_value;
-    tmp_tb = tstate->exc_traceback;
-    tstate->exc_type = local_type;
-    tstate->exc_value = local_value;
-    tstate->exc_traceback = local_tb;
-    #endif
-    Py_XDECREF(tmp_type);
-    Py_XDECREF(tmp_value);
-    Py_XDECREF(tmp_tb);
-#else
-    PyErr_SetExcInfo(local_type, local_value, local_tb);
-#endif
-    return 0;
-bad:
-    *type = 0;
-    *value = 0;
-    *tb = 0;
-    Py_XDECREF(local_type);
-    Py_XDECREF(local_value);
-    Py_XDECREF(local_tb);
-    return -1;
-}
-
 /* PyObjectCall2Args */
 static CYTHON_UNUSED PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2) {
     PyObject *args, *result = NULL;
@@ -5483,66 +5745,121 @@ done:
     return result;
 }
 
-/* PyDictVersioning */
-#if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj) {
-    PyObject *dict = Py_TYPE(obj)->tp_dict;
-    return likely(dict) ? __PYX_GET_DICT_VERSION(dict) : 0;
+/* GetItemInt */
+static PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j) {
+    PyObject *r;
+    if (!j) return NULL;
+    r = PyObject_GetItem(o, j);
+    Py_DECREF(j);
+    return r;
 }
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj) {
-    PyObject **dictptr = NULL;
-    Py_ssize_t offset = Py_TYPE(obj)->tp_dictoffset;
-    if (offset) {
-#if CYTHON_COMPILING_IN_CPYTHON
-        dictptr = (likely(offset > 0)) ? (PyObject **) ((char *)obj + offset) : _PyObject_GetDictPtr(obj);
-#else
-        dictptr = _PyObject_GetDictPtr(obj);
-#endif
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_List_Fast(PyObject *o, Py_ssize_t i,
+                                                              CYTHON_NCP_UNUSED int wraparound,
+                                                              CYTHON_NCP_UNUSED int boundscheck) {
+#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+    Py_ssize_t wrapped_i = i;
+    if (wraparound & unlikely(i < 0)) {
+        wrapped_i += PyList_GET_SIZE(o);
     }
-    return (dictptr && *dictptr) ? __PYX_GET_DICT_VERSION(*dictptr) : 0;
-}
-static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version) {
-    PyObject *dict = Py_TYPE(obj)->tp_dict;
-    if (unlikely(!dict) || unlikely(tp_dict_version != __PYX_GET_DICT_VERSION(dict)))
-        return 0;
-    return obj_dict_version == __Pyx_get_object_dict_version(obj);
-}
-#endif
-
-/* GetModuleGlobalName */
-#if CYTHON_USE_DICT_VERSIONS
-static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_version, PyObject **dict_cached_value)
+    if ((!boundscheck) || likely(__Pyx_is_valid_index(wrapped_i, PyList_GET_SIZE(o)))) {
+        PyObject *r = PyList_GET_ITEM(o, wrapped_i);
+        Py_INCREF(r);
+        return r;
+    }
+    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
 #else
-static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name)
+    return PySequence_GetItem(o, i);
 #endif
-{
-    PyObject *result;
-#if !CYTHON_AVOID_BORROWED_REFS
-#if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030500A1
-    result = _PyDict_GetItem_KnownHash(__pyx_d, name, ((PyASCIIObject *) name)->hash);
-    __PYX_UPDATE_DICT_CACHE(__pyx_d, result, *dict_cached_value, *dict_version)
-    if (likely(result)) {
-        return __Pyx_NewRef(result);
-    } else if (unlikely(PyErr_Occurred())) {
+}
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Tuple_Fast(PyObject *o, Py_ssize_t i,
+                                                              CYTHON_NCP_UNUSED int wraparound,
+                                                              CYTHON_NCP_UNUSED int boundscheck) {
+#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+    Py_ssize_t wrapped_i = i;
+    if (wraparound & unlikely(i < 0)) {
+        wrapped_i += PyTuple_GET_SIZE(o);
+    }
+    if ((!boundscheck) || likely(__Pyx_is_valid_index(wrapped_i, PyTuple_GET_SIZE(o)))) {
+        PyObject *r = PyTuple_GET_ITEM(o, wrapped_i);
+        Py_INCREF(r);
+        return r;
+    }
+    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
+#else
+    return PySequence_GetItem(o, i);
+#endif
+}
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i, int is_list,
+                                                     CYTHON_NCP_UNUSED int wraparound,
+                                                     CYTHON_NCP_UNUSED int boundscheck) {
+#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS && CYTHON_USE_TYPE_SLOTS
+    if (is_list || PyList_CheckExact(o)) {
+        Py_ssize_t n = ((!wraparound) | likely(i >= 0)) ? i : i + PyList_GET_SIZE(o);
+        if ((!boundscheck) || (likely(__Pyx_is_valid_index(n, PyList_GET_SIZE(o))))) {
+            PyObject *r = PyList_GET_ITEM(o, n);
+            Py_INCREF(r);
+            return r;
+        }
+    }
+    else if (PyTuple_CheckExact(o)) {
+        Py_ssize_t n = ((!wraparound) | likely(i >= 0)) ? i : i + PyTuple_GET_SIZE(o);
+        if ((!boundscheck) || likely(__Pyx_is_valid_index(n, PyTuple_GET_SIZE(o)))) {
+            PyObject *r = PyTuple_GET_ITEM(o, n);
+            Py_INCREF(r);
+            return r;
+        }
+    } else {
+        PySequenceMethods *m = Py_TYPE(o)->tp_as_sequence;
+        if (likely(m && m->sq_item)) {
+            if (wraparound && unlikely(i < 0) && likely(m->sq_length)) {
+                Py_ssize_t l = m->sq_length(o);
+                if (likely(l >= 0)) {
+                    i += l;
+                } else {
+                    if (!PyErr_ExceptionMatches(PyExc_OverflowError))
+                        return NULL;
+                    PyErr_Clear();
+                }
+            }
+            return m->sq_item(o, i);
+        }
+    }
+#else
+    if (is_list || PySequence_Check(o)) {
+        return PySequence_GetItem(o, i);
+    }
+#endif
+    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
+}
+
+/* ObjectGetItem */
+#if CYTHON_USE_TYPE_SLOTS
+static PyObject *__Pyx_PyObject_GetIndex(PyObject *obj, PyObject* index) {
+    PyObject *runerr;
+    Py_ssize_t key_value;
+    PySequenceMethods *m = Py_TYPE(obj)->tp_as_sequence;
+    if (unlikely(!(m && m->sq_item))) {
+        PyErr_Format(PyExc_TypeError, "'%.200s' object is not subscriptable", Py_TYPE(obj)->tp_name);
         return NULL;
     }
-#else
-    result = PyDict_GetItem(__pyx_d, name);
-    __PYX_UPDATE_DICT_CACHE(__pyx_d, result, *dict_cached_value, *dict_version)
-    if (likely(result)) {
-        return __Pyx_NewRef(result);
+    key_value = __Pyx_PyIndex_AsSsize_t(index);
+    if (likely(key_value != -1 || !(runerr = PyErr_Occurred()))) {
+        return __Pyx_GetItemInt_Fast(obj, key_value, 0, 1, 1);
     }
-#endif
-#else
-    result = PyObject_GetItem(__pyx_d, name);
-    __PYX_UPDATE_DICT_CACHE(__pyx_d, result, *dict_cached_value, *dict_version)
-    if (likely(result)) {
-        return __Pyx_NewRef(result);
+    if (PyErr_GivenExceptionMatches(runerr, PyExc_OverflowError)) {
+        PyErr_Clear();
+        PyErr_Format(PyExc_IndexError, "cannot fit '%.200s' into an index-sized integer", Py_TYPE(index)->tp_name);
     }
-    PyErr_Clear();
-#endif
-    return __Pyx_GetBuiltinName(name);
+    return NULL;
 }
+static PyObject *__Pyx_PyObject_GetItem(PyObject *obj, PyObject* key) {
+    PyMappingMethods *m = Py_TYPE(obj)->tp_as_mapping;
+    if (likely(m && m->mp_subscript)) {
+        return m->mp_subscript(obj, key);
+    }
+    return __Pyx_PyObject_GetIndex(obj, key);
+}
+#endif
 
 /* Import */
 static PyObject *__Pyx_Import(PyObject *name, PyObject *from_list, int level) {

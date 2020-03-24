@@ -1421,7 +1421,7 @@ static const char __pyx_k_Main_class_for_logging[] = "\n  Main class for logging
 static const char __pyx_k_otools_logging_Logger_py[] = "otools/logging/Logger.py";
 static const char __pyx_k_otools_logging_LoggingLevel[] = "otools.logging.LoggingLevel";
 static const char __pyx_k_otools_exceptions_FatalError[] = "otools.exceptions.FatalError";
-static const char __pyx_k_asctime_s_OTools_context_s_modu[] = "%(asctime)s | OTools >> %(context)s >> %(module)-33.33s %(levelname)7.7s %(message)s";
+static const char __pyx_k_asctime_s_OTools_context_10_10s[] = "%(asctime)s | OTools >> %(context)-10.10s >> %(module)-33.33s %(levelname)7.7s %(message)s";
 static const char __pyx_k_Logger__getFormatter_locals_Form[] = "Logger._getFormatter.<locals>.Formatter";
 static const char __pyx_k_Logger__getFormatter_locals_Form_2[] = "Logger._getFormatter.<locals>.Formatter.__init__";
 static const char __pyx_k_Logger__getFormatter_locals_Form_3[] = "Logger._getFormatter.<locals>.Formatter.format";
@@ -1481,7 +1481,7 @@ static PyObject *__pyx_n_s_all;
 static PyObject *__pyx_n_s_any;
 static PyObject *__pyx_n_s_arg;
 static PyObject *__pyx_n_s_args;
-static PyObject *__pyx_kp_s_asctime_s_OTools_context_s_modu;
+static PyObject *__pyx_kp_s_asctime_s_OTools_context_10_10s;
 static PyObject *__pyx_n_s_black;
 static PyObject *__pyx_n_s_blue;
 static PyObject *__pyx_n_s_bold_black;
@@ -4428,7 +4428,7 @@ static PyObject *__pyx_pf_6otools_7logging_6Logger_6Logger_13_getFormatter_9Form
  *           record.color = self.colors[levelname]
  *         return logging.Formatter.format(self, record)             # <<<<<<<<<<<<<<
  * 
- *     formatter = Formatter("%(asctime)s | OTools >> %(context)s >> %(module)-33.33s %(levelname)7.7s %(message)s")
+ *     formatter = Formatter("%(asctime)s | OTools >> %(context)-10.10s >> %(module)-33.33s %(levelname)7.7s %(message)s")
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_logging); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 171, __pyx_L1_error)
@@ -4863,7 +4863,7 @@ static PyObject *__pyx_pf_6otools_7logging_6Logger_6Logger__getFormatter(CYTHON_
   /* "otools/logging/Logger.py":173
  *         return logging.Formatter.format(self, record)
  * 
- *     formatter = Formatter("%(asctime)s | OTools >> %(context)s >> %(module)-33.33s %(levelname)7.7s %(message)s")             # <<<<<<<<<<<<<<
+ *     formatter = Formatter("%(asctime)s | OTools >> %(context)-10.10s >> %(module)-33.33s %(levelname)7.7s %(message)s")             # <<<<<<<<<<<<<<
  *     return formatter
  * 
  */
@@ -4874,7 +4874,7 @@ static PyObject *__pyx_pf_6otools_7logging_6Logger_6Logger__getFormatter(CYTHON_
 
   /* "otools/logging/Logger.py":174
  * 
- *     formatter = Formatter("%(asctime)s | OTools >> %(context)s >> %(module)-33.33s %(levelname)7.7s %(message)s")
+ *     formatter = Formatter("%(asctime)s | OTools >> %(context)-10.10s >> %(module)-33.33s %(levelname)7.7s %(message)s")
  *     return formatter             # <<<<<<<<<<<<<<
  * 
  *   def __init__(self, level = LoggingLevel.INFO):
@@ -5893,7 +5893,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_any, __pyx_k_any, sizeof(__pyx_k_any), 0, 0, 1, 1},
   {&__pyx_n_s_arg, __pyx_k_arg, sizeof(__pyx_k_arg), 0, 0, 1, 1},
   {&__pyx_n_s_args, __pyx_k_args, sizeof(__pyx_k_args), 0, 0, 1, 1},
-  {&__pyx_kp_s_asctime_s_OTools_context_s_modu, __pyx_k_asctime_s_OTools_context_s_modu, sizeof(__pyx_k_asctime_s_OTools_context_s_modu), 0, 0, 1, 0},
+  {&__pyx_kp_s_asctime_s_OTools_context_10_10s, __pyx_k_asctime_s_OTools_context_10_10s, sizeof(__pyx_k_asctime_s_OTools_context_10_10s), 0, 0, 1, 0},
   {&__pyx_n_s_black, __pyx_k_black, sizeof(__pyx_k_black), 0, 0, 1, 1},
   {&__pyx_n_s_blue, __pyx_k_blue, sizeof(__pyx_k_blue), 0, 0, 1, 1},
   {&__pyx_n_s_bold_black, __pyx_k_bold_black, sizeof(__pyx_k_bold_black), 0, 0, 1, 1},
@@ -6011,11 +6011,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   /* "otools/logging/Logger.py":173
  *         return logging.Formatter.format(self, record)
  * 
- *     formatter = Formatter("%(asctime)s | OTools >> %(context)s >> %(module)-33.33s %(levelname)7.7s %(message)s")             # <<<<<<<<<<<<<<
+ *     formatter = Formatter("%(asctime)s | OTools >> %(context)-10.10s >> %(module)-33.33s %(levelname)7.7s %(message)s")             # <<<<<<<<<<<<<<
  *     return formatter
  * 
  */
-  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_s_asctime_s_OTools_context_s_modu); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 173, __pyx_L1_error)
+  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_s_asctime_s_OTools_context_10_10s); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 173, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
 

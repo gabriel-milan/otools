@@ -3,6 +3,7 @@ __all__ = ['Context']
 from otools.logging.Logger import Logger
 from otools.logging.LoggingLevel import LoggingLevel
 from otools.core.Tool import Tool
+from otools.core.Dataframe import Dataframe
 from otools.status.StatusCode import StatusCode
 
 class Context ():
@@ -15,6 +16,7 @@ class Context ():
 
     self._name = name
     self._logger = Logger(level).getModuleLogger()
+    self.info("Context with name {} created successfully!".format(self.name))
     self._tools = {}
     self._services = {}
     self._dataframes = {}
@@ -22,7 +24,7 @@ class Context ():
     self.running = False
   
   def __str__ (self):
-    return "<Context (name={})>".format(self._name)
+    return "<OTools Context (name={})>".format(self._name)
 
   def __repr__ (self):
     return self.__str__()
@@ -32,9 +34,35 @@ class Context ():
       if obj.name in self._tools:
         message = "Tool with name {} already attached, skipping...".format(obj.name)
         self.warning(message, self.__str__())
+        return self
+      self.info (" * Adding Tool with name {}...".format(obj.name))
       obj.setContext(self)
       self._tools[obj.name] = obj
+    elif issubclass(type(obj), Dataframe):
+      if obj.name in self._dataframes:
+        message = "Dataframe with name {} already attached, skipping...".format(obj.name)
+        self.warning(message, self.__str__())
+        return self
+      self.info (" * Adding Dataframe with name {}...".format(obj.name))
+      obj.setContext(self)
+      self._dataframes[obj.name] = obj
     return self
+
+  def getTool (self, toolName):
+    if toolName in self._tools:
+      return self._tools[toolName]
+    else:
+      message = "Tool with name {} is not attached into this context!".format(toolName)
+      self.error(message, self.__str__())
+      return None
+
+  def getDataframe (self, dataframeName):
+    if dataframeName in self._dataframes:
+      return self._dataframes[dataframeName]
+    else:
+      message = "Dataframe with name {} is not attached into this context!".format(dataframeName)
+      self.error(message, self.__str__())
+      return None
 
   @property
   def name(self):

@@ -76,7 +76,9 @@ class Tool ():
 
   def setContext (self, ctx):
     self.__context = ctx
-    self.__obj.terminateContext = self.__context.finalize
+    self.__obj.terminateContext   = self.__context.finalize
+    self.__obj.getTool            = self.__context.getTool
+    self.__obj.getDataframe       = self.__context.getDataframe
   
   def getContext (self):
     return self.__context

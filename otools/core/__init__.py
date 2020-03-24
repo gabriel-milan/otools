@@ -4,6 +4,10 @@ from . import Tool
 __all__.extend(Tool.__all__)
 from .Tool import *
 
+from . import Dataframe
+__all__.extend(Dataframe.__all__)
+from .Dataframe import *
+
 from . import Context
 __all__.extend(Context.__all__)
 from .Context import *
