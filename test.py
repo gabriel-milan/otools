@@ -1,4 +1,4 @@
-from otools import Logger, LoggingLevel, FatalError, OTools, Tool, Context, Dataframe
+from otools import Logger, LoggingLevel, FatalError, OTools, Service, Context, Dataframe
 from time import sleep
 
 a = Logger(LoggingLevel.VERBOSE).getModuleLogger()
@@ -12,15 +12,15 @@ try:
 except FatalError:
   pass
 
-class MyTool ():
+class MyService ():
 
   def __init__ (self):
     self._i = 0
 
-  def initialize (self):
-    self.MSG_INFO ("Initialize done")
+  def setup (self):
+    self.MSG_INFO ("setup done")
   
-  def execute (self):
+  def main (self):
     self._i += 1
 
     # Messaging
@@ -49,18 +49,27 @@ class MyTool ():
     if (self._i == 3):
       self.terminateContext()
 
+  def loop (self):
+    sleep(0.5)
+    df = self.getDataframe("LoopDF")
+    if df.get('counter') == None:
+      df.set('counter', 1)
+    else:
+      df.set('counter', df.get('counter') + 1)
+    self.MSG_INFO ("Shared counter value is {}, this increments every 0.5 seconds for both contexts".format(df.get('counter')))
+
   def finalize (self):
     self.MSG_INFO ("Finalize done")
 
-class MyTool2 ():
+class MyService2 ():
 
   def __init__ (self):
     self._i = 0
 
-  def initialize (self):
-    self.MSG_INFO ("Initialize done")
+  def setup (self):
+    self.MSG_INFO ("setup done")
   
-  def execute (self):
+  def main (self):
     sleep(1)
     self._i += 1
 
@@ -90,27 +99,39 @@ class MyTool2 ():
     if (self._i == 5):
       self.terminateContext()
 
+  def loop (self):
+    sleep(0.5)
+    df = self.getDataframe("LoopDF")
+    if df.get('counter') == None:
+      df.set('counter', 1)
+    else:
+      df.set('counter', df.get('counter') + 1)
+    self.MSG_INFO ("Shared counter value is {}, this increments every 0.5 seconds for both contexts".format(df.get('counter')))
+
   def finalize (self):
     self.MSG_INFO ("Finalize done")
 
 sharedDataframe = Dataframe(name = "MyDF")
 splitDataframe1 = Dataframe(name = "Split")
 splitDataframe2 = Dataframe(name = "Split")
+loopDataframe = Dataframe(name = "LoopDF")
 
 ctx = Context(level = LoggingLevel.VERBOSE)
-ctx += Tool(MyTool)
+ctx += Service(MyService)
 ctx += sharedDataframe
 ctx += splitDataframe1
+ctx += loopDataframe
 
 ctx2 = Context(name = "Context2")
-ctx2 += Tool(MyTool2)
+ctx2 += Service(MyService2)
 ctx2 += sharedDataframe
 ctx2 += splitDataframe2
+ctx2 += loopDataframe
 
 main = OTools()
 main += ctx
 main += ctx2
 
-main.initialize()
-main.execute()
+main.setup()
+main.run()
 main.finalize()

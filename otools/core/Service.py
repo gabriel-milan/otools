@@ -1,14 +1,15 @@
-__all__ = ['Tool']
+__all__ = ['Service']
 
 from otools.status.StatusCode import StatusCode
 
-class Tool ():
+class Service ():
   """
-  A Tool is a class that shall encapsulate your own class in order to 
-  attach it into a context. It has three core methods: "initialize", 
-  "execute" and "finalize". The "initialize" method will run once.
-  The "execute" method will run once every execution loop on the main
-  thread. The "finalize" method will run when the program shuts down.
+  A Service is a class that shall encapsulate your own class in order to 
+  attach it into a context. It has four core methods: "setup", 
+  "main", "loop" and "finalize". The "setup" method will run once.
+  The "main" method will run once every execution loop on the main
+  thread. The "loop" method will loop forever, unless the service is
+  diabled. The "finalize" method will run when the program shuts down.
   """
 
   def __init__ (self, obj):
@@ -46,30 +47,39 @@ class Tool ():
     self.__context.fatal(message, self.__name, contextName, *args, **kws)
 
   def __str__ (self):
-    return "<OTools Tool (name={})>".format(self.name)
+    return "<OTools Service (name={})>".format(self.name)
 
   def __repr__ (self):
     return self.__str__()
   
-  def initialize (self):
+  def setup (self):
     try:
-      self.__obj.initialize(self.__obj)
+      self.__obj.setup(self.__obj)
       return StatusCode.SUCCESS
     except:
       return StatusCode.FAILURE
 
-  def execute (self):
-    if self._active:
+  def main (self):
+    if self.active:
       try:
-        self.__obj.execute(self.__obj)
+        self.__obj.main(self.__obj)
         return StatusCode.SUCCESS
       except:
         return StatusCode.FAILURE
 
+  def loop (self):
+    while self.active:
+      try:
+        self.__obj.loop(self.__obj)
+      except AttributeError:
+        break
+      except:
+        pass
+
   def finalize (self):
     try:
       self.__obj.finalize(self.__obj)
-      self._active = False
+      self.deactivate()
       return StatusCode.SUCCESS
     except:
       return StatusCode.FAILURE
@@ -77,12 +87,19 @@ class Tool ():
   def setContext (self, ctx):
     self.__context = ctx
     self.__obj.terminateContext   = self.__context.finalize
-    self.__obj.getTool            = self.__context.getTool
+    self.__obj.getService         = self.__context.getService
     self.__obj.getDataframe       = self.__context.getDataframe
   
   def getContext (self):
     return self.__context
 
+  def deactivate (self):
+    self._active = False
+
   @property
   def name(self):
     return self.__name
+
+  @property
+  def active(self):
+    return self._active

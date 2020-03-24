@@ -41,10 +41,10 @@ class Dataframe ():
   def name (self):
     return self.__name
 
-  def initialize (self):
+  def setup (self):
     return StatusCode.SUCCESS
 
-  def execute (self):
+  def main (self):
     return StatusCode.SUCCESS
 
   def finalize (self):
@@ -81,7 +81,7 @@ class Dataframe ():
       self.__wlock.acquire(timeout = timeout)
 
     self.__dict[key] = value
-    
+
     if blockReading:
       self.__rlock.release()
     if blockWriting:

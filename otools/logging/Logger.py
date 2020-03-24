@@ -170,7 +170,7 @@ class Logger ():
           record.color = self.colors[levelname]
         return logging.Formatter.format(self, record)
   
-    formatter = Formatter("%(asctime)s | OTools >> %(context)-10.10s >> %(module)-33.33s %(levelname)7.7s %(message)s")
+    formatter = Formatter("%(asctime)s | OTools >> %(context)10.10s >> %(module)-33.33s %(levelname)7.7s %(message)s")
     return formatter
 
   def __init__(self, level = LoggingLevel.INFO):

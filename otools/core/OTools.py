@@ -54,22 +54,24 @@ class OTools ():
   def fatal (self, message, *args, **kws):
     return self._logger.fatal(message, *args, **kws)
 
-  def initialize (self):
+  def setup (self):
     for ctx in self.__contexts:
-      self.__contexts[ctx].initialize()
+      self.__contexts[ctx].setup()
 
-  def execute (self):
+  def run (self):
+    self.__loop()
     while len(list(self.__contexts)) > 0:
       for ctx in list(self.__contexts):
         if self.__contexts[ctx].active:
           if not self.__contexts[ctx].running:    
-            new_thread = threading.Thread(target=self.__contexts[ctx].execute, args=())
+            new_thread = threading.Thread(target=self.__contexts[ctx].main, args=())
             new_thread.name = ctx
             new_thread.daemon = True
             new_thread.start()
             self.__threads.append(new_thread)
             self.__contexts[ctx].running = True
         else:
+          self.__contexts[ctx].finalize()
           del self.__contexts[ctx]
       for t in self.__threads:
         if not t.isAlive():
@@ -77,6 +79,11 @@ class OTools ():
             self.__contexts[t.name].running = False
           t.name = ""
       self.__threads = [t for t in self.__threads if t.name != ""]
+
+  def __loop (self):
+    for ctx in list(self.__contexts):
+      if self.__contexts[ctx].active:
+        self.__contexts[ctx].loop()
 
   def finalize (self):
     for ctx in self.__contexts:

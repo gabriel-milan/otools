@@ -3,12 +3,12 @@
 /* BEGIN: Cython Metadata
 {
     "distutils": {
-        "name": "otools.core.Tool",
+        "name": "otools.core.Service",
         "sources": [
-            "otools/core/Tool.py"
+            "otools/core/Service.py"
         ]
     },
-    "module_name": "otools.core.Tool"
+    "module_name": "otools.core.Service"
 }
 END: Cython Metadata */
 
@@ -602,8 +602,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__otools__core__Tool
-#define __PYX_HAVE_API__otools__core__Tool
+#define __PYX_HAVE__otools__core__Service
+#define __PYX_HAVE_API__otools__core__Service
 /* Early includes */
 #ifdef _OPENMP
 #include <omp.h>
@@ -813,7 +813,7 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "otools/core/Tool.py",
+  "otools/core/Service.py",
 };
 
 /*--- Type declarations ---*/
@@ -1050,6 +1050,39 @@ static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_ve
 static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name);
 #endif
 
+/* PyErrExceptionMatches.proto */
+#if CYTHON_FAST_THREAD_STATE
+#define __Pyx_PyErr_ExceptionMatches(err) __Pyx_PyErr_ExceptionMatchesInState(__pyx_tstate, err)
+static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tstate, PyObject* err);
+#else
+#define __Pyx_PyErr_ExceptionMatches(err)  PyErr_ExceptionMatches(err)
+#endif
+
+/* PyErrFetchRestore.proto */
+#if CYTHON_FAST_THREAD_STATE
+#define __Pyx_PyErr_Clear() __Pyx_ErrRestore(NULL, NULL, NULL)
+#define __Pyx_ErrRestoreWithState(type, value, tb)  __Pyx_ErrRestoreInState(PyThreadState_GET(), type, value, tb)
+#define __Pyx_ErrFetchWithState(type, value, tb)    __Pyx_ErrFetchInState(PyThreadState_GET(), type, value, tb)
+#define __Pyx_ErrRestore(type, value, tb)  __Pyx_ErrRestoreInState(__pyx_tstate, type, value, tb)
+#define __Pyx_ErrFetch(type, value, tb)    __Pyx_ErrFetchInState(__pyx_tstate, type, value, tb)
+static CYTHON_INLINE void __Pyx_ErrRestoreInState(PyThreadState *tstate, PyObject *type, PyObject *value, PyObject *tb);
+static CYTHON_INLINE void __Pyx_ErrFetchInState(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb);
+#if CYTHON_COMPILING_IN_CPYTHON
+#define __Pyx_PyErr_SetNone(exc) (Py_INCREF(exc), __Pyx_ErrRestore((exc), NULL, NULL))
+#else
+#define __Pyx_PyErr_SetNone(exc) PyErr_SetNone(exc)
+#endif
+#else
+#define __Pyx_PyErr_Clear() PyErr_Clear()
+#define __Pyx_PyErr_SetNone(exc) PyErr_SetNone(exc)
+#define __Pyx_ErrRestoreWithState(type, value, tb)  PyErr_Restore(type, value, tb)
+#define __Pyx_ErrFetchWithState(type, value, tb)  PyErr_Fetch(type, value, tb)
+#define __Pyx_ErrRestoreInState(tstate, type, value, tb)  PyErr_Restore(type, value, tb)
+#define __Pyx_ErrFetchInState(tstate, type, value, tb)  PyErr_Fetch(type, value, tb)
+#define __Pyx_ErrRestore(type, value, tb)  PyErr_Restore(type, value, tb)
+#define __Pyx_ErrFetch(type, value, tb)  PyErr_Fetch(type, value, tb)
+#endif
+
 /* Import.proto */
 static PyObject *__Pyx_Import(PyObject *name, PyObject *from_list, int level);
 
@@ -1133,31 +1166,6 @@ static PyObject *__Pyx_Py3MetaclassPrepare(PyObject *metaclass, PyObject *bases,
 static PyObject *__Pyx_Py3ClassCreate(PyObject *metaclass, PyObject *name, PyObject *bases, PyObject *dict,
                                       PyObject *mkw, int calculate_metaclass, int allow_py2_metaclass);
 
-/* PyErrFetchRestore.proto */
-#if CYTHON_FAST_THREAD_STATE
-#define __Pyx_PyErr_Clear() __Pyx_ErrRestore(NULL, NULL, NULL)
-#define __Pyx_ErrRestoreWithState(type, value, tb)  __Pyx_ErrRestoreInState(PyThreadState_GET(), type, value, tb)
-#define __Pyx_ErrFetchWithState(type, value, tb)    __Pyx_ErrFetchInState(PyThreadState_GET(), type, value, tb)
-#define __Pyx_ErrRestore(type, value, tb)  __Pyx_ErrRestoreInState(__pyx_tstate, type, value, tb)
-#define __Pyx_ErrFetch(type, value, tb)    __Pyx_ErrFetchInState(__pyx_tstate, type, value, tb)
-static CYTHON_INLINE void __Pyx_ErrRestoreInState(PyThreadState *tstate, PyObject *type, PyObject *value, PyObject *tb);
-static CYTHON_INLINE void __Pyx_ErrFetchInState(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb);
-#if CYTHON_COMPILING_IN_CPYTHON
-#define __Pyx_PyErr_SetNone(exc) (Py_INCREF(exc), __Pyx_ErrRestore((exc), NULL, NULL))
-#else
-#define __Pyx_PyErr_SetNone(exc) PyErr_SetNone(exc)
-#endif
-#else
-#define __Pyx_PyErr_Clear() PyErr_Clear()
-#define __Pyx_PyErr_SetNone(exc) PyErr_SetNone(exc)
-#define __Pyx_ErrRestoreWithState(type, value, tb)  PyErr_Restore(type, value, tb)
-#define __Pyx_ErrFetchWithState(type, value, tb)  PyErr_Fetch(type, value, tb)
-#define __Pyx_ErrRestoreInState(tstate, type, value, tb)  PyErr_Restore(type, value, tb)
-#define __Pyx_ErrFetchInState(tstate, type, value, tb)  PyErr_Fetch(type, value, tb)
-#define __Pyx_ErrRestore(type, value, tb)  PyErr_Restore(type, value, tb)
-#define __Pyx_ErrFetch(type, value, tb)  PyErr_Fetch(type, value, tb)
-#endif
-
 /* CLineInTraceback.proto */
 #ifdef CYTHON_CLINE_IN_TRACEBACK
 #define __Pyx_CLineForTraceback(tstate, c_line)  (((CYTHON_CLINE_IN_TRACEBACK)) ? c_line : 0)
@@ -1213,24 +1221,25 @@ static int __Pyx_check_binary_version(void);
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 
-/* Module declarations from 'otools.core.Tool' */
-#define __Pyx_MODULE_NAME "otools.core.Tool"
-extern int __pyx_module_is_main_otools__core__Tool;
-int __pyx_module_is_main_otools__core__Tool = 0;
+/* Module declarations from 'otools.core.Service' */
+#define __Pyx_MODULE_NAME "otools.core.Service"
+extern int __pyx_module_is_main_otools__core__Service;
+int __pyx_module_is_main_otools__core__Service = 0;
 
-/* Implementation of 'otools.core.Tool' */
+/* Implementation of 'otools.core.Service' */
 static PyObject *__pyx_builtin_property;
+static PyObject *__pyx_builtin_AttributeError;
 static const char __pyx_k_all[] = "__all__";
 static const char __pyx_k_ctx[] = "ctx";
 static const char __pyx_k_doc[] = "__doc__";
 static const char __pyx_k_kws[] = "kws";
 static const char __pyx_k_obj[] = "obj";
 static const char __pyx_k_str[] = "__str__";
-static const char __pyx_k_Tool[] = "Tool";
 static const char __pyx_k_args[] = "args";
 static const char __pyx_k_info[] = "info";
 static const char __pyx_k_init[] = "__init__";
-static const char __pyx_k_main[] = "__main__";
+static const char __pyx_k_loop[] = "loop";
+static const char __pyx_k_main[] = "main";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_repr[] = "__repr__";
 static const char __pyx_k_self[] = "self";
@@ -1238,64 +1247,72 @@ static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_debug[] = "debug";
 static const char __pyx_k_error[] = "error";
 static const char __pyx_k_fatal[] = "fatal";
+static const char __pyx_k_setup[] = "setup";
 static const char __pyx_k_active[] = "_active";
 static const char __pyx_k_format[] = "format";
 static const char __pyx_k_import[] = "__import__";
+static const char __pyx_k_main_2[] = "__main__";
 static const char __pyx_k_module[] = "__module__";
 static const char __pyx_k_name_2[] = "name";
 static const char __pyx_k_FAILURE[] = "FAILURE";
 static const char __pyx_k_SUCCESS[] = "SUCCESS";
+static const char __pyx_k_Service[] = "Service";
 static const char __pyx_k_Unknown[] = "Unknown";
-static const char __pyx_k_execute[] = "execute";
 static const char __pyx_k_getName[] = "getName";
-static const char __pyx_k_getTool[] = "getTool";
 static const char __pyx_k_message[] = "message";
 static const char __pyx_k_prepare[] = "__prepare__";
 static const char __pyx_k_verbose[] = "verbose";
 static const char __pyx_k_warning[] = "warning";
 static const char __pyx_k_MSG_INFO[] = "MSG_INFO";
+static const char __pyx_k_active_2[] = "active";
 static const char __pyx_k_finalize[] = "finalize";
 static const char __pyx_k_property[] = "property";
 static const char __pyx_k_qualname[] = "__qualname__";
 static const char __pyx_k_MSG_DEBUG[] = "MSG_DEBUG";
 static const char __pyx_k_MSG_ERROR[] = "MSG_ERROR";
 static const char __pyx_k_MSG_FATAL[] = "MSG_FATAL";
-static const char __pyx_k_Tool__obj[] = "_Tool__obj";
-static const char __pyx_k_Tool_name[] = "Tool.name";
 static const char __pyx_k_metaclass[] = "__metaclass__";
 static const char __pyx_k_StatusCode[] = "StatusCode";
-static const char __pyx_k_Tool___str[] = "Tool.__str__";
-static const char __pyx_k_Tool__name[] = "_Tool__name";
+static const char __pyx_k_deactivate[] = "deactivate";
 static const char __pyx_k_getContext[] = "getContext";
-static const char __pyx_k_initialize[] = "initialize";
+static const char __pyx_k_getService[] = "getService";
 static const char __pyx_k_moduleName[] = "moduleName";
 static const char __pyx_k_setContext[] = "setContext";
 static const char __pyx_k_MSG_VERBOSE[] = "MSG_VERBOSE";
 static const char __pyx_k_MSG_WARNING[] = "MSG_WARNING";
-static const char __pyx_k_Tool___init[] = "Tool.__init__";
-static const char __pyx_k_Tool___repr[] = "Tool.__repr__";
 static const char __pyx_k_contextName[] = "contextName";
-static const char __pyx_k_Tool_execute[] = "Tool.execute";
+static const char __pyx_k_Service__obj[] = "_Service__obj";
+static const char __pyx_k_Service_loop[] = "Service.loop";
+static const char __pyx_k_Service_main[] = "Service.main";
+static const char __pyx_k_Service_name[] = "Service.name";
 static const char __pyx_k_getDataframe[] = "getDataframe";
-static const char __pyx_k_Tool_MSG_INFO[] = "Tool.MSG_INFO";
-static const char __pyx_k_Tool__context[] = "_Tool__context";
-static const char __pyx_k_Tool_finalize[] = "Tool.finalize";
-static const char __pyx_k_Tool_MSG_DEBUG[] = "Tool.MSG_DEBUG";
-static const char __pyx_k_Tool_MSG_ERROR[] = "Tool.MSG_ERROR";
-static const char __pyx_k_Tool_MSG_FATAL[] = "Tool.MSG_FATAL";
-static const char __pyx_k_Tool_getContext[] = "Tool.getContext";
-static const char __pyx_k_Tool_initialize[] = "Tool.initialize";
-static const char __pyx_k_Tool_setContext[] = "Tool.setContext";
-static const char __pyx_k_OTools_Tool_name[] = "<OTools Tool (name={})>";
-static const char __pyx_k_Tool_MSG_VERBOSE[] = "Tool.MSG_VERBOSE";
-static const char __pyx_k_Tool_MSG_WARNING[] = "Tool.MSG_WARNING";
-static const char __pyx_k_otools_core_Tool[] = "otools.core.Tool";
+static const char __pyx_k_Service___str[] = "Service.__str__";
+static const char __pyx_k_Service__name[] = "_Service__name";
+static const char __pyx_k_Service_setup[] = "Service.setup";
+static const char __pyx_k_AttributeError[] = "AttributeError";
+static const char __pyx_k_Service___init[] = "Service.__init__";
+static const char __pyx_k_Service___repr[] = "Service.__repr__";
+static const char __pyx_k_Service_active[] = "Service.active";
+static const char __pyx_k_Service_MSG_INFO[] = "Service.MSG_INFO";
+static const char __pyx_k_Service__context[] = "_Service__context";
+static const char __pyx_k_Service_finalize[] = "Service.finalize";
 static const char __pyx_k_terminateContext[] = "terminateContext";
+static const char __pyx_k_Service_MSG_DEBUG[] = "Service.MSG_DEBUG";
+static const char __pyx_k_Service_MSG_ERROR[] = "Service.MSG_ERROR";
+static const char __pyx_k_Service_MSG_FATAL[] = "Service.MSG_FATAL";
+static const char __pyx_k_Service_deactivate[] = "Service.deactivate";
+static const char __pyx_k_Service_getContext[] = "Service.getContext";
+static const char __pyx_k_Service_setContext[] = "Service.setContext";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
-static const char __pyx_k_otools_core_Tool_py[] = "otools/core/Tool.py";
+static const char __pyx_k_OTools_Service_name[] = "<OTools Service (name={})>";
+static const char __pyx_k_Service_MSG_VERBOSE[] = "Service.MSG_VERBOSE";
+static const char __pyx_k_Service_MSG_WARNING[] = "Service.MSG_WARNING";
+static const char __pyx_k_otools_core_Service[] = "otools.core.Service";
+static const char __pyx_k_otools_core_Service_py[] = "otools/core/Service.py";
 static const char __pyx_k_otools_status_StatusCode[] = "otools.status.StatusCode";
-static const char __pyx_k_A_Tool_is_a_class_that_shall_en[] = "\n  A Tool is a class that shall encapsulate your own class in order to \n  attach it into a context. It has three core methods: \"initialize\", \n  \"execute\" and \"finalize\". The \"initialize\" method will run once.\n  The \"execute\" method will run once every execution loop on the main\n  thread. The \"finalize\" method will run when the program shuts down.\n  ";
-static PyObject *__pyx_kp_s_A_Tool_is_a_class_that_shall_en;
+static const char __pyx_k_A_Service_is_a_class_that_shall[] = "\n  A Service is a class that shall encapsulate your own class in order to \n  attach it into a context. It has four core methods: \"setup\", \n  \"main\", \"loop\" and \"finalize\". The \"setup\" method will run once.\n  The \"main\" method will run once every execution loop on the main\n  thread. The \"loop\" method will loop forever, unless the service is\n  diabled. The \"finalize\" method will run when the program shuts down.\n  ";
+static PyObject *__pyx_kp_s_A_Service_is_a_class_that_shall;
+static PyObject *__pyx_n_s_AttributeError;
 static PyObject *__pyx_n_s_FAILURE;
 static PyObject *__pyx_n_s_MSG_DEBUG;
 static PyObject *__pyx_n_s_MSG_ERROR;
@@ -1303,52 +1320,57 @@ static PyObject *__pyx_n_s_MSG_FATAL;
 static PyObject *__pyx_n_s_MSG_INFO;
 static PyObject *__pyx_n_s_MSG_VERBOSE;
 static PyObject *__pyx_n_s_MSG_WARNING;
-static PyObject *__pyx_kp_s_OTools_Tool_name;
+static PyObject *__pyx_kp_s_OTools_Service_name;
 static PyObject *__pyx_n_s_SUCCESS;
+static PyObject *__pyx_n_s_Service;
+static PyObject *__pyx_n_s_Service_MSG_DEBUG;
+static PyObject *__pyx_n_s_Service_MSG_ERROR;
+static PyObject *__pyx_n_s_Service_MSG_FATAL;
+static PyObject *__pyx_n_s_Service_MSG_INFO;
+static PyObject *__pyx_n_s_Service_MSG_VERBOSE;
+static PyObject *__pyx_n_s_Service_MSG_WARNING;
+static PyObject *__pyx_n_s_Service___init;
+static PyObject *__pyx_n_s_Service___repr;
+static PyObject *__pyx_n_s_Service___str;
+static PyObject *__pyx_n_s_Service__context;
+static PyObject *__pyx_n_s_Service__name;
+static PyObject *__pyx_n_s_Service__obj;
+static PyObject *__pyx_n_s_Service_active;
+static PyObject *__pyx_n_s_Service_deactivate;
+static PyObject *__pyx_n_s_Service_finalize;
+static PyObject *__pyx_n_s_Service_getContext;
+static PyObject *__pyx_n_s_Service_loop;
+static PyObject *__pyx_n_s_Service_main;
+static PyObject *__pyx_n_s_Service_name;
+static PyObject *__pyx_n_s_Service_setContext;
+static PyObject *__pyx_n_s_Service_setup;
 static PyObject *__pyx_n_s_StatusCode;
-static PyObject *__pyx_n_s_Tool;
-static PyObject *__pyx_n_s_Tool_MSG_DEBUG;
-static PyObject *__pyx_n_s_Tool_MSG_ERROR;
-static PyObject *__pyx_n_s_Tool_MSG_FATAL;
-static PyObject *__pyx_n_s_Tool_MSG_INFO;
-static PyObject *__pyx_n_s_Tool_MSG_VERBOSE;
-static PyObject *__pyx_n_s_Tool_MSG_WARNING;
-static PyObject *__pyx_n_s_Tool___init;
-static PyObject *__pyx_n_s_Tool___repr;
-static PyObject *__pyx_n_s_Tool___str;
-static PyObject *__pyx_n_s_Tool__context;
-static PyObject *__pyx_n_s_Tool__name;
-static PyObject *__pyx_n_s_Tool__obj;
-static PyObject *__pyx_n_s_Tool_execute;
-static PyObject *__pyx_n_s_Tool_finalize;
-static PyObject *__pyx_n_s_Tool_getContext;
-static PyObject *__pyx_n_s_Tool_initialize;
-static PyObject *__pyx_n_s_Tool_name;
-static PyObject *__pyx_n_s_Tool_setContext;
 static PyObject *__pyx_n_s_Unknown;
 static PyObject *__pyx_n_s_active;
+static PyObject *__pyx_n_s_active_2;
 static PyObject *__pyx_n_s_all;
 static PyObject *__pyx_n_s_args;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_contextName;
 static PyObject *__pyx_n_s_ctx;
+static PyObject *__pyx_n_s_deactivate;
 static PyObject *__pyx_n_s_debug;
 static PyObject *__pyx_n_s_doc;
 static PyObject *__pyx_n_s_error;
-static PyObject *__pyx_n_s_execute;
 static PyObject *__pyx_n_s_fatal;
 static PyObject *__pyx_n_s_finalize;
 static PyObject *__pyx_n_s_format;
 static PyObject *__pyx_n_s_getContext;
 static PyObject *__pyx_n_s_getDataframe;
 static PyObject *__pyx_n_s_getName;
-static PyObject *__pyx_n_s_getTool;
+static PyObject *__pyx_n_s_getService;
 static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_info;
 static PyObject *__pyx_n_s_init;
-static PyObject *__pyx_n_s_initialize;
 static PyObject *__pyx_n_s_kws;
+static PyObject *__pyx_n_s_loop;
 static PyObject *__pyx_n_s_main;
+static PyObject *__pyx_n_s_main_2;
 static PyObject *__pyx_n_s_message;
 static PyObject *__pyx_n_s_metaclass;
 static PyObject *__pyx_n_s_module;
@@ -1356,8 +1378,8 @@ static PyObject *__pyx_n_s_moduleName;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_n_s_name_2;
 static PyObject *__pyx_n_s_obj;
-static PyObject *__pyx_n_s_otools_core_Tool;
-static PyObject *__pyx_kp_s_otools_core_Tool_py;
+static PyObject *__pyx_n_s_otools_core_Service;
+static PyObject *__pyx_kp_s_otools_core_Service_py;
 static PyObject *__pyx_n_s_otools_status_StatusCode;
 static PyObject *__pyx_n_s_prepare;
 static PyObject *__pyx_n_s_property;
@@ -1365,26 +1387,30 @@ static PyObject *__pyx_n_s_qualname;
 static PyObject *__pyx_n_s_repr;
 static PyObject *__pyx_n_s_self;
 static PyObject *__pyx_n_s_setContext;
+static PyObject *__pyx_n_s_setup;
 static PyObject *__pyx_n_s_str;
 static PyObject *__pyx_n_s_terminateContext;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_verbose;
 static PyObject *__pyx_n_s_warning;
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_obj); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_2MSG_VERBOSE(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_4MSG_DEBUG(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_6MSG_INFO(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_8MSG_WARNING(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_10MSG_ERROR(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_12MSG_FATAL(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_14__str__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_16__repr__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_18initialize(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_20execute(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_22finalize(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_24setContext(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_ctx); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_26getContext(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_28name(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_obj); /* proto */
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_2MSG_VERBOSE(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws); /* proto */
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_4MSG_DEBUG(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws); /* proto */
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_6MSG_INFO(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws); /* proto */
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_8MSG_WARNING(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws); /* proto */
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_10MSG_ERROR(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws); /* proto */
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_12MSG_FATAL(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws); /* proto */
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_14__str__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_16__repr__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_18setup(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_20main(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_22loop(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_24finalize(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_26setContext(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_ctx); /* proto */
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_28getContext(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_30deactivate(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_32name(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_34active(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
 static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__3;
 static PyObject *__pyx_tuple__5;
@@ -1406,6 +1432,9 @@ static PyObject *__pyx_tuple__29;
 static PyObject *__pyx_tuple__31;
 static PyObject *__pyx_tuple__33;
 static PyObject *__pyx_tuple__35;
+static PyObject *__pyx_tuple__37;
+static PyObject *__pyx_tuple__39;
+static PyObject *__pyx_tuple__41;
 static PyObject *__pyx_codeobj__2;
 static PyObject *__pyx_codeobj__4;
 static PyObject *__pyx_codeobj__7;
@@ -1421,9 +1450,12 @@ static PyObject *__pyx_codeobj__30;
 static PyObject *__pyx_codeobj__32;
 static PyObject *__pyx_codeobj__34;
 static PyObject *__pyx_codeobj__36;
+static PyObject *__pyx_codeobj__38;
+static PyObject *__pyx_codeobj__40;
+static PyObject *__pyx_codeobj__42;
 /* Late includes */
 
-/* "otools/core/Tool.py":14
+/* "otools/core/Service.py":15
  *   """
  * 
  *   def __init__ (self, obj):             # <<<<<<<<<<<<<<
@@ -1432,9 +1464,9 @@ static PyObject *__pyx_codeobj__36;
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_1__init__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_1__init__ = {"__init__", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_4Tool_4Tool_1__init__, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_1__init__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_1__init__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_7Service_7Service_1__init__ = {"__init__", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_7Service_7Service_1__init__, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_1__init__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_obj = 0;
   PyObject *__pyx_r = 0;
@@ -1463,11 +1495,11 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_1__init__(PyObject *__pyx_se
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_obj)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, 1); __PYX_ERR(0, 14, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, 1); __PYX_ERR(0, 15, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 14, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 15, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -1480,20 +1512,20 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_1__init__(PyObject *__pyx_se
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 14, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 15, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("otools.core.Tool.Tool.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Service.Service.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool___init__(__pyx_self, __pyx_v_self, __pyx_v_obj);
+  __pyx_r = __pyx_pf_6otools_4core_7Service_7Service___init__(__pyx_self, __pyx_v_self, __pyx_v_obj);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_obj) {
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_obj) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1505,7 +1537,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool___init__(CYTHON_UNUSED PyObj
   PyObject *__pyx_t_7 = NULL;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "otools/core/Tool.py":15
+  /* "otools/core/Service.py":16
  * 
  *   def __init__ (self, obj):
  *     try:             # <<<<<<<<<<<<<<
@@ -1521,14 +1553,14 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool___init__(CYTHON_UNUSED PyObj
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "otools/core/Tool.py":16
+      /* "otools/core/Service.py":17
  *   def __init__ (self, obj):
  *     try:
  *       self.__name = obj.getName()             # <<<<<<<<<<<<<<
  *     except:
  *       self.__name = obj.__name__
  */
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_obj, __pyx_n_s_getName); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 16, __pyx_L3_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_obj, __pyx_n_s_getName); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 17, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
       __pyx_t_6 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -1542,13 +1574,13 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool___init__(CYTHON_UNUSED PyObj
       }
       __pyx_t_4 = (__pyx_t_6) ? __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6) : __Pyx_PyObject_CallNoArg(__pyx_t_5);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 16, __pyx_L3_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 17, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Tool__name, __pyx_t_4) < 0) __PYX_ERR(0, 16, __pyx_L3_error)
+      if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Service__name, __pyx_t_4) < 0) __PYX_ERR(0, 17, __pyx_L3_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "otools/core/Tool.py":15
+      /* "otools/core/Service.py":16
  * 
  *   def __init__ (self, obj):
  *     try:             # <<<<<<<<<<<<<<
@@ -1565,7 +1597,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool___init__(CYTHON_UNUSED PyObj
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "otools/core/Tool.py":17
+    /* "otools/core/Service.py":18
  *     try:
  *       self.__name = obj.getName()
  *     except:             # <<<<<<<<<<<<<<
@@ -1573,22 +1605,22 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool___init__(CYTHON_UNUSED PyObj
  *     self.__context = None
  */
     /*except:*/ {
-      __Pyx_AddTraceback("otools.core.Tool.Tool.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_5, &__pyx_t_6) < 0) __PYX_ERR(0, 17, __pyx_L5_except_error)
+      __Pyx_AddTraceback("otools.core.Service.Service.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_5, &__pyx_t_6) < 0) __PYX_ERR(0, 18, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_6);
 
-      /* "otools/core/Tool.py":18
+      /* "otools/core/Service.py":19
  *       self.__name = obj.getName()
  *     except:
  *       self.__name = obj.__name__             # <<<<<<<<<<<<<<
  *     self.__context = None
  *     self.__obj = obj
  */
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_obj, __pyx_n_s_name); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 18, __pyx_L5_except_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_obj, __pyx_n_s_name); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 19, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_7);
-      if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Tool__name, __pyx_t_7) < 0) __PYX_ERR(0, 18, __pyx_L5_except_error)
+      if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Service__name, __pyx_t_7) < 0) __PYX_ERR(0, 19, __pyx_L5_except_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -1597,7 +1629,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool___init__(CYTHON_UNUSED PyObj
     }
     __pyx_L5_except_error:;
 
-    /* "otools/core/Tool.py":15
+    /* "otools/core/Service.py":16
  * 
  *   def __init__ (self, obj):
  *     try:             # <<<<<<<<<<<<<<
@@ -1617,37 +1649,37 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool___init__(CYTHON_UNUSED PyObj
     __pyx_L8_try_end:;
   }
 
-  /* "otools/core/Tool.py":19
+  /* "otools/core/Service.py":20
  *     except:
  *       self.__name = obj.__name__
  *     self.__context = None             # <<<<<<<<<<<<<<
  *     self.__obj = obj
  *     self.__obj.__init__(self.__obj)
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Tool__context, Py_None) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Service__context, Py_None) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
 
-  /* "otools/core/Tool.py":20
+  /* "otools/core/Service.py":21
  *       self.__name = obj.__name__
  *     self.__context = None
  *     self.__obj = obj             # <<<<<<<<<<<<<<
  *     self.__obj.__init__(self.__obj)
  *     self.__obj.MSG_VERBOSE  = self.MSG_VERBOSE
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj, __pyx_v_obj) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Service__obj, __pyx_v_obj) < 0) __PYX_ERR(0, 21, __pyx_L1_error)
 
-  /* "otools/core/Tool.py":21
+  /* "otools/core/Service.py":22
  *     self.__context = None
  *     self.__obj = obj
  *     self.__obj.__init__(self.__obj)             # <<<<<<<<<<<<<<
  *     self.__obj.MSG_VERBOSE  = self.MSG_VERBOSE
  *     self.__obj.MSG_DEBUG    = self.MSG_DEBUG
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__obj); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_init); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_init); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__obj); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_7 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -1662,111 +1694,111 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool___init__(CYTHON_UNUSED PyObj
   __pyx_t_6 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_7, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5);
   __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 21, __pyx_L1_error)
+  if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "otools/core/Tool.py":22
+  /* "otools/core/Service.py":23
  *     self.__obj = obj
  *     self.__obj.__init__(self.__obj)
  *     self.__obj.MSG_VERBOSE  = self.MSG_VERBOSE             # <<<<<<<<<<<<<<
  *     self.__obj.MSG_DEBUG    = self.MSG_DEBUG
  *     self.__obj.MSG_INFO     = self.MSG_INFO
  */
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_MSG_VERBOSE); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_MSG_VERBOSE); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__obj); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_t_4, __pyx_n_s_MSG_VERBOSE, __pyx_t_6) < 0) __PYX_ERR(0, 22, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_t_4, __pyx_n_s_MSG_VERBOSE, __pyx_t_6) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "otools/core/Tool.py":23
+  /* "otools/core/Service.py":24
  *     self.__obj.__init__(self.__obj)
  *     self.__obj.MSG_VERBOSE  = self.MSG_VERBOSE
  *     self.__obj.MSG_DEBUG    = self.MSG_DEBUG             # <<<<<<<<<<<<<<
  *     self.__obj.MSG_INFO     = self.MSG_INFO
  *     self.__obj.MSG_WARNING  = self.MSG_WARNING
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_MSG_DEBUG); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_MSG_DEBUG); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__obj); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_t_6, __pyx_n_s_MSG_DEBUG, __pyx_t_4) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_t_6, __pyx_n_s_MSG_DEBUG, __pyx_t_4) < 0) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "otools/core/Tool.py":24
+  /* "otools/core/Service.py":25
  *     self.__obj.MSG_VERBOSE  = self.MSG_VERBOSE
  *     self.__obj.MSG_DEBUG    = self.MSG_DEBUG
  *     self.__obj.MSG_INFO     = self.MSG_INFO             # <<<<<<<<<<<<<<
  *     self.__obj.MSG_WARNING  = self.MSG_WARNING
  *     self.__obj.MSG_ERROR    = self.MSG_ERROR
  */
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_MSG_INFO); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_MSG_INFO); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__obj); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_t_4, __pyx_n_s_MSG_INFO, __pyx_t_6) < 0) __PYX_ERR(0, 24, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_t_4, __pyx_n_s_MSG_INFO, __pyx_t_6) < 0) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "otools/core/Tool.py":25
+  /* "otools/core/Service.py":26
  *     self.__obj.MSG_DEBUG    = self.MSG_DEBUG
  *     self.__obj.MSG_INFO     = self.MSG_INFO
  *     self.__obj.MSG_WARNING  = self.MSG_WARNING             # <<<<<<<<<<<<<<
  *     self.__obj.MSG_ERROR    = self.MSG_ERROR
  *     self.__obj.MSG_FATAL    = self.MSG_FATAL
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_MSG_WARNING); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_MSG_WARNING); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__obj); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_t_6, __pyx_n_s_MSG_WARNING, __pyx_t_4) < 0) __PYX_ERR(0, 25, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_t_6, __pyx_n_s_MSG_WARNING, __pyx_t_4) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "otools/core/Tool.py":26
+  /* "otools/core/Service.py":27
  *     self.__obj.MSG_INFO     = self.MSG_INFO
  *     self.__obj.MSG_WARNING  = self.MSG_WARNING
  *     self.__obj.MSG_ERROR    = self.MSG_ERROR             # <<<<<<<<<<<<<<
  *     self.__obj.MSG_FATAL    = self.MSG_FATAL
  *     self._active = True
  */
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_MSG_ERROR); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_MSG_ERROR); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__obj); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_t_4, __pyx_n_s_MSG_ERROR, __pyx_t_6) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_t_4, __pyx_n_s_MSG_ERROR, __pyx_t_6) < 0) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "otools/core/Tool.py":27
+  /* "otools/core/Service.py":28
  *     self.__obj.MSG_WARNING  = self.MSG_WARNING
  *     self.__obj.MSG_ERROR    = self.MSG_ERROR
  *     self.__obj.MSG_FATAL    = self.MSG_FATAL             # <<<<<<<<<<<<<<
  *     self._active = True
  * 
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_MSG_FATAL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_MSG_FATAL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 28, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__obj); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 28, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_t_6, __pyx_n_s_MSG_FATAL, __pyx_t_4) < 0) __PYX_ERR(0, 27, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_t_6, __pyx_n_s_MSG_FATAL, __pyx_t_4) < 0) __PYX_ERR(0, 28, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "otools/core/Tool.py":28
+  /* "otools/core/Service.py":29
  *     self.__obj.MSG_ERROR    = self.MSG_ERROR
  *     self.__obj.MSG_FATAL    = self.MSG_FATAL
  *     self._active = True             # <<<<<<<<<<<<<<
  * 
  *   def MSG_VERBOSE (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_active, Py_True) < 0) __PYX_ERR(0, 28, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_active, Py_True) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
 
-  /* "otools/core/Tool.py":14
+  /* "otools/core/Service.py":15
  *   """
  * 
  *   def __init__ (self, obj):             # <<<<<<<<<<<<<<
@@ -1782,7 +1814,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool___init__(CYTHON_UNUSED PyObj
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Service.Service.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -1790,7 +1822,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool___init__(CYTHON_UNUSED PyObj
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":30
+/* "otools/core/Service.py":31
  *     self._active = True
  * 
  *   def MSG_VERBOSE (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
@@ -1799,9 +1831,9 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool___init__(CYTHON_UNUSED PyObj
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_3MSG_VERBOSE(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_3MSG_VERBOSE = {"MSG_VERBOSE", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_4Tool_4Tool_3MSG_VERBOSE, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_3MSG_VERBOSE(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_3MSG_VERBOSE(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_7Service_7Service_3MSG_VERBOSE = {"MSG_VERBOSE", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_7Service_7Service_3MSG_VERBOSE, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_3MSG_VERBOSE(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_message = 0;
   CYTHON_UNUSED PyObject *__pyx_v_moduleName = 0;
@@ -1853,7 +1885,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_3MSG_VERBOSE(PyObject *__pyx
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_message)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("MSG_VERBOSE", 0, 2, 4, 1); __PYX_ERR(0, 30, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("MSG_VERBOSE", 0, 2, 4, 1); __PYX_ERR(0, 31, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -1870,7 +1902,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_3MSG_VERBOSE(PyObject *__pyx
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t used_pos_args = (pos_args < 4) ? pos_args : 4;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kws, values, used_pos_args, "MSG_VERBOSE") < 0)) __PYX_ERR(0, 30, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kws, values, used_pos_args, "MSG_VERBOSE") < 0)) __PYX_ERR(0, 31, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -1894,15 +1926,15 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_3MSG_VERBOSE(PyObject *__pyx
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("MSG_VERBOSE", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 30, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("MSG_VERBOSE", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 31, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_DECREF(__pyx_v_args); __pyx_v_args = 0;
   __Pyx_DECREF(__pyx_v_kws); __pyx_v_kws = 0;
-  __Pyx_AddTraceback("otools.core.Tool.Tool.MSG_VERBOSE", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Service.Service.MSG_VERBOSE", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_2MSG_VERBOSE(__pyx_self, __pyx_v_self, __pyx_v_message, __pyx_v_moduleName, __pyx_v_contextName, __pyx_v_args, __pyx_v_kws);
+  __pyx_r = __pyx_pf_6otools_4core_7Service_7Service_2MSG_VERBOSE(__pyx_self, __pyx_v_self, __pyx_v_message, __pyx_v_moduleName, __pyx_v_contextName, __pyx_v_args, __pyx_v_kws);
 
   /* function exit code */
   __Pyx_XDECREF(__pyx_v_args);
@@ -1911,7 +1943,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_3MSG_VERBOSE(PyObject *__pyx
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_2MSG_VERBOSE(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws) {
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_2MSG_VERBOSE(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1919,21 +1951,21 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_2MSG_VERBOSE(CYTHON_UNUSED P
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("MSG_VERBOSE", 0);
 
-  /* "otools/core/Tool.py":31
+  /* "otools/core/Service.py":32
  * 
  *   def MSG_VERBOSE (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):
  *     self.__context.verbose(message, self.__name, contextName, *args, **kws)             # <<<<<<<<<<<<<<
  * 
  *   def MSG_DEBUG (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_verbose); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_verbose); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_message);
   __Pyx_GIVEREF(__pyx_v_message);
@@ -1944,16 +1976,16 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_2MSG_VERBOSE(CYTHON_UNUSED P
   __Pyx_GIVEREF(__pyx_v_contextName);
   PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_contextName);
   __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_v_kws); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_v_kws); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "otools/core/Tool.py":30
+  /* "otools/core/Service.py":31
  *     self._active = True
  * 
  *   def MSG_VERBOSE (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
@@ -1968,7 +2000,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_2MSG_VERBOSE(CYTHON_UNUSED P
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.MSG_VERBOSE", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Service.Service.MSG_VERBOSE", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -1976,7 +2008,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_2MSG_VERBOSE(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":33
+/* "otools/core/Service.py":34
  *     self.__context.verbose(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_DEBUG (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
@@ -1985,9 +2017,9 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_2MSG_VERBOSE(CYTHON_UNUSED P
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_5MSG_DEBUG(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_5MSG_DEBUG = {"MSG_DEBUG", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_4Tool_4Tool_5MSG_DEBUG, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_5MSG_DEBUG(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_5MSG_DEBUG(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_7Service_7Service_5MSG_DEBUG = {"MSG_DEBUG", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_7Service_7Service_5MSG_DEBUG, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_5MSG_DEBUG(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_message = 0;
   CYTHON_UNUSED PyObject *__pyx_v_moduleName = 0;
@@ -2039,7 +2071,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_5MSG_DEBUG(PyObject *__pyx_s
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_message)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("MSG_DEBUG", 0, 2, 4, 1); __PYX_ERR(0, 33, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("MSG_DEBUG", 0, 2, 4, 1); __PYX_ERR(0, 34, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -2056,7 +2088,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_5MSG_DEBUG(PyObject *__pyx_s
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t used_pos_args = (pos_args < 4) ? pos_args : 4;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kws, values, used_pos_args, "MSG_DEBUG") < 0)) __PYX_ERR(0, 33, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kws, values, used_pos_args, "MSG_DEBUG") < 0)) __PYX_ERR(0, 34, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2080,15 +2112,15 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_5MSG_DEBUG(PyObject *__pyx_s
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("MSG_DEBUG", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 33, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("MSG_DEBUG", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 34, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_DECREF(__pyx_v_args); __pyx_v_args = 0;
   __Pyx_DECREF(__pyx_v_kws); __pyx_v_kws = 0;
-  __Pyx_AddTraceback("otools.core.Tool.Tool.MSG_DEBUG", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Service.Service.MSG_DEBUG", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_4MSG_DEBUG(__pyx_self, __pyx_v_self, __pyx_v_message, __pyx_v_moduleName, __pyx_v_contextName, __pyx_v_args, __pyx_v_kws);
+  __pyx_r = __pyx_pf_6otools_4core_7Service_7Service_4MSG_DEBUG(__pyx_self, __pyx_v_self, __pyx_v_message, __pyx_v_moduleName, __pyx_v_contextName, __pyx_v_args, __pyx_v_kws);
 
   /* function exit code */
   __Pyx_XDECREF(__pyx_v_args);
@@ -2097,7 +2129,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_5MSG_DEBUG(PyObject *__pyx_s
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_4MSG_DEBUG(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws) {
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_4MSG_DEBUG(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2105,21 +2137,21 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_4MSG_DEBUG(CYTHON_UNUSED PyO
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("MSG_DEBUG", 0);
 
-  /* "otools/core/Tool.py":34
+  /* "otools/core/Service.py":35
  * 
  *   def MSG_DEBUG (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):
  *     self.__context.debug(message, self.__name, contextName, *args, **kws)             # <<<<<<<<<<<<<<
  * 
  *   def MSG_INFO (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_debug); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_debug); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_message);
   __Pyx_GIVEREF(__pyx_v_message);
@@ -2130,16 +2162,16 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_4MSG_DEBUG(CYTHON_UNUSED PyO
   __Pyx_GIVEREF(__pyx_v_contextName);
   PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_contextName);
   __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_v_kws); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_v_kws); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "otools/core/Tool.py":33
+  /* "otools/core/Service.py":34
  *     self.__context.verbose(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_DEBUG (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
@@ -2154,7 +2186,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_4MSG_DEBUG(CYTHON_UNUSED PyO
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.MSG_DEBUG", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Service.Service.MSG_DEBUG", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2162,7 +2194,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_4MSG_DEBUG(CYTHON_UNUSED PyO
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":36
+/* "otools/core/Service.py":37
  *     self.__context.debug(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_INFO (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
@@ -2171,9 +2203,9 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_4MSG_DEBUG(CYTHON_UNUSED PyO
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_7MSG_INFO(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_7MSG_INFO = {"MSG_INFO", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_4Tool_4Tool_7MSG_INFO, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_7MSG_INFO(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_7MSG_INFO(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_7Service_7Service_7MSG_INFO = {"MSG_INFO", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_7Service_7Service_7MSG_INFO, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_7MSG_INFO(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_message = 0;
   CYTHON_UNUSED PyObject *__pyx_v_moduleName = 0;
@@ -2225,7 +2257,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_7MSG_INFO(PyObject *__pyx_se
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_message)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("MSG_INFO", 0, 2, 4, 1); __PYX_ERR(0, 36, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("MSG_INFO", 0, 2, 4, 1); __PYX_ERR(0, 37, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -2242,7 +2274,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_7MSG_INFO(PyObject *__pyx_se
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t used_pos_args = (pos_args < 4) ? pos_args : 4;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kws, values, used_pos_args, "MSG_INFO") < 0)) __PYX_ERR(0, 36, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kws, values, used_pos_args, "MSG_INFO") < 0)) __PYX_ERR(0, 37, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2266,15 +2298,15 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_7MSG_INFO(PyObject *__pyx_se
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("MSG_INFO", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 36, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("MSG_INFO", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 37, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_DECREF(__pyx_v_args); __pyx_v_args = 0;
   __Pyx_DECREF(__pyx_v_kws); __pyx_v_kws = 0;
-  __Pyx_AddTraceback("otools.core.Tool.Tool.MSG_INFO", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Service.Service.MSG_INFO", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_6MSG_INFO(__pyx_self, __pyx_v_self, __pyx_v_message, __pyx_v_moduleName, __pyx_v_contextName, __pyx_v_args, __pyx_v_kws);
+  __pyx_r = __pyx_pf_6otools_4core_7Service_7Service_6MSG_INFO(__pyx_self, __pyx_v_self, __pyx_v_message, __pyx_v_moduleName, __pyx_v_contextName, __pyx_v_args, __pyx_v_kws);
 
   /* function exit code */
   __Pyx_XDECREF(__pyx_v_args);
@@ -2283,7 +2315,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_7MSG_INFO(PyObject *__pyx_se
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_6MSG_INFO(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws) {
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_6MSG_INFO(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2291,21 +2323,21 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_6MSG_INFO(CYTHON_UNUSED PyOb
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("MSG_INFO", 0);
 
-  /* "otools/core/Tool.py":37
+  /* "otools/core/Service.py":38
  * 
  *   def MSG_INFO (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):
  *     self.__context.info(message, self.__name, contextName, *args, **kws)             # <<<<<<<<<<<<<<
  * 
  *   def MSG_WARNING (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_info); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_info); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_message);
   __Pyx_GIVEREF(__pyx_v_message);
@@ -2316,16 +2348,16 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_6MSG_INFO(CYTHON_UNUSED PyOb
   __Pyx_GIVEREF(__pyx_v_contextName);
   PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_contextName);
   __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_v_kws); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_v_kws); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "otools/core/Tool.py":36
+  /* "otools/core/Service.py":37
  *     self.__context.debug(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_INFO (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
@@ -2340,7 +2372,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_6MSG_INFO(CYTHON_UNUSED PyOb
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.MSG_INFO", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Service.Service.MSG_INFO", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2348,7 +2380,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_6MSG_INFO(CYTHON_UNUSED PyOb
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":39
+/* "otools/core/Service.py":40
  *     self.__context.info(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_WARNING (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
@@ -2357,9 +2389,9 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_6MSG_INFO(CYTHON_UNUSED PyOb
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_9MSG_WARNING(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_9MSG_WARNING = {"MSG_WARNING", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_4Tool_4Tool_9MSG_WARNING, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_9MSG_WARNING(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_9MSG_WARNING(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_7Service_7Service_9MSG_WARNING = {"MSG_WARNING", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_7Service_7Service_9MSG_WARNING, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_9MSG_WARNING(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_message = 0;
   CYTHON_UNUSED PyObject *__pyx_v_moduleName = 0;
@@ -2411,7 +2443,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_9MSG_WARNING(PyObject *__pyx
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_message)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("MSG_WARNING", 0, 2, 4, 1); __PYX_ERR(0, 39, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("MSG_WARNING", 0, 2, 4, 1); __PYX_ERR(0, 40, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -2428,7 +2460,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_9MSG_WARNING(PyObject *__pyx
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t used_pos_args = (pos_args < 4) ? pos_args : 4;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kws, values, used_pos_args, "MSG_WARNING") < 0)) __PYX_ERR(0, 39, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kws, values, used_pos_args, "MSG_WARNING") < 0)) __PYX_ERR(0, 40, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2452,15 +2484,15 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_9MSG_WARNING(PyObject *__pyx
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("MSG_WARNING", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 39, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("MSG_WARNING", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 40, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_DECREF(__pyx_v_args); __pyx_v_args = 0;
   __Pyx_DECREF(__pyx_v_kws); __pyx_v_kws = 0;
-  __Pyx_AddTraceback("otools.core.Tool.Tool.MSG_WARNING", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Service.Service.MSG_WARNING", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_8MSG_WARNING(__pyx_self, __pyx_v_self, __pyx_v_message, __pyx_v_moduleName, __pyx_v_contextName, __pyx_v_args, __pyx_v_kws);
+  __pyx_r = __pyx_pf_6otools_4core_7Service_7Service_8MSG_WARNING(__pyx_self, __pyx_v_self, __pyx_v_message, __pyx_v_moduleName, __pyx_v_contextName, __pyx_v_args, __pyx_v_kws);
 
   /* function exit code */
   __Pyx_XDECREF(__pyx_v_args);
@@ -2469,7 +2501,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_9MSG_WARNING(PyObject *__pyx
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_8MSG_WARNING(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws) {
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_8MSG_WARNING(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2477,21 +2509,21 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_8MSG_WARNING(CYTHON_UNUSED P
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("MSG_WARNING", 0);
 
-  /* "otools/core/Tool.py":40
+  /* "otools/core/Service.py":41
  * 
  *   def MSG_WARNING (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):
  *     self.__context.warning(message, self.__name, contextName, *args, **kws)             # <<<<<<<<<<<<<<
  * 
  *   def MSG_ERROR (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 41, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_warning); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_warning); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 41, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 41, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_message);
   __Pyx_GIVEREF(__pyx_v_message);
@@ -2502,16 +2534,16 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_8MSG_WARNING(CYTHON_UNUSED P
   __Pyx_GIVEREF(__pyx_v_contextName);
   PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_contextName);
   __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 41, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_v_kws); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_v_kws); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 41, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "otools/core/Tool.py":39
+  /* "otools/core/Service.py":40
  *     self.__context.info(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_WARNING (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
@@ -2526,7 +2558,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_8MSG_WARNING(CYTHON_UNUSED P
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.MSG_WARNING", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Service.Service.MSG_WARNING", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2534,7 +2566,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_8MSG_WARNING(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":42
+/* "otools/core/Service.py":43
  *     self.__context.warning(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_ERROR (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
@@ -2543,9 +2575,9 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_8MSG_WARNING(CYTHON_UNUSED P
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_11MSG_ERROR(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_11MSG_ERROR = {"MSG_ERROR", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_4Tool_4Tool_11MSG_ERROR, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_11MSG_ERROR(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_11MSG_ERROR(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_7Service_7Service_11MSG_ERROR = {"MSG_ERROR", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_7Service_7Service_11MSG_ERROR, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_11MSG_ERROR(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_message = 0;
   CYTHON_UNUSED PyObject *__pyx_v_moduleName = 0;
@@ -2597,7 +2629,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_11MSG_ERROR(PyObject *__pyx_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_message)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("MSG_ERROR", 0, 2, 4, 1); __PYX_ERR(0, 42, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("MSG_ERROR", 0, 2, 4, 1); __PYX_ERR(0, 43, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -2614,7 +2646,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_11MSG_ERROR(PyObject *__pyx_
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t used_pos_args = (pos_args < 4) ? pos_args : 4;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kws, values, used_pos_args, "MSG_ERROR") < 0)) __PYX_ERR(0, 42, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kws, values, used_pos_args, "MSG_ERROR") < 0)) __PYX_ERR(0, 43, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2638,15 +2670,15 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_11MSG_ERROR(PyObject *__pyx_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("MSG_ERROR", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 42, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("MSG_ERROR", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 43, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_DECREF(__pyx_v_args); __pyx_v_args = 0;
   __Pyx_DECREF(__pyx_v_kws); __pyx_v_kws = 0;
-  __Pyx_AddTraceback("otools.core.Tool.Tool.MSG_ERROR", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Service.Service.MSG_ERROR", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_10MSG_ERROR(__pyx_self, __pyx_v_self, __pyx_v_message, __pyx_v_moduleName, __pyx_v_contextName, __pyx_v_args, __pyx_v_kws);
+  __pyx_r = __pyx_pf_6otools_4core_7Service_7Service_10MSG_ERROR(__pyx_self, __pyx_v_self, __pyx_v_message, __pyx_v_moduleName, __pyx_v_contextName, __pyx_v_args, __pyx_v_kws);
 
   /* function exit code */
   __Pyx_XDECREF(__pyx_v_args);
@@ -2655,7 +2687,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_11MSG_ERROR(PyObject *__pyx_
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_10MSG_ERROR(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws) {
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_10MSG_ERROR(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2663,21 +2695,21 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_10MSG_ERROR(CYTHON_UNUSED Py
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("MSG_ERROR", 0);
 
-  /* "otools/core/Tool.py":43
+  /* "otools/core/Service.py":44
  * 
  *   def MSG_ERROR (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):
  *     self.__context.error(message, self.__name, contextName, *args, **kws)             # <<<<<<<<<<<<<<
  * 
  *   def MSG_FATAL (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_error); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_error); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_message);
   __Pyx_GIVEREF(__pyx_v_message);
@@ -2688,16 +2720,16 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_10MSG_ERROR(CYTHON_UNUSED Py
   __Pyx_GIVEREF(__pyx_v_contextName);
   PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_contextName);
   __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_v_kws); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_v_kws); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "otools/core/Tool.py":42
+  /* "otools/core/Service.py":43
  *     self.__context.warning(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_ERROR (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
@@ -2712,7 +2744,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_10MSG_ERROR(CYTHON_UNUSED Py
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.MSG_ERROR", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Service.Service.MSG_ERROR", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2720,7 +2752,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_10MSG_ERROR(CYTHON_UNUSED Py
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":45
+/* "otools/core/Service.py":46
  *     self.__context.error(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_FATAL (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
@@ -2729,9 +2761,9 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_10MSG_ERROR(CYTHON_UNUSED Py
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_13MSG_FATAL(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_13MSG_FATAL = {"MSG_FATAL", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_4Tool_4Tool_13MSG_FATAL, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_13MSG_FATAL(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_13MSG_FATAL(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_7Service_7Service_13MSG_FATAL = {"MSG_FATAL", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_7Service_7Service_13MSG_FATAL, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_13MSG_FATAL(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_message = 0;
   CYTHON_UNUSED PyObject *__pyx_v_moduleName = 0;
@@ -2783,7 +2815,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_13MSG_FATAL(PyObject *__pyx_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_message)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("MSG_FATAL", 0, 2, 4, 1); __PYX_ERR(0, 45, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("MSG_FATAL", 0, 2, 4, 1); __PYX_ERR(0, 46, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -2800,7 +2832,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_13MSG_FATAL(PyObject *__pyx_
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t used_pos_args = (pos_args < 4) ? pos_args : 4;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kws, values, used_pos_args, "MSG_FATAL") < 0)) __PYX_ERR(0, 45, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kws, values, used_pos_args, "MSG_FATAL") < 0)) __PYX_ERR(0, 46, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2824,15 +2856,15 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_13MSG_FATAL(PyObject *__pyx_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("MSG_FATAL", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 45, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("MSG_FATAL", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 46, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_DECREF(__pyx_v_args); __pyx_v_args = 0;
   __Pyx_DECREF(__pyx_v_kws); __pyx_v_kws = 0;
-  __Pyx_AddTraceback("otools.core.Tool.Tool.MSG_FATAL", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Service.Service.MSG_FATAL", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_12MSG_FATAL(__pyx_self, __pyx_v_self, __pyx_v_message, __pyx_v_moduleName, __pyx_v_contextName, __pyx_v_args, __pyx_v_kws);
+  __pyx_r = __pyx_pf_6otools_4core_7Service_7Service_12MSG_FATAL(__pyx_self, __pyx_v_self, __pyx_v_message, __pyx_v_moduleName, __pyx_v_contextName, __pyx_v_args, __pyx_v_kws);
 
   /* function exit code */
   __Pyx_XDECREF(__pyx_v_args);
@@ -2841,7 +2873,7 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_13MSG_FATAL(PyObject *__pyx_
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_12MSG_FATAL(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws) {
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_12MSG_FATAL(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_message, CYTHON_UNUSED PyObject *__pyx_v_moduleName, PyObject *__pyx_v_contextName, PyObject *__pyx_v_args, PyObject *__pyx_v_kws) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2849,21 +2881,21 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_12MSG_FATAL(CYTHON_UNUSED Py
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("MSG_FATAL", 0);
 
-  /* "otools/core/Tool.py":46
+  /* "otools/core/Service.py":47
  * 
  *   def MSG_FATAL (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):
  *     self.__context.fatal(message, self.__name, contextName, *args, **kws)             # <<<<<<<<<<<<<<
  * 
  *   def __str__ (self):
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fatal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fatal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_message);
   __Pyx_GIVEREF(__pyx_v_message);
@@ -2874,16 +2906,16 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_12MSG_FATAL(CYTHON_UNUSED Py
   __Pyx_GIVEREF(__pyx_v_contextName);
   PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_contextName);
   __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_v_kws); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_v_kws); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "otools/core/Tool.py":45
+  /* "otools/core/Service.py":46
  *     self.__context.error(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_FATAL (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
@@ -2898,7 +2930,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_12MSG_FATAL(CYTHON_UNUSED Py
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.MSG_FATAL", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Service.Service.MSG_FATAL", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2906,29 +2938,29 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_12MSG_FATAL(CYTHON_UNUSED Py
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":48
+/* "otools/core/Service.py":49
  *     self.__context.fatal(message, self.__name, contextName, *args, **kws)
  * 
  *   def __str__ (self):             # <<<<<<<<<<<<<<
- *     return "<OTools Tool (name={})>".format(self.name)
+ *     return "<OTools Service (name={})>".format(self.name)
  * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_15__str__(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_15__str__ = {"__str__", (PyCFunction)__pyx_pw_6otools_4core_4Tool_4Tool_15__str__, METH_O, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_15__str__(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_15__str__(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_7Service_7Service_15__str__ = {"__str__", (PyCFunction)__pyx_pw_6otools_4core_7Service_7Service_15__str__, METH_O, 0};
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_15__str__(PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__str__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_14__str__(__pyx_self, ((PyObject *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6otools_4core_7Service_7Service_14__str__(__pyx_self, ((PyObject *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_14__str__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_14__str__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2937,17 +2969,17 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_14__str__(CYTHON_UNUSED PyOb
   PyObject *__pyx_t_4 = NULL;
   __Pyx_RefNannySetupContext("__str__", 0);
 
-  /* "otools/core/Tool.py":49
+  /* "otools/core/Service.py":50
  * 
  *   def __str__ (self):
- *     return "<OTools Tool (name={})>".format(self.name)             # <<<<<<<<<<<<<<
+ *     return "<OTools Service (name={})>".format(self.name)             # <<<<<<<<<<<<<<
  * 
  *   def __repr__ (self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_OTools_Tool_name, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_OTools_Service_name, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_name_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_name_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -2962,18 +2994,18 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_14__str__(CYTHON_UNUSED PyOb
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_4, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "otools/core/Tool.py":48
+  /* "otools/core/Service.py":49
  *     self.__context.fatal(message, self.__name, contextName, *args, **kws)
  * 
  *   def __str__ (self):             # <<<<<<<<<<<<<<
- *     return "<OTools Tool (name={})>".format(self.name)
+ *     return "<OTools Service (name={})>".format(self.name)
  * 
  */
 
@@ -2983,7 +3015,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_14__str__(CYTHON_UNUSED PyOb
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.__str__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Service.Service.__str__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2991,8 +3023,8 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_14__str__(CYTHON_UNUSED PyOb
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":51
- *     return "<OTools Tool (name={})>".format(self.name)
+/* "otools/core/Service.py":52
+ *     return "<OTools Service (name={})>".format(self.name)
  * 
  *   def __repr__ (self):             # <<<<<<<<<<<<<<
  *     return self.__str__()
@@ -3000,20 +3032,20 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_14__str__(CYTHON_UNUSED PyOb
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_17__repr__(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_17__repr__ = {"__repr__", (PyCFunction)__pyx_pw_6otools_4core_4Tool_4Tool_17__repr__, METH_O, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_17__repr__(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_17__repr__(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_7Service_7Service_17__repr__ = {"__repr__", (PyCFunction)__pyx_pw_6otools_4core_7Service_7Service_17__repr__, METH_O, 0};
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_17__repr__(PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__repr__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_16__repr__(__pyx_self, ((PyObject *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6otools_4core_7Service_7Service_16__repr__(__pyx_self, ((PyObject *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_16__repr__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_16__repr__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3021,15 +3053,15 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_16__repr__(CYTHON_UNUSED PyO
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("__repr__", 0);
 
-  /* "otools/core/Tool.py":52
+  /* "otools/core/Service.py":53
  * 
  *   def __repr__ (self):
  *     return self.__str__()             # <<<<<<<<<<<<<<
  * 
- *   def initialize (self):
+ *   def setup (self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_str); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_str); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -3043,15 +3075,15 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_16__repr__(CYTHON_UNUSED PyO
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "otools/core/Tool.py":51
- *     return "<OTools Tool (name={})>".format(self.name)
+  /* "otools/core/Service.py":52
+ *     return "<OTools Service (name={})>".format(self.name)
  * 
  *   def __repr__ (self):             # <<<<<<<<<<<<<<
  *     return self.__str__()
@@ -3063,7 +3095,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_16__repr__(CYTHON_UNUSED PyO
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.__repr__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Service.Service.__repr__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3071,29 +3103,29 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_16__repr__(CYTHON_UNUSED PyO
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":54
+/* "otools/core/Service.py":55
  *     return self.__str__()
  * 
- *   def initialize (self):             # <<<<<<<<<<<<<<
+ *   def setup (self):             # <<<<<<<<<<<<<<
  *     try:
- *       self.__obj.initialize(self.__obj)
+ *       self.__obj.setup(self.__obj)
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_19initialize(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_19initialize = {"initialize", (PyCFunction)__pyx_pw_6otools_4core_4Tool_4Tool_19initialize, METH_O, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_19initialize(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_19setup(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_7Service_7Service_19setup = {"setup", (PyCFunction)__pyx_pw_6otools_4core_7Service_7Service_19setup, METH_O, 0};
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_19setup(PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("initialize (wrapper)", 0);
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_18initialize(__pyx_self, ((PyObject *)__pyx_v_self));
+  __Pyx_RefNannySetupContext("setup (wrapper)", 0);
+  __pyx_r = __pyx_pf_6otools_4core_7Service_7Service_18setup(__pyx_self, ((PyObject *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_18initialize(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_18setup(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3104,13 +3136,13 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_18initialize(CYTHON_UNUSED P
   PyObject *__pyx_t_6 = NULL;
   PyObject *__pyx_t_7 = NULL;
   PyObject *__pyx_t_8 = NULL;
-  __Pyx_RefNannySetupContext("initialize", 0);
+  __Pyx_RefNannySetupContext("setup", 0);
 
-  /* "otools/core/Tool.py":55
+  /* "otools/core/Service.py":56
  * 
- *   def initialize (self):
+ *   def setup (self):
  *     try:             # <<<<<<<<<<<<<<
- *       self.__obj.initialize(self.__obj)
+ *       self.__obj.setup(self.__obj)
  *       return StatusCode.SUCCESS
  */
   {
@@ -3122,19 +3154,19 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_18initialize(CYTHON_UNUSED P
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "otools/core/Tool.py":56
- *   def initialize (self):
+      /* "otools/core/Service.py":57
+ *   def setup (self):
  *     try:
- *       self.__obj.initialize(self.__obj)             # <<<<<<<<<<<<<<
+ *       self.__obj.setup(self.__obj)             # <<<<<<<<<<<<<<
  *       return StatusCode.SUCCESS
  *     except:
  */
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 56, __pyx_L3_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__obj); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 57, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_initialize); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 56, __pyx_L3_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_setup); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 57, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 56, __pyx_L3_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__obj); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 57, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
       __pyx_t_7 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
@@ -3149,33 +3181,33 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_18initialize(CYTHON_UNUSED P
       __pyx_t_4 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_7, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5);
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 56, __pyx_L3_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 57, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "otools/core/Tool.py":57
+      /* "otools/core/Service.py":58
  *     try:
- *       self.__obj.initialize(self.__obj)
+ *       self.__obj.setup(self.__obj)
  *       return StatusCode.SUCCESS             # <<<<<<<<<<<<<<
  *     except:
  *       return StatusCode.FAILURE
  */
       __Pyx_XDECREF(__pyx_r);
-      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_StatusCode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 57, __pyx_L3_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_StatusCode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_SUCCESS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 57, __pyx_L3_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_SUCCESS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 58, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_r = __pyx_t_6;
       __pyx_t_6 = 0;
       goto __pyx_L7_try_return;
 
-      /* "otools/core/Tool.py":55
+      /* "otools/core/Service.py":56
  * 
- *   def initialize (self):
+ *   def setup (self):
  *     try:             # <<<<<<<<<<<<<<
- *       self.__obj.initialize(self.__obj)
+ *       self.__obj.setup(self.__obj)
  *       return StatusCode.SUCCESS
  */
     }
@@ -3185,31 +3217,31 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_18initialize(CYTHON_UNUSED P
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "otools/core/Tool.py":58
- *       self.__obj.initialize(self.__obj)
+    /* "otools/core/Service.py":59
+ *       self.__obj.setup(self.__obj)
  *       return StatusCode.SUCCESS
  *     except:             # <<<<<<<<<<<<<<
  *       return StatusCode.FAILURE
  * 
  */
     /*except:*/ {
-      __Pyx_AddTraceback("otools.core.Tool.Tool.initialize", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_4, &__pyx_t_5) < 0) __PYX_ERR(0, 58, __pyx_L5_except_error)
+      __Pyx_AddTraceback("otools.core.Service.Service.setup", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_4, &__pyx_t_5) < 0) __PYX_ERR(0, 59, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_5);
 
-      /* "otools/core/Tool.py":59
+      /* "otools/core/Service.py":60
  *       return StatusCode.SUCCESS
  *     except:
  *       return StatusCode.FAILURE             # <<<<<<<<<<<<<<
  * 
- *   def execute (self):
+ *   def main (self):
  */
       __Pyx_XDECREF(__pyx_r);
-      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_StatusCode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 59, __pyx_L5_except_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_StatusCode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 60, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_FAILURE); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 59, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_FAILURE); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 60, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_r = __pyx_t_8;
@@ -3221,11 +3253,11 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_18initialize(CYTHON_UNUSED P
     }
     __pyx_L5_except_error:;
 
-    /* "otools/core/Tool.py":55
+    /* "otools/core/Service.py":56
  * 
- *   def initialize (self):
+ *   def setup (self):
  *     try:             # <<<<<<<<<<<<<<
- *       self.__obj.initialize(self.__obj)
+ *       self.__obj.setup(self.__obj)
  *       return StatusCode.SUCCESS
  */
     __Pyx_XGIVEREF(__pyx_t_1);
@@ -3247,12 +3279,12 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_18initialize(CYTHON_UNUSED P
     goto __pyx_L0;
   }
 
-  /* "otools/core/Tool.py":54
+  /* "otools/core/Service.py":55
  *     return self.__str__()
  * 
- *   def initialize (self):             # <<<<<<<<<<<<<<
+ *   def setup (self):             # <<<<<<<<<<<<<<
  *     try:
- *       self.__obj.initialize(self.__obj)
+ *       self.__obj.setup(self.__obj)
  */
 
   /* function exit code */
@@ -3262,7 +3294,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_18initialize(CYTHON_UNUSED P
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.initialize", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Service.Service.setup", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3270,29 +3302,29 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_18initialize(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":61
+/* "otools/core/Service.py":62
  *       return StatusCode.FAILURE
  * 
- *   def execute (self):             # <<<<<<<<<<<<<<
- *     if self._active:
+ *   def main (self):             # <<<<<<<<<<<<<<
+ *     if self.active:
  *       try:
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_21execute(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_21execute = {"execute", (PyCFunction)__pyx_pw_6otools_4core_4Tool_4Tool_21execute, METH_O, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_21execute(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_21main(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_7Service_7Service_21main = {"main", (PyCFunction)__pyx_pw_6otools_4core_7Service_7Service_21main, METH_O, 0};
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_21main(PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("execute (wrapper)", 0);
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_20execute(__pyx_self, ((PyObject *)__pyx_v_self));
+  __Pyx_RefNannySetupContext("main (wrapper)", 0);
+  __pyx_r = __pyx_pf_6otools_4core_7Service_7Service_20main(__pyx_self, ((PyObject *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_20execute(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_20main(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3304,26 +3336,26 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_20execute(CYTHON_UNUSED PyOb
   PyObject *__pyx_t_7 = NULL;
   PyObject *__pyx_t_8 = NULL;
   PyObject *__pyx_t_9 = NULL;
-  __Pyx_RefNannySetupContext("execute", 0);
+  __Pyx_RefNannySetupContext("main", 0);
 
-  /* "otools/core/Tool.py":62
+  /* "otools/core/Service.py":63
  * 
- *   def execute (self):
- *     if self._active:             # <<<<<<<<<<<<<<
+ *   def main (self):
+ *     if self.active:             # <<<<<<<<<<<<<<
  *       try:
- *         self.__obj.execute(self.__obj)
+ *         self.__obj.main(self.__obj)
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_active); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_active_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "otools/core/Tool.py":63
- *   def execute (self):
- *     if self._active:
+    /* "otools/core/Service.py":64
+ *   def main (self):
+ *     if self.active:
  *       try:             # <<<<<<<<<<<<<<
- *         self.__obj.execute(self.__obj)
+ *         self.__obj.main(self.__obj)
  *         return StatusCode.SUCCESS
  */
     {
@@ -3335,19 +3367,19 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_20execute(CYTHON_UNUSED PyOb
       __Pyx_XGOTREF(__pyx_t_5);
       /*try:*/ {
 
-        /* "otools/core/Tool.py":64
- *     if self._active:
+        /* "otools/core/Service.py":65
+ *     if self.active:
  *       try:
- *         self.__obj.execute(self.__obj)             # <<<<<<<<<<<<<<
+ *         self.__obj.main(self.__obj)             # <<<<<<<<<<<<<<
  *         return StatusCode.SUCCESS
  *       except:
  */
-        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 64, __pyx_L4_error)
+        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__obj); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 65, __pyx_L4_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_execute); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 64, __pyx_L4_error)
+        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_main); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 65, __pyx_L4_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 64, __pyx_L4_error)
+        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__obj); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 65, __pyx_L4_error)
         __Pyx_GOTREF(__pyx_t_6);
         __pyx_t_8 = NULL;
         if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
@@ -3362,33 +3394,33 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_20execute(CYTHON_UNUSED PyOb
         __pyx_t_1 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_8, __pyx_t_6) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_6);
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L4_error)
+        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L4_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "otools/core/Tool.py":65
+        /* "otools/core/Service.py":66
  *       try:
- *         self.__obj.execute(self.__obj)
+ *         self.__obj.main(self.__obj)
  *         return StatusCode.SUCCESS             # <<<<<<<<<<<<<<
  *       except:
  *         return StatusCode.FAILURE
  */
         __Pyx_XDECREF(__pyx_r);
-        __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_StatusCode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L4_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_StatusCode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 66, __pyx_L4_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_SUCCESS); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 65, __pyx_L4_error)
+        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_SUCCESS); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 66, __pyx_L4_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_r = __pyx_t_7;
         __pyx_t_7 = 0;
         goto __pyx_L8_try_return;
 
-        /* "otools/core/Tool.py":63
- *   def execute (self):
- *     if self._active:
+        /* "otools/core/Service.py":64
+ *   def main (self):
+ *     if self.active:
  *       try:             # <<<<<<<<<<<<<<
- *         self.__obj.execute(self.__obj)
+ *         self.__obj.main(self.__obj)
  *         return StatusCode.SUCCESS
  */
       }
@@ -3398,31 +3430,31 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_20execute(CYTHON_UNUSED PyOb
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-      /* "otools/core/Tool.py":66
- *         self.__obj.execute(self.__obj)
+      /* "otools/core/Service.py":67
+ *         self.__obj.main(self.__obj)
  *         return StatusCode.SUCCESS
  *       except:             # <<<<<<<<<<<<<<
  *         return StatusCode.FAILURE
  * 
  */
       /*except:*/ {
-        __Pyx_AddTraceback("otools.core.Tool.Tool.execute", __pyx_clineno, __pyx_lineno, __pyx_filename);
-        if (__Pyx_GetException(&__pyx_t_7, &__pyx_t_1, &__pyx_t_6) < 0) __PYX_ERR(0, 66, __pyx_L6_except_error)
+        __Pyx_AddTraceback("otools.core.Service.Service.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
+        if (__Pyx_GetException(&__pyx_t_7, &__pyx_t_1, &__pyx_t_6) < 0) __PYX_ERR(0, 67, __pyx_L6_except_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_GOTREF(__pyx_t_6);
 
-        /* "otools/core/Tool.py":67
+        /* "otools/core/Service.py":68
  *         return StatusCode.SUCCESS
  *       except:
  *         return StatusCode.FAILURE             # <<<<<<<<<<<<<<
  * 
- *   def finalize (self):
+ *   def loop (self):
  */
         __Pyx_XDECREF(__pyx_r);
-        __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_StatusCode); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 67, __pyx_L6_except_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_StatusCode); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 68, __pyx_L6_except_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_FAILURE); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 67, __pyx_L6_except_error)
+        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_FAILURE); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 68, __pyx_L6_except_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __pyx_r = __pyx_t_9;
@@ -3434,11 +3466,11 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_20execute(CYTHON_UNUSED PyOb
       }
       __pyx_L6_except_error:;
 
-      /* "otools/core/Tool.py":63
- *   def execute (self):
- *     if self._active:
+      /* "otools/core/Service.py":64
+ *   def main (self):
+ *     if self.active:
  *       try:             # <<<<<<<<<<<<<<
- *         self.__obj.execute(self.__obj)
+ *         self.__obj.main(self.__obj)
  *         return StatusCode.SUCCESS
  */
       __Pyx_XGIVEREF(__pyx_t_3);
@@ -3460,20 +3492,20 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_20execute(CYTHON_UNUSED PyOb
       goto __pyx_L0;
     }
 
-    /* "otools/core/Tool.py":62
+    /* "otools/core/Service.py":63
  * 
- *   def execute (self):
- *     if self._active:             # <<<<<<<<<<<<<<
+ *   def main (self):
+ *     if self.active:             # <<<<<<<<<<<<<<
  *       try:
- *         self.__obj.execute(self.__obj)
+ *         self.__obj.main(self.__obj)
  */
   }
 
-  /* "otools/core/Tool.py":61
+  /* "otools/core/Service.py":62
  *       return StatusCode.FAILURE
  * 
- *   def execute (self):             # <<<<<<<<<<<<<<
- *     if self._active:
+ *   def main (self):             # <<<<<<<<<<<<<<
+ *     if self.active:
  *       try:
  */
 
@@ -3486,7 +3518,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_20execute(CYTHON_UNUSED PyOb
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.execute", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Service.Service.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3494,8 +3526,219 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_20execute(CYTHON_UNUSED PyOb
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":69
+/* "otools/core/Service.py":70
  *         return StatusCode.FAILURE
+ * 
+ *   def loop (self):             # <<<<<<<<<<<<<<
+ *     while self.active:
+ *       try:
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_23loop(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_7Service_7Service_23loop = {"loop", (PyCFunction)__pyx_pw_6otools_4core_7Service_7Service_23loop, METH_O, 0};
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_23loop(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("loop (wrapper)", 0);
+  __pyx_r = __pyx_pf_6otools_4core_7Service_7Service_22loop(__pyx_self, ((PyObject *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_22loop(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_t_2;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  PyObject *__pyx_t_6 = NULL;
+  PyObject *__pyx_t_7 = NULL;
+  PyObject *__pyx_t_8 = NULL;
+  int __pyx_t_9;
+  __Pyx_RefNannySetupContext("loop", 0);
+
+  /* "otools/core/Service.py":71
+ * 
+ *   def loop (self):
+ *     while self.active:             # <<<<<<<<<<<<<<
+ *       try:
+ *         self.__obj.loop(self.__obj)
+ */
+  while (1) {
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_active_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 71, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 71, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    if (!__pyx_t_2) break;
+
+    /* "otools/core/Service.py":72
+ *   def loop (self):
+ *     while self.active:
+ *       try:             # <<<<<<<<<<<<<<
+ *         self.__obj.loop(self.__obj)
+ *       except AttributeError:
+ */
+    {
+      __Pyx_PyThreadState_declare
+      __Pyx_PyThreadState_assign
+      __Pyx_ExceptionSave(&__pyx_t_3, &__pyx_t_4, &__pyx_t_5);
+      __Pyx_XGOTREF(__pyx_t_3);
+      __Pyx_XGOTREF(__pyx_t_4);
+      __Pyx_XGOTREF(__pyx_t_5);
+      /*try:*/ {
+
+        /* "otools/core/Service.py":73
+ *     while self.active:
+ *       try:
+ *         self.__obj.loop(self.__obj)             # <<<<<<<<<<<<<<
+ *       except AttributeError:
+ *         break
+ */
+        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__obj); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 73, __pyx_L5_error)
+        __Pyx_GOTREF(__pyx_t_6);
+        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_loop); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 73, __pyx_L5_error)
+        __Pyx_GOTREF(__pyx_t_7);
+        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__obj); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 73, __pyx_L5_error)
+        __Pyx_GOTREF(__pyx_t_6);
+        __pyx_t_8 = NULL;
+        if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
+          __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_7);
+          if (likely(__pyx_t_8)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
+            __Pyx_INCREF(__pyx_t_8);
+            __Pyx_INCREF(function);
+            __Pyx_DECREF_SET(__pyx_t_7, function);
+          }
+        }
+        __pyx_t_1 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_8, __pyx_t_6) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_6);
+        __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 73, __pyx_L5_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+        /* "otools/core/Service.py":72
+ *   def loop (self):
+ *     while self.active:
+ *       try:             # <<<<<<<<<<<<<<
+ *         self.__obj.loop(self.__obj)
+ *       except AttributeError:
+ */
+      }
+      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+      goto __pyx_L12_try_end;
+      __pyx_L5_error:;
+      __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+
+      /* "otools/core/Service.py":74
+ *       try:
+ *         self.__obj.loop(self.__obj)
+ *       except AttributeError:             # <<<<<<<<<<<<<<
+ *         break
+ *       except:
+ */
+      __pyx_t_9 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_AttributeError);
+      if (__pyx_t_9) {
+        __Pyx_AddTraceback("otools.core.Service.Service.loop", __pyx_clineno, __pyx_lineno, __pyx_filename);
+        if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_7, &__pyx_t_6) < 0) __PYX_ERR(0, 74, __pyx_L7_except_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __Pyx_GOTREF(__pyx_t_7);
+        __Pyx_GOTREF(__pyx_t_6);
+
+        /* "otools/core/Service.py":75
+ *         self.__obj.loop(self.__obj)
+ *       except AttributeError:
+ *         break             # <<<<<<<<<<<<<<
+ *       except:
+ *         pass
+ */
+        goto __pyx_L13_except_break;
+        __pyx_L13_except_break:;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+        goto __pyx_L10_try_break;
+      }
+
+      /* "otools/core/Service.py":76
+ *       except AttributeError:
+ *         break
+ *       except:             # <<<<<<<<<<<<<<
+ *         pass
+ * 
+ */
+      /*except:*/ {
+        __Pyx_ErrRestore(0,0,0);
+        goto __pyx_L6_exception_handled;
+      }
+      __pyx_L7_except_error:;
+
+      /* "otools/core/Service.py":72
+ *   def loop (self):
+ *     while self.active:
+ *       try:             # <<<<<<<<<<<<<<
+ *         self.__obj.loop(self.__obj)
+ *       except AttributeError:
+ */
+      __Pyx_XGIVEREF(__pyx_t_3);
+      __Pyx_XGIVEREF(__pyx_t_4);
+      __Pyx_XGIVEREF(__pyx_t_5);
+      __Pyx_ExceptionReset(__pyx_t_3, __pyx_t_4, __pyx_t_5);
+      goto __pyx_L1_error;
+      __pyx_L10_try_break:;
+      __Pyx_XGIVEREF(__pyx_t_3);
+      __Pyx_XGIVEREF(__pyx_t_4);
+      __Pyx_XGIVEREF(__pyx_t_5);
+      __Pyx_ExceptionReset(__pyx_t_3, __pyx_t_4, __pyx_t_5);
+      goto __pyx_L4_break;
+      __pyx_L6_exception_handled:;
+      __Pyx_XGIVEREF(__pyx_t_3);
+      __Pyx_XGIVEREF(__pyx_t_4);
+      __Pyx_XGIVEREF(__pyx_t_5);
+      __Pyx_ExceptionReset(__pyx_t_3, __pyx_t_4, __pyx_t_5);
+      __pyx_L12_try_end:;
+    }
+  }
+  __pyx_L4_break:;
+
+  /* "otools/core/Service.py":70
+ *         return StatusCode.FAILURE
+ * 
+ *   def loop (self):             # <<<<<<<<<<<<<<
+ *     while self.active:
+ *       try:
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_AddTraceback("otools.core.Service.Service.loop", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "otools/core/Service.py":79
+ *         pass
  * 
  *   def finalize (self):             # <<<<<<<<<<<<<<
  *     try:
@@ -3503,20 +3746,20 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_20execute(CYTHON_UNUSED PyOb
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_23finalize(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_23finalize = {"finalize", (PyCFunction)__pyx_pw_6otools_4core_4Tool_4Tool_23finalize, METH_O, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_23finalize(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_25finalize(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_7Service_7Service_25finalize = {"finalize", (PyCFunction)__pyx_pw_6otools_4core_7Service_7Service_25finalize, METH_O, 0};
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_25finalize(PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("finalize (wrapper)", 0);
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_22finalize(__pyx_self, ((PyObject *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6otools_4core_7Service_7Service_24finalize(__pyx_self, ((PyObject *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_22finalize(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_24finalize(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3529,12 +3772,12 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_22finalize(CYTHON_UNUSED PyO
   PyObject *__pyx_t_8 = NULL;
   __Pyx_RefNannySetupContext("finalize", 0);
 
-  /* "otools/core/Tool.py":70
+  /* "otools/core/Service.py":80
  * 
  *   def finalize (self):
  *     try:             # <<<<<<<<<<<<<<
  *       self.__obj.finalize(self.__obj)
- *       self._active = False
+ *       self.deactivate()
  */
   {
     __Pyx_PyThreadState_declare
@@ -3545,19 +3788,19 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_22finalize(CYTHON_UNUSED PyO
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "otools/core/Tool.py":71
+      /* "otools/core/Service.py":81
  *   def finalize (self):
  *     try:
  *       self.__obj.finalize(self.__obj)             # <<<<<<<<<<<<<<
- *       self._active = False
+ *       self.deactivate()
  *       return StatusCode.SUCCESS
  */
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 71, __pyx_L3_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__obj); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 81, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_finalize); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 71, __pyx_L3_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_finalize); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 81, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 71, __pyx_L3_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__obj); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 81, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
       __pyx_t_7 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
@@ -3572,43 +3815,60 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_22finalize(CYTHON_UNUSED PyO
       __pyx_t_4 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_7, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5);
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 71, __pyx_L3_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 81, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "otools/core/Tool.py":72
+      /* "otools/core/Service.py":82
  *     try:
  *       self.__obj.finalize(self.__obj)
- *       self._active = False             # <<<<<<<<<<<<<<
+ *       self.deactivate()             # <<<<<<<<<<<<<<
  *       return StatusCode.SUCCESS
  *     except:
  */
-      if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_active, Py_False) < 0) __PYX_ERR(0, 72, __pyx_L3_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_deactivate); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 82, __pyx_L3_error)
+      __Pyx_GOTREF(__pyx_t_6);
+      __pyx_t_5 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
+        __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_6);
+        if (likely(__pyx_t_5)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_6);
+          __Pyx_INCREF(__pyx_t_5);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_6, function);
+        }
+      }
+      __pyx_t_4 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_6);
+      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 82, __pyx_L3_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "otools/core/Tool.py":73
+      /* "otools/core/Service.py":83
  *       self.__obj.finalize(self.__obj)
- *       self._active = False
+ *       self.deactivate()
  *       return StatusCode.SUCCESS             # <<<<<<<<<<<<<<
  *     except:
  *       return StatusCode.FAILURE
  */
       __Pyx_XDECREF(__pyx_r);
-      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_StatusCode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 73, __pyx_L3_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_StatusCode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 83, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_SUCCESS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 73, __pyx_L3_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_SUCCESS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 83, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_r = __pyx_t_6;
       __pyx_t_6 = 0;
       goto __pyx_L7_try_return;
 
-      /* "otools/core/Tool.py":70
+      /* "otools/core/Service.py":80
  * 
  *   def finalize (self):
  *     try:             # <<<<<<<<<<<<<<
  *       self.__obj.finalize(self.__obj)
- *       self._active = False
+ *       self.deactivate()
  */
     }
     __pyx_L3_error:;
@@ -3617,21 +3877,21 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_22finalize(CYTHON_UNUSED PyO
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "otools/core/Tool.py":74
- *       self._active = False
+    /* "otools/core/Service.py":84
+ *       self.deactivate()
  *       return StatusCode.SUCCESS
  *     except:             # <<<<<<<<<<<<<<
  *       return StatusCode.FAILURE
  * 
  */
     /*except:*/ {
-      __Pyx_AddTraceback("otools.core.Tool.Tool.finalize", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_4, &__pyx_t_5) < 0) __PYX_ERR(0, 74, __pyx_L5_except_error)
+      __Pyx_AddTraceback("otools.core.Service.Service.finalize", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_4, &__pyx_t_5) < 0) __PYX_ERR(0, 84, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_5);
 
-      /* "otools/core/Tool.py":75
+      /* "otools/core/Service.py":85
  *       return StatusCode.SUCCESS
  *     except:
  *       return StatusCode.FAILURE             # <<<<<<<<<<<<<<
@@ -3639,9 +3899,9 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_22finalize(CYTHON_UNUSED PyO
  *   def setContext (self, ctx):
  */
       __Pyx_XDECREF(__pyx_r);
-      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_StatusCode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 75, __pyx_L5_except_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_StatusCode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 85, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_FAILURE); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 75, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_FAILURE); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 85, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_r = __pyx_t_8;
@@ -3653,12 +3913,12 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_22finalize(CYTHON_UNUSED PyO
     }
     __pyx_L5_except_error:;
 
-    /* "otools/core/Tool.py":70
+    /* "otools/core/Service.py":80
  * 
  *   def finalize (self):
  *     try:             # <<<<<<<<<<<<<<
  *       self.__obj.finalize(self.__obj)
- *       self._active = False
+ *       self.deactivate()
  */
     __Pyx_XGIVEREF(__pyx_t_1);
     __Pyx_XGIVEREF(__pyx_t_2);
@@ -3679,8 +3939,8 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_22finalize(CYTHON_UNUSED PyO
     goto __pyx_L0;
   }
 
-  /* "otools/core/Tool.py":69
- *         return StatusCode.FAILURE
+  /* "otools/core/Service.py":79
+ *         pass
  * 
  *   def finalize (self):             # <<<<<<<<<<<<<<
  *     try:
@@ -3694,7 +3954,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_22finalize(CYTHON_UNUSED PyO
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.finalize", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Service.Service.finalize", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3702,7 +3962,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_22finalize(CYTHON_UNUSED PyO
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":77
+/* "otools/core/Service.py":87
  *       return StatusCode.FAILURE
  * 
  *   def setContext (self, ctx):             # <<<<<<<<<<<<<<
@@ -3711,9 +3971,9 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_22finalize(CYTHON_UNUSED PyO
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_25setContext(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_25setContext = {"setContext", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_4Tool_4Tool_25setContext, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_25setContext(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_27setContext(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_7Service_7Service_27setContext = {"setContext", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6otools_4core_7Service_7Service_27setContext, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_27setContext(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_ctx = 0;
   PyObject *__pyx_r = 0;
@@ -3742,11 +4002,11 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_25setContext(PyObject *__pyx
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_ctx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("setContext", 1, 2, 2, 1); __PYX_ERR(0, 77, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("setContext", 1, 2, 2, 1); __PYX_ERR(0, 87, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "setContext") < 0)) __PYX_ERR(0, 77, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "setContext") < 0)) __PYX_ERR(0, 87, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -3759,90 +4019,90 @@ static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_25setContext(PyObject *__pyx
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("setContext", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 77, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("setContext", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 87, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("otools.core.Tool.Tool.setContext", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Service.Service.setContext", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_24setContext(__pyx_self, __pyx_v_self, __pyx_v_ctx);
+  __pyx_r = __pyx_pf_6otools_4core_7Service_7Service_26setContext(__pyx_self, __pyx_v_self, __pyx_v_ctx);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_24setContext(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_ctx) {
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_26setContext(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_ctx) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
   __Pyx_RefNannySetupContext("setContext", 0);
 
-  /* "otools/core/Tool.py":78
+  /* "otools/core/Service.py":88
  * 
  *   def setContext (self, ctx):
  *     self.__context = ctx             # <<<<<<<<<<<<<<
  *     self.__obj.terminateContext   = self.__context.finalize
- *     self.__obj.getTool            = self.__context.getTool
+ *     self.__obj.getService         = self.__context.getService
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Tool__context, __pyx_v_ctx) < 0) __PYX_ERR(0, 78, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Service__context, __pyx_v_ctx) < 0) __PYX_ERR(0, 88, __pyx_L1_error)
 
-  /* "otools/core/Tool.py":79
+  /* "otools/core/Service.py":89
  *   def setContext (self, ctx):
  *     self.__context = ctx
  *     self.__obj.terminateContext   = self.__context.finalize             # <<<<<<<<<<<<<<
- *     self.__obj.getTool            = self.__context.getTool
+ *     self.__obj.getService         = self.__context.getService
  *     self.__obj.getDataframe       = self.__context.getDataframe
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_finalize); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_finalize); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__obj); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_t_1, __pyx_n_s_terminateContext, __pyx_t_2) < 0) __PYX_ERR(0, 79, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_t_1, __pyx_n_s_terminateContext, __pyx_t_2) < 0) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":80
+  /* "otools/core/Service.py":90
  *     self.__context = ctx
  *     self.__obj.terminateContext   = self.__context.finalize
- *     self.__obj.getTool            = self.__context.getTool             # <<<<<<<<<<<<<<
+ *     self.__obj.getService         = self.__context.getService             # <<<<<<<<<<<<<<
  *     self.__obj.getDataframe       = self.__context.getDataframe
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_getTool); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_getService); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__obj); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_t_1, __pyx_n_s_getTool, __pyx_t_2) < 0) __PYX_ERR(0, 80, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_t_1, __pyx_n_s_getService, __pyx_t_2) < 0) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":81
+  /* "otools/core/Service.py":91
  *     self.__obj.terminateContext   = self.__context.finalize
- *     self.__obj.getTool            = self.__context.getTool
+ *     self.__obj.getService         = self.__context.getService
  *     self.__obj.getDataframe       = self.__context.getDataframe             # <<<<<<<<<<<<<<
  * 
  *   def getContext (self):
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_getDataframe); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 81, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_getDataframe); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 91, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__obj); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__obj); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_t_1, __pyx_n_s_getDataframe, __pyx_t_2) < 0) __PYX_ERR(0, 81, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_t_1, __pyx_n_s_getDataframe, __pyx_t_2) < 0) __PYX_ERR(0, 91, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":77
+  /* "otools/core/Service.py":87
  *       return StatusCode.FAILURE
  * 
  *   def setContext (self, ctx):             # <<<<<<<<<<<<<<
@@ -3856,7 +4116,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_24setContext(CYTHON_UNUSED P
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.setContext", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Service.Service.setContext", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3864,7 +4124,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_24setContext(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":83
+/* "otools/core/Service.py":93
  *     self.__obj.getDataframe       = self.__context.getDataframe
  * 
  *   def getContext (self):             # <<<<<<<<<<<<<<
@@ -3873,40 +4133,40 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_24setContext(CYTHON_UNUSED P
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_27getContext(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_27getContext = {"getContext", (PyCFunction)__pyx_pw_6otools_4core_4Tool_4Tool_27getContext, METH_O, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_27getContext(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_29getContext(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_7Service_7Service_29getContext = {"getContext", (PyCFunction)__pyx_pw_6otools_4core_7Service_7Service_29getContext, METH_O, 0};
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_29getContext(PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("getContext (wrapper)", 0);
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_26getContext(__pyx_self, ((PyObject *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6otools_4core_7Service_7Service_28getContext(__pyx_self, ((PyObject *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_26getContext(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_28getContext(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("getContext", 0);
 
-  /* "otools/core/Tool.py":84
+  /* "otools/core/Service.py":94
  * 
  *   def getContext (self):
  *     return self.__context             # <<<<<<<<<<<<<<
  * 
- *   @property
+ *   def deactivate (self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__context); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "otools/core/Tool.py":83
+  /* "otools/core/Service.py":93
  *     self.__obj.getDataframe       = self.__context.getDataframe
  * 
  *   def getContext (self):             # <<<<<<<<<<<<<<
@@ -3917,7 +4177,7 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_26getContext(CYTHON_UNUSED P
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.getContext", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Service.Service.getContext", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3925,56 +4185,173 @@ static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_26getContext(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "otools/core/Tool.py":87
+/* "otools/core/Service.py":96
+ *     return self.__context
  * 
- *   @property
- *   def name(self):             # <<<<<<<<<<<<<<
- *     return self.__name
+ *   def deactivate (self):             # <<<<<<<<<<<<<<
+ *     self._active = False
+ * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_29name(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
-static PyMethodDef __pyx_mdef_6otools_4core_4Tool_4Tool_29name = {"name", (PyCFunction)__pyx_pw_6otools_4core_4Tool_4Tool_29name, METH_O, 0};
-static PyObject *__pyx_pw_6otools_4core_4Tool_4Tool_29name(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_31deactivate(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_7Service_7Service_31deactivate = {"deactivate", (PyCFunction)__pyx_pw_6otools_4core_7Service_7Service_31deactivate, METH_O, 0};
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_31deactivate(PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("name (wrapper)", 0);
-  __pyx_r = __pyx_pf_6otools_4core_4Tool_4Tool_28name(__pyx_self, ((PyObject *)__pyx_v_self));
+  __Pyx_RefNannySetupContext("deactivate (wrapper)", 0);
+  __pyx_r = __pyx_pf_6otools_4core_7Service_7Service_30deactivate(__pyx_self, ((PyObject *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6otools_4core_4Tool_4Tool_28name(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_30deactivate(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("deactivate", 0);
+
+  /* "otools/core/Service.py":97
+ * 
+ *   def deactivate (self):
+ *     self._active = False             # <<<<<<<<<<<<<<
+ * 
+ *   @property
+ */
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_active, Py_False) < 0) __PYX_ERR(0, 97, __pyx_L1_error)
+
+  /* "otools/core/Service.py":96
+ *     return self.__context
+ * 
+ *   def deactivate (self):             # <<<<<<<<<<<<<<
+ *     self._active = False
+ * 
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("otools.core.Service.Service.deactivate", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "otools/core/Service.py":100
+ * 
+ *   @property
+ *   def name(self):             # <<<<<<<<<<<<<<
+ *     return self.__name
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_33name(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_7Service_7Service_33name = {"name", (PyCFunction)__pyx_pw_6otools_4core_7Service_7Service_33name, METH_O, 0};
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_33name(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("name (wrapper)", 0);
+  __pyx_r = __pyx_pf_6otools_4core_7Service_7Service_32name(__pyx_self, ((PyObject *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_32name(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("name", 0);
 
-  /* "otools/core/Tool.py":88
+  /* "otools/core/Service.py":101
  *   @property
  *   def name(self):
  *     return self.__name             # <<<<<<<<<<<<<<
+ * 
+ *   @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Tool__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 88, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Service__name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "otools/core/Tool.py":87
+  /* "otools/core/Service.py":100
  * 
  *   @property
  *   def name(self):             # <<<<<<<<<<<<<<
  *     return self.__name
+ * 
  */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("otools.core.Tool.Tool.name", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("otools.core.Service.Service.name", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "otools/core/Service.py":104
+ * 
+ *   @property
+ *   def active(self):             # <<<<<<<<<<<<<<
+ *     return self._active
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_35active(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static PyMethodDef __pyx_mdef_6otools_4core_7Service_7Service_35active = {"active", (PyCFunction)__pyx_pw_6otools_4core_7Service_7Service_35active, METH_O, 0};
+static PyObject *__pyx_pw_6otools_4core_7Service_7Service_35active(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("active (wrapper)", 0);
+  __pyx_r = __pyx_pf_6otools_4core_7Service_7Service_34active(__pyx_self, ((PyObject *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6otools_4core_7Service_7Service_34active(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  __Pyx_RefNannySetupContext("active", 0);
+
+  /* "otools/core/Service.py":105
+ *   @property
+ *   def active(self):
+ *     return self._active             # <<<<<<<<<<<<<<
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_active); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "otools/core/Service.py":104
+ * 
+ *   @property
+ *   def active(self):             # <<<<<<<<<<<<<<
+ *     return self._active
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("otools.core.Service.Service.active", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3989,17 +4366,17 @@ static PyMethodDef __pyx_methods[] = {
 #if PY_MAJOR_VERSION >= 3
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_Tool(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_Service(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_Tool},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_Service},
   {0, NULL}
 };
 #endif
 
 static struct PyModuleDef __pyx_moduledef = {
     PyModuleDef_HEAD_INIT,
-    "Tool",
+    "Service",
     0, /* m_doc */
   #if CYTHON_PEP489_MULTI_PHASE_INIT
     0, /* m_size */
@@ -4028,7 +4405,8 @@ static struct PyModuleDef __pyx_moduledef = {
 #endif
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
-  {&__pyx_kp_s_A_Tool_is_a_class_that_shall_en, __pyx_k_A_Tool_is_a_class_that_shall_en, sizeof(__pyx_k_A_Tool_is_a_class_that_shall_en), 0, 0, 1, 0},
+  {&__pyx_kp_s_A_Service_is_a_class_that_shall, __pyx_k_A_Service_is_a_class_that_shall, sizeof(__pyx_k_A_Service_is_a_class_that_shall), 0, 0, 1, 0},
+  {&__pyx_n_s_AttributeError, __pyx_k_AttributeError, sizeof(__pyx_k_AttributeError), 0, 0, 1, 1},
   {&__pyx_n_s_FAILURE, __pyx_k_FAILURE, sizeof(__pyx_k_FAILURE), 0, 0, 1, 1},
   {&__pyx_n_s_MSG_DEBUG, __pyx_k_MSG_DEBUG, sizeof(__pyx_k_MSG_DEBUG), 0, 0, 1, 1},
   {&__pyx_n_s_MSG_ERROR, __pyx_k_MSG_ERROR, sizeof(__pyx_k_MSG_ERROR), 0, 0, 1, 1},
@@ -4036,52 +4414,57 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_MSG_INFO, __pyx_k_MSG_INFO, sizeof(__pyx_k_MSG_INFO), 0, 0, 1, 1},
   {&__pyx_n_s_MSG_VERBOSE, __pyx_k_MSG_VERBOSE, sizeof(__pyx_k_MSG_VERBOSE), 0, 0, 1, 1},
   {&__pyx_n_s_MSG_WARNING, __pyx_k_MSG_WARNING, sizeof(__pyx_k_MSG_WARNING), 0, 0, 1, 1},
-  {&__pyx_kp_s_OTools_Tool_name, __pyx_k_OTools_Tool_name, sizeof(__pyx_k_OTools_Tool_name), 0, 0, 1, 0},
+  {&__pyx_kp_s_OTools_Service_name, __pyx_k_OTools_Service_name, sizeof(__pyx_k_OTools_Service_name), 0, 0, 1, 0},
   {&__pyx_n_s_SUCCESS, __pyx_k_SUCCESS, sizeof(__pyx_k_SUCCESS), 0, 0, 1, 1},
+  {&__pyx_n_s_Service, __pyx_k_Service, sizeof(__pyx_k_Service), 0, 0, 1, 1},
+  {&__pyx_n_s_Service_MSG_DEBUG, __pyx_k_Service_MSG_DEBUG, sizeof(__pyx_k_Service_MSG_DEBUG), 0, 0, 1, 1},
+  {&__pyx_n_s_Service_MSG_ERROR, __pyx_k_Service_MSG_ERROR, sizeof(__pyx_k_Service_MSG_ERROR), 0, 0, 1, 1},
+  {&__pyx_n_s_Service_MSG_FATAL, __pyx_k_Service_MSG_FATAL, sizeof(__pyx_k_Service_MSG_FATAL), 0, 0, 1, 1},
+  {&__pyx_n_s_Service_MSG_INFO, __pyx_k_Service_MSG_INFO, sizeof(__pyx_k_Service_MSG_INFO), 0, 0, 1, 1},
+  {&__pyx_n_s_Service_MSG_VERBOSE, __pyx_k_Service_MSG_VERBOSE, sizeof(__pyx_k_Service_MSG_VERBOSE), 0, 0, 1, 1},
+  {&__pyx_n_s_Service_MSG_WARNING, __pyx_k_Service_MSG_WARNING, sizeof(__pyx_k_Service_MSG_WARNING), 0, 0, 1, 1},
+  {&__pyx_n_s_Service___init, __pyx_k_Service___init, sizeof(__pyx_k_Service___init), 0, 0, 1, 1},
+  {&__pyx_n_s_Service___repr, __pyx_k_Service___repr, sizeof(__pyx_k_Service___repr), 0, 0, 1, 1},
+  {&__pyx_n_s_Service___str, __pyx_k_Service___str, sizeof(__pyx_k_Service___str), 0, 0, 1, 1},
+  {&__pyx_n_s_Service__context, __pyx_k_Service__context, sizeof(__pyx_k_Service__context), 0, 0, 1, 1},
+  {&__pyx_n_s_Service__name, __pyx_k_Service__name, sizeof(__pyx_k_Service__name), 0, 0, 1, 1},
+  {&__pyx_n_s_Service__obj, __pyx_k_Service__obj, sizeof(__pyx_k_Service__obj), 0, 0, 1, 1},
+  {&__pyx_n_s_Service_active, __pyx_k_Service_active, sizeof(__pyx_k_Service_active), 0, 0, 1, 1},
+  {&__pyx_n_s_Service_deactivate, __pyx_k_Service_deactivate, sizeof(__pyx_k_Service_deactivate), 0, 0, 1, 1},
+  {&__pyx_n_s_Service_finalize, __pyx_k_Service_finalize, sizeof(__pyx_k_Service_finalize), 0, 0, 1, 1},
+  {&__pyx_n_s_Service_getContext, __pyx_k_Service_getContext, sizeof(__pyx_k_Service_getContext), 0, 0, 1, 1},
+  {&__pyx_n_s_Service_loop, __pyx_k_Service_loop, sizeof(__pyx_k_Service_loop), 0, 0, 1, 1},
+  {&__pyx_n_s_Service_main, __pyx_k_Service_main, sizeof(__pyx_k_Service_main), 0, 0, 1, 1},
+  {&__pyx_n_s_Service_name, __pyx_k_Service_name, sizeof(__pyx_k_Service_name), 0, 0, 1, 1},
+  {&__pyx_n_s_Service_setContext, __pyx_k_Service_setContext, sizeof(__pyx_k_Service_setContext), 0, 0, 1, 1},
+  {&__pyx_n_s_Service_setup, __pyx_k_Service_setup, sizeof(__pyx_k_Service_setup), 0, 0, 1, 1},
   {&__pyx_n_s_StatusCode, __pyx_k_StatusCode, sizeof(__pyx_k_StatusCode), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool, __pyx_k_Tool, sizeof(__pyx_k_Tool), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool_MSG_DEBUG, __pyx_k_Tool_MSG_DEBUG, sizeof(__pyx_k_Tool_MSG_DEBUG), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool_MSG_ERROR, __pyx_k_Tool_MSG_ERROR, sizeof(__pyx_k_Tool_MSG_ERROR), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool_MSG_FATAL, __pyx_k_Tool_MSG_FATAL, sizeof(__pyx_k_Tool_MSG_FATAL), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool_MSG_INFO, __pyx_k_Tool_MSG_INFO, sizeof(__pyx_k_Tool_MSG_INFO), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool_MSG_VERBOSE, __pyx_k_Tool_MSG_VERBOSE, sizeof(__pyx_k_Tool_MSG_VERBOSE), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool_MSG_WARNING, __pyx_k_Tool_MSG_WARNING, sizeof(__pyx_k_Tool_MSG_WARNING), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool___init, __pyx_k_Tool___init, sizeof(__pyx_k_Tool___init), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool___repr, __pyx_k_Tool___repr, sizeof(__pyx_k_Tool___repr), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool___str, __pyx_k_Tool___str, sizeof(__pyx_k_Tool___str), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool__context, __pyx_k_Tool__context, sizeof(__pyx_k_Tool__context), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool__name, __pyx_k_Tool__name, sizeof(__pyx_k_Tool__name), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool__obj, __pyx_k_Tool__obj, sizeof(__pyx_k_Tool__obj), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool_execute, __pyx_k_Tool_execute, sizeof(__pyx_k_Tool_execute), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool_finalize, __pyx_k_Tool_finalize, sizeof(__pyx_k_Tool_finalize), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool_getContext, __pyx_k_Tool_getContext, sizeof(__pyx_k_Tool_getContext), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool_initialize, __pyx_k_Tool_initialize, sizeof(__pyx_k_Tool_initialize), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool_name, __pyx_k_Tool_name, sizeof(__pyx_k_Tool_name), 0, 0, 1, 1},
-  {&__pyx_n_s_Tool_setContext, __pyx_k_Tool_setContext, sizeof(__pyx_k_Tool_setContext), 0, 0, 1, 1},
   {&__pyx_n_s_Unknown, __pyx_k_Unknown, sizeof(__pyx_k_Unknown), 0, 0, 1, 1},
   {&__pyx_n_s_active, __pyx_k_active, sizeof(__pyx_k_active), 0, 0, 1, 1},
+  {&__pyx_n_s_active_2, __pyx_k_active_2, sizeof(__pyx_k_active_2), 0, 0, 1, 1},
   {&__pyx_n_s_all, __pyx_k_all, sizeof(__pyx_k_all), 0, 0, 1, 1},
   {&__pyx_n_s_args, __pyx_k_args, sizeof(__pyx_k_args), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_contextName, __pyx_k_contextName, sizeof(__pyx_k_contextName), 0, 0, 1, 1},
   {&__pyx_n_s_ctx, __pyx_k_ctx, sizeof(__pyx_k_ctx), 0, 0, 1, 1},
+  {&__pyx_n_s_deactivate, __pyx_k_deactivate, sizeof(__pyx_k_deactivate), 0, 0, 1, 1},
   {&__pyx_n_s_debug, __pyx_k_debug, sizeof(__pyx_k_debug), 0, 0, 1, 1},
   {&__pyx_n_s_doc, __pyx_k_doc, sizeof(__pyx_k_doc), 0, 0, 1, 1},
   {&__pyx_n_s_error, __pyx_k_error, sizeof(__pyx_k_error), 0, 0, 1, 1},
-  {&__pyx_n_s_execute, __pyx_k_execute, sizeof(__pyx_k_execute), 0, 0, 1, 1},
   {&__pyx_n_s_fatal, __pyx_k_fatal, sizeof(__pyx_k_fatal), 0, 0, 1, 1},
   {&__pyx_n_s_finalize, __pyx_k_finalize, sizeof(__pyx_k_finalize), 0, 0, 1, 1},
   {&__pyx_n_s_format, __pyx_k_format, sizeof(__pyx_k_format), 0, 0, 1, 1},
   {&__pyx_n_s_getContext, __pyx_k_getContext, sizeof(__pyx_k_getContext), 0, 0, 1, 1},
   {&__pyx_n_s_getDataframe, __pyx_k_getDataframe, sizeof(__pyx_k_getDataframe), 0, 0, 1, 1},
   {&__pyx_n_s_getName, __pyx_k_getName, sizeof(__pyx_k_getName), 0, 0, 1, 1},
-  {&__pyx_n_s_getTool, __pyx_k_getTool, sizeof(__pyx_k_getTool), 0, 0, 1, 1},
+  {&__pyx_n_s_getService, __pyx_k_getService, sizeof(__pyx_k_getService), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_info, __pyx_k_info, sizeof(__pyx_k_info), 0, 0, 1, 1},
   {&__pyx_n_s_init, __pyx_k_init, sizeof(__pyx_k_init), 0, 0, 1, 1},
-  {&__pyx_n_s_initialize, __pyx_k_initialize, sizeof(__pyx_k_initialize), 0, 0, 1, 1},
   {&__pyx_n_s_kws, __pyx_k_kws, sizeof(__pyx_k_kws), 0, 0, 1, 1},
+  {&__pyx_n_s_loop, __pyx_k_loop, sizeof(__pyx_k_loop), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
+  {&__pyx_n_s_main_2, __pyx_k_main_2, sizeof(__pyx_k_main_2), 0, 0, 1, 1},
   {&__pyx_n_s_message, __pyx_k_message, sizeof(__pyx_k_message), 0, 0, 1, 1},
   {&__pyx_n_s_metaclass, __pyx_k_metaclass, sizeof(__pyx_k_metaclass), 0, 0, 1, 1},
   {&__pyx_n_s_module, __pyx_k_module, sizeof(__pyx_k_module), 0, 0, 1, 1},
@@ -4089,8 +4472,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_n_s_name_2, __pyx_k_name_2, sizeof(__pyx_k_name_2), 0, 0, 1, 1},
   {&__pyx_n_s_obj, __pyx_k_obj, sizeof(__pyx_k_obj), 0, 0, 1, 1},
-  {&__pyx_n_s_otools_core_Tool, __pyx_k_otools_core_Tool, sizeof(__pyx_k_otools_core_Tool), 0, 0, 1, 1},
-  {&__pyx_kp_s_otools_core_Tool_py, __pyx_k_otools_core_Tool_py, sizeof(__pyx_k_otools_core_Tool_py), 0, 0, 1, 0},
+  {&__pyx_n_s_otools_core_Service, __pyx_k_otools_core_Service, sizeof(__pyx_k_otools_core_Service), 0, 0, 1, 1},
+  {&__pyx_kp_s_otools_core_Service_py, __pyx_k_otools_core_Service_py, sizeof(__pyx_k_otools_core_Service_py), 0, 0, 1, 0},
   {&__pyx_n_s_otools_status_StatusCode, __pyx_k_otools_status_StatusCode, sizeof(__pyx_k_otools_status_StatusCode), 0, 0, 1, 1},
   {&__pyx_n_s_prepare, __pyx_k_prepare, sizeof(__pyx_k_prepare), 0, 0, 1, 1},
   {&__pyx_n_s_property, __pyx_k_property, sizeof(__pyx_k_property), 0, 0, 1, 1},
@@ -4098,6 +4481,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_repr, __pyx_k_repr, sizeof(__pyx_k_repr), 0, 0, 1, 1},
   {&__pyx_n_s_self, __pyx_k_self, sizeof(__pyx_k_self), 0, 0, 1, 1},
   {&__pyx_n_s_setContext, __pyx_k_setContext, sizeof(__pyx_k_setContext), 0, 0, 1, 1},
+  {&__pyx_n_s_setup, __pyx_k_setup, sizeof(__pyx_k_setup), 0, 0, 1, 1},
   {&__pyx_n_s_str, __pyx_k_str, sizeof(__pyx_k_str), 0, 0, 1, 1},
   {&__pyx_n_s_terminateContext, __pyx_k_terminateContext, sizeof(__pyx_k_terminateContext), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
@@ -4106,7 +4490,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_property = __Pyx_GetBuiltinName(__pyx_n_s_property); if (!__pyx_builtin_property) __PYX_ERR(0, 86, __pyx_L1_error)
+  __pyx_builtin_property = __Pyx_GetBuiltinName(__pyx_n_s_property); if (!__pyx_builtin_property) __PYX_ERR(0, 99, __pyx_L1_error)
+  __pyx_builtin_AttributeError = __Pyx_GetBuiltinName(__pyx_n_s_AttributeError); if (!__pyx_builtin_AttributeError) __PYX_ERR(0, 74, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -4116,202 +4501,238 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "otools/core/Tool.py":14
+  /* "otools/core/Service.py":15
  *   """
  * 
  *   def __init__ (self, obj):             # <<<<<<<<<<<<<<
  *     try:
  *       self.__name = obj.getName()
  */
-  __pyx_tuple_ = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_obj); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_obj); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
-  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_init, 14, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Service_py, __pyx_n_s_init, 15, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 15, __pyx_L1_error)
 
-  /* "otools/core/Tool.py":30
+  /* "otools/core/Service.py":31
  *     self._active = True
  * 
  *   def MSG_VERBOSE (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
  *     self.__context.verbose(message, self.__name, contextName, *args, **kws)
  * 
  */
-  __pyx_tuple__3 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_message, __pyx_n_s_moduleName, __pyx_n_s_contextName, __pyx_n_s_args, __pyx_n_s_kws); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 30, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_message, __pyx_n_s_moduleName, __pyx_n_s_contextName, __pyx_n_s_args, __pyx_n_s_kws); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
-  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_MSG_VERBOSE, 30, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 30, __pyx_L1_error)
-  __pyx_tuple__5 = PyTuple_Pack(2, ((PyObject*)__pyx_n_s_Unknown), ((PyObject*)__pyx_n_s_Unknown)); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 30, __pyx_L1_error)
+  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Service_py, __pyx_n_s_MSG_VERBOSE, 31, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_tuple__5 = PyTuple_Pack(2, ((PyObject*)__pyx_n_s_Unknown), ((PyObject*)__pyx_n_s_Unknown)); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
 
-  /* "otools/core/Tool.py":33
+  /* "otools/core/Service.py":34
  *     self.__context.verbose(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_DEBUG (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
  *     self.__context.debug(message, self.__name, contextName, *args, **kws)
  * 
  */
-  __pyx_tuple__6 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_message, __pyx_n_s_moduleName, __pyx_n_s_contextName, __pyx_n_s_args, __pyx_n_s_kws); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_tuple__6 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_message, __pyx_n_s_moduleName, __pyx_n_s_contextName, __pyx_n_s_args, __pyx_n_s_kws); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
-  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_MSG_DEBUG, 33, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(0, 33, __pyx_L1_error)
-  __pyx_tuple__8 = PyTuple_Pack(2, ((PyObject*)__pyx_n_s_Unknown), ((PyObject*)__pyx_n_s_Unknown)); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Service_py, __pyx_n_s_MSG_DEBUG, 34, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_tuple__8 = PyTuple_Pack(2, ((PyObject*)__pyx_n_s_Unknown), ((PyObject*)__pyx_n_s_Unknown)); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 
-  /* "otools/core/Tool.py":36
+  /* "otools/core/Service.py":37
  *     self.__context.debug(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_INFO (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
  *     self.__context.info(message, self.__name, contextName, *args, **kws)
  * 
  */
-  __pyx_tuple__9 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_message, __pyx_n_s_moduleName, __pyx_n_s_contextName, __pyx_n_s_args, __pyx_n_s_kws); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 36, __pyx_L1_error)
+  __pyx_tuple__9 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_message, __pyx_n_s_moduleName, __pyx_n_s_contextName, __pyx_n_s_args, __pyx_n_s_kws); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__9);
   __Pyx_GIVEREF(__pyx_tuple__9);
-  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__9, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_MSG_INFO, 36, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(0, 36, __pyx_L1_error)
-  __pyx_tuple__11 = PyTuple_Pack(2, ((PyObject*)__pyx_n_s_Unknown), ((PyObject*)__pyx_n_s_Unknown)); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 36, __pyx_L1_error)
+  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__9, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Service_py, __pyx_n_s_MSG_INFO, 37, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_tuple__11 = PyTuple_Pack(2, ((PyObject*)__pyx_n_s_Unknown), ((PyObject*)__pyx_n_s_Unknown)); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__11);
   __Pyx_GIVEREF(__pyx_tuple__11);
 
-  /* "otools/core/Tool.py":39
+  /* "otools/core/Service.py":40
  *     self.__context.info(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_WARNING (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
  *     self.__context.warning(message, self.__name, contextName, *args, **kws)
  * 
  */
-  __pyx_tuple__12 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_message, __pyx_n_s_moduleName, __pyx_n_s_contextName, __pyx_n_s_args, __pyx_n_s_kws); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_tuple__12 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_message, __pyx_n_s_moduleName, __pyx_n_s_contextName, __pyx_n_s_args, __pyx_n_s_kws); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__12);
   __Pyx_GIVEREF(__pyx_tuple__12);
-  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_MSG_WARNING, 39, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 39, __pyx_L1_error)
-  __pyx_tuple__14 = PyTuple_Pack(2, ((PyObject*)__pyx_n_s_Unknown), ((PyObject*)__pyx_n_s_Unknown)); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Service_py, __pyx_n_s_MSG_WARNING, 40, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_tuple__14 = PyTuple_Pack(2, ((PyObject*)__pyx_n_s_Unknown), ((PyObject*)__pyx_n_s_Unknown)); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__14);
   __Pyx_GIVEREF(__pyx_tuple__14);
 
-  /* "otools/core/Tool.py":42
+  /* "otools/core/Service.py":43
  *     self.__context.warning(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_ERROR (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
  *     self.__context.error(message, self.__name, contextName, *args, **kws)
  * 
  */
-  __pyx_tuple__15 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_message, __pyx_n_s_moduleName, __pyx_n_s_contextName, __pyx_n_s_args, __pyx_n_s_kws); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 42, __pyx_L1_error)
+  __pyx_tuple__15 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_message, __pyx_n_s_moduleName, __pyx_n_s_contextName, __pyx_n_s_args, __pyx_n_s_kws); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__15);
   __Pyx_GIVEREF(__pyx_tuple__15);
-  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__15, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_MSG_ERROR, 42, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 42, __pyx_L1_error)
-  __pyx_tuple__17 = PyTuple_Pack(2, ((PyObject*)__pyx_n_s_Unknown), ((PyObject*)__pyx_n_s_Unknown)); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 42, __pyx_L1_error)
+  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__15, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Service_py, __pyx_n_s_MSG_ERROR, 43, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_tuple__17 = PyTuple_Pack(2, ((PyObject*)__pyx_n_s_Unknown), ((PyObject*)__pyx_n_s_Unknown)); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__17);
   __Pyx_GIVEREF(__pyx_tuple__17);
 
-  /* "otools/core/Tool.py":45
+  /* "otools/core/Service.py":46
  *     self.__context.error(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_FATAL (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
  *     self.__context.fatal(message, self.__name, contextName, *args, **kws)
  * 
  */
-  __pyx_tuple__18 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_message, __pyx_n_s_moduleName, __pyx_n_s_contextName, __pyx_n_s_args, __pyx_n_s_kws); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __pyx_tuple__18 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_message, __pyx_n_s_moduleName, __pyx_n_s_contextName, __pyx_n_s_args, __pyx_n_s_kws); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__18);
   __Pyx_GIVEREF(__pyx_tuple__18);
-  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_MSG_FATAL, 45, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 45, __pyx_L1_error)
-  __pyx_tuple__20 = PyTuple_Pack(2, ((PyObject*)__pyx_n_s_Unknown), ((PyObject*)__pyx_n_s_Unknown)); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Service_py, __pyx_n_s_MSG_FATAL, 46, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_tuple__20 = PyTuple_Pack(2, ((PyObject*)__pyx_n_s_Unknown), ((PyObject*)__pyx_n_s_Unknown)); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__20);
   __Pyx_GIVEREF(__pyx_tuple__20);
 
-  /* "otools/core/Tool.py":48
+  /* "otools/core/Service.py":49
  *     self.__context.fatal(message, self.__name, contextName, *args, **kws)
  * 
  *   def __str__ (self):             # <<<<<<<<<<<<<<
- *     return "<OTools Tool (name={})>".format(self.name)
+ *     return "<OTools Service (name={})>".format(self.name)
  * 
  */
-  __pyx_tuple__21 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 48, __pyx_L1_error)
+  __pyx_tuple__21 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__21);
   __Pyx_GIVEREF(__pyx_tuple__21);
-  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_str, 48, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 48, __pyx_L1_error)
+  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Service_py, __pyx_n_s_str, 49, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 49, __pyx_L1_error)
 
-  /* "otools/core/Tool.py":51
- *     return "<OTools Tool (name={})>".format(self.name)
+  /* "otools/core/Service.py":52
+ *     return "<OTools Service (name={})>".format(self.name)
  * 
  *   def __repr__ (self):             # <<<<<<<<<<<<<<
  *     return self.__str__()
  * 
  */
-  __pyx_tuple__23 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_tuple__23 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 52, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__23);
   __Pyx_GIVEREF(__pyx_tuple__23);
-  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_repr, 51, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Service_py, __pyx_n_s_repr, 52, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(0, 52, __pyx_L1_error)
 
-  /* "otools/core/Tool.py":54
+  /* "otools/core/Service.py":55
  *     return self.__str__()
  * 
- *   def initialize (self):             # <<<<<<<<<<<<<<
+ *   def setup (self):             # <<<<<<<<<<<<<<
  *     try:
- *       self.__obj.initialize(self.__obj)
+ *       self.__obj.setup(self.__obj)
  */
-  __pyx_tuple__25 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_tuple__25 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__25);
   __Pyx_GIVEREF(__pyx_tuple__25);
-  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_initialize, 54, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Service_py, __pyx_n_s_setup, 55, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 55, __pyx_L1_error)
 
-  /* "otools/core/Tool.py":61
+  /* "otools/core/Service.py":62
  *       return StatusCode.FAILURE
  * 
- *   def execute (self):             # <<<<<<<<<<<<<<
- *     if self._active:
+ *   def main (self):             # <<<<<<<<<<<<<<
+ *     if self.active:
  *       try:
  */
-  __pyx_tuple__27 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_tuple__27 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__27);
   __Pyx_GIVEREF(__pyx_tuple__27);
-  __pyx_codeobj__28 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_execute, 61, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__28)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_codeobj__28 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Service_py, __pyx_n_s_main, 62, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__28)) __PYX_ERR(0, 62, __pyx_L1_error)
 
-  /* "otools/core/Tool.py":69
+  /* "otools/core/Service.py":70
  *         return StatusCode.FAILURE
+ * 
+ *   def loop (self):             # <<<<<<<<<<<<<<
+ *     while self.active:
+ *       try:
+ */
+  __pyx_tuple__29 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__29);
+  __Pyx_GIVEREF(__pyx_tuple__29);
+  __pyx_codeobj__30 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__29, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Service_py, __pyx_n_s_loop, 70, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__30)) __PYX_ERR(0, 70, __pyx_L1_error)
+
+  /* "otools/core/Service.py":79
+ *         pass
  * 
  *   def finalize (self):             # <<<<<<<<<<<<<<
  *     try:
  *       self.__obj.finalize(self.__obj)
  */
-  __pyx_tuple__29 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 69, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__29);
-  __Pyx_GIVEREF(__pyx_tuple__29);
-  __pyx_codeobj__30 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__29, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_finalize, 69, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__30)) __PYX_ERR(0, 69, __pyx_L1_error)
+  __pyx_tuple__31 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__31);
+  __Pyx_GIVEREF(__pyx_tuple__31);
+  __pyx_codeobj__32 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__31, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Service_py, __pyx_n_s_finalize, 79, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__32)) __PYX_ERR(0, 79, __pyx_L1_error)
 
-  /* "otools/core/Tool.py":77
+  /* "otools/core/Service.py":87
  *       return StatusCode.FAILURE
  * 
  *   def setContext (self, ctx):             # <<<<<<<<<<<<<<
  *     self.__context = ctx
  *     self.__obj.terminateContext   = self.__context.finalize
  */
-  __pyx_tuple__31 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_ctx); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 77, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__31);
-  __Pyx_GIVEREF(__pyx_tuple__31);
-  __pyx_codeobj__32 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__31, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_setContext, 77, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__32)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_tuple__33 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_ctx); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__33);
+  __Pyx_GIVEREF(__pyx_tuple__33);
+  __pyx_codeobj__34 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__33, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Service_py, __pyx_n_s_setContext, 87, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__34)) __PYX_ERR(0, 87, __pyx_L1_error)
 
-  /* "otools/core/Tool.py":83
+  /* "otools/core/Service.py":93
  *     self.__obj.getDataframe       = self.__context.getDataframe
  * 
  *   def getContext (self):             # <<<<<<<<<<<<<<
  *     return self.__context
  * 
  */
-  __pyx_tuple__33 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(0, 83, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__33);
-  __Pyx_GIVEREF(__pyx_tuple__33);
-  __pyx_codeobj__34 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__33, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_getContext, 83, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__34)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __pyx_tuple__35 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__35);
+  __Pyx_GIVEREF(__pyx_tuple__35);
+  __pyx_codeobj__36 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__35, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Service_py, __pyx_n_s_getContext, 93, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__36)) __PYX_ERR(0, 93, __pyx_L1_error)
 
-  /* "otools/core/Tool.py":87
+  /* "otools/core/Service.py":96
+ *     return self.__context
+ * 
+ *   def deactivate (self):             # <<<<<<<<<<<<<<
+ *     self._active = False
+ * 
+ */
+  __pyx_tuple__37 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__37)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__37);
+  __Pyx_GIVEREF(__pyx_tuple__37);
+  __pyx_codeobj__38 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Service_py, __pyx_n_s_deactivate, 96, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__38)) __PYX_ERR(0, 96, __pyx_L1_error)
+
+  /* "otools/core/Service.py":100
  * 
  *   @property
  *   def name(self):             # <<<<<<<<<<<<<<
  *     return self.__name
+ * 
  */
-  __pyx_tuple__35 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(0, 87, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__35);
-  __Pyx_GIVEREF(__pyx_tuple__35);
-  __pyx_codeobj__36 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__35, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Tool_py, __pyx_n_s_name_2, 87, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__36)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __pyx_tuple__39 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__39)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__39);
+  __Pyx_GIVEREF(__pyx_tuple__39);
+  __pyx_codeobj__40 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Service_py, __pyx_n_s_name_2, 100, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__40)) __PYX_ERR(0, 100, __pyx_L1_error)
+
+  /* "otools/core/Service.py":104
+ * 
+ *   @property
+ *   def active(self):             # <<<<<<<<<<<<<<
+ *     return self._active
+ */
+  __pyx_tuple__41 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__41)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__41);
+  __Pyx_GIVEREF(__pyx_tuple__41);
+  __pyx_codeobj__42 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__41, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_core_Service_py, __pyx_n_s_active_2, 104, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__42)) __PYX_ERR(0, 104, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -4407,11 +4828,11 @@ static int __Pyx_modinit_function_import_code(void) {
 
 
 #if PY_MAJOR_VERSION < 3
-__Pyx_PyMODINIT_FUNC initTool(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC initTool(void)
+__Pyx_PyMODINIT_FUNC initService(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC initService(void)
 #else
-__Pyx_PyMODINIT_FUNC PyInit_Tool(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_Tool(void)
+__Pyx_PyMODINIT_FUNC PyInit_Service(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_Service(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -4478,7 +4899,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_Tool(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec_Service(PyObject *__pyx_pyinit_module)
 #endif
 #endif
 {
@@ -4489,7 +4910,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_Tool(PyObject *__pyx_pyinit_module
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'Tool' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module 'Service' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #elif PY_MAJOR_VERSION >= 3
@@ -4504,7 +4925,7 @@ if (!__Pyx_RefNanny) {
       Py_FatalError("failed to import 'refnanny' module");
 }
 #endif
-  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_Tool(void)", 0);
+  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_Service(void)", 0);
   if (__Pyx_check_binary_version() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #ifdef __Pxy_PyFrame_Initialize_Offsets
   __Pxy_PyFrame_Initialize_Offsets();
@@ -4543,7 +4964,7 @@ if (!__Pyx_RefNanny) {
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("Tool", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("Service", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
@@ -4561,14 +4982,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_otools__core__Tool) {
-    if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__pyx_module_is_main_otools__core__Service) {
+    if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main_2) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "otools.core.Tool")) {
-      if (unlikely(PyDict_SetItemString(modules, "otools.core.Tool", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "otools.core.Service")) {
+      if (unlikely(PyDict_SetItemString(modules, "otools.core.Service", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -4589,25 +5010,25 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "otools/core/Tool.py":1
- * __all__ = ['Tool']             # <<<<<<<<<<<<<<
+  /* "otools/core/Service.py":1
+ * __all__ = ['Service']             # <<<<<<<<<<<<<<
  * 
  * from otools.status.StatusCode import StatusCode
  */
   __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_INCREF(__pyx_n_s_Tool);
-  __Pyx_GIVEREF(__pyx_n_s_Tool);
-  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_Tool);
+  __Pyx_INCREF(__pyx_n_s_Service);
+  __Pyx_GIVEREF(__pyx_n_s_Service);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_Service);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_all, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":3
- * __all__ = ['Tool']
+  /* "otools/core/Service.py":3
+ * __all__ = ['Service']
  * 
  * from otools.status.StatusCode import StatusCode             # <<<<<<<<<<<<<<
  * 
- * class Tool ():
+ * class Service ():
  */
   __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -4623,227 +5044,274 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "otools/core/Tool.py":5
+  /* "otools/core/Service.py":5
  * from otools.status.StatusCode import StatusCode
  * 
- * class Tool ():             # <<<<<<<<<<<<<<
+ * class Service ():             # <<<<<<<<<<<<<<
  *   """
- *   A Tool is a class that shall encapsulate your own class in order to
+ *   A Service is a class that shall encapsulate your own class in order to
  */
-  __pyx_t_2 = __Pyx_Py3MetaclassPrepare((PyObject *) NULL, __pyx_empty_tuple, __pyx_n_s_Tool, __pyx_n_s_Tool, (PyObject *) NULL, __pyx_n_s_otools_core_Tool, __pyx_kp_s_A_Tool_is_a_class_that_shall_en); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Py3MetaclassPrepare((PyObject *) NULL, __pyx_empty_tuple, __pyx_n_s_Service, __pyx_n_s_Service, (PyObject *) NULL, __pyx_n_s_otools_core_Service, __pyx_kp_s_A_Service_is_a_class_that_shall); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "otools/core/Tool.py":14
+  /* "otools/core/Service.py":15
  *   """
  * 
  *   def __init__ (self, obj):             # <<<<<<<<<<<<<<
  *     try:
  *       self.__name = obj.getName()
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_1__init__, 0, __pyx_n_s_Tool___init, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_7Service_7Service_1__init__, 0, __pyx_n_s_Service___init, NULL, __pyx_n_s_otools_core_Service, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_init, __pyx_t_1) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_init, __pyx_t_1) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":30
+  /* "otools/core/Service.py":31
  *     self._active = True
  * 
  *   def MSG_VERBOSE (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
  *     self.__context.verbose(message, self.__name, contextName, *args, **kws)
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_3MSG_VERBOSE, 0, __pyx_n_s_Tool_MSG_VERBOSE, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__4)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_7Service_7Service_3MSG_VERBOSE, 0, __pyx_n_s_Service_MSG_VERBOSE, NULL, __pyx_n_s_otools_core_Service, __pyx_d, ((PyObject *)__pyx_codeobj__4)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_1, __pyx_tuple__5);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_MSG_VERBOSE, __pyx_t_1) < 0) __PYX_ERR(0, 30, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_MSG_VERBOSE, __pyx_t_1) < 0) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":33
+  /* "otools/core/Service.py":34
  *     self.__context.verbose(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_DEBUG (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
  *     self.__context.debug(message, self.__name, contextName, *args, **kws)
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_5MSG_DEBUG, 0, __pyx_n_s_Tool_MSG_DEBUG, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__7)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_7Service_7Service_5MSG_DEBUG, 0, __pyx_n_s_Service_MSG_DEBUG, NULL, __pyx_n_s_otools_core_Service, __pyx_d, ((PyObject *)__pyx_codeobj__7)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_1, __pyx_tuple__8);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_MSG_DEBUG, __pyx_t_1) < 0) __PYX_ERR(0, 33, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_MSG_DEBUG, __pyx_t_1) < 0) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":36
+  /* "otools/core/Service.py":37
  *     self.__context.debug(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_INFO (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
  *     self.__context.info(message, self.__name, contextName, *args, **kws)
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_7MSG_INFO, 0, __pyx_n_s_Tool_MSG_INFO, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__10)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_7Service_7Service_7MSG_INFO, 0, __pyx_n_s_Service_MSG_INFO, NULL, __pyx_n_s_otools_core_Service, __pyx_d, ((PyObject *)__pyx_codeobj__10)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_1, __pyx_tuple__11);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_MSG_INFO, __pyx_t_1) < 0) __PYX_ERR(0, 36, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_MSG_INFO, __pyx_t_1) < 0) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":39
+  /* "otools/core/Service.py":40
  *     self.__context.info(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_WARNING (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
  *     self.__context.warning(message, self.__name, contextName, *args, **kws)
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_9MSG_WARNING, 0, __pyx_n_s_Tool_MSG_WARNING, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__13)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_7Service_7Service_9MSG_WARNING, 0, __pyx_n_s_Service_MSG_WARNING, NULL, __pyx_n_s_otools_core_Service, __pyx_d, ((PyObject *)__pyx_codeobj__13)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_1, __pyx_tuple__14);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_MSG_WARNING, __pyx_t_1) < 0) __PYX_ERR(0, 39, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_MSG_WARNING, __pyx_t_1) < 0) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":42
+  /* "otools/core/Service.py":43
  *     self.__context.warning(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_ERROR (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
  *     self.__context.error(message, self.__name, contextName, *args, **kws)
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_11MSG_ERROR, 0, __pyx_n_s_Tool_MSG_ERROR, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__16)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_7Service_7Service_11MSG_ERROR, 0, __pyx_n_s_Service_MSG_ERROR, NULL, __pyx_n_s_otools_core_Service, __pyx_d, ((PyObject *)__pyx_codeobj__16)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_1, __pyx_tuple__17);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_MSG_ERROR, __pyx_t_1) < 0) __PYX_ERR(0, 42, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_MSG_ERROR, __pyx_t_1) < 0) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":45
+  /* "otools/core/Service.py":46
  *     self.__context.error(message, self.__name, contextName, *args, **kws)
  * 
  *   def MSG_FATAL (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):             # <<<<<<<<<<<<<<
  *     self.__context.fatal(message, self.__name, contextName, *args, **kws)
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_13MSG_FATAL, 0, __pyx_n_s_Tool_MSG_FATAL, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__19)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_7Service_7Service_13MSG_FATAL, 0, __pyx_n_s_Service_MSG_FATAL, NULL, __pyx_n_s_otools_core_Service, __pyx_d, ((PyObject *)__pyx_codeobj__19)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_1, __pyx_tuple__20);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_MSG_FATAL, __pyx_t_1) < 0) __PYX_ERR(0, 45, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_MSG_FATAL, __pyx_t_1) < 0) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":48
+  /* "otools/core/Service.py":49
  *     self.__context.fatal(message, self.__name, contextName, *args, **kws)
  * 
  *   def __str__ (self):             # <<<<<<<<<<<<<<
- *     return "<OTools Tool (name={})>".format(self.name)
+ *     return "<OTools Service (name={})>".format(self.name)
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_15__str__, 0, __pyx_n_s_Tool___str, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__22)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 48, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_7Service_7Service_15__str__, 0, __pyx_n_s_Service___str, NULL, __pyx_n_s_otools_core_Service, __pyx_d, ((PyObject *)__pyx_codeobj__22)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_str, __pyx_t_1) < 0) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_str, __pyx_t_1) < 0) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":51
- *     return "<OTools Tool (name={})>".format(self.name)
+  /* "otools/core/Service.py":52
+ *     return "<OTools Service (name={})>".format(self.name)
  * 
  *   def __repr__ (self):             # <<<<<<<<<<<<<<
  *     return self.__str__()
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_17__repr__, 0, __pyx_n_s_Tool___repr, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__24)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_7Service_7Service_17__repr__, 0, __pyx_n_s_Service___repr, NULL, __pyx_n_s_otools_core_Service, __pyx_d, ((PyObject *)__pyx_codeobj__24)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_repr, __pyx_t_1) < 0) __PYX_ERR(0, 51, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_repr, __pyx_t_1) < 0) __PYX_ERR(0, 52, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":54
+  /* "otools/core/Service.py":55
  *     return self.__str__()
  * 
- *   def initialize (self):             # <<<<<<<<<<<<<<
+ *   def setup (self):             # <<<<<<<<<<<<<<
  *     try:
- *       self.__obj.initialize(self.__obj)
+ *       self.__obj.setup(self.__obj)
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_19initialize, 0, __pyx_n_s_Tool_initialize, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_7Service_7Service_19setup, 0, __pyx_n_s_Service_setup, NULL, __pyx_n_s_otools_core_Service, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_initialize, __pyx_t_1) < 0) __PYX_ERR(0, 54, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_setup, __pyx_t_1) < 0) __PYX_ERR(0, 55, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":61
+  /* "otools/core/Service.py":62
  *       return StatusCode.FAILURE
  * 
- *   def execute (self):             # <<<<<<<<<<<<<<
- *     if self._active:
+ *   def main (self):             # <<<<<<<<<<<<<<
+ *     if self.active:
  *       try:
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_21execute, 0, __pyx_n_s_Tool_execute, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__28)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_7Service_7Service_21main, 0, __pyx_n_s_Service_main, NULL, __pyx_n_s_otools_core_Service, __pyx_d, ((PyObject *)__pyx_codeobj__28)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_execute, __pyx_t_1) < 0) __PYX_ERR(0, 61, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_main, __pyx_t_1) < 0) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":69
+  /* "otools/core/Service.py":70
  *         return StatusCode.FAILURE
+ * 
+ *   def loop (self):             # <<<<<<<<<<<<<<
+ *     while self.active:
+ *       try:
+ */
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_7Service_7Service_23loop, 0, __pyx_n_s_Service_loop, NULL, __pyx_n_s_otools_core_Service, __pyx_d, ((PyObject *)__pyx_codeobj__30)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_loop, __pyx_t_1) < 0) __PYX_ERR(0, 70, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "otools/core/Service.py":79
+ *         pass
  * 
  *   def finalize (self):             # <<<<<<<<<<<<<<
  *     try:
  *       self.__obj.finalize(self.__obj)
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_23finalize, 0, __pyx_n_s_Tool_finalize, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__30)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_7Service_7Service_25finalize, 0, __pyx_n_s_Service_finalize, NULL, __pyx_n_s_otools_core_Service, __pyx_d, ((PyObject *)__pyx_codeobj__32)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_finalize, __pyx_t_1) < 0) __PYX_ERR(0, 69, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_finalize, __pyx_t_1) < 0) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":77
+  /* "otools/core/Service.py":87
  *       return StatusCode.FAILURE
  * 
  *   def setContext (self, ctx):             # <<<<<<<<<<<<<<
  *     self.__context = ctx
  *     self.__obj.terminateContext   = self.__context.finalize
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_25setContext, 0, __pyx_n_s_Tool_setContext, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__32)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_7Service_7Service_27setContext, 0, __pyx_n_s_Service_setContext, NULL, __pyx_n_s_otools_core_Service, __pyx_d, ((PyObject *)__pyx_codeobj__34)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_setContext, __pyx_t_1) < 0) __PYX_ERR(0, 77, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_setContext, __pyx_t_1) < 0) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":83
+  /* "otools/core/Service.py":93
  *     self.__obj.getDataframe       = self.__context.getDataframe
  * 
  *   def getContext (self):             # <<<<<<<<<<<<<<
  *     return self.__context
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_27getContext, 0, __pyx_n_s_Tool_getContext, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__34)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_7Service_7Service_29getContext, 0, __pyx_n_s_Service_getContext, NULL, __pyx_n_s_otools_core_Service, __pyx_d, ((PyObject *)__pyx_codeobj__36)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_getContext, __pyx_t_1) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_getContext, __pyx_t_1) < 0) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/core/Tool.py":87
+  /* "otools/core/Service.py":96
+ *     return self.__context
+ * 
+ *   def deactivate (self):             # <<<<<<<<<<<<<<
+ *     self._active = False
+ * 
+ */
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_7Service_7Service_31deactivate, 0, __pyx_n_s_Service_deactivate, NULL, __pyx_n_s_otools_core_Service, __pyx_d, ((PyObject *)__pyx_codeobj__38)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_deactivate, __pyx_t_1) < 0) __PYX_ERR(0, 96, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "otools/core/Service.py":100
  * 
  *   @property
  *   def name(self):             # <<<<<<<<<<<<<<
  *     return self.__name
+ * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_4Tool_4Tool_29name, 0, __pyx_n_s_Tool_name, NULL, __pyx_n_s_otools_core_Tool, __pyx_d, ((PyObject *)__pyx_codeobj__36)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_7Service_7Service_33name, 0, __pyx_n_s_Service_name, NULL, __pyx_n_s_otools_core_Service, __pyx_d, ((PyObject *)__pyx_codeobj__40)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "otools/core/Tool.py":86
- *     return self.__context
+  /* "otools/core/Service.py":99
+ *     self._active = False
  * 
  *   @property             # <<<<<<<<<<<<<<
  *   def name(self):
  *     return self.__name
  */
-  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 86, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_name_2, __pyx_t_3) < 0) __PYX_ERR(0, 87, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_name_2, __pyx_t_3) < 0) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "otools/core/Tool.py":5
+  /* "otools/core/Service.py":104
+ * 
+ *   @property
+ *   def active(self):             # <<<<<<<<<<<<<<
+ *     return self._active
+ */
+  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_4core_7Service_7Service_35active, 0, __pyx_n_s_Service_active, NULL, __pyx_n_s_otools_core_Service, __pyx_d, ((PyObject *)__pyx_codeobj__42)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+
+  /* "otools/core/Service.py":103
+ *     return self.__name
+ * 
+ *   @property             # <<<<<<<<<<<<<<
+ *   def active(self):
+ *     return self._active
+ */
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_property, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_active_2, __pyx_t_1) < 0) __PYX_ERR(0, 104, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "otools/core/Service.py":5
  * from otools.status.StatusCode import StatusCode
  * 
- * class Tool ():             # <<<<<<<<<<<<<<
+ * class Service ():             # <<<<<<<<<<<<<<
  *   """
- *   A Tool is a class that shall encapsulate your own class in order to
+ *   A Service is a class that shall encapsulate your own class in order to
  */
-  __pyx_t_3 = __Pyx_Py3ClassCreate(((PyObject*)&__Pyx_DefaultClassType), __pyx_n_s_Tool, __pyx_empty_tuple, __pyx_t_2, NULL, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Tool, __pyx_t_3) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_1 = __Pyx_Py3ClassCreate(((PyObject*)&__Pyx_DefaultClassType), __pyx_n_s_Service, __pyx_empty_tuple, __pyx_t_2, NULL, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Service, __pyx_t_1) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "otools/core/Tool.py":1
- * __all__ = ['Tool']             # <<<<<<<<<<<<<<
+  /* "otools/core/Service.py":1
+ * __all__ = ['Service']             # <<<<<<<<<<<<<<
  * 
  * from otools.status.StatusCode import StatusCode
  */
@@ -4861,11 +5329,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_3);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init otools.core.Tool", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init otools.core.Service", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init otools.core.Tool");
+    PyErr_SetString(PyExc_ImportError, "init otools.core.Service");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -5543,6 +6011,55 @@ static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name)
 #endif
     return __Pyx_GetBuiltinName(name);
 }
+
+/* PyErrExceptionMatches */
+#if CYTHON_FAST_THREAD_STATE
+static int __Pyx_PyErr_ExceptionMatchesTuple(PyObject *exc_type, PyObject *tuple) {
+    Py_ssize_t i, n;
+    n = PyTuple_GET_SIZE(tuple);
+#if PY_MAJOR_VERSION >= 3
+    for (i=0; i<n; i++) {
+        if (exc_type == PyTuple_GET_ITEM(tuple, i)) return 1;
+    }
+#endif
+    for (i=0; i<n; i++) {
+        if (__Pyx_PyErr_GivenExceptionMatches(exc_type, PyTuple_GET_ITEM(tuple, i))) return 1;
+    }
+    return 0;
+}
+static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tstate, PyObject* err) {
+    PyObject *exc_type = tstate->curexc_type;
+    if (exc_type == err) return 1;
+    if (unlikely(!exc_type)) return 0;
+    if (unlikely(PyTuple_Check(err)))
+        return __Pyx_PyErr_ExceptionMatchesTuple(exc_type, err);
+    return __Pyx_PyErr_GivenExceptionMatches(exc_type, err);
+}
+#endif
+
+/* PyErrFetchRestore */
+#if CYTHON_FAST_THREAD_STATE
+static CYTHON_INLINE void __Pyx_ErrRestoreInState(PyThreadState *tstate, PyObject *type, PyObject *value, PyObject *tb) {
+    PyObject *tmp_type, *tmp_value, *tmp_tb;
+    tmp_type = tstate->curexc_type;
+    tmp_value = tstate->curexc_value;
+    tmp_tb = tstate->curexc_traceback;
+    tstate->curexc_type = type;
+    tstate->curexc_value = value;
+    tstate->curexc_traceback = tb;
+    Py_XDECREF(tmp_type);
+    Py_XDECREF(tmp_value);
+    Py_XDECREF(tmp_tb);
+}
+static CYTHON_INLINE void __Pyx_ErrFetchInState(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb) {
+    *type = tstate->curexc_type;
+    *value = tstate->curexc_value;
+    *tb = tstate->curexc_traceback;
+    tstate->curexc_type = 0;
+    tstate->curexc_value = 0;
+    tstate->curexc_traceback = 0;
+}
+#endif
 
 /* Import */
 static PyObject *__Pyx_Import(PyObject *name, PyObject *from_list, int level) {
@@ -6369,30 +6886,6 @@ static PyObject *__Pyx_Py3ClassCreate(PyObject *metaclass, PyObject *name, PyObj
     Py_XDECREF(owned_metaclass);
     return result;
 }
-
-/* PyErrFetchRestore */
-#if CYTHON_FAST_THREAD_STATE
-static CYTHON_INLINE void __Pyx_ErrRestoreInState(PyThreadState *tstate, PyObject *type, PyObject *value, PyObject *tb) {
-    PyObject *tmp_type, *tmp_value, *tmp_tb;
-    tmp_type = tstate->curexc_type;
-    tmp_value = tstate->curexc_value;
-    tmp_tb = tstate->curexc_traceback;
-    tstate->curexc_type = type;
-    tstate->curexc_value = value;
-    tstate->curexc_traceback = tb;
-    Py_XDECREF(tmp_type);
-    Py_XDECREF(tmp_value);
-    Py_XDECREF(tmp_tb);
-}
-static CYTHON_INLINE void __Pyx_ErrFetchInState(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb) {
-    *type = tstate->curexc_type;
-    *value = tstate->curexc_value;
-    *tb = tstate->curexc_traceback;
-    tstate->curexc_type = 0;
-    tstate->curexc_value = 0;
-    tstate->curexc_traceback = 0;
-}
-#endif
 
 /* CLineInTraceback */
 #ifndef CYTHON_CLINE_IN_TRACEBACK
