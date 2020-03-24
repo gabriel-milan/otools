@@ -1,5 +1,6 @@
 __all__ = [
-  'StatusCode'
+  'StatusCode',
+  'StatusTrigger'
 ]
 
 class StatusObject ():
@@ -25,3 +26,10 @@ class StatusCode ():
   SUCCESS = StatusObject(0)
   FAILURE = StatusObject(-1)
   FATAL   = StatusObject(-2)
+
+class StatusTrigger ():
+  """
+  Status code for Trigger objects
+  """
+  NOT_TRIGGERED   = False
+  TRIGGERED       = True

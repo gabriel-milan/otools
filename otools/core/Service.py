@@ -14,9 +14,9 @@ class Service ():
 
   def __init__ (self, obj):
     try:
-      self.__name = obj.getName()
+      self.__name = obj.name
     except:
-      self.__name = obj.__name__
+        self.__name = obj.__name__
     self.__context = None
     self.__obj = obj
     self.__obj.__init__(self.__obj)
@@ -56,6 +56,8 @@ class Service ():
     try:
       self.__obj.setup(self.__obj)
       return StatusCode.SUCCESS
+    except AttributeError:
+      return StatusCode.SUCCESS
     except:
       return StatusCode.FAILURE
 
@@ -63,6 +65,8 @@ class Service ():
     if self.active:
       try:
         self.__obj.main(self.__obj)
+        return StatusCode.SUCCESS
+      except AttributeError:
         return StatusCode.SUCCESS
       except:
         return StatusCode.FAILURE
@@ -80,6 +84,8 @@ class Service ():
     try:
       self.__obj.finalize(self.__obj)
       self.deactivate()
+      return StatusCode.SUCCESS
+    except AttributeError:
       return StatusCode.SUCCESS
     except:
       return StatusCode.FAILURE

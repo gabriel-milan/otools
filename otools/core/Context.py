@@ -5,6 +5,7 @@ from otools.logging.LoggingLevel import LoggingLevel
 from otools.core.Service import Service
 from otools.core.Dataframe import Dataframe
 from otools.status.StatusCode import StatusCode
+from otools.core.Trigger import Trigger
 import threading
 
 class Context ():
@@ -47,6 +48,14 @@ class Context ():
       self.info (" * Adding Dataframe with name {}...".format(obj.name))
       obj.setContext(self)
       self._dataframes[obj.name] = obj
+    elif issubclass(type(obj), Trigger):
+      if obj.name in self._services:
+        message = "A service with name {} conflicts with this Trigger, skipping...".format(obj.name)
+        self.warning(message, self.__str__())
+        return self
+      self.info (" * Adding Trigger with name {}...".format(obj.name))
+      obj.setContext(self)
+      self._services[obj.name] = obj
     return self
 
   def getService (self, serviceName):

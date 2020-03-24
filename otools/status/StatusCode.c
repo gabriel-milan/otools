@@ -1199,10 +1199,13 @@ static const char __pyx_k_FAILURE[] = "FAILURE";
 static const char __pyx_k_SUCCESS[] = "SUCCESS";
 static const char __pyx_k_prepare[] = "__prepare__";
 static const char __pyx_k_qualname[] = "__qualname__";
+static const char __pyx_k_TRIGGERED[] = "TRIGGERED";
 static const char __pyx_k_isFailure[] = "isFailure";
 static const char __pyx_k_metaclass[] = "__metaclass__";
 static const char __pyx_k_StatusCode[] = "StatusCode";
 static const char __pyx_k_StatusObject[] = "StatusObject";
+static const char __pyx_k_NOT_TRIGGERED[] = "NOT_TRIGGERED";
+static const char __pyx_k_StatusTrigger[] = "StatusTrigger";
 static const char __pyx_k_StatusObject___eq[] = "StatusObject.__eq__";
 static const char __pyx_k_StatusObject___ne[] = "StatusObject.__ne__";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
@@ -1211,9 +1214,11 @@ static const char __pyx_k_StatusObject_isFailure[] = "StatusObject.isFailure";
 static const char __pyx_k_otools_status_StatusCode[] = "otools.status.StatusCode";
 static const char __pyx_k_General_purpose_status_code[] = "\n  General purpose status code\n  ";
 static const char __pyx_k_otools_status_StatusCode_py[] = "otools/status/StatusCode.py";
+static const char __pyx_k_Status_code_for_Trigger_objects[] = "\n  Status code for Trigger objects\n  ";
 static PyObject *__pyx_n_s_FAILURE;
 static PyObject *__pyx_n_s_FATAL;
 static PyObject *__pyx_kp_s_General_purpose_status_code;
+static PyObject *__pyx_n_s_NOT_TRIGGERED;
 static PyObject *__pyx_n_s_SUCCESS;
 static PyObject *__pyx_n_s_StatusCode;
 static PyObject *__pyx_n_s_StatusObject;
@@ -1221,6 +1226,9 @@ static PyObject *__pyx_n_s_StatusObject___eq;
 static PyObject *__pyx_n_s_StatusObject___init;
 static PyObject *__pyx_n_s_StatusObject___ne;
 static PyObject *__pyx_n_s_StatusObject_isFailure;
+static PyObject *__pyx_n_s_StatusTrigger;
+static PyObject *__pyx_kp_s_Status_code_for_Trigger_objects;
+static PyObject *__pyx_n_s_TRIGGERED;
 static PyObject *__pyx_n_s_a;
 static PyObject *__pyx_n_s_all;
 static PyObject *__pyx_n_s_cline_in_traceback;
@@ -1258,7 +1266,7 @@ static PyObject *__pyx_codeobj__6;
 static PyObject *__pyx_codeobj__8;
 /* Late includes */
 
-/* "otools/status/StatusCode.py":9
+/* "otools/status/StatusCode.py":10
  *   status = 1
  * 
  *   def __init__ (self, status):             # <<<<<<<<<<<<<<
@@ -1298,11 +1306,11 @@ static PyObject *__pyx_pw_6otools_6status_10StatusCode_12StatusObject_1__init__(
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_status)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, 1); __PYX_ERR(0, 9, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, 1); __PYX_ERR(0, 10, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 9, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 10, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -1315,7 +1323,7 @@ static PyObject *__pyx_pw_6otools_6status_10StatusCode_12StatusObject_1__init__(
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 9, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 10, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("otools.status.StatusCode.StatusObject.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -1333,16 +1341,16 @@ static PyObject *__pyx_pf_6otools_6status_10StatusCode_12StatusObject___init__(C
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "otools/status/StatusCode.py":10
+  /* "otools/status/StatusCode.py":11
  * 
  *   def __init__ (self, status):
  *     self.status = status             # <<<<<<<<<<<<<<
  * 
  *   def isFailure (self):
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_status, __pyx_v_status) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_status, __pyx_v_status) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
 
-  /* "otools/status/StatusCode.py":9
+  /* "otools/status/StatusCode.py":10
  *   status = 1
  * 
  *   def __init__ (self, status):             # <<<<<<<<<<<<<<
@@ -1362,7 +1370,7 @@ static PyObject *__pyx_pf_6otools_6status_10StatusCode_12StatusObject___init__(C
   return __pyx_r;
 }
 
-/* "otools/status/StatusCode.py":12
+/* "otools/status/StatusCode.py":13
  *     self.status = status
  * 
  *   def isFailure (self):             # <<<<<<<<<<<<<<
@@ -1391,7 +1399,7 @@ static PyObject *__pyx_pf_6otools_6status_10StatusCode_12StatusObject_2isFailure
   PyObject *__pyx_t_2 = NULL;
   __Pyx_RefNannySetupContext("isFailure", 0);
 
-  /* "otools/status/StatusCode.py":13
+  /* "otools/status/StatusCode.py":14
  * 
  *   def isFailure (self):
  *     return self.status < 0             # <<<<<<<<<<<<<<
@@ -1399,15 +1407,15 @@ static PyObject *__pyx_pf_6otools_6status_10StatusCode_12StatusObject_2isFailure
  *   def __eq__ (self, a):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_status); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_status); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, __pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, __pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "otools/status/StatusCode.py":12
+  /* "otools/status/StatusCode.py":13
  *     self.status = status
  * 
  *   def isFailure (self):             # <<<<<<<<<<<<<<
@@ -1427,7 +1435,7 @@ static PyObject *__pyx_pf_6otools_6status_10StatusCode_12StatusObject_2isFailure
   return __pyx_r;
 }
 
-/* "otools/status/StatusCode.py":15
+/* "otools/status/StatusCode.py":16
  *     return self.status < 0
  * 
  *   def __eq__ (self, a):             # <<<<<<<<<<<<<<
@@ -1467,11 +1475,11 @@ static PyObject *__pyx_pw_6otools_6status_10StatusCode_12StatusObject_5__eq__(Py
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_a)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__eq__", 1, 2, 2, 1); __PYX_ERR(0, 15, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__eq__", 1, 2, 2, 1); __PYX_ERR(0, 16, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__eq__") < 0)) __PYX_ERR(0, 15, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__eq__") < 0)) __PYX_ERR(0, 16, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -1484,7 +1492,7 @@ static PyObject *__pyx_pw_6otools_6status_10StatusCode_12StatusObject_5__eq__(Py
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__eq__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 15, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__eq__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 16, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("otools.status.StatusCode.StatusObject.__eq__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -1505,7 +1513,7 @@ static PyObject *__pyx_pf_6otools_6status_10StatusCode_12StatusObject_4__eq__(CY
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("__eq__", 0);
 
-  /* "otools/status/StatusCode.py":16
+  /* "otools/status/StatusCode.py":17
  * 
  *   def __eq__ (self, a):
  *     return self.status == a.status             # <<<<<<<<<<<<<<
@@ -1513,18 +1521,18 @@ static PyObject *__pyx_pf_6otools_6status_10StatusCode_12StatusObject_4__eq__(CY
  *   def __ne__ (self, a):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_status); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_status); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_a, __pyx_n_s_status); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_a, __pyx_n_s_status); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "otools/status/StatusCode.py":15
+  /* "otools/status/StatusCode.py":16
  *     return self.status < 0
  * 
  *   def __eq__ (self, a):             # <<<<<<<<<<<<<<
@@ -1545,7 +1553,7 @@ static PyObject *__pyx_pf_6otools_6status_10StatusCode_12StatusObject_4__eq__(CY
   return __pyx_r;
 }
 
-/* "otools/status/StatusCode.py":18
+/* "otools/status/StatusCode.py":19
  *     return self.status == a.status
  * 
  *   def __ne__ (self, a):             # <<<<<<<<<<<<<<
@@ -1585,11 +1593,11 @@ static PyObject *__pyx_pw_6otools_6status_10StatusCode_12StatusObject_7__ne__(Py
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_a)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__ne__", 1, 2, 2, 1); __PYX_ERR(0, 18, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__ne__", 1, 2, 2, 1); __PYX_ERR(0, 19, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__ne__") < 0)) __PYX_ERR(0, 18, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__ne__") < 0)) __PYX_ERR(0, 19, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -1602,7 +1610,7 @@ static PyObject *__pyx_pw_6otools_6status_10StatusCode_12StatusObject_7__ne__(Py
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__ne__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 18, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__ne__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 19, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("otools.status.StatusCode.StatusObject.__ne__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -1623,7 +1631,7 @@ static PyObject *__pyx_pf_6otools_6status_10StatusCode_12StatusObject_6__ne__(CY
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("__ne__", 0);
 
-  /* "otools/status/StatusCode.py":19
+  /* "otools/status/StatusCode.py":20
  * 
  *   def __ne__ (self, a):
  *     return self.status != a.status             # <<<<<<<<<<<<<<
@@ -1631,18 +1639,18 @@ static PyObject *__pyx_pf_6otools_6status_10StatusCode_12StatusObject_6__ne__(CY
  * class StatusCode ():
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_status); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_status); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_a, __pyx_n_s_status); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_a, __pyx_n_s_status); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_2, Py_NE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_2, Py_NE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "otools/status/StatusCode.py":18
+  /* "otools/status/StatusCode.py":19
  *     return self.status == a.status
  * 
  *   def __ne__ (self, a):             # <<<<<<<<<<<<<<
@@ -1712,6 +1720,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_FAILURE, __pyx_k_FAILURE, sizeof(__pyx_k_FAILURE), 0, 0, 1, 1},
   {&__pyx_n_s_FATAL, __pyx_k_FATAL, sizeof(__pyx_k_FATAL), 0, 0, 1, 1},
   {&__pyx_kp_s_General_purpose_status_code, __pyx_k_General_purpose_status_code, sizeof(__pyx_k_General_purpose_status_code), 0, 0, 1, 0},
+  {&__pyx_n_s_NOT_TRIGGERED, __pyx_k_NOT_TRIGGERED, sizeof(__pyx_k_NOT_TRIGGERED), 0, 0, 1, 1},
   {&__pyx_n_s_SUCCESS, __pyx_k_SUCCESS, sizeof(__pyx_k_SUCCESS), 0, 0, 1, 1},
   {&__pyx_n_s_StatusCode, __pyx_k_StatusCode, sizeof(__pyx_k_StatusCode), 0, 0, 1, 1},
   {&__pyx_n_s_StatusObject, __pyx_k_StatusObject, sizeof(__pyx_k_StatusObject), 0, 0, 1, 1},
@@ -1719,6 +1728,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_StatusObject___init, __pyx_k_StatusObject___init, sizeof(__pyx_k_StatusObject___init), 0, 0, 1, 1},
   {&__pyx_n_s_StatusObject___ne, __pyx_k_StatusObject___ne, sizeof(__pyx_k_StatusObject___ne), 0, 0, 1, 1},
   {&__pyx_n_s_StatusObject_isFailure, __pyx_k_StatusObject_isFailure, sizeof(__pyx_k_StatusObject_isFailure), 0, 0, 1, 1},
+  {&__pyx_n_s_StatusTrigger, __pyx_k_StatusTrigger, sizeof(__pyx_k_StatusTrigger), 0, 0, 1, 1},
+  {&__pyx_kp_s_Status_code_for_Trigger_objects, __pyx_k_Status_code_for_Trigger_objects, sizeof(__pyx_k_Status_code_for_Trigger_objects), 0, 0, 1, 0},
+  {&__pyx_n_s_TRIGGERED, __pyx_k_TRIGGERED, sizeof(__pyx_k_TRIGGERED), 0, 0, 1, 1},
   {&__pyx_n_s_a, __pyx_k_a, sizeof(__pyx_k_a), 0, 0, 1, 1},
   {&__pyx_n_s_all, __pyx_k_all, sizeof(__pyx_k_all), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
@@ -1748,53 +1760,53 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "otools/status/StatusCode.py":9
+  /* "otools/status/StatusCode.py":10
  *   status = 1
  * 
  *   def __init__ (self, status):             # <<<<<<<<<<<<<<
  *     self.status = status
  * 
  */
-  __pyx_tuple_ = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_status); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_status); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
-  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_status_StatusCode_py, __pyx_n_s_init, 9, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_status_StatusCode_py, __pyx_n_s_init, 10, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 10, __pyx_L1_error)
 
-  /* "otools/status/StatusCode.py":12
+  /* "otools/status/StatusCode.py":13
  *     self.status = status
  * 
  *   def isFailure (self):             # <<<<<<<<<<<<<<
  *     return self.status < 0
  * 
  */
-  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
-  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_status_StatusCode_py, __pyx_n_s_isFailure, 12, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_status_StatusCode_py, __pyx_n_s_isFailure, 13, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 13, __pyx_L1_error)
 
-  /* "otools/status/StatusCode.py":15
+  /* "otools/status/StatusCode.py":16
  *     return self.status < 0
  * 
  *   def __eq__ (self, a):             # <<<<<<<<<<<<<<
  *     return self.status == a.status
  * 
  */
-  __pyx_tuple__5 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_a); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_tuple__5 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_a); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
-  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_status_StatusCode_py, __pyx_n_s_eq, 15, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_status_StatusCode_py, __pyx_n_s_eq, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 16, __pyx_L1_error)
 
-  /* "otools/status/StatusCode.py":18
+  /* "otools/status/StatusCode.py":19
  *     return self.status == a.status
  * 
  *   def __ne__ (self, a):             # <<<<<<<<<<<<<<
  *     return self.status != a.status
  * 
  */
-  __pyx_tuple__7 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_a); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_tuple__7 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_a); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 19, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
-  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__7, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_status_StatusCode_py, __pyx_n_s_ne, 18, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__7, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_otools_status_StatusCode_py, __pyx_n_s_ne, 19, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(0, 19, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -2079,138 +2091,115 @@ if (!__Pyx_RefNanny) {
 
   /* "otools/status/StatusCode.py":1
  * __all__ = [             # <<<<<<<<<<<<<<
- *   'StatusCode'
- * ]
+ *   'StatusCode',
+ *   'StatusTrigger'
  */
-  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_n_s_StatusCode);
   __Pyx_GIVEREF(__pyx_n_s_StatusCode);
   PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_StatusCode);
+  __Pyx_INCREF(__pyx_n_s_StatusTrigger);
+  __Pyx_GIVEREF(__pyx_n_s_StatusTrigger);
+  PyList_SET_ITEM(__pyx_t_1, 1, __pyx_n_s_StatusTrigger);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_all, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/status/StatusCode.py":5
+  /* "otools/status/StatusCode.py":6
  * ]
  * 
  * class StatusObject ():             # <<<<<<<<<<<<<<
  * 
  *   status = 1
  */
-  __pyx_t_1 = __Pyx_Py3MetaclassPrepare((PyObject *) NULL, __pyx_empty_tuple, __pyx_n_s_StatusObject, __pyx_n_s_StatusObject, (PyObject *) NULL, __pyx_n_s_otools_status_StatusCode, (PyObject *) NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Py3MetaclassPrepare((PyObject *) NULL, __pyx_empty_tuple, __pyx_n_s_StatusObject, __pyx_n_s_StatusObject, (PyObject *) NULL, __pyx_n_s_otools_status_StatusCode, (PyObject *) NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "otools/status/StatusCode.py":7
+  /* "otools/status/StatusCode.py":8
  * class StatusObject ():
  * 
  *   status = 1             # <<<<<<<<<<<<<<
  * 
  *   def __init__ (self, status):
  */
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_status, __pyx_int_1) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_status, __pyx_int_1) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
 
-  /* "otools/status/StatusCode.py":9
+  /* "otools/status/StatusCode.py":10
  *   status = 1
  * 
  *   def __init__ (self, status):             # <<<<<<<<<<<<<<
  *     self.status = status
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_6status_10StatusCode_12StatusObject_1__init__, 0, __pyx_n_s_StatusObject___init, NULL, __pyx_n_s_otools_status_StatusCode, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_6status_10StatusCode_12StatusObject_1__init__, 0, __pyx_n_s_StatusObject___init, NULL, __pyx_n_s_otools_status_StatusCode, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_init, __pyx_t_2) < 0) __PYX_ERR(0, 9, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_init, __pyx_t_2) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "otools/status/StatusCode.py":12
+  /* "otools/status/StatusCode.py":13
  *     self.status = status
  * 
  *   def isFailure (self):             # <<<<<<<<<<<<<<
  *     return self.status < 0
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_6status_10StatusCode_12StatusObject_3isFailure, 0, __pyx_n_s_StatusObject_isFailure, NULL, __pyx_n_s_otools_status_StatusCode, __pyx_d, ((PyObject *)__pyx_codeobj__4)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_6status_10StatusCode_12StatusObject_3isFailure, 0, __pyx_n_s_StatusObject_isFailure, NULL, __pyx_n_s_otools_status_StatusCode, __pyx_d, ((PyObject *)__pyx_codeobj__4)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_isFailure, __pyx_t_2) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_isFailure, __pyx_t_2) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "otools/status/StatusCode.py":15
+  /* "otools/status/StatusCode.py":16
  *     return self.status < 0
  * 
  *   def __eq__ (self, a):             # <<<<<<<<<<<<<<
  *     return self.status == a.status
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_6status_10StatusCode_12StatusObject_5__eq__, 0, __pyx_n_s_StatusObject___eq, NULL, __pyx_n_s_otools_status_StatusCode, __pyx_d, ((PyObject *)__pyx_codeobj__6)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_6status_10StatusCode_12StatusObject_5__eq__, 0, __pyx_n_s_StatusObject___eq, NULL, __pyx_n_s_otools_status_StatusCode, __pyx_d, ((PyObject *)__pyx_codeobj__6)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_eq, __pyx_t_2) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_eq, __pyx_t_2) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "otools/status/StatusCode.py":18
+  /* "otools/status/StatusCode.py":19
  *     return self.status == a.status
  * 
  *   def __ne__ (self, a):             # <<<<<<<<<<<<<<
  *     return self.status != a.status
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_6status_10StatusCode_12StatusObject_7__ne__, 0, __pyx_n_s_StatusObject___ne, NULL, __pyx_n_s_otools_status_StatusCode, __pyx_d, ((PyObject *)__pyx_codeobj__8)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6otools_6status_10StatusCode_12StatusObject_7__ne__, 0, __pyx_n_s_StatusObject___ne, NULL, __pyx_n_s_otools_status_StatusCode, __pyx_d, ((PyObject *)__pyx_codeobj__8)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 19, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_ne, __pyx_t_2) < 0) __PYX_ERR(0, 18, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_ne, __pyx_t_2) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "otools/status/StatusCode.py":5
+  /* "otools/status/StatusCode.py":6
  * ]
  * 
  * class StatusObject ():             # <<<<<<<<<<<<<<
  * 
  *   status = 1
  */
-  __pyx_t_2 = __Pyx_Py3ClassCreate(((PyObject*)&__Pyx_DefaultClassType), __pyx_n_s_StatusObject, __pyx_empty_tuple, __pyx_t_1, NULL, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Py3ClassCreate(((PyObject*)&__Pyx_DefaultClassType), __pyx_n_s_StatusObject, __pyx_empty_tuple, __pyx_t_1, NULL, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_StatusObject, __pyx_t_2) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_StatusObject, __pyx_t_2) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "otools/status/StatusCode.py":21
+  /* "otools/status/StatusCode.py":22
  *     return self.status != a.status
  * 
  * class StatusCode ():             # <<<<<<<<<<<<<<
  *   """
  *   General purpose status code
  */
-  __pyx_t_1 = __Pyx_Py3MetaclassPrepare((PyObject *) NULL, __pyx_empty_tuple, __pyx_n_s_StatusCode, __pyx_n_s_StatusCode, (PyObject *) NULL, __pyx_n_s_otools_status_StatusCode, __pyx_kp_s_General_purpose_status_code); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Py3MetaclassPrepare((PyObject *) NULL, __pyx_empty_tuple, __pyx_n_s_StatusCode, __pyx_n_s_StatusCode, (PyObject *) NULL, __pyx_n_s_otools_status_StatusCode, __pyx_kp_s_General_purpose_status_code); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "otools/status/StatusCode.py":25
+  /* "otools/status/StatusCode.py":26
  *   General purpose status code
  *   """
  *   SUCCESS = StatusObject(0)             # <<<<<<<<<<<<<<
  *   FAILURE = StatusObject(-1)
- *   FATAL   = StatusObject(-2)
- */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_StatusObject); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = NULL;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-    if (likely(__pyx_t_4)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-      __Pyx_INCREF(__pyx_t_4);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_3, function);
-    }
-  }
-  __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_int_0) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_int_0);
-  __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_SUCCESS, __pyx_t_2) < 0) __PYX_ERR(0, 25, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-
-  /* "otools/status/StatusCode.py":26
- *   """
- *   SUCCESS = StatusObject(0)
- *   FAILURE = StatusObject(-1)             # <<<<<<<<<<<<<<
  *   FATAL   = StatusObject(-2)
  */
   __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_StatusObject); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
@@ -2225,18 +2214,20 @@ if (!__Pyx_RefNanny) {
       __Pyx_DECREF_SET(__pyx_t_3, function);
     }
   }
-  __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_int_neg_1) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_int_neg_1);
+  __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_int_0) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_int_0);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_FAILURE, __pyx_t_2) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_SUCCESS, __pyx_t_2) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "otools/status/StatusCode.py":27
+ *   """
  *   SUCCESS = StatusObject(0)
- *   FAILURE = StatusObject(-1)
- *   FATAL   = StatusObject(-2)             # <<<<<<<<<<<<<<
+ *   FAILURE = StatusObject(-1)             # <<<<<<<<<<<<<<
+ *   FATAL   = StatusObject(-2)
+ * 
  */
   __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_StatusObject); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -2250,31 +2241,96 @@ if (!__Pyx_RefNanny) {
       __Pyx_DECREF_SET(__pyx_t_3, function);
     }
   }
-  __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_int_neg_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_int_neg_2);
+  __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_int_neg_1) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_int_neg_1);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_FATAL, __pyx_t_2) < 0) __PYX_ERR(0, 27, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_FAILURE, __pyx_t_2) < 0) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "otools/status/StatusCode.py":21
+  /* "otools/status/StatusCode.py":28
+ *   SUCCESS = StatusObject(0)
+ *   FAILURE = StatusObject(-1)
+ *   FATAL   = StatusObject(-2)             # <<<<<<<<<<<<<<
+ * 
+ * class StatusTrigger ():
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_StatusObject); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_4)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
+    }
+  }
+  __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_int_neg_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_int_neg_2);
+  __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_FATAL, __pyx_t_2) < 0) __PYX_ERR(0, 28, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "otools/status/StatusCode.py":22
  *     return self.status != a.status
  * 
  * class StatusCode ():             # <<<<<<<<<<<<<<
  *   """
  *   General purpose status code
  */
-  __pyx_t_2 = __Pyx_Py3ClassCreate(((PyObject*)&__Pyx_DefaultClassType), __pyx_n_s_StatusCode, __pyx_empty_tuple, __pyx_t_1, NULL, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Py3ClassCreate(((PyObject*)&__Pyx_DefaultClassType), __pyx_n_s_StatusCode, __pyx_empty_tuple, __pyx_t_1, NULL, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_StatusCode, __pyx_t_2) < 0) __PYX_ERR(0, 21, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_StatusCode, __pyx_t_2) < 0) __PYX_ERR(0, 22, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "otools/status/StatusCode.py":30
+ *   FATAL   = StatusObject(-2)
+ * 
+ * class StatusTrigger ():             # <<<<<<<<<<<<<<
+ *   """
+ *   Status code for Trigger objects
+ */
+  __pyx_t_1 = __Pyx_Py3MetaclassPrepare((PyObject *) NULL, __pyx_empty_tuple, __pyx_n_s_StatusTrigger, __pyx_n_s_StatusTrigger, (PyObject *) NULL, __pyx_n_s_otools_status_StatusCode, __pyx_kp_s_Status_code_for_Trigger_objects); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+
+  /* "otools/status/StatusCode.py":34
+ *   Status code for Trigger objects
+ *   """
+ *   NOT_TRIGGERED   = False             # <<<<<<<<<<<<<<
+ *   TRIGGERED       = True
+ */
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_NOT_TRIGGERED, Py_False) < 0) __PYX_ERR(0, 34, __pyx_L1_error)
+
+  /* "otools/status/StatusCode.py":35
+ *   """
+ *   NOT_TRIGGERED   = False
+ *   TRIGGERED       = True             # <<<<<<<<<<<<<<
+ */
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_TRIGGERED, Py_True) < 0) __PYX_ERR(0, 35, __pyx_L1_error)
+
+  /* "otools/status/StatusCode.py":30
+ *   FATAL   = StatusObject(-2)
+ * 
+ * class StatusTrigger ():             # <<<<<<<<<<<<<<
+ *   """
+ *   Status code for Trigger objects
+ */
+  __pyx_t_2 = __Pyx_Py3ClassCreate(((PyObject*)&__Pyx_DefaultClassType), __pyx_n_s_StatusTrigger, __pyx_empty_tuple, __pyx_t_1, NULL, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 30, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_StatusTrigger, __pyx_t_2) < 0) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "otools/status/StatusCode.py":1
  * __all__ = [             # <<<<<<<<<<<<<<
- *   'StatusCode'
- * ]
+ *   'StatusCode',
+ *   'StatusTrigger'
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
