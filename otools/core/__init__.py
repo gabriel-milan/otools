@@ -20,6 +20,10 @@ from . import Trigger
 __all__.extend(Trigger.__all__)
 from .Trigger import *
 
+from . import Watchdog
+__all__.extend(Watchdog.__all__)
+from .Watchdog import *
+
 from . import OTools
 __all__.extend(OTools.__all__)
 from .OTools import *

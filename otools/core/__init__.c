@@ -1110,6 +1110,7 @@ static const char __pyx_k_import[] = "__import__";
 static const char __pyx_k_Context[] = "Context";
 static const char __pyx_k_Service[] = "Service";
 static const char __pyx_k_Trigger[] = "Trigger";
+static const char __pyx_k_Watchdog[] = "Watchdog";
 static const char __pyx_k_Dataframe[] = "Dataframe";
 static const char __pyx_k_TriggerCondition[] = "TriggerCondition";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
@@ -1120,6 +1121,7 @@ static PyObject *__pyx_n_s_OTools;
 static PyObject *__pyx_n_s_Service;
 static PyObject *__pyx_n_s_Trigger;
 static PyObject *__pyx_n_s_TriggerCondition;
+static PyObject *__pyx_n_s_Watchdog;
 static PyObject *__pyx_n_s__2;
 static PyObject *__pyx_n_s_all;
 static PyObject *__pyx_n_s_cline_in_traceback;
@@ -1311,6 +1313,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_Service, __pyx_k_Service, sizeof(__pyx_k_Service), 0, 0, 1, 1},
   {&__pyx_n_s_Trigger, __pyx_k_Trigger, sizeof(__pyx_k_Trigger), 0, 0, 1, 1},
   {&__pyx_n_s_TriggerCondition, __pyx_k_TriggerCondition, sizeof(__pyx_k_TriggerCondition), 0, 0, 1, 1},
+  {&__pyx_n_s_Watchdog, __pyx_k_Watchdog, sizeof(__pyx_k_Watchdog), 0, 0, 1, 1},
   {&__pyx_n_s__2, __pyx_k__2, sizeof(__pyx_k__2), 0, 0, 1, 1},
   {&__pyx_n_s_all, __pyx_k_all, sizeof(__pyx_k_all), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
@@ -1913,7 +1916,7 @@ if (!__Pyx_RefNanny) {
  * __all__.extend(Trigger.__all__)
  * from .Trigger import *             # <<<<<<<<<<<<<<
  * 
- * from . import OTools
+ * from . import Watchdog
  */
   __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -1929,36 +1932,37 @@ if (!__Pyx_RefNanny) {
   /* "otools/core/__init__.py":23
  * from .Trigger import *
  * 
- * from . import OTools             # <<<<<<<<<<<<<<
- * __all__.extend(OTools.__all__)
- * from .OTools import *
+ * from . import Watchdog             # <<<<<<<<<<<<<<
+ * __all__.extend(Watchdog.__all__)
+ * from .Watchdog import *
  */
   __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_INCREF(__pyx_n_s_OTools);
-  __Pyx_GIVEREF(__pyx_n_s_OTools);
-  PyList_SET_ITEM(__pyx_t_3, 0, __pyx_n_s_OTools);
+  __Pyx_INCREF(__pyx_n_s_Watchdog);
+  __Pyx_GIVEREF(__pyx_n_s_Watchdog);
+  PyList_SET_ITEM(__pyx_t_3, 0, __pyx_n_s_Watchdog);
   __pyx_t_2 = __Pyx_Import(__pyx_n_s_, __pyx_t_3, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_OTools); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_Watchdog); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_OTools, __pyx_t_3) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Watchdog, __pyx_t_3) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "otools/core/__init__.py":24
  * 
- * from . import OTools
- * __all__.extend(OTools.__all__)             # <<<<<<<<<<<<<<
- * from .OTools import *
+ * from . import Watchdog
+ * __all__.extend(Watchdog.__all__)             # <<<<<<<<<<<<<<
+ * from .Watchdog import *
+ * 
  */
   __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_all); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_extend); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_OTools); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Watchdog); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_all); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -1970,30 +1974,91 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "otools/core/__init__.py":25
+ * from . import Watchdog
+ * __all__.extend(Watchdog.__all__)
+ * from .Watchdog import *             # <<<<<<<<<<<<<<
+ * 
  * from . import OTools
- * __all__.extend(OTools.__all__)
- * from .OTools import *             # <<<<<<<<<<<<<<
  */
   __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s__2);
   __Pyx_GIVEREF(__pyx_n_s__2);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s__2);
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_OTools, __pyx_t_2, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_Watchdog, __pyx_t_2, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (__pyx_import_star(__pyx_t_1) < 0) __PYX_ERR(0, 25, __pyx_L1_error);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "otools/core/__init__.py":27
+ * from .Watchdog import *
+ * 
+ * from . import OTools             # <<<<<<<<<<<<<<
+ * __all__.extend(OTools.__all__)
+ * from .OTools import *
+ */
+  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(__pyx_n_s_OTools);
+  __Pyx_GIVEREF(__pyx_n_s_OTools);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_OTools);
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_, __pyx_t_1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_OTools); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_OTools, __pyx_t_1) < 0) __PYX_ERR(0, 27, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "otools/core/__init__.py":28
+ * 
+ * from . import OTools
+ * __all__.extend(OTools.__all__)             # <<<<<<<<<<<<<<
+ * from .OTools import *
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_all); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_extend); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_OTools); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_all); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "otools/core/__init__.py":29
+ * from . import OTools
+ * __all__.extend(OTools.__all__)
+ * from .OTools import *             # <<<<<<<<<<<<<<
+ */
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s__2);
+  __Pyx_GIVEREF(__pyx_n_s__2);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s__2);
+  __pyx_t_3 = __Pyx_Import(__pyx_n_s_OTools, __pyx_t_2, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (__pyx_import_star(__pyx_t_3) < 0) __PYX_ERR(0, 29, __pyx_L1_error);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /* "otools/core/__init__.py":1
  * __all__ = []             # <<<<<<<<<<<<<<
  * 
  * from . import Service
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_3) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /*--- Wrapped vars code ---*/
 

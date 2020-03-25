@@ -1,6 +1,7 @@
 __all__ = ['Service']
 
 from otools.status.StatusCode import StatusCode
+from copy import deepcopy
 
 class Service ():
   """
@@ -12,12 +13,13 @@ class Service ():
   diabled. The "finalize" method will run when the program shuts down.
   """
 
-  def __init__ (self, obj):
+  def __init__ (self, obj, context = None):
     try:
       self.__name = obj.name
     except:
         self.__name = obj.__name__
-    self.__context = None
+    self.__context = context
+    self.__rawObj = deepcopy(obj)
     self.__obj = obj
     self.__obj.__init__(self.__obj)
     self.__obj.MSG_VERBOSE  = self.MSG_VERBOSE
@@ -74,7 +76,9 @@ class Service ():
   def loop (self):
     while self.active:
       try:
+        self.getContext().getWatchdog().startTimer(self.name, 'loop', self.getContext().name)
         self.__obj.loop(self.__obj)
+        self.getContext().getWatchdog().resetTimer(self.name, 'loop', self.getContext().name)
       except AttributeError:
         break
       except:
@@ -101,6 +105,10 @@ class Service ():
 
   def deactivate (self):
     self._active = False
+
+  def reset (self):
+    self.__init__(self.__rawObj, self.getContext())
+    self.setContext(self.getContext())
 
   @property
   def name(self):

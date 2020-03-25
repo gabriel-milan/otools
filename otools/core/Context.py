@@ -22,6 +22,7 @@ class Context ():
     self._services = {}
     self._services = {}
     self._dataframes = {}
+    self.__wd = None
     self._active = True
     self.running = False
   
@@ -57,6 +58,12 @@ class Context ():
       obj.setContext(self)
       self._services[obj.name] = obj
     return self
+
+  def setWatchdog (self, wd):
+    self.__wd = wd
+
+  def getWatchdog (self):
+    return self.__wd
 
   def getService (self, serviceName):
     if serviceName in self._services:
@@ -110,10 +117,12 @@ class Context ():
 
   def main (self):
     for service in self._services:
+      self.__wd.startTimer(service, 'main', self.name)
       if self._services[service].main().isFailure():
         message = "Failed to main service {}".format(service)
         self.fatal(message, self.__str__())
         return StatusCode.FAILURE
+      self.__wd.resetTimer(service, 'main', self.name)
     return StatusCode.SUCCESS
 
   def loop (self):

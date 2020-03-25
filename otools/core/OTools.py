@@ -3,6 +3,7 @@ __all__ = ['OTools']
 from otools.core.Context import Context
 from otools.logging.Logger import Logger
 from otools.logging.LoggingLevel import LoggingLevel
+from otools.core.Watchdog import Watchdog
 import threading
 
 class OTools ():
@@ -12,6 +13,7 @@ class OTools ():
     self.__contexts = {}
     self._logger = Logger(LoggingLevel.INFO).getModuleLogger()
     self.__threads = []
+    self.Watchdog = Watchdog()
 
   def __str__ (self):
     return "<OTools Core (name={})>".format(self.name)
@@ -23,7 +25,9 @@ class OTools ():
     if issubclass (type(obj), Context):
       try:
         if obj.name not in self.__contexts:
+          obj.setWatchdog(self.Watchdog)
           self.__contexts[obj.name] = obj
+          self.Watchdog.addContext(obj)
         else:
           self.warning ("Context with name {} already exists, skipping...".format(obj.name), self.name)
       except:

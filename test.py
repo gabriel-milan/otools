@@ -18,6 +18,8 @@ class MyService ():
   def setup (self):
     self.MSG_INFO ("setup done")
   def main (self):
+    # Uncommenting the following line triggers the Watchdog
+    sleep(9)
     self._i += 1
     df = self.getDataframe("MyDF")
     if df.get('counter') == None:
@@ -35,6 +37,8 @@ class MyService ():
       self.terminateContext()
   def loop (self):
     sleep(0.5)
+    # Uncommenting the following line triggers the Watchdog
+    sleep(11)
     df = self.getDataframe("LoopDF")
     if df.get('counter') == None:
       df.set('counter', 1)
@@ -99,8 +103,10 @@ trigger = Trigger()
 trigger += TriggerCondition(MyCondition)
 trigger += Service(MyAction)
 
+svc = Service(MyService)
+
 ctx = Context(level = LoggingLevel.VERBOSE)
-ctx += Service(MyService)
+ctx += svc
 ctx += sharedDataframe
 ctx += splitDataframe1
 ctx += loopDataframe
@@ -115,6 +121,13 @@ ctx2 += trigger
 main = OTools()
 main += ctx
 main += ctx2
+
+main.Watchdog += svc, {
+  "loop": {
+    "action" : "terminate"
+  }
+}
+main.Watchdog.printCollection()
 
 main.setup()
 main.run()

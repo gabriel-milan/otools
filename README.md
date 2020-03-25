@@ -4,6 +4,4 @@ In development.
 
 ## TODO
 
-* Implement Triggers
-* Implement Watchdog
-* Implement CLI
+* Implement CLI (?)
