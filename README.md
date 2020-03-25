@@ -1,10 +1,11 @@
 # OTools
 
+[![Documentation Status](https://readthedocs.org/projects/otools/badge/?version=latest)](https://otools.readthedocs.io/en/latest/?badge=latest)
 [![Build Status](https://travis-ci.org/gabriel-milan/otools.svg?branch=master)](https://travis-ci.org/gabriel-milan/otools)
 [![PyPI Version](https://img.shields.io/pypi/v/otools)](https://pypi.org/project/otools/)
-[![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/gabriel-milan/otools)](https://github.com/gabriel-milan/otools)
-[![License](https://img.shields.io/github/license/gabriel-milan/otools)](https://github.com/gabriel-milan/otools)
 [![Python Versions](https://img.shields.io/pypi/pyversions/otools)](https://github.com/gabriel-milan/otools)
+[![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/gabriel-milan/otools)](https://snyk.io/test/github/gabriel-milan/otools)
+[![License](https://img.shields.io/github/license/gabriel-milan/otools)](https://github.com/gabriel-milan/otools/blob/master/LICENSE)
 
 OTools stands for Online Tools, which is a Python/Cython framework for developing multithread online systems in a simple way.
 
@@ -14,8 +15,25 @@ and yet powerful.
 
 ## Installation
 
+Just install it by using pip!
 
+```
+pip3 install otools
+```
 
-## TODO
+## Getting started
+
+I wouldn't recommend going straight to the [examples](https://github.com/gabriel-milan/otools/tree/master/examples) or trying to write code of your own,
+but it's up to you!
+
+My recommendation is:
+
+* Read the [OTools 101](#) at the docs (or just read the [full documentation](https://otools.readthedocs.io/en/latest))
+* Start by running the [simplest example](#)
+* (Optional) Check out few [other examples](https://github.com/gabriel-milan/otools/tree/master/examples)
+* Write code of your own
+* Submit issues [here](https://github.com/gabriel-milan/otools/issues).
+
+## Future releases
 
 * Implement CLI (?)
