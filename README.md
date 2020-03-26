@@ -28,8 +28,8 @@ but it's up to you!
 
 My recommendation is:
 
-* Read the [OTools 101](#) at the docs (or just read the [full documentation](https://otools.readthedocs.io/en/latest))
-* Start by running the [simplest example](#)
+* Read the [OTools 101](https://otools.readthedocs.io/en/latest/#otools-101) at the docs (or just read the [full documentation](https://otools.readthedocs.io/en/latest))
+* Start by running the [simplest example](https://github.com/gabriel-milan/otools/tree/master/examples/simple_example)
 * (Optional) Check out few [other examples](https://github.com/gabriel-milan/otools/tree/master/examples)
 * Write code of your own
 * Submit issues [here](https://github.com/gabriel-milan/otools/issues).
