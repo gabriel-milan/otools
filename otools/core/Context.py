@@ -57,6 +57,8 @@ class Context ():
       self.info (" * Adding Trigger with name {}...".format(obj.name))
       obj.setContext(self)
       self._services[obj.name] = obj
+    else:
+      self.fatal("Only Service, Dataframe or Trigger objects are allowed to be attached here!")
     return self
 
   def setWatchdog (self, wd):

@@ -5,6 +5,10 @@ from threading import Lock
 from collections import OrderedDict
 
 class Dataframe ():
+  """
+  A Dataframe is an object to which you can set multiple values and access
+  from Context objects on which they're attached
+  """
 
   def __init__ (self, name = "Dataframe"):
     self.__name = name
