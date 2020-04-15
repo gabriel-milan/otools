@@ -40,7 +40,7 @@ extensions = [
 
 setup(
   name = 'otools',
-  version = '0.1.0',
+  version = '0.1.1',
   license='GPL-3.0',
   description = 'OTools stands for Online Tools, which is a Python/Cython framework for developing multithread online systems in a simple way.',
   long_description = long_description,

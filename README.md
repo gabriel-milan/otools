@@ -2,9 +2,8 @@
 
 [![Documentation Status](https://readthedocs.org/projects/otools/badge/?version=latest)](https://otools.readthedocs.io/en/latest/?badge=latest)
 [![Build Status](https://travis-ci.org/gabriel-milan/otools.svg?branch=master)](https://travis-ci.org/gabriel-milan/otools)
-[![PyPI Version](https://img.shields.io/pypi/v/otools)](https://pypi.org/project/otools/)
-[![Python Versions](https://img.shields.io/pypi/pyversions/otools)](https://github.com/gabriel-milan/otools)
-[![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/gabriel-milan/otools)](https://snyk.io/test/github/gabriel-milan/otools)
+[![PyPI version](https://badge.fury.io/py/otools.svg)](https://pypi.org/project/otools/)
+[![Vulnerabilities](https://snyk.io/test/github/gabriel-milan/otools/badge.svg)](https://snyk.io/test/github/gabriel-milan/otools)
 [![License](https://img.shields.io/github/license/gabriel-milan/otools)](https://github.com/gabriel-milan/otools/blob/master/LICENSE)
 
 OTools stands for Online Tools, which is a Python/Cython framework for developing multithread online systems in a simple way.

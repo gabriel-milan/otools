@@ -24,6 +24,10 @@ from . import Watchdog
 __all__.extend(Watchdog.__all__)
 from .Watchdog import *
 
+from . import Swarm
+__all__.extend(Swarm.__all__)
+from .Swarm import *
+
 from . import OTools
 __all__.extend(OTools.__all__)
 from .OTools import *

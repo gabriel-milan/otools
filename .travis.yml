@@ -8,4 +8,4 @@ python:
 install:
   - pip3 install --upgrade otools
 script:
-  - python3 examples/ci_test/test.py
+  - python3 ci/test.py
