@@ -1,5 +1,6 @@
-from otools import Logger, LoggingLevel, FatalError, OTools, Service, Context, Dataframe, Trigger, TriggerCondition
+from otools import Logger, LoggingLevel, FatalError, OTools, Service, Context, Dataframe, Trigger, TriggerCondition, Swarm
 from time import sleep
+from random import randint
 
 a = Logger(LoggingLevel.VERBOSE).getModuleLogger()
 a.verbose ("Verbose message")
@@ -12,6 +13,14 @@ try:
 except FatalError:
   pass
 
+main = OTools()
+ctx = Context(level = LoggingLevel.VERBOSE)
+ctx2 = Context(name = "Context2")
+ctx3 = Context(name = "SwarmContext")
+trigger = Trigger()
+
+@ctx.add
+@Service
 class MyService ():
   def __init__ (self):
     self._i = 0
@@ -19,7 +28,7 @@ class MyService ():
     self.MSG_INFO ("setup done")
   def main (self):
     # Uncommenting the following line triggers the Watchdog
-    sleep(9)
+    # sleep(11)
     self._i += 1
     df = self.getDataframe("MyDF")
     if df.get('counter') == None:
@@ -38,7 +47,7 @@ class MyService ():
   def loop (self):
     sleep(0.5)
     # Uncommenting the following line triggers the Watchdog
-    sleep(11)
+    # sleep(11)
     df = self.getDataframe("LoopDF")
     if df.get('counter') == None:
       df.set('counter', 1)
@@ -48,6 +57,9 @@ class MyService ():
   def finalize (self):
     self.MSG_INFO ("Finalize done")
 
+@main.Watchdog.add
+@ctx2.add
+@Service
 class MyService2 ():
   def __init__ (self):
     self._i = 0
@@ -81,6 +93,27 @@ class MyService2 ():
   def finalize (self):
     self.MSG_INFO ("Finalize done")
 
+@main.Watchdog.add
+@ctx3.add
+@Swarm(5)
+class SwarmTest():
+  def setup (self):
+    self.i = 1
+  def main (self):
+    self.MSG_WARNING("Hey, I'm here! ({})".format(self.name))
+    self.MSG_INFO("This is i={}".format(self.i))
+    sleep(1)
+    self.i += 1
+    if self.i >= 4:
+      self.MSG_WARNING("Will shut this thing down!")
+      self.terminateContext()
+      self.MSG_WARNING("Did it!")
+  def loop (self):
+    self.MSG_INFO("Looping... yay!!!")
+    sleep (.5)
+
+@trigger.add
+@TriggerCondition
 class MyCondition ():
   def main (self):
     value = self.getDataframe("MyDF").get('counter')
@@ -88,6 +121,8 @@ class MyCondition ():
       self.MSG_WARNING("MyDF counter is {}, I'm triggering now.".format(value))
     return value >= 5
 
+@trigger.add
+@Service
 class MyAction ():
   def main (self):
     df = self.getDataframe("MyDF").set('counter', 0)
@@ -99,30 +134,20 @@ splitDataframe1 = Dataframe(name = "Split")
 splitDataframe2 = Dataframe(name = "Split")
 loopDataframe = Dataframe(name = "LoopDF")
 
-trigger = Trigger()
-trigger += TriggerCondition(MyCondition)
-trigger += Service(MyAction)
-
-svc = Service(MyService)
-
-ctx = Context(level = LoggingLevel.VERBOSE)
-ctx += svc
 ctx += sharedDataframe
 ctx += splitDataframe1
 ctx += loopDataframe
 
-ctx2 = Context(name = "Context2")
-ctx2 += Service(MyService2)
 ctx2 += sharedDataframe
 ctx2 += splitDataframe2
 ctx2 += loopDataframe
 ctx2 += trigger
 
-main = OTools()
 main += ctx
 main += ctx2
+main += ctx3
 
-main.Watchdog += svc, {
+main.Watchdog += MyService, {
   "loop": {
     "action" : "terminate"
   }

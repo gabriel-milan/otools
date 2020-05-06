@@ -2,6 +2,7 @@ __all__ = ['Service']
 
 from otools.status.StatusCode import StatusCode
 from copy import deepcopy
+from functools import wraps
 
 class Service ():
   """
@@ -13,22 +14,28 @@ class Service ():
   diabled. The "finalize" method will run when the program shuts down.
   """
 
-  def __init__ (self, obj, context = None):
-    try:
-      self.__name = obj.name
-    except:
-        self.__name = obj.__name__
-    self.__context = context
-    self.__rawObj = deepcopy(obj)
-    self.__obj = obj
-    self.__obj.__init__(self.__obj)
-    self.__obj.MSG_VERBOSE  = self.MSG_VERBOSE
-    self.__obj.MSG_DEBUG    = self.MSG_DEBUG
-    self.__obj.MSG_INFO     = self.MSG_INFO
-    self.__obj.MSG_WARNING  = self.MSG_WARNING
-    self.__obj.MSG_ERROR    = self.MSG_ERROR
-    self.__obj.MSG_FATAL    = self.MSG_FATAL
-    self._active = True
+  def __init__ (self, obj, context = None, name=None):
+    @wraps(obj)
+    def init(obj, context = None):
+      self.__obj = obj()
+      self.__context = context
+      self.__rawObj = deepcopy(obj)
+      try:
+        if name:
+          self.__name = name
+        else:
+          self.__name = self.__obj.name
+      except:
+          self.__name = self.__obj.__class__.__name__
+      self.__obj.name = self.__name
+      self.__obj.MSG_VERBOSE  = self.MSG_VERBOSE
+      self.__obj.MSG_DEBUG    = self.MSG_DEBUG
+      self.__obj.MSG_INFO     = self.MSG_INFO
+      self.__obj.MSG_WARNING  = self.MSG_WARNING
+      self.__obj.MSG_ERROR    = self.MSG_ERROR
+      self.__obj.MSG_FATAL    = self.MSG_FATAL
+      self._active = True
+    return init(obj, context=context)
   
   def MSG_VERBOSE (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):
     self.__context.verbose(message, self.__name, contextName, *args, **kws)
@@ -56,7 +63,7 @@ class Service ():
   
   def setup (self):
     try:
-      self.__obj.setup(self.__obj)
+      self.__obj.setup()
       return StatusCode.SUCCESS
     except AttributeError:
       return StatusCode.SUCCESS
@@ -66,7 +73,7 @@ class Service ():
   def main (self):
     if self.active:
       try:
-        self.__obj.main(self.__obj)
+        self.__obj.main()
         return StatusCode.SUCCESS
       except AttributeError:
         return StatusCode.SUCCESS
@@ -77,7 +84,7 @@ class Service ():
     while self.active:
       try:
         self.getContext().getWatchdog().startTimer(self.name, 'loop', self.getContext().name)
-        self.__obj.loop(self.__obj)
+        self.__obj.loop()
         self.getContext().getWatchdog().resetTimer(self.name, 'loop', self.getContext().name)
       except AttributeError:
         break
@@ -86,7 +93,7 @@ class Service ():
 
   def finalize (self):
     try:
-      self.__obj.finalize(self.__obj)
+      self.__obj.finalize()
       self.deactivate()
       return StatusCode.SUCCESS
     except AttributeError:

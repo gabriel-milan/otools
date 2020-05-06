@@ -40,9 +40,9 @@ extensions = [
 
 setup(
   name = 'otools',
-  version = '0.1.1',
+  version = '0.2.0',
   license='GPL-3.0',
-  description = 'OTools stands for Online Tools, which is a Python/Cython framework for developing multithread online systems in a simple way.',
+  description = 'OTools stands for Online Tools, which is a Cython/Python framework for developing multithread online systems in a simple way.',
   long_description = long_description,
   long_description_content_type="text/markdown",
   packages=find_packages(),
@@ -51,7 +51,7 @@ setup(
   url = 'https://github.com/gabriel-milan/otools',
   keywords = ['framework', 'threading', 'shared resources', 'flexibility', 'python', 'online'],
   install_requires=[
-    'cython'
+   'cython'
   ],
   classifiers=[
     'Development Status :: 4 - Beta',
@@ -65,5 +65,5 @@ setup(
     'Programming Language :: Python :: 3.7',
     'Programming Language :: Python :: 3.8',
   ],
-  ext_modules = cythonize(extensions)
+  #ext_modules = cythonize(extensions)
 )

@@ -17,6 +17,8 @@ context += dataframe
 from otools import Service
 from time import sleep
 
+@context.add
+@Service
 class MyCode ():
    # All methods here are optional
    def setup (self):
@@ -35,6 +37,8 @@ class MyCode ():
       self.MSG_INFO("Shutting down...")
       pass
 
+@context.add
+@Service
 class MySecondCode ():
    def setup(self):
       self.loopCounter = 0
@@ -43,9 +47,6 @@ class MySecondCode ():
       if self.loopCounter >= 5:
          self.MSG_INFO("I'm shutting everything down!")
          self.terminateContext()
-
-context += Service(MyCode)
-context += Service(MySecondCode)
 
 #
 # Setting up the OTools object

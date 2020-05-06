@@ -2,6 +2,7 @@ __all__ = ['Watchdog']
 
 from otools.macros import DEFAULT_METHOD_DICT, ACCEPTED_ACTIONS, ACCEPTED_METHODS, WDT_WRITE_ATTEMPTS, WDT_FILENAME, WDT_FILE_OPTIONS, WDT_WRITE_FAIL_REBOOT_TIMEOUT
 from otools.core.Service import Service
+from otools.core.Swarm import Swarm
 from otools.logging.Logger import Logger
 from otools.logging.LoggingLevel import LoggingLevel
 from otools.status.StatusCode import StatusCode
@@ -10,6 +11,7 @@ from collections import OrderedDict
 from copy import deepcopy
 from threading import Lock, Thread, Timer
 from time import sleep
+from functools import wraps
 
 class Watchdog ():
   """
@@ -57,9 +59,17 @@ class Watchdog ():
 
   def __repr__ (self):
     return self.__str__()
+    
+  def add (self, obj):
+    @wraps(obj)
+    def wrapper(obj):
+      self.__add__(obj)
+    wrapper(obj)
+    return obj
 
   def __add__ (self, module):
-    if not ((issubclass(type(module), Service)) or (len(module) == 2)):
+    swarm = False
+    if not ((issubclass(type(module), Service)) or (issubclass(type(module), Swarm)) or (len(module) == 2)):
       self.error ("Failed to add module to watchdog. Check usage:")
       self.error (" * wd += (module, params_dict)")
       self.error (" * wd += module")
@@ -75,6 +85,9 @@ class Watchdog ():
       pass
     if (issubclass(type(module), Service)):
       self.info (" * Adding Service w/ name {} to the Watchdog...".format(module.name))
+    elif (issubclass(type(module), Swarm)):
+      swarm = True
+      self.info (" * Adding Swarm w/ name {} to the Watchdog...".format(module.name))
     else:
       self.error ("Failed to add module to Watchdog. Supported modules must be encapsulated by the Service class")
       return self
@@ -103,7 +116,11 @@ class Watchdog ():
       return self
     if (not module.getContext().name in self._modules.keys()):
       self._modules[module.getContext().name] = {}
-    self._modules[module.getContext().name][module.name] = params_dict
+    if swarm:
+      for bee in module.modules:
+        self._modules[module.getContext().name][bee.name] = params_dict
+    else:
+      self._modules[module.getContext().name][module.name] = params_dict
     self.info (" * Module {} added to the watchdog successfully!".format(module.name))
     self.debug ("Releasing lock after adding new module")
     self.__lock.release()

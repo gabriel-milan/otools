@@ -2,6 +2,7 @@ __all__ = ['TriggerCondition']
 
 from otools.status.StatusCode import StatusTrigger
 from otools.core.Service import Service
+from functools import wraps
 
 class TriggerCondition (Service):
   """
@@ -10,8 +11,11 @@ class TriggerCondition (Service):
   """
 
   def __init__ (self, obj):
-    Service.__init__(self, obj)
-    self.__obj = obj
+    @wraps(obj)
+    def init(obj):
+      Service.__init__(self, obj)
+      self.__obj = obj
+    return init(obj)
 
   def main (self):
     if self.active:

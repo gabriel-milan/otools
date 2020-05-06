@@ -5,6 +5,7 @@ from otools.core.TriggerCondition import TriggerCondition
 from otools.logging.Logger import Logger
 from otools.status.StatusCode import StatusCode, StatusTrigger
 from collections import OrderedDict
+from functools import wraps
 
 class Trigger ():
   """
@@ -32,6 +33,13 @@ class Trigger ():
     self.__context = None
     self.__obj = self
     self._active = True
+
+  def add (self, obj):
+    @wraps(obj)
+    def wrapper(obj):
+      self.__add__(obj)
+    wrapper(obj)
+    return obj
 
   def __add__ (self, a):
 

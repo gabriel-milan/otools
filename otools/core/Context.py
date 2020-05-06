@@ -6,7 +6,10 @@ from otools.core.Service import Service
 from otools.core.Dataframe import Dataframe
 from otools.status.StatusCode import StatusCode
 from otools.core.Trigger import Trigger
+from otools.core.Swarm import Swarm
 import threading
+from functools import wraps
+import pprint
 
 class Context ():
   """
@@ -15,11 +18,9 @@ class Context ():
   """
 
   def __init__ (self, level = LoggingLevel.INFO, name = "Unnamed"):
-
     self._name = name
     self._logger = Logger(level).getModuleLogger()
     self.info("Context with name {} created successfully!".format(self.name))
-    self._services = {}
     self._services = {}
     self._dataframes = {}
     self.__wd = None
@@ -31,6 +32,13 @@ class Context ():
 
   def __repr__ (self):
     return self.__str__()
+
+  def add (self, obj):
+    @wraps(obj)
+    def wrapper(obj):
+      self.__add__(obj)
+    wrapper(obj)
+    return obj
 
   def __add__ (self, obj):
     if issubclass(type(obj), Service):
@@ -57,8 +65,16 @@ class Context ():
       self.info (" * Adding Trigger with name {}...".format(obj.name))
       obj.setContext(self)
       self._services[obj.name] = obj
+    elif issubclass(type(obj), Swarm):
+      if obj.name in self._services:
+        message = "A service with name {} conflicts with this Swarm, skipping...".format(obj.name)
+        self.warning(message, self.__str__())
+        return self
+      self.info (" * Adding Swarm of size {} with name {}...".format(obj.size, obj.name))
+      obj.setContext(self)
+      self._services[obj.name] = obj
     else:
-      self.fatal("Only Service, Dataframe or Trigger objects are allowed to be attached here!")
+      self.fatal("Only Swarm, Service, Dataframe, Trigger objects are allowed to be attached here!")
     return self
 
   def setWatchdog (self, wd):
@@ -143,3 +159,10 @@ class Context ():
         self.fatal(message, self.__str__())
         return StatusCode.FAILURE
     return StatusCode.SUCCESS
+
+  def printCollection (self):
+    pp = pprint.PrettyPrinter(indent=2)
+    print ("---> Services <---")
+    pp.pprint (self._services)
+    print ("---> Dataframes <---")
+    pp.pprint (self._dataframes)
