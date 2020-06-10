@@ -1,0 +1,25 @@
+version = 1
+
+test_patterns = [
+    "ci/*",
+    "examples/*"
+]
+
+exclude_patterns = [
+    "*.json",
+    "*.out",
+    "*.pyc",
+    "__pycache__",
+    ".vscode/",
+    "build/",
+    "dist/",
+    "docs/_build",
+    "otools.egg*"
+]
+
+[[analyzers]]
+name = "python"
+enabled = true
+
+  [analyzers.meta]
+  runtime_version = "3.x.x"
