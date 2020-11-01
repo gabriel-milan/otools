@@ -16,7 +16,7 @@ class Service ():
 
   def __init__ (self, obj, context = None, name=None, *args, **kws):
     @wraps(obj)
-    def init(obj, context = None):
+    def init(obj, context = None, *args, **kws):
       self.__obj = obj(*args, **kws)
       self.__context = context
       self.__rawObj = deepcopy(obj)
@@ -35,7 +35,7 @@ class Service ():
       self.__obj.MSG_ERROR    = self.MSG_ERROR
       self.__obj.MSG_FATAL    = self.MSG_FATAL
       self._active = True
-    return init(obj, context=context)
+    return init(obj, context=context, *args, **kws)
   
   def MSG_VERBOSE (self, message, moduleName="Unknown", contextName="Unknown", *args, **kws):
     self.__context.verbose(message, self.__name, contextName, *args, **kws)
