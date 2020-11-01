@@ -14,10 +14,10 @@ class Service ():
   diabled. The "finalize" method will run when the program shuts down.
   """
 
-  def __init__ (self, obj, context = None, name=None):
+  def __init__ (self, obj, context = None, name=None, *args, **kws):
     @wraps(obj)
     def init(obj, context = None):
-      self.__obj = obj()
+      self.__obj = obj(*args, **kws)
       self.__context = context
       self.__rawObj = deepcopy(obj)
       try:
